@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="penetrationinfo">
+	<select id="getList" resultType="hashmap" parameterType="hashmap">
+		select 
+			ManagementNo,
+			PenetrationNo,
+			matter,
+			`GetCodeInfoNameByID`(matter) matter_name,
+			Pipe,
+			Duct,
+			SectionTube,
+			Conduit,
+			Cable,
+			Tray,
+			CoverTray,
+			Etc,
+			RegID,
+			RegDate,
+			UpdateID,
+			UpdateDate,
+			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+		FROM penetrationinfo
+		WHERE UseYN='Y' ${cond}
+		ORDER BY RegDate desc
+	</select>
+	
+	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
+		SELECT
+			count(*)
+		FROM penetrationinfo
+		WHERE Seq = '${Seq}'
+	</select>
+	<update id="insert">
+		REPLACE INTO
+		penetrationinfo (
+			ManagementNo,
+			PenetrationNo,
+			matter,
+			Pipe,
+			Duct,
+			SectionTube,
+			Conduit,
+			Cable,
+			Tray,
+			CoverTray,
+			Etc,
+			RegID,
+			UseYN
+			)
+		VALUES
+		(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${matter}',
+			'${Pipe}',
+			'${Duct}',
+			'${SectionTube}',
+			'${Conduit}',
+			'${Cable}',
+			'${Tray}',
+			'${CoverTray}',
+			'${Etc}',
+			'${RegID}',
+			'Y'
+		)
+	</update>
+	
+	<update id="insert_his">
+		INSERT INTO
+		penetrationinfo_his (
+			ManagementNo,
+			PenetrationNo,
+			matter,
+			Pipe,
+			Duct,
+			SectionTube,
+			Conduit,
+			Cable,
+			Tray,
+			CoverTray,
+			Etc,
+			RegID,
+			UseYN
+			)
+		VALUES
+		(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${matter}',
+			'${Pipe}',
+			'${Duct}',
+			'${SectionTube}',
+			'${Conduit}',
+			'${Cable}',
+			'${Tray}',
+			'${CoverTray}',
+			'${Etc}',
+			'${RegID}',
+			'Y'
+		)
+	</update>
+	
+	<update id="delete"  parameterType="hashmap">
+		UPDATE penetrationinfo
+		SET 
+			UseYN = 'N',
+			updateID = '${RegID}'
+		WHERE Seq = '${Seq}';
+	</update>
+	
+	<update id="delete_rollBack"  parameterType="hashmap">
+		UPDATE penetrationinfo
+		SET 
+			UseYN = 'Y',
+			updateID = '${RegID}'
+		WHERE Seq = '${Seq}';
+	</update>
+</mapper>

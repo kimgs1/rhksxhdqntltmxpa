@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="penetrationinspect">
+	<select id="getList" resultType="hashmap" parameterType="hashmap">
+		select 
+			ManagementNo,
+			PenetrationNo,
+			InspectDate,
+			InspectSeq,
+			ImproveDate,
+			InspectionInterval,
+			SealantConditionState,
+			`GetCodeInfoNameByID`(SealantConditionState) SealantConditionState_name,
+			JudgementReason,
+			Judgment,
+			`GetCodeInfoNameByID`(Judgment) Judgment_name,
+			ImproveNote,
+			RegID,
+			RegDate,
+			CONCAT(InspectionInterval,'/',InspectSeq) InspectionInterval_InspectSeq,
+			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+		FROM penetrationinspect
+		WHERE UseYN='Y' ${cond}
+		ORDER BY RegDate desc
+	</select>
+	<update id="insert">
+		Replace INTO
+		penetrationinspect (
+			ManagementNo,
+			PenetrationNo,
+			InspectDate,
+			InspectSeq,
+			ImproveDate,
+			InspectionInterval,
+			SealantConditionState,
+			JudgementReason,
+			Judgment,
+			ImproveNote,
+			RegID,
+			UseYN
+			)
+		VALUES
+		(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${InspectDate}',
+			'${InspectSeq}',
+			'${ImproveDate}',
+			'${InspectionInterval}',
+			'${SealantConditionState}',
+			'${JudgementReason}',
+			'${Judgment}',
+			'${ImproveNote}',
+			'${RegID}',
+			'Y'
+		)
+
+	</update>
+	<update id="insert_his">
+		INSERT INTO
+		penetrationinspect_his (
+			ManagementNo,
+			PenetrationNo,
+			InspectDate,
+			InspectSeq,
+			ImproveDate,
+			InspectionInterval,
+			SealantConditionState,
+			JudgementReason,
+			Judgment,
+			ImproveNote,
+			RegID,
+			UseYN
+			)
+		VALUES
+		(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${InspectDate}',
+			'${InspectSeq}',
+			'${ImproveDate}',
+			'${InspectionInterval}',
+			'${SealantConditionState}',
+			'${JudgementReason}',
+			'${Judgment}',
+			'${ImproveNote}',
+			'${RegID}',
+			'Y'
+		)
+
+	</update>
+	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
+		SELECT
+			count(*)
+		FROM penetrationinspect
+		WHERE Seq = '${Seq}'
+	</select>
+	
+	<update id="delete"  parameterType="hashmap">
+		UPDATE penetrationinspect
+		SET 
+			UseYN = 'N',
+			updateID = '${RegID}'
+		WHERE Seq = '${Seq}';
+	</update>
+	
+	<update id="delete_rollBack"  parameterType="hashmap">
+		UPDATE penetrationinspect
+		SET 
+			UseYN = 'Y',
+			updateID = '${RegID}'
+		WHERE Seq = '${Seq}';
+	</update>
+</mapper>

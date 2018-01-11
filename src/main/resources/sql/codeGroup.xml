@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="CodeGroup">
+	<select id="getList" resultType="hashmap" parameterType="hashmap">
+		SELECT 
+			GroupID,
+			GroupName,
+			Remark,
+			SortKey,
+			UseYN,
+			RegID,
+			RegDate,
+			UpdateID,
+			UpdateDate
+		FROM 
+			codegroup
+		WHERE 1=1 ${cond}
+		ORDER BY 
+			SortKey
+	</select>
+	
+	<update id="create" parameterType="hashmap">
+		INSERT INTO
+		codegroup (
+			GroupID,
+			GroupName,
+			Remark,
+			SortKey,
+			UseYN,
+			RegID
+			)
+		VALUES
+		(
+			'${GroupID}',
+			'${GroupName}',
+			'${Remark}',
+			'${SortKey}',
+			'N',
+			'${userid}'
+		)
+	</update>
+	
+	<update id="update" parameterType="hashmap">
+		UPDATE codegroup 
+		SET 
+			 GroupName='${GroupName}' ,
+			 Remark='${Remark}' ,
+			 UpdateID='${userid}' 
+		WHERE GroupID='${GroupID}' ;
+	</update>
+	
+	<delete id="delete" parameterType="hashmap">
+		DELETE FROM codegroup
+		WHERE GroupID = '${GroupID}'
+	</delete>
+
+</mapper>

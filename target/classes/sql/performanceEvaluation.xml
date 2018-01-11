@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="performanceEvaluation">
+	<select id="getList" resultType="hashmap" parameterType="hashmap">
+		select 
+			ManagementNo,
+			PenetrationNo,
+			RequirePerformance,
+			`GetCodeInfoNameByID`(RequirePerformance) RequirePerformance_name,
+			EvaluationResult,
+			`GetCodeInfoNameByID`(EvaluationResult) EvaluationResult_name,
+			FireResistanceRating,
+			PSI,
+			WaterSeal,
+			RadiationShield,
+			RegID,
+			RegDate,
+			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+		FROM performanceEvaluation
+		WHERE UseYN='Y' ${cond}
+		ORDER BY RegDate desc
+	</select>
+	
+	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
+		SELECT
+			count(*)
+		FROM performanceEvaluation
+		WHERE Seq = '${Seq}'
+	</select>
+	<update id="insert">
+		REPLACE INTO
+		performanceEvaluation (
+			ManagementNo,
+			PenetrationNo,
+			RequirePerformance,
+			EvaluationResult,
+			FireResistanceRating,
+			PSI,
+			WaterSeal,
+			RadiationShield,
+			RegID,
+			UseYN
+			)
+		VALUES
+		(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${RequirePerformance}',
+			'${EvaluationResult}',
+			'${FireResistanceRating}',
+			'${PSI}',
+			'${WaterSeal}',
+			'${RadiationShield}',
+			'${RegID}',
+			'Y'
+		)
+	</update>
+	
+	<update id="insert_his">
+		
+		INSERT INTO
+		performanceEvaluation_his (
+			ManagementNo,
+			PenetrationNo,
+			RequirePerformance,
+			EvaluationResult,
+			FireResistanceRating,
+			PSI,
+			WaterSeal,
+			RadiationShield,
+			RegID,
+			UseYN
+			)
+		VALUES
+		(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${RequirePerformance}',
+			'${EvaluationResult}',
+			'${FireResistanceRating}',
+			'${PSI}',
+			'${WaterSeal}',
+			'${RadiationShield}',
+			'${RegID}',
+			'Y'
+		)
+	</update>
+	
+	
+	<update id="delete"  parameterType="hashmap">
+		UPDATE performanceEvaluation
+		SET 
+			UseYN = 'N',
+			updateID = '${RegID}'
+		WHERE Seq = '${Seq}';
+	</update>
+	
+	<update id="delete_rollBack"  parameterType="hashmap">
+		UPDATE performanceEvaluation
+		SET 
+			UseYN = 'Y',
+			updateID = '${RegID}'
+		WHERE Seq = '${Seq}';
+	</update>
+</mapper>

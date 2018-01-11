@@ -1,0 +1,243 @@
+﻿.con{width:78%; float:left; margin-top:36px;}
+/*전체 공통*/
+/*MAIN*/
+.con .section01, .con .section02, .con .section03{width:98%; margin:0 auto 10px}
+.con .section01:after, .con .section02:after, .con .section03:after{content:''; visibility:hidden; display:block; clear:both;}
+.con .section01 article h2:before,.con .section02 section h2:before, .con .section02 article h2:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
+.con .section01 article h2,.con .section02 section h2, .con .section02 article h2{cursor:hand;font-size:15px; font-weight:700; color:#282828; margin-bottom:20px; margin-top:10px;}
+/*메인 공통속성*/
+.con .section01 article{width:49%; margin-right:1%; float:left; border:1px solid #808080; box-sizing:border-box; padding:10px 20px }
+.con .section01 article:nth-child(2){margin-left:1%; margin-right:0}
+.con .section01 article ul{margin-bottom:10px;}
+.con .section01 article ul li:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
+.con .section01 article ul li{margin-bottom:5px;}
+.con .section01 article ul li a{cursor:hand;text-decoration:none; display:block; font-size:14px; font-weight:400; color:#282828}
+/*section01 FIN*/
+.con .section02 section{width:70%; float:left; margin-right:2%; border:1px solid #808080; box-sizing:border-box; padding:10px 20px }
+.con .section02 section ul{margin-bottom:10px;}
+.con .section02 section ul:after{content:''; visibility:hidden; display:block; clear:both}
+.con .section02 section ul li{float:left; padding:5px 19px; border-radius:10px; border:1px solid #c5c9d4; margin-right:3px; font-size:14px; font-weight:400; line-height:20px; cursor:pointer; background: linear-gradient( to bottom, white, #c1d4f1 );}
+.con .section02 section ul li:last-child{margin-right:0}
+.con .section02 section .tab_content{height:151px}
+.con .section02 section .tab_content img{width:100%; height:100%}
+.con .section02 article{width:28%; float:left; border:1px solid #808080; box-sizing:border-box; padding:10px 20px; height:260px;  }
+.con .section02 article:after{content:''; visibility:hidden; display:block; clear:both}
+.con .section02 article p{border-bottom:1px dashed #808080; width:100%; height:30px; padding:0 10px; box-sizing:border-box; margin-bottom:2px}
+.con .section02 article p span{float:right}
+.con .section02 article ul{border-top:1px dashed #808080;width:100%;padding:20px 0 0; box-sizing:border-box;}
+.con .section02 article ul li:before{content:''; display:block; width:6px; height:6px; background:#282828; border-radius:3px; margin:5px 25px 0 0; float:left}
+.con .section02 article ul li{margin-bottom:5px}
+.con .section02 article ul li span{float:right; width:55px; text-align:center; display:inline-block}
+/*section02 FIN*/
+.con .section03{border:1px solid #808080; box-sizing:border-box;padding:15px 10px }
+.con .section03 ul{margin-bottom:10px}
+.con .section03 ul:after{content:''; visibility:hidden; display:block; clear:both}
+.con .section03 ul li{float:left; padding:5px 19px; border-radius:10px; border:1px solid #dab776; margin-right:3px; font-size:14px; font-weight:400; line-height:20px; cursor:pointer; background: linear-gradient( to bottom, white, #e2c48f )}
+
+                                                                     /*user pop*/
+.user_pop{width:500px; margin:20px auto;}
+.user_pop h2{font-size:20px; font-weight:700; color:#2d6189;  margin-bottom:20px; text-align:center}
+.user_pop table{width:100%; border:0}
+.user_pop table tr{height:40px; line-height:40px; text-align:left;}
+.user_pop table tr th{padding-left:10px; box-sizing:border-box;  width:49%; height:35px; line-height:35px;background-color:#e2eaf1; font-size:14px; font-weight:700; color:#2d6189; border:1px solid #7496af; height:25px; line-height:25px;}
+.user_pop table tr td{border:1px solid #7496af; height:25px; line-height:25px; font-size:14px; font-weight:400; color:#282828}
+.user_pop table tr td:nth-child(2){width:2%;}
+.user_pop table tr td:nth-child(3){width:49%;}
+.user_pop table tr td input{padding-left:20px; border:0; height:30px; line-height:30px; outline:none}
+.user_pop table tr td input[type="button"]{width:100%;background: linear-gradient( to bottom, #e2eaf1, #2d76b5 ); color: white; font-size: 16px; font-weight: 700; height:40px; border-radius:10px;}
+
+/*user_pop Fin*/
+
+                                                                        /*SUB01*/
+.sub01 .sec01{width:96%; margin:0 auto}
+.sub01 .sec01 h2{font-size:20px; font-weight:700; color:#282828; margin-bottom:20px;}
+.sub01 .sec01 form {display:block; width:100%; border-radius:10px; border:2px solid #70c2ee; padding:20px 10px; box-sizing:border-box;  }
+.sub01 .sec01 ul{border-bottom:1px dashed #969696}
+.sub01 .sec01 ul:after{content:''; visibility:hidden; display:block; clear:both}
+.sub01 .sec01 ul>li{width:50%; float:left; display:block; height:30px}
+.sub01 .sec01 ul>li>label:before{content:''; display:block; float:left; width:3px; height:3px; border-radius:2px; background-color:#282828; margin:5px 10px;}
+.sub01 .sec01 ul>li>label{float:left; width:135px; font-size:14px; font-weight:700; color:#282828}
+.sub01 .sec01 ul>li ol{float:left}
+.sub01 .sec01 ul>li ol:after{content:''; visibility:hidden; display:block; clear:both}
+.sub01 .sec01 ul>li ol>li{float:left; margin-right:3px}
+.sub01 .sec01 form div {width:350px; margin:10px auto;}
+.sub01 .sec01 form div input{width:130px; height:25px; margin-right:20px; font-size:14px; font-weight:700; border-radius:5px;  }
+.sub01 .sec01 form div .searchBtn {background: linear-gradient( to bottom, white, #c1d4f1 ); border:1px solid #b3caeb; color:#2e4481; }
+.sub01 .sec01 form div input[type="submit"]{background-color:#dce7fa; color:#425693; border:3px solid #d4e2f5}
+.sub01 .sec01 form div input[type="reset"]{background-color:#efefef; color:#747474; border:3px solid #e1e1e1}
+/*sec01 FIN*/
+.sub01 .sec02 {width:96%; margin:20px auto 10px;}
+.sub01 .sec02 div:after{content:''; visibility:hidden; display:block; clear:both}
+.sub01 .sec02 div ul{float:left;}
+.sub01 .sec02 div ul:after{content:''; visibility:hidden; display:block; clear:both}
+.sub01 .sec02 div ul li{float:left;}
+.sub01 .sec02 div p{float:right}
+.sub01 .sec02 div p span{font-weight:700}
+/*.sub01 .sec02 table{width:96%; margin:0 auto 20px; text-align:center; border:1px solid #7496af}
+.sub01 .sec02 table td{position:relative}*/
+.sub01 .sec02 table td a{text-decoration:none; display:block; font-size:14px; font-weight:400; color:#282828;}
+.sub01 .sec02 table td .down{display:block; width:100%; height:20px; margin:0 auto; background:url(../images/ico_file_yes.png)no-repeat center; background-size:contain;   margin-top:3px;}
+.sub01 .sec02 table td .blank{background-color:aquamarine; background:url(../images/ico_file_no.png)no-repeat center;  background-size:contain}/*빈파일 회색처리 class="black"*/
+.sub01 .sec02 table td input[type="button"]{width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }
+      /*sub01 FIn*/
+.sec01_pop{width:870px; margin:0 auto; border-radius:10px; }
+.sec01_pop:after{content:''; visibility:hidden; display:block; clear:both}
+.sec01_pop h2{width:850px; margin:0 auto; padding:30px 0; font-size:25px; font-weight:700; color:#2d6189; border-bottom:1px solid #2d6189}
+.sec01_pop input[type="reset"]{display:block; float:right; margin:10px;  width:70px; height:25px; line-height:23px; font-size:13px; font-weight:700; color:#282828; background:url(../images/ico_del.png)no-repeat 7px center #f7f7f7; padding-left:25px; border:0; border-radius:3px; margin-left:10px; letter-spacing:1px; border:1px solid #bbb }
+.sec01_pop table:nth-child(3){clear:right}
+.sec01_pop .w_50{width:50%; box-sizing:border-box; float:left}
+.sec01_pop .w_100{width:100%; box-sizing:border-box}
+.sec01_pop table tr:nth-child(1) th{text-align:left; font-size:17px; background-color: #c2ccd4;}
+.sec01_pop table tr:nth-child(1) th a{display:inline-block; text-decoration:none; width:35px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#282828; background:url(../images/ico_modi.png)no-repeat 7px center #f7f7f7; padding-left:25px; border:0; border-radius:3px; margin-left:10px; letter-spacing:1px}
+
+/*a수정버튼자리*/
+.sec01_pop table td ul:after{content:''; visibility:hidden; display:block; clear:both}
+.sec01_pop table td ul li{float:left;}
+.sec01_pop table td ul li:after{content:''; visibility:hidden; display:block; clear:both}
+.sec01_pop table td ul li input{float:left}
+.sec01_pop table{text-align:left}
+.sec01_pop table th{padding-left:5px; width:44%;
+    background-color: #e2eaf1;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2d6189;
+    border: 1px solid #7496af;
+    height: 25px;
+    line-height: 25px;}
+.sec01_pop table td{vertical-align: baseline;padding-left:5px;border: 1px solid #7496af;height: 25px;line-height: 25px;font-size: 14px;font-weight: 400;color: #282828;}
+.sec01_pop table:nth-child(6) th{width:16.66%;}
+.sec01_pop table:nth-child(7){text-align:center}
+.sec01_pop table:nth-child(7) th{width:auto; }
+      /*sec01_pop Fin*/
+                                                                        /*adm01~06(수정페이지)*/
+.adm{width:99%; margin:0 auto; border-radius:10px; min-width:976px }
+.adm .tab{margin-bottom:10px}
+.adm .tab:after{content:''; visibility:hidden; display:block; clear:both}
+.adm .tab li{float:left; width:130px; border-radius:5px; text-align:center; height:30px; line-height:30px; position:relative; background-color:#dedede}
+.adm .tab .active{background-color:#64bbe7}
+.adm .tab  a:before{content:''; display:block; float:left;width: 0;height: 0;border-top: 5px solid transparent;border-left: 8px solid #404040;border-bottom: 5px solid transparent; margin: 10px 0 0 15px;}
+.adm .tab .active a:before{content:''; display:block; float:left; width: 0;	height: 0;	border-left: 5px solid transparent;	border-right: 5px solid transparent;	border-top: 8px solid #eab252;  margin: 10px 0 0 15px; }
+.adm .tab li a{cursor:hand;display:block; text-decoration:none; text-align:center; font-size:14px; font-weight:700; color:#282828}
+.adm section h2:before{content:''; display:inline-block; width:15px; height:10px; border-radius:5px; background-color:#e84a4a; margin-right:10px;}
+.adm section h2{font-size:18px; line-height:25px; padding-left:20px; font-weight:700; color:#282828; margin-bottom:10px; letter-spacing:2px}
+.adm section form{display:block; width:100%; border-radius:10px; border:2px solid #70c2ee; padding:20px 10px; box-sizing:border-box; min-width:976px; margin-bottom:15px}
+.adm section ul{border-bottom:1px dotted #bbb; padding-bottom:14px;}
+.adm section ul:after{content:''; visibility:hidden; display:block; clear:both;}
+.adm section ul li:after{content:''; visibility:hidden; display:block}
+.adm section ul li{float:left;  height:25px; line-height:25px; margin-bottom:5px;}
+.adm section ul li label:before{content:''; display:block; float:left; width:4px; height:4px; border-radius:2px; background-color:#282828; margin:10px 9px}
+.adm section div{width:480px; margin:20px auto 5px}
+.adm section div input{width:130px; height:25px; margin-right:20px; font-size:14px; font-weight:700; border-radius:5px;  }
+.adm section div .searchBtn {background: linear-gradient( to bottom, white, #c1d4f1 ); border:1px solid #b3caeb; color:#2e4481; }
+.adm section div input[type="reset"]{background:linear-gradient( to bottom, white, #cacaca ); border:1px solid #9d9c9c; color:#8b8b8b;}
+.adm section div .saveBtn {background: linear-gradient( to bottom, white, #f9c89f ); border:1px solid #fe9d4d; color:#d96403; }
+.adm section div input:last-child{margin-right:0}
+.adm>p{font-size:14px; font-weight:400; color:#282828; margin-bottom:10px}
+.adm>p span{font-weight:700;}
+.adm table{width:100%; margin:0 auto 50px; min-width:976px; text-align:center}
+.adm table tr td a{display:block; text-decoration:none; font-size:14px; font-weight:400; color:#282828}
+/*adm 공통*/
+.adm01 section ul li{width:33.33%;}
+.adm01 section ul li label{width:46%; font-size:14px; font-weight:700; color:#282828; display:block; float:left; max-width:175px}
+.adm01 section ul li input{float:left; width:50%; box-sizing:border-box; height:27px;}
+.adm01 section ul li input[type="radio"]{width:10px; margin-top:8px; height:10px;}
+.adm01 section ul li input[type="radio"]+label:before{display:none}
+.adm01 section ul li input[type="radio"]+label{width:53px; font-weight:400}
+.adm01 section ul li span{font-size:14px; font-weight:700; color:#2d6189}
+/*adm01 FIn*/
+.adm02 section li{width:50%}
+.adm02 section ul li label{width:40%; display:block; float:left; font-size:14px; font-weight:700; color:#282828; max-width:175px}
+.adm02 section ul li input{float:left; width:40%; box-sizing:border-box; height:27px;}
+.adm02 section ul li input[type="radio"]{width:10px; margin-top:8px; height:10px;}
+.adm02 section ul li input[type="radio"]+label:before{display:none}
+.adm02 section ul li input[type="radio"]+label{width:auto;font-weight:400}
+.adm02 section ul li input[type="checkbox"]{width:10px; height:10px; margin-top:8px}
+.adm02 section ul li input[type="checkbox"]+label:before{display:none}
+.adm02 section ul li input[type="checkbox"]+label{width:auto; margin-right:10px; font-weight:400}
+/*adm02 FIn*/
+.adm03 section li{width:50%}
+.adm03 section ul li label{width:40%; display:block; float:left; font-size:14px; font-weight:700; color:#282828; max-width:175px}
+.adm03 section ul li input{float:left; width:40%; box-sizing:border-box; height:27px;}
+.adm03 section ul li input[type="checkbox"]{width:10px; height:10px; margin-top:8px}
+.adm03 section ul li input[type="checkbox"]+label:before{display:none}
+.adm03 section ul li input[type="checkbox"]+label{width:auto; margin-right:10px; font-weight:400}
+/*adm03 FIn*/
+.adm04 section li{width:50%}
+.adm04 section ul li label{width:30%; display:block; float:left; font-size:14px; font-weight:700; color:#282828; max-width:175px}
+.adm04 section ul li input{float:left; width:40%; box-sizing:border-box; height:27px;}
+.adm04 section ul li input[type="radio"]{width:10px; margin-top:8px; height:10px;}
+.adm04 section ul li input[type="radio"]+label:before{display:none}
+.adm04 section ul li input[type="radio"]+label{width:53px; font-weight:400}
+.adm04 section ul li input[type="checkbox"]{width:10px; height:10px; margin-top:8px}
+.adm04 section ul li input[type="checkbox"]+label:before{display:none}
+.adm04 section ul li input[type="checkbox"]+label{width:auto; margin-right:10px; font-weight:400}
+.adm04 table th{width:12.5%}
+/*adm04 FIn*/
+.adm05 section li{width:50%}
+.adm05 section ul li label{width:30%; display:block; float:left; font-size:14px; font-weight:700; color:#282828; max-width:175px}
+.adm05 section ul li input{float:left; width:40%; box-sizing:border-box; height:27px;}
+.adm05 section ul li input[type="radio"]{width:10px; margin-top:8px; height:10px;}
+.adm05 section ul li input[type="radio"]+label:before{display:none}
+.adm05 section ul li input[type="radio"]+label{width:53px; font-weight:400}
+.adm05 section ul li input[type="checkbox"]{width:10px; height:10px; margin-top:8px}
+.adm05 section ul li input[type="checkbox"]+label:before{display:none}
+.adm05 section ul li input[type="checkbox"]+label{width:auto; margin-right:10px; font-weight:400}
+.adm05 section ul li .date_ico{width:19px; height:19px; background:url(../images/ico_date.png)no-repeat center; display:block; float:left; margin:5px}
+.adm05 section ul li .date_ico:before{display:none}
+/*adm05 FIn*/
+                                                                                                /*board*/
+.board h2{font-size:20px; font-weight:500; color:#282828; padding:15px; margin-bottom:10px;}
+.board div table{width:100%; margin-bottom:20px;}
+
+.board_list{width:97%; margin:0 auto;  min-width:976px}
+.board_list div{position:relative}
+.board_list div p{font-size:14px; font-weight:400; color:#282828; margin-bottom:10px;}
+.board_list div table tr{height:30px; line-height:30px;cursor: hand; }
+.board_list div table tr th{background: linear-gradient( to bottom, #74b3ea, #2d6596 );text-align:center;  border:0; color:white; font-weight:400; height:30px; line-height:30px; letter-spacing:1px}
+.board_list div table tr:nth-child(1) th:nth-child(1){border-radius:5px 0 0 5px;}
+.board_list div table tr:nth-child(1) th:nth-child(5){border-radius:0 5px 5px 0;}
+.board_list div table tr td{border:0; border-bottom:1px solid #d4d4d4; text-align:center; height:30px; line-height:30px;}
+.board_list div table tr td:nth-child(2){text-align:left}
+.board_list div table tr td a{display:block; text-decoration:none; font-size:14px; font-weight:400; color:#282828}
+.board_list div table tr:hover{background-color:#e0effb}
+.board_list .bo_search{width:300px; margin:0 auto}
+.board_list .bo_search select{height:30px; line-height:30px; float:left; margin-right:5px}
+.board_list .bo_search input{height:30px; line-height:30px; float:left; margin-right:5px}
+.board_list .bo_search input[type="button"]{background: linear-gradient( to bottom, #2d6596,  #3a8dd6); color:white; border:0; border-radius:5px; width:50px; margin-right:0; font-weight:700}
+.board_list div span{position:absolute; bottom:-7px; right:0}
+.board_list div span input[type="button"]{background:url(../images/ico_write.png)no-repeat 7px center white; width:85px; padding:3px 3px 3px 36px; border:1px solid #bfbfbf; border-radius:3px; }
+     /*board_list Fin*/
+.board_write{width:95%; margin:0 auto;  min-width:940px}
+.board_write:after{content:''; visibility:hidden; display:block; clear:both}
+.board_write div table{border-top: 2px solid #e4e3e3;}
+.board_write div table tr{height:50px; line-height:40px; border-bottom:20px solid #e4e3e3; box-sizing:border-box}
+.board_write div table tr th{width:14%; text-align:left; padding-left:20px; background-color:transparent; border:0; color:#282828; height:40px; line-height:40px; float:left}
+.board_write div table tr td{width:80%; padding-left:20px; border:0; float:left; padding-top:5px;}
+.board_write div table tr td input{width:85%; height:25px; line-height:25px;}
+.board_write div table tr td textarea{resize:none; width:85%; height:100px; margin:5px 0 0 }
+.board_write div table tr td input[type="checkbox"]{width:15px; height:15px; }
+.board_write .bo_write_save{width:300px; float:right}
+.board_write .bo_write_save input{width:85px; padding:3px 3px 3px 26px; border:1px solid #bfbfbf; border-radius:3px; float:left; margin-right:10px;}
+.board_write .bo_write_save .savebtn {background:url(../images/ico_save.png)no-repeat 18px center white;}
+.board_write .bo_write_save input[type="reset"]{background:url(../images/ico_del.png)no-repeat 18px center white;}
+.board_write .bo_write_save a{display:block; text-decoration:none; font-size:13px; font-weight:400; color:#282828; background:url(../images/ico_list.png)no-repeat 16px center white; width:85px; padding:3px 3px 3px 36px; border:1px solid #bfbfbf; border-radius:3px; box-sizing:border-box; float:left; height:26px; line-height:19px;}
+      /*board_write Fin*/
+.board_view{width:95%; margin:0 auto;  min-width:940px}
+.board_view:after{content:''; visibility:hidden; display:block; clear:both}
+.board_view div table{border-top: 2px solid #e4e3e3;}
+.board_view div table tr{width:80%; height:50px; line-height:40px; border-bottom:20px solid #e4e3e3; box-sizing:border-box}
+.board_view div table tr th{width:14%; text-align:left; padding-left:20px; background-color:transparent; border:0; color:#282828; height:40px; line-height:40px; float:left}
+.board_view div table tr td{padding-left:20px; border:0; float:left; padding-top:5px;}
+.board_view div table tr td input{width:85%; height:25px; line-height:25px;}
+.board_view div table tr td textarea{resize:none; width:85%; height:100px; margin:5px 0 0 }
+.board_view div table tr td input[type="checkbox"]{width:15px; height:15px; }
+.board_view .bo_view_save{width:85px; margin:0 auto}
+.board_view .bo_view_save a{display:block; text-decoration:none; font-size:13px; font-weight:400; color:#282828; background:url(../images/ico_list.png)no-repeat 16px center white; width:85px; padding:3px 3px 3px 36px; border:1px solid #bfbfbf; border-radius:3px; box-sizing:border-box; float:left; height:26px; line-height:19px;}
+.board_view div table tr .board_title{width:50%;}
+.board_view div table tr .right_float{width:400px;}
+.board_view div table tr td table{border:0; width:400px; float:right}
+.board_view div table tr td table tr{border:0}
+.board_view div table tr td table td{width:auto; float:left; padding:0 10px}
+.board_view div table tr td a{display:block; text-decoration:none; font-size:14px; font-weight:500; color: #282828;}
+.board_view div table tr td a strong{ margin-left:5px;}
+.board_view div table tr td img{margin-top:5px}

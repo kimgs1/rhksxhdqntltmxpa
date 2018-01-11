@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="Login">
+	<select id="checkID" resultType="hashmap" parameterType="hashmap" >
+		SELECT COUNT(userid) FROM userinfo WHERE userid = ${userid}
+	</select>
+	<select id="checkLogin" resultType="hashmap" parameterType="hashmap" >
+		SELECT userid,username FROM userinfo 
+		WHERE userid = '${userid}'
+		AND password = '${userpw}'
+		AND useYN = 'Y'  
+	</select>
+	<update id="newMemberUpload" parameterType="hashmap">
+		REPLACE INTO 
+		userinfo (userid       ,
+				  password     ,
+				  username     ,
+				  Authority    ,
+				  Phone        ,
+				  Mobile       ,
+				  Email        ,
+				  Address      ,
+				  UseYN        ,
+				  IP           ,
+				  Mac          ,
+				  LastLogin    ,
+				  LoginYN      ,
+				  RegID        ,
+				  RegDate      
+		) 
+		VALUES 
+		(
+				  '${userid}'       ,
+				  '${password}'     ,
+				  '${username}'     ,
+				  '${authority}'    ,
+				  '${phone}'        ,
+				  '${mobile}'       ,
+				  '${email}'        ,
+				  '${address}'      ,
+				  'Y'        ,
+				  '${IP}'           ,
+				  '${mac}'          ,
+				  ''    ,
+				  'Y'      ,
+				  '${userid}'        ,
+				  SYSDATE()        
+		);
+	</update>
+</mapper>

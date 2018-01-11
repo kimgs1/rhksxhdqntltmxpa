@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Fbulletine">
+	<select id="getList" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			id,
+			title,
+			contents,
+			cnt,
+			deleteYn,
+			regid,
+			regdate,
+			updateid,
+			updatedate,	
+			DATE_FORMAT(RegDate, '%Y-%m-%d') RegDateTime		
+		FROM fbulletine
+		ORDER BY regdate desc
+		LIMIT ${limit}
+	</select>
+	
+	<select id="getCount" resultType="string">
+		SELECT COUNT(*) from fbulletine
+	</select>
+	
+	<select id="getContent" resultType="hashmap" parameterType="hashmap">
+		SELECT
+			id,
+			title,
+			contents,
+			cnt,
+			deleteYn,
+			regid,
+			regdate,
+			updateid,
+			updatedate,
+			DATE_FORMAT(RegDate, '%Y-%m-%d') regdate_time
+		FROM fbulletine
+		WHERE id = '${id}'
+	</select>
+	
+	<update id="create" parameterType="hashmap">
+		INSERT INTO
+		fbulletine (
+			title,
+			contents,
+			cnt ,
+			deleteyn,
+			regid,
+			regdate
+			)
+		VALUES
+		(
+			'${title}' ,
+			'${contents}' ,
+			0 ,
+			'N',
+			'${userid}' ,
+			SYSDATE()
+		)
+	</update>
+
+</mapper>

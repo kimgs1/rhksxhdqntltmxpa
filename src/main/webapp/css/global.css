@@ -1,0 +1,77 @@
+﻿body{font-family:'NanumGothic', sans-serif; min-width:1180px; }
+body:after{content:''; visibility:hidden; display:block; clear:both}
+/*폰트 클래스*/ 
+.pager{min-width:200px; width:20%; margin:0 auto 50px}
+.pager:after{content:''; visibility:hidden; display:block; clear:both;}
+.pager li{float:left; cursor: hand;}
+.pager li a{display:block; text-decoration:none; font-size:13px; font-weight:700; color:#282828; padding:0 5px; line-height:15px; }
+.pager li a:hover,.pager li .active{color:#cb5e01}
+/*pager*/
+
+
+/*
+body{font-family:'NanumBarunGothic', sans-serif; min-width:1180px; }
+body:after{content:''; visibility:hidden; display:block; clear:both}
+*/
+
+
+.wrapper {
+	overflow : hidden;
+}
+.main {
+	float : right;
+	width : 100%;
+	margin-left : -300px;
+	padding-left : 300px;
+	box-sizing : border-box;
+}
+.side {
+	float : left;
+	width : 300px;
+}
+
+
+
+header{width:100%;  height:98px; min-width:1180px; margin:0 auto; overflow:hidden; background: linear-gradient( to bottom, white, #c1d4f1 );}
+header:after{content:''; visibility:hidden; display:block; clear:both}
+header .top_nav{width:100%; box-sizing:border-box; padding:10px 40px;}
+header .top_nav:after{content:''; visibility:hidden; display:block; clear:both}
+header .top_nav li{float:right; margin:0 20px}
+header .top_nav li a{display:block; font-size:14px; font-weight:700; color:#282828; text-decoration:none}
+header section{width:100%}
+header section:after{content:''; visibility:hidden; display:block;}
+header section h1{float:left; width:300px; height:36px; background:url(../images/logo.png)no-repeat center; padding:0 10px}
+header section h1 a{display:block; height:17px; text-indent:-9999px;}
+header section nav{float:right; margin-right:100px; width:490px; padding-top:15px;}
+header section nav ul:after{content:''; visibility:hidden; display:block; clear:both}
+header section nav ul>li{float:left; width:20%; text-align:center; position:relative}
+header section nav ul>li a{display:block; font-size:15px; font-weight:400; color:#282828; text-decoration:none; padding-bottom:30px; cursor: hand;}
+header section nav ul>li:hover ol{display:block; z-index:9999;}
+header section nav ul>li ol{display:none; position:absolute; top:35px; width:530px; cursor: hand;}
+header section nav ul>li ol:after{content:''; visibility:hidden; display:block; clear:both;}
+header section nav ul>li ol li{float:left; margin:0 10px}
+/*header FIN*/
+
+aside{width:300px; float:left; height:100%; background:linear-gradient( to bottom, #c1d4f1, white );}
+
+/*
+aside .clock{width:130px; margin:0 auto 20px;}
+aside .clock ul:after{content:''; visibility:hidden; display:block; clear:both}
+aside .clock ul li{float:left; margin:0 3px;}
+*/
+aside select{width:95%; margin:0 auto 20px; display:block; height:35px;}
+aside section{width:95%; margin:0 auto; border:1px solid #808080; padding:20px; box-sizing:border-box}
+aside section h2{font-size:17px; font-weight:700; color:#282828; text-align:center; margin-bottom:10px}
+aside section ul li{margin-bottom:7px; }
+aside section ul li:before{content:''; display:block; width:7px; height:7px; float:left; margin:5px 18px 5px 0; background:url(../images/bul_01.jpg)}
+aside section ul li a{display:block; text-decoration:none; font-size:15px; font-weight:400; color:#282828}
+/*aside FIN*/
+#date {width:95%; margin: 0 auto;}
+#date .btn-holder {text-align: center;margin: 10px 0 10px 0; }
+#date #calendar table { border-collapse: collapse;text-align: center;}
+#date #calendar table thead td {height: 30px; font-weight: bold; line-height:30px;}
+#date #calendar table td {border: solid 1px #000; }
+#date #calendar table td.date-cell {height: 50px; line-height:50px}
+#date #calendar table td.sun {color: red;}
+#date #calendar table td.sat {color: blue;}
+#date #calendar table td.not-this-month {background: #ddd;color: #999;}

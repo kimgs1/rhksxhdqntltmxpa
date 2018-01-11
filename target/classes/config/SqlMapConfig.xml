@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+	<properties resource="config/jdbc.properties"/>
+	
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting name="defaultExecutorType" value="SIMPLE" />
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="model.vo.SpcOptionVO" alias="spcoption"/>
+		<typeAlias type="model.vo.SpcChartVO" alias="spcchart"/>
+		<typeAlias type="model.vo.AsGridVO" alias="asgrid"/>
+	</typeAliases>
+
+	<mappers>
+	    <mapper resource="sql/login.xml"/>
+	    <mapper resource="sql/fbulletine.xml"/>
+	    <mapper resource="sql/penetrationbaseinfo.xml"/>
+	    <mapper resource="sql/penetrationinfo.xml"/>
+	    <mapper resource="sql/penetrationinspect.xml"/>
+	    <mapper resource="sql/performanceEvaluation.xml"/>
+	    <mapper resource="sql/qna.xml"/>
+	    <mapper resource="sql/codeGroup.xml"/>
+	    <mapper resource="sql/codeInfo.xml"/>
+	    <mapper resource="sql/sealantinfo.xml"/>
+	    <mapper resource="sql/penetrationsearch.xml"/>
+	    <mapper resource="sql/usermanage.xml"/>
+	</mappers>
+</configuration>

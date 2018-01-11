@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="usermanage">
+<select id="getList" resultType="hashmap" parameterType="hashmap">
+		SELECT 
+				userid       ,
+				password     ,
+				username     ,
+				Authority    ,
+				Phone        ,
+				Mobile       ,
+				Email        ,
+				Address      ,
+				UseYN        ,
+				IP           ,
+				Mac          ,
+				LastLogin    ,
+				LoginYN      ,
+				RegID        ,
+				RegDate      ,
+				UpdateID     ,
+				UpdateDate
+		FROM 
+			userinfo
+		where useYN = 'Y'
+	</select>
+	
+	<update id="update" parameterType="hashmap">
+		REPLACE INTO 
+		userinfo (userid       ,
+				  password     ,
+				  username     ,
+				  Authority    ,
+				  Phone        ,
+				  Mobile       ,
+				  Email        ,
+				  Address      ,
+				  UseYN        ,
+				  IP           ,
+				  Mac          ,
+				  LastLogin    ,
+				  LoginYN      ,
+				  RegID        ,
+				  RegDate      
+		) 
+		VALUES 
+		(
+				  '${userid}'       ,
+				  '${password}'     ,
+				  '${username}'     ,
+				  '${authority}'    ,
+				  '${phone}'        ,
+				  '${mobile}'       ,
+				  '${email}'        ,
+				  '${address}'      ,
+				  '${useYN}'        ,
+				  '${IP}'           ,
+				  '${mac}'          ,
+				  ''    ,
+				  'Y'      ,
+				  '${userid}'        ,
+				  SYSDATE()    
+		);
+	</update>
+	
+	<delete id="delete" parameterType="hashmap">
+		update userinfo
+		set 
+			UseYN = 'N',
+			updateID = '${regid}'
+		WHERE userid='${UserID}'
+	</delete>
+	
+	
+	<select id="getcontent" resultType="hashmap" parameterType="hashmap">
+		SELECT 
+				UserID       ,
+				Password     ,
+				UserName     ,
+				Authority    ,
+				Phone        ,
+				Mobile       ,
+				Email        ,
+				Address      ,
+				UseYN        ,
+				IP           ,
+				Mac          ,
+				LastLogin    ,
+				LoginYN      ,
+				RegID        ,
+				RegDate      ,
+				UpdateID     ,
+				UpdateDate
+		FROM 
+			userinfo
+		WHERE userid='${UserID}'
+	</select>
+
+</mapper>

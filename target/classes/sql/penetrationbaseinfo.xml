@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="penetrationbaseinfo">
+	<select id="getList" resultType="hashmap" parameterType="hashmap">
+		select 
+			EquipNo,
+			`GetCodeInfoNameByID`(EquipNo) EquipNo_name,
+			LocNo,
+			`GetCodeInfoNameByID`(LocNo) LocNo_name,
+			ManagementNo,
+			PenetrationNo ,
+			ManagementAreaYN,
+			Elevation,
+			FirePreventionAreaNo,
+			InspectionRoomNo,
+			BackRoomNo,
+			PenetrationForm,
+			`GetCodeInfoNameByID`(PenetrationForm) PenetrationForm_name,
+			Wall_FloorNo,
+			FirewallYN,
+			WallMeterial,
+			`GetCodeInfoNameByID`(WallMeterial) WallMeterial_name,
+			WallThickness,
+			FrontPicNo,
+			BackPicNo,
+			ReferenceFloorPlanNo,
+			LocationFloorPlanNo,
+			SealDetailDWG,
+			EL,
+			Diameter,
+			Height,
+			Length,
+			PenetrationType,
+			MaximumFreeArea,
+			MaximumFreeDistance,
+			Register,
+			Reviewer,
+			Checker,
+			SpecialNote,
+			RegID,
+			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+		FROM penetrationbaseinfo
+		WHERE UseYN='Y' ${cond}
+		ORDER BY RegDate desc
+			
+	</select>
+	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
+		SELECT
+			count(*)
+		FROM penetrationbaseinfo
+		WHERE Seq = '${Seq}'
+	</select>
+	<update id="insert"  parameterType="hashmap">
+		REPLACE INTO
+		penetrationbaseinfo (
+			EquipNo,
+			LocNo,
+			ManagementNo,
+			PenetrationNo ,
+			ManagementAreaYN,
+			Elevation,
+			FirePreventionAreaNo,
+			InspectionRoomNo,
+			BackRoomNo,
+			PenetrationForm,
+			Wall_FloorNo,
+			FirewallYN,
+			WallMeterial,
+			WallThickness,
+			FrontPicNo,
+			BackPicNo,
+			ReferenceFloorPlanNo,
+			LocationFloorPlanNo,
+			SealDetailDWG,
+			EL,
+			Diameter,
+			Height,
+			Length,
+			PenetrationType,
+			MaximumFreeArea,
+			MaximumFreeDistance,
+			Register,
+			Reviewer,
+			Checker,
+			SpecialNote,
+			RegID
+			)
+		VALUES
+		(
+			'${EquipNo}',
+			'${LocNo}',
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${ManagementAreaYN}',
+			'${Elevation}',
+			'${FirePreventionAreaNo}',
+			'${InspectionRoomNo}',
+			'${BackRoomNo}',
+			'${PenetrationForm}',
+			'${Wall_FloorNo}',
+			'${FirewallYN}',
+			'${WallMeterial}',
+			'${WallThickness}',
+			'${FrontPicNo}',
+			'${BackPicNo}',
+			'${ReferenceFloorPlanNo}',
+			'${LocationFloorPlanNo}',
+			'${SealDetailDWG}',
+			'${EL}',
+			'${Diameter}',
+			'${Height}',
+			'${Length}',
+			'${PenetrationType}',
+			'${MaximumFreeArea}',
+			'${MaximumFreeDistance}',
+			'${Register}',
+			'${Reviewer}',
+			'${Checker}',
+			'${SpecialNote}',
+			'${RegID}'
+		);
+		
+	</update>
+	
+	<update id="insert_his"  parameterType="hashmap">
+		INSERT INTO
+		penetrationbaseinfo_his (
+			EquipNo,
+			LocNo,
+			ManagementNo,
+			PenetrationNo ,
+			ManagementAreaYN,
+			Elevation,
+			FirePreventionAreaNo,
+			InspectionRoomNo,
+			BackRoomNo,
+			PenetrationForm,
+			Wall_FloorNo,
+			FirewallYN,
+			WallMeterial,
+			WallThickness,
+			FrontPicNo,
+			BackPicNo,
+			ReferenceFloorPlanNo,
+			LocationFloorPlanNo,
+			SealDetailDWG,
+			EL,
+			Diameter,
+			Height,
+			Length,
+			PenetrationType,
+			MaximumFreeArea,
+			MaximumFreeDistance,
+			Register,
+			Reviewer,
+			Checker,
+			SpecialNote,
+			RegID
+			)
+		VALUES
+		(
+			'${EquipNo}',
+			'${LocNo}',
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${ManagementAreaYN}',
+			'${Elevation}',
+			'${FirePreventionAreaNo}',
+			'${InspectionRoomNo}',
+			'${BackRoomNo}',
+			'${PenetrationForm}',
+			'${Wall_FloorNo}',
+			'${FirewallYN}',
+			'${WallMeterial}',
+			'${WallThickness}',
+			'${FrontPicNo}',
+			'${BackPicNo}',
+			'${ReferenceFloorPlanNo}',
+			'${LocationFloorPlanNo}',
+			'${SealDetailDWG}',
+			'${EL}',
+			'${Diameter}',
+			'${Height}',
+			'${Length}',
+			'${PenetrationType}',
+			'${MaximumFreeArea}',
+			'${MaximumFreeDistance}',
+			'${Register}',
+			'${Reviewer}',
+			'${Checker}',
+			'${SpecialNote}',
+			'${RegID}'
+		)
+	</update>
+	
+	
+	<update id="delete"  parameterType="hashmap">
+		UPDATE penetrationbaseinfo
+		SET 
+			UseYN = 'N',
+			updateID = '${RegID}'
+		WHERE Seq = '${Seq}';
+	</update>
+	
+	<update id="delete_rollBack"  parameterType="hashmap">
+		UPDATE penetrationbaseinfo
+		SET 
+			UseYN = 'Y',
+			updateID = '${RegID}'
+		WHERE Seq = '${Seq}';
+	</update>
+</mapper>

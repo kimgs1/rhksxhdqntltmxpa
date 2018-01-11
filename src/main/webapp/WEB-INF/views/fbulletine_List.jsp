@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html>
+<head>
+
+<%@ include file="main_head.jsp"%>
+<%@ include file="/views/modal.jsp"%>
+
+<script type="text/javascript" src="js/home_side.js"></script>
+<script type="text/javascript" src="js/fbulletine_list.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<%@ include file="home_side.jsp"%>
+	<div class="con">
+        <section class="board board_list">
+            <h2>공지사항</h2><!--자료실 공지사항-->
+            <div>
+                <table id="bulletine_div">
+                    <tr>
+                        <th style="width:10%;">번호</th>
+                        <th style="width:50%;">제목</th>
+                        <th style="width:10%;">작성자</th>
+                        <th style="width:20%;">작성일자</th>
+                        <th style="width:10%;">조회</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><a href="#">Q&amp;A테스트</a></td>
+                        <td>관리자</td>
+                        <td>20112-05-21</td>
+                        <td>6</td>
+                    </tr>
+                </table>
+                <ol class="pager" id="board_list_page_div">
+                <!-- 
+                    <li><a href="#"><img src="images/pager_01.png" /></a></li>
+                    <li><a href="#"><img src="images/pager_02.png" /></a></li>
+                    <li><a href="#"><img src="images/pager_03.png" /></a></li>
+                    <li><a href="#" class="active">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li>
+                    <li><a href="#" style="transform: rotate(180deg)"><img src="images/pager_04.png" /></a></li>
+                    <li><a href="#"><img src="images/pager_05.png" /></a></li>
+                    <li><a href="#" style="transform: rotate(180deg)"><img src="images/pager_01.png" /></a></li>
+                 -->
+                </ol>
+                <span><input type="button" onclick="newBulletine()" value="글쓰기" /></span>
+            </div>
+            
+            <!-- 
+            <div class="bo_search">
+                <select>
+                    <option>전체</option>
+                    <option>작성자</option>
+                    <option>내용</option>
+                </select>
+                <input type="search" />
+                <input type="button" value="검색"/>
+            </div>
+             -->
+        </section>
+    </div>
+</body>
+</html>
