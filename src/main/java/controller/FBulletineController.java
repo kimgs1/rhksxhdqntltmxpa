@@ -16,7 +16,6 @@ import pasing.FbulientPagingBean;
 
 @Controller
 public class FBulletineController {
-
 	@Autowired
 	FBulletineDao fbulletineDao;
 	
