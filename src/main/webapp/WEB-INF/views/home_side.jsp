@@ -2,26 +2,27 @@
 	pageEncoding="UTF-8"%>
 	<head>
 	<%@ include file="main_head.jsp"%>
-	</head>
+	<script type="text/javascript" src="js/home_side.js"></script>
 	<script type="text/javascript">
-        $(document).ready(function () {
-            setInterval(function () {
-                // Create a newDate() object and extract the minutes of the current time on the visitor's
-                var minutes = new Date().getMinutes();
-                // Add a leading zero to the minutes value
-                $("#min").html((minutes < 10 ? "0" : "") + minutes);
-            }, 1000);
-
-            setInterval(function () {
-                // Create a newDate() object and extract the hours of the current time on the visitor's
-                var hours = new Date().getHours();
-                // Add a leading zero to the hours value
-                $("#hours").html((hours < 10 ? "0" : "") + hours);
-            }, 1000);
-        });
-    </script><!--시계 스크립트-->
+	        $(document).ready(function () {
+	            setInterval(function () {
+	                // Create a newDate() object and extract the minutes of the current time on the visitor's
+	                var minutes = new Date().getMinutes();
+	                // Add a leading zero to the minutes value
+	                $("#min").html((minutes < 10 ? "0" : "") + minutes);
+	            }, 1000);
+	
+	            setInterval(function () {
+	                // Create a newDate() object and extract the hours of the current time on the visitor's
+	                var hours = new Date().getHours();
+	                // Add a leading zero to the hours value
+	                $("#hours").html((hours < 10 ? "0" : "") + hours);
+	            }, 1000);
+	        });
+	    </script><!--시계 스크립트-->
+	</head>
+	
     
-<script type="text/javascript" src="js/home_side.js"></script>
 	
 	<header>
 	<ul class="top_nav">

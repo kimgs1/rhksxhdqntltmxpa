@@ -5,9 +5,7 @@
 <%@ include file="home_side.jsp"%>
 
 	<div class="main">
-		
-<script type="text/javascript" src="js/home.js"></script>
-    <script>
+		<script>
         $(document).ready(function () {
             $(".tab_content").hide();
             $(".tab_content:first").show();
@@ -33,6 +31,8 @@
             });
         });
     </script><!--탭스크립트-->
+<script type="text/javascript" src="js/home.js"></script>
+    
     
  <div class="con">
         <div class="section01">
@@ -82,27 +82,46 @@
                 <h2>관통부 기본정보</h2>
                 <div id="container">
                     <ul class="tabs">
-                        <li rel="tab3" onclick="tabClick('ConstructionStateChart_div')">부서별</li>
-                        <li rel="tab3" onclick="tabClick('ConstructionStateChart_div')">밀페재 종류</li>
+                        <li rel="tab1" class="active" onclick="tabClick('DepartmentChart_div')">부서별</li>
+                        <li rel="tab2" onclick="tabClick('sealantMaterialChart_div')">밀페재 종류</li>
                         <li rel="tab3" onclick="tabClick('ConstructionStateChart_div')">밀페재 시공상태</li>
-                        <li rel="tab1" class="active" onclick="tabClick('LocChart_div')">건물별 관통부수량</li>
-                        <li rel="tab3" onclick="tabClick('ConstructionStateChart_div')">요구성능</li>
-                        <li rel="tab2" onclick="tabClick('WallMeterialChart_div')">벽재질</li>
+                        <li rel="tab4" onclick="tabClick('LocChart_div')">건물별 관통부수량</li>
+                        <li rel="tab5" onclick="tabClick('EffectChart_div')">요구성능</li>
+                        <li rel="tab6" onclick="tabClick('WallMeterialChart_div')">벽재질</li>
                         
                     </ul>
                     <div class="tab_container" id= "tab_container">
+                    
                         <div id="tab1" class="tab_content">
+                        	<div id="DepartmentChart_div">
+                            	<svg style="height: 180px; width:100%"></svg>
+                            </div>
+                        </div>
+                        
+                        <div id="tab2" class="tab_content">
+                        	 <div id="sealantMaterialChart_div">
+	                            	<svg style="height: 180px; width:100%"></svg>
+	                        </div>
+                        </div>
+                        
+                        <div id="tab3" class="tab_content">
+                            <div id="ConstructionStateChart_div">
+                            	<svg style="height: 180px; width:100%"></svg>
+                            </div>
+                        </div>
+                        <div id="tab4" class="tab_content">
                             <div id="LocChart_div">
                             	<svg style="height: 180px; width:100%"></svg>
                             </div>
                         </div>
-                        <div id="tab2" class="tab_content">
-                            <div id="WallMeterialChart_div">
-                            	<svg style="height: 180px; width:100%"></svg>
-                            </div>
+                        
+                        <div id="tab5" class="tab_content">
+	                        <div id="EffectChart_div">
+	                            	<svg style="height: 180px; width:100%"></svg>
+	                        </div>
                         </div>
-                        <div id="tab3" class="tab_content">
-                            <div id="ConstructionStateChart_div">
+                        <div id="tab6" class="tab_content">
+                            <div id="WallMeterialChart_div">
                             	<svg style="height: 180px; width:100%"></svg>
                             </div>
                         </div>

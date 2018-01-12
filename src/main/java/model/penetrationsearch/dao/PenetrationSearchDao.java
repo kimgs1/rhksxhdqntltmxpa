@@ -13,4 +13,7 @@ public interface PenetrationSearchDao {
 	public HashMap<String, Object> getMergeData(HashMap<String, Object> param);
 	public HashMap<String, Object> getFrontImg(HashMap<String, Object> param);
 	public HashMap<String, Object> getBackImg(HashMap<String, Object> param);
+	public HashMap<String, Object> getDepartmentChart(HashMap<String, Object> param);
+	public HashMap<String, Object> getEffectChart(HashMap<String, Object> param);
+	public HashMap<String, Object> getsealantMaterialChart(HashMap<String, Object> param);
 }

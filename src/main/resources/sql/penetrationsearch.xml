@@ -233,22 +233,47 @@
 		 select `GetCodeInfoNameByID`(LocNo) name , count(*) as value
 		 from penetrationbaseinfo
 		 group by LocNo
-		 order by value desc
+		 -- order by value desc
 	</select>
 	
 	<select id="WallMeterialChart" resultType="hashmap" parameterType="hashmap">
 		 select `GetCodeInfoNameByID`(WallMeterial) name , count(*) as value
 		 from penetrationbaseinfo
 		 group by WallMeterial
-		 order by value desc
+		 -- order by value desc
+	</select>
+	
+	<select id="DepartmentChart" resultType="hashmap" parameterType="hashmap">
+		select `GetCodeInfoNameByID`(PenetrationDept) name , count(*) as value
+		from penetrationbaseinfo
+		group by PenetrationDept
+		-- order by value desc
 	</select>
 	
 	<select id="ConstructionStateChart" resultType="hashmap" parameterType="hashmap">
 		select `GetCodeInfoNameByID`(ConstructionState) name , count(*) as value
 		from sealantinfo
 		group by ConstructionState
-		 order by value desc
+		--  order by value desc
 	</select>
+	
+	<select id="EffectChart" resultType="hashmap" parameterType="hashmap">
+		select 
+			( select count(*) from penetrationbaseinfo where VENTILATION_VALUE = '○') as value1 , 
+			( select count(*) from penetrationbaseinfo where FIRE_VALUE = '○') as value2,
+			( select count(*) from penetrationbaseinfo where RADIATION_VALUE = '○') as value3,
+			( select count(*) from penetrationbaseinfo where FLOOD_VALUE = '○') as value4,
+			( select count(*) from penetrationbaseinfo where PRESSURE_VALUE = '○') as value5
+	</select>
+	
+	<select id="sealantMaterialChart" resultType="hashmap" parameterType="hashmap">
+		select `GetCodeInfoNameByID`(CodeID) name , count(*) as value
+		from penetrationbaseinfo p
+		JOIN penetrationmaterialcodeinfo pm on p.ManagementNo = pm.ManagementNo and p.PenetrationNo = pm.PenetrationNo
+		group by CodeID
+		--  order by value desc
+	</select>
+	
 	
 	<select id="EquipNoLocNoData" resultType="hashmap" parameterType="hashmap">
 		 select concat(`GetCodeInfoNameByID`(EquipNo),'-',`GetCodeInfoNameByID`(LocNo)) name , count(*) as value

@@ -61,6 +61,25 @@ public class PenetrationSearchController {
 		return new ModelAndView("JsonView", "result", result);
 	}
 	
+
+	@RequestMapping(value="/penetrationsearch.do", params="command=DepartmentChart")
+	public ModelAndView getDepartmentChart(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		HashMap<String,Object> result = penetrationSearchDao.getDepartmentChart(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
+	@RequestMapping(value="/penetrationsearch.do", params="command=EffectChart")
+	public ModelAndView getEffectChart(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		HashMap<String,Object> result = penetrationSearchDao.getEffectChart(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
+	@RequestMapping(value="/penetrationsearch.do", params="command=sealantMaterialChart")
+	public ModelAndView getsealantMaterialChart(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		HashMap<String,Object> result = penetrationSearchDao.getsealantMaterialChart(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
 	@RequestMapping(value="/penetrationsearch.do", params="command=EquipNoLocNoData")
 	public ModelAndView getEquipNoLocNoData(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
