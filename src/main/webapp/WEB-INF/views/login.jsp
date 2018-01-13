@@ -39,16 +39,40 @@
 
 <%@ include file="main_head.jsp"%>
 
+
+<link href="/css/nanumbarungothic.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+body .login {
+	font-family:'NanumBarunGothic';
+	font-size:20px;
+	line-height:30px;
+}
+span {
+	display:block;
+}
+span.span200 {font-weight:200;}
+span.span300 {font-weight:300;}
+span.span400 {font-weight:400;}
+span.span700 {font-weight:700;}
+
+</style>
+ <!-- 
+<span class="span span200">나눔바른고딕 Font Weight : 200</span>
+<span class="span span300">나눔바른고딕 Font Weight : 300</span>
+<span class="span span400">나눔바른고딕 Font Weight : 400</span> -->
+<span class="span span700">나눔바른고딕 Font Weight : 700</span>
+
     <body>
 	<div class="login">
-	
+
         <!-- div class="container"-->
         
             <!-- Codrops top bar -->
             <div class="codrops-top">
+            	<span class="span span700">나눔바른고딕 Font Weight : 788800</span>
 		        <section>
 		        <br><br>
-				<h2>관통부 관리 시스템&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+				<span class="span span700">관통부 관리 시스템&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 				</section>
            
 		 <div class="clr">
