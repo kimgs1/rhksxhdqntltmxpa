@@ -5,7 +5,8 @@
 
 <mapper namespace="Fbulletine">
 	<select id="getList" resultType="hashmap" parameterType="hashmap">
-		SELECT
+		SELECT top ${limit}
+			Row_Number() OVER (ORDER BY regdate desc) as rowNum,
 			id,
 			title,
 			contents,
@@ -15,10 +16,9 @@
 			regdate,
 			updateid,
 			updatedate,	
-			DATE_FORMAT(RegDate, '%Y-%m-%d') RegDateTime		
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime		
 		FROM fbulletine
 		ORDER BY regdate desc
-		LIMIT ${limit}
 	</select>
 	
 	<select id="getCount" resultType="string">
@@ -36,7 +36,7 @@
 			regdate,
 			updateid,
 			updatedate,
-			DATE_FORMAT(RegDate, '%Y-%m-%d') regdate_time
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') regdate_time
 		FROM fbulletine
 		WHERE id = '${id}'
 	</select>

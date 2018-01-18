@@ -32,8 +32,18 @@
                         
                         <li>
                             <label>ELEVATION</label>
-                            <input id="ELEVATION" type="text" /> 피트
-                            <input id="ELEVATION" type="text" /> 인치
+                            <select id="cal_flag">
+	                            <option value="=" selected>=</option>
+	                            <option value=">">&gt;</option>
+	                            <option value=">=">&ge;</option>
+	                            <option value="<">&lt;</option>
+	                            <option value="<=">&le;</option>
+                            </select>
+                            <input id="ELEVATION_num_pit" type="text" /> '-
+                            <input id="ELEVATION_num_inc" type="text" /> "
+                        </li>
+                        
+                        <li id="Equip_tag">
                         </li>
                         <li id="Location_tag">
                         </li>
@@ -41,6 +51,16 @@
                         </li>
                         <li id= "ConstructionState_tag" style="width:800px">
                         </li>
+                        <li id= "Area_tag">
+                        </li>
+                        
+                        <li id= "Wall_YN_tag" >
+                        </li>
+                        <li id= "Efficient_tag" >
+                        </li>
+                        <li id= "Result_tag" >
+                        </li>
+                      
                       
                     </ul>
                     <div>

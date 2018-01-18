@@ -7,16 +7,16 @@
 			ManagementNo,
 			PenetrationNo,
 			RequirePerformance,
-			`GetCodeInfoNameByID`(RequirePerformance) RequirePerformance_name,
+			dbo.GetCodeInfoNameByID(RequirePerformance) RequirePerformance_name,
 			EvaluationResult,
-			`GetCodeInfoNameByID`(EvaluationResult) EvaluationResult_name,
+			dbo.GetCodeInfoNameByID(EvaluationResult) EvaluationResult_name,
 			FireResistanceRating,
 			PSI,
 			WaterSeal,
 			RadiationShield,
 			RegID,
 			RegDate,
-			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM performanceEvaluation
 		WHERE UseYN='Y' ${cond}
 		ORDER BY RegDate desc

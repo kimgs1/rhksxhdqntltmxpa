@@ -5,7 +5,8 @@
 
 <mapper namespace="QNA">
 	<select id="getList" resultType="hashmap" parameterType="hashmap">
-		SELECT
+		SELECT top ${limit}
+			Row_Number() OVER (ORDER BY regdate desc) as rowNum,
 			ID,
 			subject,
 			Content,
@@ -15,10 +16,9 @@
 			regdate,
 			updateId,
 			UpdateDate,
-			DATE_FORMAT(RegDate, '%Y-%m-%d') RegDateTime			
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime			
 		FROM qna
 		ORDER BY regdate desc
-		LIMIT ${limit}
 	</select>
 	
 	<select id="getCount" resultType="string">
@@ -36,7 +36,7 @@
 			regdate,
 			updateId,
 			UpdateDate,
-			DATE_FORMAT(RegDate, '%Y-%m-%d') RegDateTime	
+			FORMAT(RegDate, 'yyyy-MM-dd') RegDateTime	
 				
 		FROM qna
 		WHERE id = '${id}'
@@ -55,7 +55,7 @@
 		(
 			'${subject}',
 			'${Content}',
-			DATE_FORMAT(NOW(),'%Y-%m-%d'),
+			FORMAT(SYSDATETIME(), 'yyyy-MM-dd'),
 			0 ,
 			'${userid}'
 		)
@@ -96,7 +96,7 @@
 		(
 			'${qnaid}',
 			'${content}',
-			DATE_FORMAT(NOW(),'%Y-%m-%d'),
+			FORMAT(SYSDATETIME(), 'yyyy-MM-dd'),
 			'${userid}'
 		)
 	</update>

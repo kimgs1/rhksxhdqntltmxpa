@@ -13,9 +13,15 @@ function getBaseCodeInfo(){
 	getCodeAllInfo();
 //	tagBind("radio", "FirewallYN","방화벽여부",null,codeAllInfo.A09);
 //	tagBind("radio", "PenetrationForm","관통부형태",null,codeAllInfo.A02);
+	tagBind("selectBox_All", "Equip","호기",null,codeAllInfo.A01);
 	tagBind("selectBox_All", "Location","건물",null,codeAllInfo.A11);
 	tagBind("checkBoxMulti", "WallMeterial","벽재질",null,codeAllInfo.A04);
 	tagBind("checkBoxMulti", "ConstructionState","밀페재시공상태",null,codeAllInfo.A03);
+	tagBind("checkBoxMulti", "Area","관통부분야",null,codeAllInfo.A08);
+	tagBind("checkBoxMulti", "Wall_YN","관통부위치",null,codeAllInfo.A10);
+	tagBind("checkBoxMulti", "Efficient","요구성능",null,codeAllInfo.A06);
+	tagBind("checkBoxMulti", "Result","평가결과",null,codeAllInfo.A05);
+	
 }
 function getPenetrationsearchList(){
 	$.ajax({

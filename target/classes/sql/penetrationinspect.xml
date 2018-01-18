@@ -11,15 +11,15 @@
 			ImproveDate,
 			InspectionInterval,
 			SealantConditionState,
-			`GetCodeInfoNameByID`(SealantConditionState) SealantConditionState_name,
+			dbo.GetCodeInfoNameByID(SealantConditionState) SealantConditionState_name,
 			JudgementReason,
 			Judgment,
-			`GetCodeInfoNameByID`(Judgment) Judgment_name,
+			dbo.GetCodeInfoNameByID(Judgment) Judgment_name,
 			ImproveNote,
 			RegID,
 			RegDate,
 			CONCAT(InspectionInterval,'/',InspectSeq) InspectionInterval_InspectSeq,
-			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM penetrationinspect
 		WHERE UseYN='Y' ${cond}
 		ORDER BY RegDate desc

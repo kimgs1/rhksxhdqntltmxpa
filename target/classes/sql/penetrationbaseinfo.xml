@@ -8,9 +8,9 @@
 	<select id="getList" resultType="hashmap" parameterType="hashmap">
 		select 
 			EquipNo,
-			`GetCodeInfoNameByID`(EquipNo) EquipNo_name,
+			dbo.GetCodeInfoNameByID(EquipNo) EquipNo_name,
 			LocNo,
-			`GetCodeInfoNameByID`(LocNo) LocNo_name,
+			dbo.GetCodeInfoNameByID(LocNo) LocNo_name,
 			ManagementNo,
 			PenetrationNo ,
 			ManagementAreaYN,
@@ -19,11 +19,11 @@
 			InspectionRoomNo,
 			BackRoomNo,
 			PenetrationForm,
-			`GetCodeInfoNameByID`(PenetrationForm) PenetrationForm_name,
+			dbo.GetCodeInfoNameByID(PenetrationForm) PenetrationForm_name,
 			Wall_FloorNo,
 			FirewallYN,
 			WallMeterial,
-			`GetCodeInfoNameByID`(WallMeterial) WallMeterial_name,
+			dbo.GetCodeInfoNameByID(WallMeterial) WallMeterial_name,
 			WallThickness,
 			FrontPicNo,
 			BackPicNo,
@@ -42,7 +42,7 @@
 			Checker,
 			SpecialNote,
 			RegID,
-			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM penetrationbaseinfo
 		WHERE UseYN='Y' ${cond}
 		ORDER BY RegDate desc

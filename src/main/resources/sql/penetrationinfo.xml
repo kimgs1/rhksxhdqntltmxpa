@@ -7,7 +7,7 @@
 			ManagementNo,
 			PenetrationNo,
 			matter,
-			`GetCodeInfoNameByID`(matter) matter_name,
+			dbo.GetCodeInfoNameByID(matter) matter_name,
 			Pipe,
 			Duct,
 			SectionTube,
@@ -20,7 +20,7 @@
 			RegDate,
 			UpdateID,
 			UpdateDate,
-			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM penetrationinfo
 		WHERE UseYN='Y' ${cond}
 		ORDER BY RegDate desc

@@ -10,7 +10,7 @@
 			ManagementNo,
 			PenetrationNo,
 			ConstructionState,
-			`GetCodeInfoNameByID`(ConstructionState) ConstructionState_name,
+			dbo.GetCodeInfoNameByID(ConstructionState) ConstructionState_name,
 			SealQualityClass,
 			SealMeterial,
 			SealThickness,
@@ -22,7 +22,7 @@
 			Checker,
 			SealantSpecialNote,
 			RegID,
-			DATE_FORMAT(RegDate, '%Y-%m-%d %H:%i:%s') RegDateTime
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM sealantinfo
 		WHERE UseYN='Y' ${cond}
 		ORDER BY RegDate desc

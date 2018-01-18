@@ -6,11 +6,11 @@
 
 <mapper namespace="penetrationsearch">
 	<select id="getList" resultType="hashmap" parameterType="hashmap">
-			select 
+			select top 5000
                         pb.EquipNo,
-                        `GetCodeInfoNameByID`(pb.EquipNo) EquipNo_name,
+                        dbo.GetCodeInfoNameByID(pb.EquipNo) EquipNo_name,
                         pb.LocNo,
-                        `GetCodeInfoNameByID`(pb.LocNo) LocNo_name,
+                        dbo.GetCodeInfoNameByID(pb.LocNo) LocNo_name,
                         pb.ManagementNo,
                         pb.PenetrationNo ,
                         pb.ManagementAreaYN,
@@ -19,12 +19,12 @@
                         pb.InspectionRoomNo,
                         pb.BackRoomNo,
                         pb.PenetrationForm,
-			            `GetCodeInfoNameByID`(pb.PenetrationForm) PenetrationForm_name,
+			            dbo.GetCodeInfoNameByID(pb.PenetrationForm) PenetrationForm_name,
                         pb.Wall_FloorNo,
                         pb.FirewallYN,
-			            `GetCodeInfoNameByID`(pb.FirewallYN) FirewallYN_name,
+			            dbo.GetCodeInfoNameByID(pb.FirewallYN) FirewallYN_name,
                         pb.WallMeterial,
-			            `GetCodeInfoNameByID`(pb.WallMeterial) WallMeterial_name,
+			            dbo.GetCodeInfoNameByID(pb.WallMeterial) WallMeterial_name,
                         pb.WallThickness,
                         pb.FrontPicNo,
                         pb.BackPicNo,
@@ -85,7 +85,7 @@
                         pb.SpecialNote,
 
                         p.matter,
-			            `GetCodeInfoNameByID`(p.matter) matter_name,
+			            dbo.GetCodeInfoNameByID(p.matter) matter_name,
 						p.Pipe,
 						p.Duct,
 						p.SectionTube,
@@ -103,11 +103,11 @@
                         pi.SealantConditionState,
                         pi.JudgementReason,
                         pi.Judgment,
-			            `GetCodeInfoNameByID`(pi.Judgment) Judgment_name,
+			            dbo.GetCodeInfoNameByID(pi.Judgment) Judgment_name,
                         pi.ImproveNote,
 
                         s.ConstructionState,
-			            `GetCodeInfoNameByID`(s.ConstructionState) ConstructionState_name,
+			            dbo.GetCodeInfoNameByID(s.ConstructionState) ConstructionState_name,
                         s.SealSealDetailDWG,
                         s.SealQualityClass,
                         s.SealMeterial,
@@ -121,9 +121,9 @@
                         s.SealantSpecialNote,
                         
                         e.RequirePerformance,
-			            `GetCodeInfoNameByID`(e.RequirePerformance) RequirePerformance_name,
+			            dbo.GetCodeInfoNameByID(e.RequirePerformance) RequirePerformance_name,
                         e.EvaluationResult,
-			            `GetCodeInfoNameByID`(e.EvaluationResult) EvaluationResult_name,
+			            dbo.GetCodeInfoNameByID(e.EvaluationResult) EvaluationResult_name,
                         e.FireResistanceRating,
                         e.PSI,
                         e.WaterSeal,
@@ -135,7 +135,6 @@
 		            JOIN penetrationinspect pi on pi.ManagementNo = pb.ManagementNo and pi.PenetrationNo = pb.PenetrationNo
 		            where 1=1 ${cond}
 		            ORDER BY pb.RegDate desc
-		            limit 5000
 			
 	</select>
 	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
@@ -230,31 +229,33 @@
 	
 	
 	<select id="LocChart" resultType="hashmap" parameterType="hashmap">
-		 select `GetCodeInfoNameByID`(LocNo) name , count(*) as value
+		 select dbo.GetCodeInfoNameByID(LocNo) name , count(*) as value
 		 from penetrationbaseinfo
 		 group by LocNo
-		 -- order by value desc
+		 order by value desc
 	</select>
 	
 	<select id="WallMeterialChart" resultType="hashmap" parameterType="hashmap">
-		 select `GetCodeInfoNameByID`(WallMeterial) name , count(*) as value
+		 select dbo.GetCodeInfoNameByID(WallMeterial) name , count(*) as value
 		 from penetrationbaseinfo
 		 group by WallMeterial
-		 -- order by value desc
+		 order by value desc
 	</select>
 	
 	<select id="DepartmentChart" resultType="hashmap" parameterType="hashmap">
-		select `GetCodeInfoNameByID`(PenetrationDept) name , count(*) as value
-		from penetrationbaseinfo
+		select dbo.GetCodeInfoNameByID(PenetrationDept) name , count(*) as value
+		from penetrationbaseinfo p 
 		group by PenetrationDept
-		-- order by value desc
+		order by value desc
 	</select>
 	
 	<select id="ConstructionStateChart" resultType="hashmap" parameterType="hashmap">
-		select `GetCodeInfoNameByID`(ConstructionState) name , count(*) as value
-		from sealantinfo
-		group by ConstructionState
-		--  order by value desc
+		select dbo.GetCodeInfoNameByID(pm.CodeID) name , count(*) as value
+		from sealantinfo s
+		JOIN penetrationmaterialcodeinfo pm on s.ManagementNo = pm.ManagementNo and s.PenetrationNo = pm.PenetrationNo
+		where pm.CodeGroupID = 'A03'
+		group by pm.CodeID
+		order by value desc
 	</select>
 	
 	<select id="EffectChart" resultType="hashmap" parameterType="hashmap">
@@ -267,20 +268,22 @@
 	</select>
 	
 	<select id="sealantMaterialChart" resultType="hashmap" parameterType="hashmap">
-		select `GetCodeInfoNameByID`(CodeID) name , count(*) as value
+		select dbo.GetCodeInfoNameByID(CodeID) name , count(*) as value
 		from penetrationbaseinfo p
 		JOIN penetrationmaterialcodeinfo pm on p.ManagementNo = pm.ManagementNo and p.PenetrationNo = pm.PenetrationNo
+		where pm.CodeGroupID = 'A12'
 		group by CodeID
-		--  order by value desc
+		order by value desc
 	</select>
 	
 	
 	<select id="EquipNoLocNoData" resultType="hashmap" parameterType="hashmap">
-		 select concat(`GetCodeInfoNameByID`(EquipNo),'-',`GetCodeInfoNameByID`(LocNo)) name , count(*) as value
+		 select TOP 7
+		 	concat(dbo.GetCodeInfoNameByID(EquipNo),'-',dbo.GetCodeInfoNameByID(LocNo)) name , count(*) as value
 		 from penetrationbaseinfo
 		 group by EquipNo,LocNo
 		 order by value desc
-		 limit 7
+		 
 	</select>
 	
 	
@@ -290,31 +293,59 @@
 	</select>
 	
 	<select id="MergeData" resultType="hashmap" parameterType="hashmap">
-		 select concat(`GetCodeInfoNameByID`(p.EquipNo),'-',`GetCodeInfoNameByID`(p.LocNo)) name , count(*) as value ,
+		 select concat(dbo.GetCodeInfoNameByID(p.EquipNo),'-',dbo.GetCodeInfoNameByID(p.LocNo)) name , count(*) as value ,
 		 	( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
-				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and ss.ConstructionState = 'A0301'
+				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0301'
 			) as val1 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
-				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and ss.ConstructionState = 'A0302'
+				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0302'
 			) as val2 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
-				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and ss.ConstructionState = 'A0303'
+				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0303'
 			) as val3 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
-				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and ss.ConstructionState = 'A0304'
+				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0304'
 			) as val4 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
-				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and ss.ConstructionState = 'A0305'
+				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0305'
 			) as val5 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
-				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and ss.ConstructionState = 'A0306'
-			) as val6 
+				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0306'
+			) as val6 ,
+			( 	select count(*) from penetrationbaseinfo pp 
+				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and SUBSTRING(pp.PRESSURE_REASON, 1, 1) = '○'
+			) as val7 ,
+			( 	select count(*) from penetrationbaseinfo pp 
+				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and SUBSTRING(pp.PRESSURE_REASON, 1, 1) != '○'
+			) as val8 ,
+			( 	select count(*) from penetrationbaseinfo pp 
+			    where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pp.VENTILATION_VALUE = '○' 
+			) as val9 , 
+			( 	select count(*) from penetrationbaseinfo pp 
+			    where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pp.FIRE_VALUE = '○' 
+			) as val10 , 
+			( 	select count(*) from penetrationbaseinfo pp 
+			    where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pp.RADIATION_VALUE = '○' 
+			) as val11 , 
+			( 	select count(*) from penetrationbaseinfo pp 
+			    where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pp.FLOOD_VALUE = '○' 
+			) as val12 , 
+			( 	select count(*) from penetrationbaseinfo pp 
+			    where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pp.PRESSURE_VALUE = '○' 
+			) as val13 
+			
 		 from penetrationbaseinfo p
 		 group by p.EquipNo,p.LocNo
 		 order by value desc
