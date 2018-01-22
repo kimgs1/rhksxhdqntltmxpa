@@ -20,33 +20,24 @@
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery-2.2.0.min.js"></script>
+<script src="plugins/jquery/ajaxfileupload.js"></script>
+
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 
 
 <!-- jQuery UI -->
 <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui.min.css">
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 
+
 <!-- AdminLTE -->
-<!--
+
 <link rel="stylesheet" href="plugins/AdminLTE/AdminLTE.min.css">
 <link rel="stylesheet" href="plugins/AdminLTE/skin-blue-light.min.css">
 <script src="plugins/AdminLTE/app.min.js"></script>
- -->
-
-<!-- Bootstrap -->
-<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- devExtreme -->
-<!-- 
-<link rel="stylesheet" href="plugins/devExtreme/dx.common.css">
-<link rel="stylesheet" href="plugins/devExtreme/dx.spa.css">
-<link rel="stylesheet" href="plugins/devExtreme/dx.light.css">
-<script src="plugins/devExtreme/globalize.js"></script>
-<script src="plugins/devExtreme/dx.all.js"></script>
-<link rel="stylesheet" href="plugins/devExtreme/Exporter/dx.exporter.light.css">
-<script src="plugins/devExtreme/Exporter/dx.exporter.debug.js"></script>
- -->
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="plugins/fontawesome/css/font-awesome.min.css">

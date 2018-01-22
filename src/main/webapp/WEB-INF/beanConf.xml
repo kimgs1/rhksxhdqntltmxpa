@@ -33,7 +33,7 @@
 	</beans:bean>
 
 	<beans:bean name="JsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>	
-	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	<context:component-scan base-package="controller,model" />
 	
 </beans:beans>

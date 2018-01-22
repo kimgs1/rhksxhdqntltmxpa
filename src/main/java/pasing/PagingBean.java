@@ -57,6 +57,19 @@ public class PagingBean {
 	 *  0 이 아니면 나눈 값 + 1     
 	 * @return
 	 */
+	public int getTotalContent(){
+		return this.totalContent;
+	}
+	/**
+	 * 총 페이지 수 리턴  
+	 * ex) 총게시물 수 - 15 개 , 한화면에서 보여질 게시물 수 - 5개 
+	 *      몇페이지 ? 총 3 페이지 
+	 *      16개면 총 4페이지 
+	 *  총게시물수 % 한페이지에 보여질 게시물수 
+	 *  0 이면 나눈 값
+	 *  0 이 아니면 나눈 값 + 1     
+	 * @return
+	 */
 	public int getTotalPage(){
 		int num=totalContent%this.numberOfContentPerPage;
 		int totalPage=0;

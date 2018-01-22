@@ -6,7 +6,11 @@
 
 <mapper namespace="penetrationsearch">
 	<select id="getList" resultType="hashmap" parameterType="hashmap">
-			select top 5000
+	<![CDATA[
+	select * 
+	from (
+			select 
+						Row_Number() OVER (ORDER BY pb.regdate desc) as rowNum,
                         pb.EquipNo,
                         dbo.GetCodeInfoNameByID(pb.EquipNo) EquipNo_name,
                         pb.LocNo,
@@ -14,7 +18,9 @@
                         pb.ManagementNo,
                         pb.PenetrationNo ,
                         pb.ManagementAreaYN,
-                        pb.Elevation,
+                        CONCAT(cast(pb.Elevation_num_pit as decimal(10,0)), '''-',pb.Elevation_num_inc, '"') Elevation,
+                        pb.Elevation_num_pit,
+                        pb.Elevation_num_inc,
                         pb.FirePreventionAreaNo,
                         pb.InspectionRoomNo,
                         pb.BackRoomNo,
@@ -26,8 +32,6 @@
                         pb.WallMeterial,
 			            dbo.GetCodeInfoNameByID(pb.WallMeterial) WallMeterial_name,
                         pb.WallThickness,
-                        pb.FrontPicNo,
-                        pb.BackPicNo,
                         pb.ReferenceFloorPlanNo,
                         pb.LocationFloorPlanNo,
                         pb.SealDetailDWG,
@@ -67,15 +71,15 @@
                         pb.PRESSURE_VAL_NO,
                         pb.PRESSURE_JUDGMENT,
                         pb.PRESSURE_REASON,
-                        pb.Register,
+                        pb.Register as pb_Register,
                         pb.Register_date,
-                        pb.Reviewer,
+                        pb.Reviewer as pb_Reviewer,
                         pb.Reviewer_date,
                         pb.Supporter,
                         pb.Supporter_date,
                         pb.Technicker,
                         pb.Technicker_date,
-                        pb.Checker,
+                        pb.Checker as pb_Checker,
                         pb.Checker_date,
                         pb.CertificationYN,
                         pb.Com_name,
@@ -105,12 +109,20 @@
                         pi.Judgment,
 			            dbo.GetCodeInfoNameByID(pi.Judgment) Judgment_name,
                         pi.ImproveNote,
-
+						pi.ImproveMember,
+						pi.FrontPicNo,
+						pi.BackPicNo,
+						pi.DesignChangeNo,
+						pi.FileLocation_1,
+						pi.FileLocation_2,
+						pi.FileLocation_3,
+    
+                        
                         s.ConstructionState,
-			            dbo.GetCodeInfoNameByID(s.ConstructionState) ConstructionState_name,
+			            dbo.GetConstractionStateByCodePenetration(pb.PenetrationNo,pb.ManagementNo,'A03') ConstructionState_name,
                         s.SealSealDetailDWG,
                         s.SealQualityClass,
-                        s.SealMeterial,
+                        dbo.GetSealMaterialByCodePenetration(pb.PenetrationNo,pb.ManagementNo,'A12') SealMeterial_name,
                         s.SealThickness,
                         s.PressingBoardMeterial,
                         s.PressingBoardThickness,
@@ -119,23 +131,29 @@
                         s.Reviewer,
                         s.Checker,
                         s.SealantSpecialNote,
+                       
                         
-                        e.RequirePerformance,
-			            dbo.GetCodeInfoNameByID(e.RequirePerformance) RequirePerformance_name,
-                        e.EvaluationResult,
-			            dbo.GetCodeInfoNameByID(e.EvaluationResult) EvaluationResult_name,
-                        e.FireResistanceRating,
-                        e.PSI,
-                        e.WaterSeal,
-                        e.RadiationShield
+                        pb.regdate
 		            FROM penetrationbaseinfo pb
 		            JOIN penetrationinfo p on p.ManagementNo = pb.ManagementNo and p.PenetrationNo = pb.PenetrationNo
 		            JOIN sealantinfo s on s.ManagementNo = pb.ManagementNo and s.PenetrationNo = pb.PenetrationNo 
-		            JOIN performanceevaluation e on e.ManagementNo = pb.ManagementNo and e.PenetrationNo = pb.PenetrationNo
-		            JOIN penetrationinspect pi on pi.ManagementNo = pb.ManagementNo and pi.PenetrationNo = pb.PenetrationNo
-		            where 1=1 ${cond}
-		            ORDER BY pb.RegDate desc
-			
+					LEFT JOIN penetrationinspect pi on pi.ManagementNo = pb.ManagementNo and pi.PenetrationNo = pb.PenetrationNo
+		            	 and pi.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pi.PenetrationNo  and pifoo.ManagementNo = pi.ManagementNo)
+		            where 1=1 ${cond}	
+	
+	) as foo where foo.rowNum > ${low} and foo.rowNum <= ${high}
+	ORDER BY foo.RegDate desc
+	]]>
+	</select>
+	
+	<select id="getListCount" resultType="Integer" parameterType="hashmap">
+			select count(*)
+		    FROM penetrationbaseinfo pb
+		    JOIN penetrationinfo p on p.ManagementNo = pb.ManagementNo and p.PenetrationNo = pb.PenetrationNo
+		    JOIN sealantinfo s on s.ManagementNo = pb.ManagementNo and s.PenetrationNo = pb.PenetrationNo 
+		    LEFT JOIN penetrationinspect pi on pi.ManagementNo = pb.ManagementNo and pi.PenetrationNo = pb.PenetrationNo
+		         and pi.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pi.PenetrationNo  and pifoo.ManagementNo = pi.ManagementNo)
+		    where 1=1 ${cond}
 	</select>
 	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
 		SELECT
@@ -253,6 +271,7 @@
 		select dbo.GetCodeInfoNameByID(pm.CodeID) name , count(*) as value
 		from sealantinfo s
 		JOIN penetrationmaterialcodeinfo pm on s.ManagementNo = pm.ManagementNo and s.PenetrationNo = pm.PenetrationNo
+			 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
 		where pm.CodeGroupID = 'A03'
 		group by pm.CodeID
 		order by value desc
@@ -297,31 +316,37 @@
 		 	( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
 				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+					 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
 				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0301'
 			) as val1 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
 				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+					 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
 				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0302'
 			) as val2 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
 				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+					 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
 				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0303'
 			) as val3 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
 				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+					 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
 				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0304'
 			) as val4 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
 				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+					 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
 				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0305'
 			) as val5 , 
 			( 	select count(*) from penetrationbaseinfo pp
 				join sealantinfo ss on  ss.ManagementNo = pp.ManagementNo and ss.PenetrationNo = pp.PenetrationNo
 				join penetrationmaterialcodeinfo pm on  pm.ManagementNo = pp.ManagementNo and pm.PenetrationNo = pp.PenetrationNo
+					 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
 				where pp.EquipNo = p.EquipNo and pp.LocNo = p.LocNo and pm.CodeID = 'A0306'
 			) as val6 ,
 			( 	select count(*) from penetrationbaseinfo pp 
@@ -354,15 +379,75 @@
 	
 	<select id="getFrontPicImg" resultType="[B" parameterType="hashmap" >
 		 select FrontPicImg as photo
-		 from penetrationbaseinfo
+		 from penetrationInspect
 		 where ManagementNo = '${ManagementNo}'
 			 and PenetrationNo = '${PenetrationNo}'
+			 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
 	</select>
 	<select id="getBackPicImg"  resultType="[B" parameterType="hashmap">
 		 select BackPicImg as photo
-		 from penetrationbaseinfo
+		 from penetrationInspect pm
 		 where ManagementNo = '${ManagementNo}'
 			 and PenetrationNo = '${PenetrationNo}'
+			 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
+			 
 	</select>
+	
+	
+	<update id="testTran"  parameterType="hashmap">
+		 insert into fbulletine(title) values('testTran5');
+		 
+		 insert into fbulletine(title) values('testTran2'frjisfdj);
+	</update>
+	
+	
+	<select id="checkSealMeterial" parameterType="hashmap" resultType="int">
+		select count(*)
+		from codeinfo
+		where GroupID = 'A12'  ${cond}
+	</select>
+	
+	
+	<update id="deleteSealMeterial" parameterType="hashmap" >
+		delete  penetrationmaterialcodeinfo
+		where ManagementNo = '${ManagementNo}'
+			 and PenetrationNo = '${PenetrationNo}'
+			 and CodeGroupID = 'A12'
+	</update>
+	
+	<insert id="insertSealMeterial" parameterType="hashmap" >
+		insert into 
+		penetrationmaterialcodeinfo
+		(
+			ManagementNo,
+			PenetrationNo,
+			CodeID,
+			CodeGroupID
+		)
+		VALUES(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			dbo.GetCodeInfoIDByRemark(${SealMeterial}),
+			'A12'
+		)
+	</insert>
+	<insert id="insertSealMeterial_his" parameterType="hashmap" >
+		insert into 
+		penetrationmaterialcodeinfo_his
+		(
+			status,
+			ManagementNo,
+			PenetrationNo,
+			CodeID,
+			CodeGroupID
+		)
+		VALUES(
+			'insert',
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			dbo.GetCodeInfoIDByRemark(${SealMeterial}),
+			'A12'
+		)
+	</insert>
 	
 </mapper>

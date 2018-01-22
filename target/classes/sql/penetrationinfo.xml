@@ -32,42 +32,28 @@
 		FROM penetrationinfo
 		WHERE Seq = '${Seq}'
 	</select>
-	<update id="insert">
-		REPLACE INTO
-		penetrationinfo (
-			ManagementNo,
-			PenetrationNo,
-			matter,
-			Pipe,
-			Duct,
-			SectionTube,
-			Conduit,
-			Cable,
-			Tray,
-			CoverTray,
-			Etc,
-			RegID,
-			UseYN
-			)
-		VALUES
-		(
-			'${ManagementNo}',
-			'${PenetrationNo}',
-			'${matter}',
-			'${Pipe}',
-			'${Duct}',
-			'${SectionTube}',
-			'${Conduit}',
-			'${Cable}',
-			'${Tray}',
-			'${CoverTray}',
-			'${Etc}',
-			'${RegID}',
-			'Y'
-		)
-	</update>
 	
-	<update id="insert_his">
+	<update id="update">
+		update penetrationinfo
+		set 
+			matter = '${matter}',
+			Pipe = '${Pipe}',
+			Duct = '${Duct}',
+			SectionTube = '${SectionTube}',
+			Conduit = '${Conduit}',
+			Cable = '${Cable}',
+			Tray = '${Tray}',
+			CoverTray = '${CoverTray}',
+			Etc = '${Etc}',
+			CAP_Not_Num = '${CAP_Not_Num}',
+			UpdateID = '${RegID}',
+			UpdateDate = getdate()
+		where 
+			ManagementNo = '${ManagementNo}'
+			and PenetrationNo = '${PenetrationNo}'
+
+	</update>
+	<update id="update_his">
 		INSERT INTO
 		penetrationinfo_his (
 			ManagementNo,
@@ -81,8 +67,8 @@
 			Tray,
 			CoverTray,
 			Etc,
-			RegID,
-			UseYN
+			CAP_Not_Num,
+			RegID
 			)
 		VALUES
 		(
@@ -97,8 +83,79 @@
 			'${Tray}',
 			'${CoverTray}',
 			'${Etc}',
-			'${RegID}',
-			'Y'
+			'${CAP_Not_Num}',
+			'${RegID}'
+		)
+	</update>
+	<update id="insert">
+		INSERT INTO
+		penetrationinfo (
+			ManagementNo,
+			PenetrationNo,
+			matter,
+			Pipe,
+			Duct,
+			SectionTube,
+			Conduit,
+			Cable,
+			Tray,
+			CoverTray,
+			Etc,
+			CAP_Not_Num,
+			RegID
+			)
+		VALUES
+		(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${matter}',
+			'${Pipe}',
+			'${Duct}',
+			'${SectionTube}',
+			'${Conduit}',
+			'${Cable}',
+			'${Tray}',
+			'${CoverTray}',
+			'${Etc}',
+			'${CAP_Not_Num}',
+			'${RegID}'
+		)
+	</update>
+	
+	<update id="insert_his">
+		INSERT INTO
+		penetrationinfo_his (
+			status,
+			ManagementNo,
+			PenetrationNo,
+			matter,
+			Pipe,
+			Duct,
+			SectionTube,
+			Conduit,
+			Cable,
+			Tray,
+			CoverTray,
+			Etc,
+			CAP_Not_Num,
+			RegID
+			)
+		VALUES
+		(
+			'insert',
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${matter}',
+			'${Pipe}',
+			'${Duct}',
+			'${SectionTube}',
+			'${Conduit}',
+			'${Cable}',
+			'${Tray}',
+			'${CoverTray}',
+			'${Etc}',
+			'${CAP_Not_Num}',
+			'${RegID}'
 		)
 	</update>
 	

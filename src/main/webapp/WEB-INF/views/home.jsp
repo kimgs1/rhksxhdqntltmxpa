@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<head>
+	<%@ include file="main_head.jsp"%>
+</head>
+<body>
+	
+	
 <html>
 
 <%@ include file="home_side.jsp"%>

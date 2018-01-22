@@ -78,17 +78,22 @@
 .sub01 .sec02 table td a{text-decoration:none; display:block; font-size:14px; font-weight:400; color:#282828;}
 .sub01 .sec02 table td .down{display:block; width:100%; height:20px; margin:0 auto; background:url(../images/ico_file_yes.png)no-repeat center; background-size:contain;   margin-top:3px;}
 .sub01 .sec02 table td .blank{background-color:aquamarine; background:url(../images/ico_file_no.png)no-repeat center;  background-size:contain}/*빈파일 회색처리 class="black"*/
-.sub01 .sec02 table td input[type="button"]{width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }
+.sub01 .sec02 table td .view   {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }
+.sub01 .sec02 table td .edit   {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #0866d8; padding-left:23px; margin-left:2px; border:0; border-radius:5px; }
+.sub01 .sec02 table td .delete {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ce3812; padding-left:23px; margin-left:2px; border:0; border-radius:5px; }
       /*sub01 FIn*/
-.sec01_pop{width:870px; margin:0 auto; border-radius:10px; }
+.sec01_pop{width:870px; margin-left:110px; border-radius:10px; }
 .sec01_pop:after{content:''; visibility:hidden; display:block; clear:both}
-.sec01_pop h2{width:850px; margin:0 auto; padding:30px 0; font-size:25px; font-weight:700; color:#2d6189; border-bottom:1px solid #2d6189}
+.sec01_pop h2{width:870px; margin:0 auto; padding:30px 0; font-size:25px; font-weight:700; color:#2d6189; border-bottom:1px solid #2d6189}
 .sec01_pop input[type="reset"]{display:block; float:right; margin:10px;  width:70px; height:25px; line-height:23px; font-size:13px; font-weight:700; color:#282828; background:url(../images/ico_del.png)no-repeat 7px center #f7f7f7; padding-left:25px; border:0; border-radius:3px; margin-left:10px; letter-spacing:1px; border:1px solid #bbb }
 .sec01_pop table:nth-child(3){clear:right}
 .sec01_pop .w_50{width:50%; box-sizing:border-box; float:left}
 .sec01_pop .w_100{width:100%; box-sizing:border-box}
 .sec01_pop table tr:nth-child(1) th{text-align:left; font-size:17px; background-color: #c2ccd4;}
 .sec01_pop table tr:nth-child(1) th a{display:inline-block; text-decoration:none; width:35px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#282828; background:url(../images/ico_modi.png)no-repeat 7px center #f7f7f7; padding-left:25px; border:0; border-radius:3px; margin-left:10px; letter-spacing:1px}
+
+
+
 
 /*a수정버튼자리*/
 .sec01_pop table td ul:after{content:''; visibility:hidden; display:block; clear:both}
@@ -106,8 +111,28 @@
     line-height: 25px;}
 .sec01_pop table td{vertical-align: baseline;padding-left:5px;border: 1px solid #7496af;height: 25px;line-height: 25px;font-size: 14px;font-weight: 400;color: #282828;}
 .sec01_pop table:nth-child(6) th{width:16.66%;}
+.sec01_pop table:nth-child(10){text-align:center}
+.sec01_pop table:nth-child(10) th{width:auto; }
 .sec01_pop table:nth-child(7){text-align:center}
 .sec01_pop table:nth-child(7) th{width:auto; }
+
+
+
+.inspectTable th{padding-left:5px; width:44%;
+    background-color: #e2eaf1;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2d6189;
+    border: 1px solid #7496af;
+    height: 25px;
+    line-height: 25px;}
+.inspectTable td{vertical-align: baseline;padding-left:5px;border: 1px solid #7496af;height: 25px;line-height: 25px;font-size: 14px;font-weight: 400;color: #282828;}
+.inspectTable tr:nth-child(1) th{text-align:left; font-size:17px; background-color: #c2ccd4;}
+.inspectTable tr:nth-child(1) th a{display:inline-block; text-decoration:none; width:35px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#282828; background:url(../images/ico_modi.png)no-repeat 7px center #f7f7f7; padding-left:25px; border:0; border-radius:3px; margin-left:10px; letter-spacing:1px}
+.inspectTable {text-align:center}
+.inspectTable th{width:auto; }
+
+
       /*sec01_pop Fin*/
                                                                         /*adm01~06(수정페이지)*/
 .adm{width:99%; margin:0 auto; border-radius:10px; min-width:976px }

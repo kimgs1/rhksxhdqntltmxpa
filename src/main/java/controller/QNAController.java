@@ -53,7 +53,8 @@ public class QNAController {
 	@RequestMapping(value="/qna.do", params="command=getList")
 	public ModelAndView getQNAList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("limit", "5");
+		param.put("low",0);
+		param.put("high",5);
 		param.put("nowPage", "1");
 		HashMap<String,Object> result = qnaDao.getList(param);
 		return new ModelAndView("JsonView", "result", result);
@@ -68,7 +69,8 @@ public class QNAController {
 		}
 		int nowPage = Integer.parseInt(nowPageStr);
 		param.put("nowPage", nowPage);
-		param.put("limit",(QNAPagingBean.numberOfContentPerPage * (nowPage - 1)) + "," + QNAPagingBean.numberOfContentPerPage );
+		param.put("low",(QNAPagingBean.numberOfContentPerPage * (nowPage - 1)));
+		param.put("high",(QNAPagingBean.numberOfContentPerPage * nowPage));
 		HashMap<String,Object> result = qnaDao.getList(param);
 		return new ModelAndView("JsonView", "result", result);
 	}

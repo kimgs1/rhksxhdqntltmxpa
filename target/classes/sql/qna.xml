@@ -5,20 +5,24 @@
 
 <mapper namespace="QNA">
 	<select id="getList" resultType="hashmap" parameterType="hashmap">
-		SELECT top ${limit}
-			Row_Number() OVER (ORDER BY regdate desc) as rowNum,
-			ID,
-			subject,
-			Content,
-			writtenDate,
-			viewcount,
-			regid,
-			regdate,
-			updateId,
-			UpdateDate,
-			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime			
-		FROM qna
-		ORDER BY regdate desc
+	<![CDATA[
+		select * from (
+			SELECT
+					Row_Number() OVER (ORDER BY regdate desc) as rowNum,
+					ID,
+					subject,
+					Content,
+					writtenDate,
+					viewcount,
+					regid,
+					regdate,
+					updateId,
+					UpdateDate,
+					FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime			
+			FROM qna
+		) foo where foo.rowNum > ${low} and foo.rowNum <= ${high}
+		ORDER BY foo.regdate desc
+		]]>
 	</select>
 	
 	<select id="getCount" resultType="string">

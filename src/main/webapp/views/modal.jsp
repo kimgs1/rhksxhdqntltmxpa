@@ -434,9 +434,9 @@
 	
 	
 	
-	<div class="modal fade" id="create_Penetrationinspect_modal">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 750px; margin-left: 100px;">
+	<div class="modal fade" id="create_Penetrationinspect_modal" style="padding-right: 16px;">
+		<div class="modal-dialog modal-lg" style="min-width: 90%">
+			<div class="modal-content" style="width:1000px; margin-left:0px">
 
 				<!-- header -->
 				<div class="modal-header">
@@ -445,53 +445,79 @@
 				</div>
 				<!-- body -->
 				<div class="modal-body" align="center">
-					<div class="row">
-						<div class="col-sm-12"><div class="col-sm-3">ManagementNo</div><input id="ptisp_ManagementNo" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">PenetrationNo</div><input id="ptisp_PenetrationNo" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">InspectDate</div><input id="ptisp_InspectDate" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">InspectSeq</div><input id="ptisp_InspectSeq" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">ImproveDate</div><input id="ptisp_ImproveDate" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">InspectionInterval</div><input id="ptisp_InspectionInterval" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">SealantConditionState</div><input id="ptisp_SealantConditionState" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">JudgementReason</div><input id="ptisp_JudgementReason" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">Judgment</div><input id="ptisp_Judgment" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">ImproveNote</div><input id="ptisp_ImproveNote" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">RegID</div><input id="ptisp_RegID" class="col-sm-9"></div>
-						<button type="button" onclick="newPenetrationinspectSave()">저장 </button>
-					</div>
+	
+				<table class="inspectTable" style="width:950px">
+				<tr>
+					<th colspan="12">● 점검정보 </th>
+					</tr>
+				
+					<tr>
+						<th style="width: 13%">점검차수</th>
+						
+						<td style="width: 37%"></td>
+						<th style="width: 13%">점검주기</th>
+						<td style="width: 37%"></td>
+					</tr>
+					<tr>
+						<th>점검일</th>
+						
+						<td></td>
+						<th>판정</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>판단사유</th>
+						
+						<td colspan="3"></td>
+					</tr>
+					<tr>
+						<th>정면사진 번호</th>
+						
+						<td></td>
+						<th>이면사진 번호</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>정면사진</th>
+						
+						<td>
+							<img id="frontImg" src="images/default-img.png" style="width:294px;height:210px">
+							<form id="uploadPicFront" action="#" enctype="multipart/form-data">
+								<input id="frontImgName" name="ImgName" hidden="true" value="front">
+								<input type="file" id="uploadFileFront" name="uploadFile" onchange="ajaxFileUploadFront()" />  
+							</form>
+						</td>
+						<th>이면사진</th>
+						<td>
+							<img id="backImg" src="images/default-img.png" style="width:294px;height:210px">
+							<form id="uploadPicBack" action="#" enctype="multipart/form-data">
+								<input id="backImgName" name="ImgName" hidden="true" value="back">
+								<input type="file" id="uploadFileBack" name="uploadFile" onchange="ajaxFileUploadBack()" />  
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<th>보수일자</th>
+						
+						<td></td>
+						<th>설계변경서번호</th>
+						<td></td>
+					</tr><tr>
+						<th >보수내용</th>
+						
+						<td colspan="3"></td>
+					</tr>
+					
+			</table>
+					
 				</div>
+				
+				<div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+              </div>
 			</div>
 		</div>
 	</div>
 	
 	
 	
-	
-	
-	<div class="modal fade" id="create_PerformanceEvaluation_modal">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 750px; margin-left: 100px;">
-
-				<!-- header -->
-				<div class="modal-header">
-					<button type="button" class="close"
-						data-dismiss="modal">×</button>
-				</div>
-				<!-- body -->
-				<div class="modal-body" align="center">
-					<div class="row">
-						<div class="col-sm-12"><div class="col-sm-3">ManagementNo</div><input id="pfev_ManagementNo" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">PenetrationNo</div><input id="pfev_PenetrationNo" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">EvalueSeq</div><input id="pfev_EvalueSeq" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">RequirePerformance</div><input id="pfev_RequirePerformance" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">EvaluationResult</div><input id="pfev_EvaluationResult" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">FireResistanceRating</div><input id="pfev_FireResistanceRating" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">PSI</div><input id="pfev_PSI" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">WaterSeal</div><input id="pfev_WaterSeal" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">RadiationShield</div><input id="pfev_RadiationShield" class="col-sm-9"></div>
-						<button type="button" onclick="newPerformanceEvaluationSave()">저장 </button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>

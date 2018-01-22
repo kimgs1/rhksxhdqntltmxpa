@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,8 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.penetrationinspect.dao.PenetrationInspectDao;
@@ -27,15 +34,72 @@ public class PenetrationSearchController {
 	public ModelAndView baseView() throws Exception {
 		return new ModelAndView("penetrationsearch");
 	}
-	@RequestMapping(value="/penetrationsearch.do", params="command=getList")
-	public ModelAndView getPenetrationBaseInfoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/penetrationsearch", params="command=getSearchView", method=RequestMethod.GET)
+	public ModelAndView getSearchView(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("ManagementNo",request.getParameter("ManagementNo"));
 		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
-		param.put("ELEVATION",request.getParameter("ELEVATION"));
+//		param.put("InspectSeq",request.getParameter("InspectSeq"));
+		param.put("nowPage","1");
+		List<HashMap<String,Object>> result = (List<HashMap<String,Object>>)(penetrationSearchDao.getList(param).get("DataList"));
+		ModelAndView mdv = new ModelAndView("penetrationsearchview");
+		mdv.getModel().putAll(result.get(0));
+		
+		param.clear();
+		param.put("ManagementNo",request.getParameter("ManagementNo"));
+		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
+		result = (List<HashMap<String,Object>>)(penetrationInspectDao.getList(param).get("DataList"));
+		mdv.getModel().put("InspectList",result);
+		
+		return mdv;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/penetrationsearch", params="command=getSearchEditView", method=RequestMethod.GET)
+	public ModelAndView getSearchEditView(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("ManagementNo",request.getParameter("ManagementNo"));
+		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
+//		param.put("InspectSeq",request.getParameter("InspectSeq"));
+		param.put("nowPage","1");
+		List<HashMap<String,Object>> result = (List<HashMap<String,Object>>)(penetrationSearchDao.getList(param).get("DataList"));
+		ModelAndView mdv = new ModelAndView("penetrationsearcheditview");
+		mdv.getModel().putAll(result.get(0));
+		
+		param.clear();
+		param.put("ManagementNo",request.getParameter("ManagementNo"));
+		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
+		result = (List<HashMap<String,Object>>)(penetrationInspectDao.getList(param).get("DataList"));
+		mdv.getModel().put("InspectList",result);
+		
+		return mdv;
+	}
+	
+	@RequestMapping(value="/penetrationsearch.do", params="command=getList")
+	public ModelAndView getPenetrationBaseInfoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		int nowPage=1;  
+		if(request.getParameter("nowPage")!=null && !request.getParameter("nowPage").toString().equals("")){
+			nowPage=Integer.parseInt(request.getParameter("nowPage"));   
+		}
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("ManagementNo",request.getParameter("ManagementNo"));
+		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
+		param.put("Equip",request.getParameter("Equip"));
+		param.put("ELEVATION_cal_flag",request.getParameter("ELEVATION_cal_flag"));
+		param.put("ELEVATION_num_pit",request.getParameter("ELEVATION_num_pit"));
+		param.put("ELEVATION_num_inc",request.getParameter("ELEVATION_num_inc"));
 		param.put("Location",request.getParameter("Location"));
 		param.put("WallMeterial",request.getParameter("WallMeterial"));
 		param.put("ConstructionState",request.getParameter("ConstructionState"));
+		param.put("Area",request.getParameter("Area"));
+		param.put("Wall_YN",request.getParameter("Wall_YN"));
+		param.put("Efficient",request.getParameter("Efficient"));
+		param.put("Result",request.getParameter("Result"));
+		param.put("nowPage",nowPage);
 	
 		HashMap<String,Object> result = penetrationSearchDao.getList(param);
 		return new ModelAndView("JsonView", "result", result);
@@ -124,140 +188,133 @@ public class PenetrationSearchController {
 	}
 	
 	
+	@RequestMapping(value="/penetrationsearch.do", params="command=checkSealMeterial")
+	public ModelAndView checkSealMeterial(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("SealMeterial_name",request.getParameter("SealMeterial_name"));
+		HashMap<String,Object> result = penetrationSearchDao.checkSealMeterial(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/penetrationsearch", params="command=getSearchView", method=RequestMethod.GET)
-	public ModelAndView getSearchView(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value="/penetrationsearch.do", params="command=updatePenetrationAllInfo")
+	public ModelAndView updatePenetrationAllInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("ManagementNo",request.getParameter("ManagementNo"));
-		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
-		param.put("InspectSeq",request.getParameter("InspectSeq"));
-		List<HashMap<String,Object>> result = (List<HashMap<String,Object>>)(penetrationSearchDao.getList(param).get("DataList"));
-		ModelAndView mdv = new ModelAndView("penetrationsearchview");
-		mdv.getModel().put("EquipNo",result.get(0).get("EquipNo"));
-		mdv.getModel().put("EquipNo_name",result.get(0).get("EquipNo_name"));
-		mdv.getModel().put("LocNo",result.get(0).get("LocNo"));
-		mdv.getModel().put("LocNo_name",result.get(0).get("LocNo_name"));
-		mdv.getModel().put("ManagementNo",result.get(0).get("ManagementNo"));
-		mdv.getModel().put("PenetrationNo",result.get(0).get("PenetrationNo"));
-		mdv.getModel().put("ManagementAreaYN",result.get(0).get("ManagementAreaYN"));
-		mdv.getModel().put("Elevation",result.get(0).get("Elevation"));
-		mdv.getModel().put("FirePreventionAreaNo",result.get(0).get("FirePreventionAreaNo"));
-		mdv.getModel().put("InspectionRoomNo",result.get(0).get("InspectionRoomNo"));
-		mdv.getModel().put("BackRoomNo",result.get(0).get("BackRoomNo"));
-		mdv.getModel().put("PenetrationForm",result.get(0).get("PenetrationForm"));
-		mdv.getModel().put("PenetrationForm_name",result.get(0).get("PenetrationForm_name"));
-		mdv.getModel().put("Wall_FloorNo",result.get(0).get("Wall_FloorNo"));
-		mdv.getModel().put("FirewallYN",result.get(0).get("FirewallYN"));
-		mdv.getModel().put("FirewallYN_name",result.get(0).get("FirewallYN_name"));
-		mdv.getModel().put("WallMeterial",result.get(0).get("WallMeterial"));
-		mdv.getModel().put("WallMeterial_name",result.get(0).get("WallMeterial_name"));
-		mdv.getModel().put("WallThickness",result.get(0).get("WallThickness"));
-		mdv.getModel().put("FrontPicNo",result.get(0).get("FrontPicNo"));
-		mdv.getModel().put("BackPicNo",result.get(0).get("BackPicNo"));
-		mdv.getModel().put("ReferenceFloorPlanNo",result.get(0).get("ReferenceFloorPlanNo"));
-		mdv.getModel().put("LocationFloorPlanNo",result.get(0).get("LocationFloorPlanNo"));
-		mdv.getModel().put("SealDetailDWG",result.get(0).get("SealDetailDWG"));
-		mdv.getModel().put("EL",result.get(0).get("EL"));
-		mdv.getModel().put("Diameter",result.get(0).get("Diameter"));
-		mdv.getModel().put("Height",result.get(0).get("Height"));
-		mdv.getModel().put("Length",result.get(0).get("Length"));
-		mdv.getModel().put("PenetrationType",result.get(0).get("PenetrationType"));
-		mdv.getModel().put("MaximumFreeArea",result.get(0).get("MaximumFreeArea"));
-		mdv.getModel().put("MaximumFreeDistance",result.get(0).get("MaximumFreeDistance"));
-		mdv.getModel().put("SAFETY_CATEGORY",result.get(0).get("SAFETY_CATEGORY"));
-		mdv.getModel().put("ANCHORTYPE",result.get(0).get("ANCHORTYPE"));
-		mdv.getModel().put("LATERALMOVEMENT",result.get(0).get("LATERALMOVEMENT"));
-		mdv.getModel().put("LINETEMPERATURE",result.get(0).get("LINETEMPERATURE"));
-		mdv.getModel().put("VENTILATION_VALUE",result.get(0).get("VENTILATION_VALUE"));
-		mdv.getModel().put("VENTILATION_VALUE_RANGE",result.get(0).get("VENTILATION_VALUE_RANGE"));
-		mdv.getModel().put("VENTILATION_VAL_NO",result.get(0).get("VENTILATION_VAL_NO"));
-		mdv.getModel().put("VENTILATION_JUDGMENT",result.get(0).get("VENTILATION_JUDGMENT"));
-		mdv.getModel().put("VENTILATION_REASON",result.get(0).get("VENTILATION_REASON"));
-		mdv.getModel().put("FIRE_VALUE",result.get(0).get("FIRE_VALUE"));
-		mdv.getModel().put("FIRE_VALUE_RANGE",result.get(0).get("FIRE_VALUE_RANGE"));
-		mdv.getModel().put("FIRE_VAL_NO",result.get(0).get("FIRE_VAL_NO"));
-		mdv.getModel().put("FIRE_JUDGMENT",result.get(0).get("FIRE_JUDGMENT"));
-		mdv.getModel().put("FIRE_REASON",result.get(0).get("FIRE_REASON"));
-		mdv.getModel().put("RADIATION_VALUE",result.get(0).get("RADIATION_VALUE"));
-		mdv.getModel().put("RADIATION_VALUE_RANGE",result.get(0).get("RADIATION_VALUE_RANGE"));
-		mdv.getModel().put("RADIATION_VAL_NO",result.get(0).get("RADIATION_VAL_NO"));
-		mdv.getModel().put("RADIATION_JUDGMENT",result.get(0).get("RADIATION_JUDGMENT"));
-		mdv.getModel().put("RADIATION_REASON",result.get(0).get("RADIATION_REASON"));
-		mdv.getModel().put("FLOOD_VALUE",result.get(0).get("FLOOD_VALUE"));
-		mdv.getModel().put("FLOOD_VALUE_RANGE",result.get(0).get("FLOOD_VALUE_RANGE"));
-		mdv.getModel().put("FLOOD_VAL_NO",result.get(0).get("FLOOD_VAL_NO"));
-		mdv.getModel().put("FLOOD_JUDGMENT",result.get(0).get("FLOOD_JUDGMENT"));
-		mdv.getModel().put("FLOOD_REASON",result.get(0).get("FLOOD_REASON"));
-		mdv.getModel().put("PRESSURE_VALUE",result.get(0).get("PRESSURE_VALUE"));
-		mdv.getModel().put("PRESSURE_VALUE_RANGE",result.get(0).get("PRESSURE_VALUE_RANGE"));
-		mdv.getModel().put("PRESSURE_VAL_NO",result.get(0).get("PRESSURE_VAL_NO"));
-		mdv.getModel().put("PRESSURE_JUDGMENT",result.get(0).get("PRESSURE_JUDGMENT"));
-		mdv.getModel().put("PRESSURE_REASON",result.get(0).get("PRESSURE_REASON"));
-		mdv.getModel().put("Register",result.get(0).get("Register"));
-		mdv.getModel().put("Register_date",result.get(0).get("Register_date"));
-		mdv.getModel().put("Reviewer",result.get(0).get("Reviewer"));
-		mdv.getModel().put("Reviewer_date",result.get(0).get("Reviewer_date"));
-		mdv.getModel().put("Supporter",result.get(0).get("Supporter"));
-		mdv.getModel().put("Supporter_date",result.get(0).get("Supporter_date"));
-		mdv.getModel().put("Technicker",result.get(0).get("Technicker"));
-		mdv.getModel().put("Technicker_date",result.get(0).get("Technicker_date"));
-		mdv.getModel().put("Checker",result.get(0).get("Checker"));
-		mdv.getModel().put("Checker_date",result.get(0).get("Checker_date"));
-		mdv.getModel().put("CertificationYN",result.get(0).get("CertificationYN"));
-		mdv.getModel().put("Com_name",result.get(0).get("Com_name"));
-		mdv.getModel().put("ManagementObjYN",result.get(0).get("ManagementObjYN"));
-		mdv.getModel().put("NewYN",result.get(0).get("NewYN"));
-		mdv.getModel().put("Wall_Fire_time",result.get(0).get("Wall_Fire_time"));
-		mdv.getModel().put("SpecialNote",result.get(0).get("SpecialNote"));
-		mdv.getModel().put("matter",result.get(0).get("matter"));
-		mdv.getModel().put("matter_name",result.get(0).get("matter_name"));
-		mdv.getModel().put("Pipe",result.get(0).get("Pipe"));
-		mdv.getModel().put("Duct",result.get(0).get("Duct"));
-		mdv.getModel().put("SectionTube",result.get(0).get("SectionTube"));
-		mdv.getModel().put("Conduit",result.get(0).get("Conduit"));
-		mdv.getModel().put("Cable",result.get(0).get("Cable"));
-		mdv.getModel().put("Tray",result.get(0).get("Tray"));
-		mdv.getModel().put("CoverTray",result.get(0).get("CoverTray"));
-		mdv.getModel().put("Etc",result.get(0).get("Etc"));
-		mdv.getModel().put("CAP_Not_Num",result.get(0).get("CAP_Not_Num"));
-		mdv.getModel().put("InspectDate",result.get(0).get("InspectDate"));
-		mdv.getModel().put("InspectSeq",result.get(0).get("InspectSeq"));
-		mdv.getModel().put("ImproveDate",result.get(0).get("ImproveDate"));
-		mdv.getModel().put("InspectionInterval",result.get(0).get("InspectionInterval"));
-		mdv.getModel().put("SealantConditionState",result.get(0).get("SealantConditionState"));
-		mdv.getModel().put("JudgementReason",result.get(0).get("JudgementReason"));
-		mdv.getModel().put("Judgment",result.get(0).get("Judgment"));
-		mdv.getModel().put("Judgment_name",result.get(0).get("Judgment_name"));
-		mdv.getModel().put("ImproveNote",result.get(0).get("ImproveNote"));
-		mdv.getModel().put("ConstructionState",result.get(0).get("ConstructionState"));
-		mdv.getModel().put("ConstructionState_name",result.get(0).get("ConstructionState_name"));
-		mdv.getModel().put("SealSealDetailDWG",result.get(0).get("SealSealDetailDWG"));
-		mdv.getModel().put("SealQualityClass",result.get(0).get("SealQualityClass"));
-		mdv.getModel().put("SealMeterial",result.get(0).get("SealMeterial"));
-		mdv.getModel().put("SealThickness",result.get(0).get("SealThickness"));
-		mdv.getModel().put("PressingBoardMeterial",result.get(0).get("PressingBoardMeterial"));
-		mdv.getModel().put("PressingBoardThickness",result.get(0).get("PressingBoardThickness"));
-		mdv.getModel().put("RepairQuantity",result.get(0).get("RepairQuantity"));
-		mdv.getModel().put("Register",result.get(0).get("Register"));
-		mdv.getModel().put("Reviewer",result.get(0).get("Reviewer"));
-		mdv.getModel().put("Checker",result.get(0).get("Checker"));
-		mdv.getModel().put("SealantSpecialNote",result.get(0).get("SealantSpecialNote"));
-		mdv.getModel().put("RequirePerformance",result.get(0).get("RequirePerformance"));
-		mdv.getModel().put("RequirePerformance_name",result.get(0).get("RequirePerformance_name"));
-		mdv.getModel().put("EvaluationResult",result.get(0).get("EvaluationResult"));
-		mdv.getModel().put("EvaluationResult_name",result.get(0).get("EvaluationResult_name"));
-		mdv.getModel().put("FireResistanceRating",result.get(0).get("FireResistanceRating"));
-		mdv.getModel().put("PSI",result.get(0).get("PSI"));
-		mdv.getModel().put("WaterSeal",result.get(0).get("WaterSeal"));
-		mdv.getModel().put("RadiationShield",result.get(0).get("RadiationShield"));
-		
-		param.clear();
-		param.put("ManagementNo",request.getParameter("ManagementNo"));
-		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
-		result = (List<HashMap<String,Object>>)(penetrationInspectDao.getList(param).get("DataList"));
-		mdv.getModel().put("InspectList",result);
-		
-		return mdv;
+		param.put("EquipNo",request.getParameter("EquipNo").replace("'","''"));
+		param.put("LocNo",request.getParameter("LocNo").replace("'","''"));
+		param.put("ManagementNo",request.getParameter("ManagementNo").replace("'","''"));
+		param.put("PenetrationNo",request.getParameter("PenetrationNo").replace("'","''"));
+		param.put("ManagementAreaYN",request.getParameter("ManagementAreaYN").replace("'","''"));
+		param.put("Elevation_num_pit",request.getParameter("Elevation_num_pit").replace("'","''"));
+		param.put("Elevation_num_inc",request.getParameter("Elevation_num_inc").replace("'","''"));
+		param.put("FirePreventionAreaNo",request.getParameter("FirePreventionAreaNo").replace("'","''"));
+		param.put("InspectionRoomNo",request.getParameter("InspectionRoomNo").replace("'","''"));
+		param.put("BackRoomNo",request.getParameter("BackRoomNo").replace("'","''"));
+		param.put("PenetrationForm",request.getParameter("PenetrationForm").replace("'","''"));
+		param.put("Wall_FloorNo",request.getParameter("Wall_FloorNo").replace("'","''"));
+		param.put("FirewallYN",request.getParameter("FirewallYN").replace("'","''"));
+		param.put("WallMeterial",request.getParameter("WallMeterial").replace("'","''"));
+		param.put("WallThickness",request.getParameter("WallThickness").replace("'","''"));
+		param.put("FrontPicNo",request.getParameter("FrontPicNo").replace("'","''"));
+		param.put("BackPicNo",request.getParameter("BackPicNo").replace("'","''"));
+		param.put("ReferenceFloorPlanNo",request.getParameter("ReferenceFloorPlanNo").replace("'","''"));
+		param.put("LocationFloorPlanNo",request.getParameter("LocationFloorPlanNo").replace("'","''"));
+		param.put("SealDetailDWG",request.getParameter("SealDetailDWG").replace("'","''"));
+		param.put("EL",request.getParameter("EL").replace("'","''"));
+		param.put("Diameter",request.getParameter("Diameter").replace("'","''"));
+		param.put("Height",request.getParameter("Height").replace("'","''"));
+		param.put("Length",request.getParameter("Length").replace("'","''"));
+		param.put("PenetrationType",request.getParameter("PenetrationType").replace("'","''"));
+		param.put("MaximumFreeArea",request.getParameter("MaximumFreeArea").replace("'","''"));
+		param.put("MaximumFreeDistance",request.getParameter("MaximumFreeDistance").replace("'","''"));
+		param.put("Register",request.getParameter("Register").replace("'","''"));
+		param.put("Reviewer",request.getParameter("Reviewer").replace("'","''"));
+		param.put("Checker",request.getParameter("Checker").replace("'","''"));
+		param.put("SpecialNote",request.getParameter("SpecialNote").replace("'","''"));
+		param.put("SAFETY_CATEGORY",request.getParameter("SAFETY_CATEGORY").replace("'","''"));
+		param.put("ANCHORTYPE",request.getParameter("ANCHORTYPE").replace("'","''"));
+		param.put("LATERALMOVEMENT",request.getParameter("LATERALMOVEMENT").replace("'","''"));
+		param.put("LINETEMPERATURE",request.getParameter("LINETEMPERATURE").replace("'","''"));
+		param.put("VENTILATION_VALUE",request.getParameter("VENTILATION_VALUE").replace("'","''"));
+		param.put("VENTILATION_VALUE_RANGE",request.getParameter("VENTILATION_VALUE_RANGE").replace("'","''"));
+		param.put("VENTILATION_VAL_NO",request.getParameter("VENTILATION_VAL_NO").replace("'","''"));
+		param.put("VENTILATION_JUDGMENT",request.getParameter("VENTILATION_JUDGMENT").replace("'","''"));
+		param.put("VENTILATION_REASON",request.getParameter("VENTILATION_REASON").replace("'","''"));
+		param.put("FIRE_VALUE",request.getParameter("FIRE_VALUE").replace("'","''"));
+		param.put("FIRE_VALUE_RANGE",request.getParameter("FIRE_VALUE_RANGE").replace("'","''"));
+		param.put("FIRE_VAL_NO",request.getParameter("FIRE_VAL_NO").replace("'","''"));
+		param.put("FIRE_JUDGMENT",request.getParameter("FIRE_JUDGMENT").replace("'","''"));
+		param.put("FIRE_REASON",request.getParameter("FIRE_REASON").replace("'","''"));
+		param.put("RADIATION_VALUE",request.getParameter("RADIATION_VALUE").replace("'","''"));
+		param.put("RADIATION_VALUE_RANGE",request.getParameter("RADIATION_VALUE_RANGE").replace("'","''"));
+		param.put("RADIATION_VAL_NO",request.getParameter("RADIATION_VAL_NO").replace("'","''"));
+		param.put("RADIATION_JUDGMENT",request.getParameter("RADIATION_JUDGMENT").replace("'","''"));
+		param.put("RADIATION_REASON",request.getParameter("RADIATION_REASON").replace("'","''"));
+		param.put("FLOOD_VALUE",request.getParameter("FLOOD_VALUE").replace("'","''"));
+		param.put("FLOOD_VALUE_RANGE",request.getParameter("FLOOD_VALUE_RANGE").replace("'","''"));
+		param.put("FLOOD_VAL_NO",request.getParameter("FLOOD_VAL_NO").replace("'","''"));
+		param.put("FLOOD_JUDGMENT",request.getParameter("FLOOD_JUDGMENT").replace("'","''"));
+		param.put("FLOOD_REASON",request.getParameter("FLOOD_REASON").replace("'","''"));
+		param.put("PRESSURE_VALUE",request.getParameter("PRESSURE_VALUE").replace("'","''"));
+		param.put("PRESSURE_VALUE_RANGE",request.getParameter("PRESSURE_VALUE_RANGE").replace("'","''"));
+		param.put("PRESSURE_VAL_NO",request.getParameter("PRESSURE_VAL_NO").replace("'","''"));
+		param.put("PRESSURE_JUDGMENT",request.getParameter("PRESSURE_JUDGMENT").replace("'","''"));
+		param.put("PRESSURE_REASON",request.getParameter("PRESSURE_REASON").replace("'","''"));
+		param.put("Pipe",request.getParameter("Pipe").replace("'","''"));
+		param.put("Duct",request.getParameter("Duct").replace("'","''"));
+		param.put("SectionTube",request.getParameter("SectionTube").replace("'","''"));
+		param.put("Conduit",request.getParameter("Conduit").replace("'","''"));
+		param.put("Cable",request.getParameter("Cable").replace("'","''"));
+		param.put("Tray",request.getParameter("Tray").replace("'","''"));
+		param.put("CoverTray",request.getParameter("CoverTray").replace("'","''"));
+		param.put("Etc",request.getParameter("Etc").replace("'","''"));
+		param.put("SealSealDetailDWG",request.getParameter("SealSealDetailDWG").replace("'","''"));
+		param.put("SealQualityClass",request.getParameter("SealQualityClass").replace("'","''"));
+		param.put("SealMeterial_name",request.getParameter("SealMeterial_name").replace("'","''"));
+		param.put("SealThickness",request.getParameter("SealThickness").replace("'","''"));
+		param.put("PressingBoardMeterial",request.getParameter("PressingBoardMeterial").replace("'","''"));
+		param.put("PressingBoardThickness",request.getParameter("PressingBoardThickness").replace("'","''"));
+		param.put("RegID",((HashMap<String, Object>)request.getSession().getAttribute("userInfo")).get("id"));
+		HashMap<String,Object> result = new HashMap<String,Object>();
+		try
+		{			
+			penetrationSearchDao.updatePenetrationAllInfo(param);
+			result.put("result", true);
+		}
+		catch(Exception ex){
+			result.put("result", false);
+			result.put("msg", ex.getMessage());
+		}
+		return new ModelAndView("JsonView", "result", result);
 	}
+	
+	
+	@RequestMapping(value="/uploadPic")  
+	@ResponseBody  
+	public String uploadPic(@RequestParam("uploadFile") CommonsMultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {  
+	    String path = request.getSession().getServletContext().getRealPath("DownLoadImg");
+	    String FileName = request.getParameter("ImgName");
+	    String resMsg = "";
+	    try {
+
+	        long  startTime=System.currentTimeMillis();
+
+	        System.out.println("fileName："+file.getOriginalFilename());
+	        path += "/"+FileName + ".png";
+	        System.out.println("path:" + path);
+
+	        File newFile=new File(path);
+	        //通过CommonsMultipartFile的方法直接写文件
+	        file.transferTo(newFile);
+	        long  endTime=System.currentTimeMillis();
+	        System.out.println("运行时间："+String.valueOf(endTime-startTime)+"ms");
+	        resMsg = "DownLoadImg/"+FileName;
+	    } catch (IllegalStateException e) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	        resMsg = "0";
+	    }
+	    return resMsg; 
+	} 
+
 }

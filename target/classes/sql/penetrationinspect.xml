@@ -11,18 +11,25 @@
 			ImproveDate,
 			InspectionInterval,
 			SealantConditionState,
-			dbo.GetCodeInfoNameByID(SealantConditionState) SealantConditionState_name,
+			dbo.GetConstractionStateByCodePenetrationInspect(PenetrationNo,ManagementNo,'A03',InspectSeq) SealantConditionState_name,
 			JudgementReason,
 			Judgment,
 			dbo.GetCodeInfoNameByID(Judgment) Judgment_name,
 			ImproveNote,
+			ImproveMember,
+			FrontPicNo,
+			BackPicNo,
+			DesignChangeNo,
+			FileLocation_1,
+			FileLocation_2,
+			FileLocation_3,
 			RegID,
 			RegDate,
 			CONCAT(InspectionInterval,'/',InspectSeq) InspectionInterval_InspectSeq,
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM penetrationinspect
-		WHERE UseYN='Y' ${cond}
-		ORDER BY RegDate desc
+		WHERE 1=1 ${cond}
+		ORDER BY RegDate desc 
 	</select>
 	<update id="insert">
 		Replace INTO

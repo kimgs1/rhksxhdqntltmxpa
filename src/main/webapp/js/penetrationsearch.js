@@ -5,8 +5,8 @@ $(function(){
 
 
 function init(){
-	getPenetrationsearchList();
-	getBaseCodeInfo()
+	getSearchPenetrationsearchList(1);
+	getBaseCodeInfo();
 }
 
 function getBaseCodeInfo(){
@@ -23,46 +23,41 @@ function getBaseCodeInfo(){
 	tagBind("checkBoxMulti", "Result","평가결과",null,codeAllInfo.A05);
 	
 }
-function getPenetrationsearchList(){
-	$.ajax({
-		url : 'penetrationsearch.do',
-		type : 'post',
-		dataType : 'json',
-		data : {
-			command:'getList',
-		},
-		success : function(data) {
-			var result = data.result;
-			var dataList = data.result.DataList;
-			drawPenetrationsearchGrid(result,dataList)
-		},
-		
-		
-		error: function(data){
 
+
+function getSearchPenetrationsearchList(nowPage){
+	if($("#ELEVATION_num_pit").val() != "" || $("#ELEVATION_num_inc").val() != "" ){
+		if(isNaN(Number($("#ELEVATION_num_pit").val())) || isNaN($("#ELEVATION_num_inc").val()) || $("#ELEVATION_num_pit").val() == "" || $("#ELEVATION_num_inc").val() == ""  ){
+			alert("ELEVATION은 빈값이나 수자를 입력하여야 합니다.");
+			return;
 		}
-	});
-}
-
-
-function getSearchPenetrationsearchList(){
+	}
 	$.ajax({
 		url : 'penetrationsearch.do',
 		type : 'post',
 		dataType : 'json',
 		data : {
 			command:'getList',
+			nowPage: nowPage,
 			ManagementNo:$("#ManagementNo").val(),
 			PenetrationNo :$("#PenetrationNo").val(),
-			ELEVATION :$("#ELEVATION").val(),
+			Equip :$("#Equip option:selected").val(),
+			ELEVATION_cal_flag :$("#ELEVATION_cal_flag option:selected").val(),
+			ELEVATION_num_pit :$("#ELEVATION_num_pit").val(),
+			ELEVATION_num_inc :$("#ELEVATION_num_inc").val(),
 			Location :$("#Location option:selected").val(),
 			WallMeterial :getCheckBoxValueByTagname('WallMeterial'),
 			ConstructionState :getCheckBoxValueByTagname('ConstructionState'),
+			Area:getCheckBoxValueByTagname('Area'),
+			Wall_YN:getCheckBoxValueByTagname('Wall_YN'),
+			Efficient:getCheckBoxValueByTagname('Efficient'),
+			Result:getCheckBoxValueByTagname('Result'),
 		},
 		success : function(data) {
 			var result = data.result;
 			var dataList = data.result.DataList;
-			drawPenetrationsearchGrid(result,dataList)
+			drawPenetrationsearchGrid(result,dataList);
+			drawPaging(result.pagingBean);
 		},
 		
 		
@@ -72,13 +67,32 @@ function getSearchPenetrationsearchList(){
 	});
 }
 
-
+function drawPaging(pagingBean){
+	//paging
+	innerHtml = "";
+	
+	if(pagingBean.previousPageGroup){
+		innerHtml += '<li onclick="getSearchPenetrationsearchList('+(pagingBean.startPageOfPageGroup - 1)+')"><a><img src="images/pager_01.png" /></a></li>';
+//		innerHtml += "<a href='javascript:;' onclick='getBulletineList("+(pagingBean.startPageOfPageGroup - 1)+")'><<</a>";
+	}
+	for(var i=pagingBean.startPageOfPageGroup;i<=pagingBean.endPageOfPageGroup;i++){
+		if(pagingBean.nowPage!=i)
+			innerHtml += '<li onclick="getSearchPenetrationsearchList('+i+')"><a>'+i+'</a></li>'
+		else
+			innerHtml += '<li onclick="getSearchPenetrationsearchList('+i+')"><a class="active">'+i+'</a></li>'
+	}
+	if(pagingBean.nextPageGroup){
+		innerHtml += '<li onclick="getSearchPenetrationsearchList('+(pagingBean.endPageOfPageGroup + 1)+')"><a style="transform: rotate(180deg)"><img src="images/pager_01.png" /></a></li>';
+	}
+	
+	document.getElementById("paging").innerHTML = innerHtml;
+	document.getElementById("page_detail").innerHTML = 'Total:<span>'+pagingBean.totalContent+'</span>'+'(' + pagingBean.nowPage + '/' + pagingBean.totalPage + ')Page' ;
+}
 function drawPenetrationsearchGrid(result,dataList){
 	if(dataList!= null){
 		
 		$('#penetrationsearch_Grid_div').empty();
 		$('#penetrationsearch_Grid_div').append('<table id="penetrationsearch_Grid_table"></table>');
-		$('#penetrationsearch_Grid_div').append('<div id="pager_list_1"></div>');
 		
 		var grid = $('#penetrationsearch_Grid_table');
 		
@@ -126,35 +140,29 @@ function drawPenetrationsearchGrid(result,dataList){
 			           {name:'FirewallYN_name', label:'종류',align:'center', width:'10%',editable:true},
 			           {name:'PenetrationForm_name', label:'형태', align:'center', width:'10%'},
 			           {name:'ConstructionState_name', label:'밀폐재시공상태', align:'center', width:'10%'},
-			           {label : "상세보기", name: 'view_detail', sorttype: 'string', align: 'center', width: '8%',
+			           {label : "상세보기", name: 'view_detail', sorttype: 'string', align: 'center', width: '20%',
 			        	   formatter:function (cellvalue, options, rowObject) {  
-			        		   return '<input onclick="getDetailView('+options.rowId+')" type="button" value="보기" style="{width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }">';
+//			        		   return '<input onclick="getDetailView('+options.rowId+')" type="button" value="보기" style="{width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }">';
+			        		   var returnTagStr = "";
+			        		   returnTagStr +=  '<input class="view" onclick="getDetailView('+options.rowId+')" type="button" value="보기" >';
+			        		   returnTagStr +=  '<input class="edit" onclick="EditDetailView('+options.rowId+')" type="button" value="수정">';
+			        		   returnTagStr +=  '<input class="delete" onclick="deleteDetailView('+options.rowId+')" type="button" value="삭제">';
+			        		   return returnTagStr
 			        	   }
 			           },
 			],
 
-			pager: "#pager_list_1", 
-			page : 1,
-			rowNum: 100,                            //在grid上显示记录条数，这个参数是要被传递到后台
-		    rowList: [100, 200, 300],              //一个下拉选择框，用来改变显示记录数，当选择时会覆盖rowNum参数传递到后台
+			rowNum: 100,
+			rownumWidth:50,
 			rownumbers: true,  
-			cellEdit : false,  
 			loadonce:true,
-			lazyload: true,
+			cellEdit : false,  
 			autowidth : true,
 			shrinkToFit : true,
 			scrollrows : true,
 			gridview : true,
 			height : 400,
 			viewrecords: true,
-			jsonReader : {
-				repeatitems : false,
-				root : function(obj) {return obj;},
-				page : function(obj) {return 1;},
-				total : function(obj) {return 1;},
-				records : function(obj) {return obj.length;}
-			},
-
 			onSelectRow : function(id) {
 //				var rowdata = grid.jqGrid('getRowData', id);
 //				$('#Seq').val(rowdata.Seq);
@@ -324,10 +332,10 @@ function openPicBack(rowId){
 				window.open("./DownLoadImg/" + result.photoName);
 			}else{
 				alert("이미지가 저장이 되어있지 않았습니다.");
+				window.open("./DownLoadImg/1.jpg");
 			}
 		},
 		error: function(data){
-			
 		}
 	});
 }
@@ -335,6 +343,15 @@ function openPicBack(rowId){
 function getDetailView(rowId){
 	var ManagementNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).ManagementNo;
 	var PenetrationNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).PenetrationNo;
-	var InspectSeq = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).InspectSeq;
-	window.open("./penetrationsearch?command=getSearchView&&ManagementNo="+ManagementNo+"&&PenetrationNo="+PenetrationNo+"&&InspectSeq="+InspectSeq);
+//	var InspectSeq = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).InspectSeq;
+//	window.open("./penetrationsearch?command=getSearchView&&ManagementNo="+ManagementNo+"&&PenetrationNo="+PenetrationNo+"&&InspectSeq="+InspectSeq);
+	window.open("./penetrationsearch?command=getSearchView&&ManagementNo="+ManagementNo+"&&PenetrationNo="+PenetrationNo);
 }
+function EditDetailView(rowId){
+	var ManagementNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).ManagementNo;
+	var PenetrationNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).PenetrationNo;
+//	var InspectSeq = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).InspectSeq;
+//	window.open("./penetrationsearch?command=getSearchEditView&&ManagementNo="+ManagementNo+"&&PenetrationNo="+PenetrationNo+"&&InspectSeq="+InspectSeq);
+	window.open("./penetrationsearch?command=getSearchEditView&&ManagementNo="+ManagementNo+"&&PenetrationNo="+PenetrationNo);
+}
+

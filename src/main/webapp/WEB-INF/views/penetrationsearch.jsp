@@ -20,8 +20,8 @@
                 <form action="#">
                     <ul>
                         <li>
-                            <label for="ManagementNo">관통부번호</label>
-                            <input id="ManagementNo" type="text" />
+                            <label for="PenetrationNo">관통부번호</label>
+                            <input id="PenetrationNo" type="text" />
                         </li>
                         <!-- 
 	                        <li>
@@ -32,15 +32,15 @@
                         
                         <li>
                             <label>ELEVATION</label>
-                            <select id="cal_flag">
+                            <select id="ELEVATION_cal_flag">
 	                            <option value="=" selected>=</option>
 	                            <option value=">">&gt;</option>
 	                            <option value=">=">&ge;</option>
 	                            <option value="<">&lt;</option>
 	                            <option value="<=">&le;</option>
                             </select>
-                            <input id="ELEVATION_num_pit" type="text" /> '-
-                            <input id="ELEVATION_num_inc" type="text" /> "
+                            <input id="ELEVATION_num_pit" style="width:150px" type="text" /> '-
+                            <input id="ELEVATION_num_inc" style="width:150px" type="text" /> "
                         </li>
                         
                         <li id="Equip_tag">
@@ -70,8 +70,16 @@
                 </form>
         </section>
         <section class="sec02">
+        	<div>
+                <p id="page_detail"></p>
+            </div>
+            <br/>
            <div id="penetrationsearch_Grid_div">
            </div>
+           <br/>
+           <ol id="paging" class="pager">
+               
+            </ol>
         </section>
     </div>
 </html>

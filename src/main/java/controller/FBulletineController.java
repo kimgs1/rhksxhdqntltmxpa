@@ -55,7 +55,9 @@ public class FBulletineController {
 	@RequestMapping(value="/fbulletine.do", params="command=getList")
 	public ModelAndView getFBulletineList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("limit", "5");
+
+		param.put("low",0);
+		param.put("high",5);
 		param.put("nowPage", "1");
 		HashMap<String,Object> result = fbulletineDao.getList(param);
 		return new ModelAndView("JsonView", "result", result);
@@ -70,7 +72,8 @@ public class FBulletineController {
 		}
 		int nowPage = Integer.parseInt(nowPageStr);
 		param.put("nowPage", nowPage);
-		param.put("limit",(FbulientPagingBean.numberOfContentPerPage * (nowPage - 1)) + "," + FbulientPagingBean.numberOfContentPerPage );
+		param.put("low",(FbulientPagingBean.numberOfContentPerPage * (nowPage - 1)));
+		param.put("high",(FbulientPagingBean.numberOfContentPerPage * nowPage));
 		HashMap<String,Object> result = fbulletineDao.getList(param);
 		return new ModelAndView("JsonView", "result", result);
 	}
