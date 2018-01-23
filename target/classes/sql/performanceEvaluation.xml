@@ -18,7 +18,7 @@
 			RegDate,
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM performanceEvaluation
-		WHERE UseYN='Y' ${cond}
+		WHERE 1=1 ${cond}
 		ORDER BY RegDate desc
 	</select>
 	
