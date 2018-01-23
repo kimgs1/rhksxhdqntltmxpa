@@ -29,18 +29,17 @@
 	<link rel="stylesheet" href="css/nanumbarungothic.css" />
 	<!-- icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="img/home.ico" />
+
+	
 	<!-- jQuery -->
-	<script src="plugins/jquery/jquery-3.2.1.min.js"></script>
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" />
-	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="plugins/jquery/jquery-2.2.0.min.js"></script>
+	<script src="plugins/jquery/ajaxfileupload.js"></script>
 	<!-- login -->
 	<script type="text/javascript" src="js/login.js"></script>
 </head>
 
 
 <%@ include file="main_head.jsp"%>
-<!--#include file="./main_head.asp" -->
 
 <body>
 	<div class="login">
@@ -106,12 +105,12 @@
 									<!-- <input type="text" id="txtUserId" name="txtUserId" value="${check.id}" required="required" placeholder="아이디"> -->
 									<input id="txtUserId" name="txtUserId" required="required" type="text" value="${check.id}" placeholder="아이디" />
 								</c:if>
-								<!--
+					
 								<c:if test="${check==null}">
 									<label for="user_id" class="uname nbg1 b1" data-icon="u"> 사용자 아이디 </label>
 									<input id="txtUserId" name="txtUserId" required="required" type="text" placeholder="아이디" />
 								</c:if>
-								-->
+
 							</p>
 							<p>
 
