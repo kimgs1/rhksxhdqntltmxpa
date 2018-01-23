@@ -445,7 +445,8 @@
 				</div>
 				<!-- body -->
 				<div class="modal-body" align="center">
-	
+				<input id="pie_ManagementNo" hidden="true">
+				<input id="pie_PenetrationNo" hidden="true">
 				<table class="inspectTable" style="width:950px">
 				<tr>
 					<th colspan="12">● 점검정보 </th>
@@ -454,28 +455,26 @@
 					<tr>
 						<th style="width: 13%">점검차수</th>
 						
-						<td style="width: 37%"></td>
+						<td style="width: 37%" id="pie_InspectSeq"></td>
 						<th style="width: 13%">점검주기</th>
-						<td style="width: 37%"></td>
+						<td style="width: 37%" id="pie_InspectionInterval" contenteditable="true"></td>
 					</tr>
 					<tr>
 						<th>점검일</th>
-						
-						<td></td>
+						<td id="pie_InspectDate" contenteditable="true"></td>
 						<th>판정</th>
-						<td></td>
+						<td id="pie_Judgment" contenteditable="true"></td>
 					</tr>
 					<tr>
 						<th>판단사유</th>
-						
-						<td colspan="3"></td>
+						<td colspan="3" id="pie_JudgementReason"  contenteditable="true"></td>
 					</tr>
 					<tr>
 						<th>정면사진 번호</th>
 						
-						<td></td>
+						<td id="pie_FrontPicNo" contenteditable="true"></td>
 						<th>이면사진 번호</th>
-						<td></td>
+						<td id="pie_BackPicNo" contenteditable="true"></td>
 					</tr>
 					<tr>
 						<th>정면사진</th>
@@ -484,7 +483,7 @@
 							<img id="frontImg" src="images/default-img.png" style="width:294px;height:210px">
 							<form id="uploadPicFront" action="#" enctype="multipart/form-data">
 								<input id="frontImgName" name="ImgName" hidden="true" value="front">
-								<input type="file" id="uploadFileFront" name="uploadFile" onchange="ajaxFileUploadFront()" />  
+								<input type="file" id="uploadFileFront" name="uploadFile" onclick="clickFrontImg()" onchange="ajaxFileUploadFront()" />  
 							</form>
 						</td>
 						<th>이면사진</th>
@@ -492,20 +491,27 @@
 							<img id="backImg" src="images/default-img.png" style="width:294px;height:210px">
 							<form id="uploadPicBack" action="#" enctype="multipart/form-data">
 								<input id="backImgName" name="ImgName" hidden="true" value="back">
-								<input type="file" id="uploadFileBack" name="uploadFile" onchange="ajaxFileUploadBack()" />  
+								<input type="file" id="uploadFileBack" name="uploadFile" onclick="clickBackImg()" onchange="ajaxFileUploadBack()" />  
 							</form>
 						</td>
 					</tr>
 					<tr>
 						<th>보수일자</th>
 						
-						<td></td>
+						<td id="pie_ImproveDate" contenteditable="true"></td>
 						<th>설계변경서번호</th>
-						<td></td>
-					</tr><tr>
+						<td id="pie_DesignChangeNo" contenteditable="true"></td>
+					</tr>
+					<tr>
+						<th >보수담당자</th>
+						
+						<td id="pie_ImproveMember" contenteditable="true"></td>
+					</tr>
+					
+					<tr>
 						<th >보수내용</th>
 						
-						<td colspan="3"></td>
+						<td colspan="3" id="pie_ImproveNote" contenteditable="true"></td>
 					</tr>
 					
 			</table>
