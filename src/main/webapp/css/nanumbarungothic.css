@@ -1,95 +1,136 @@
 /* 
  * Nanum Barun Gothic (Korean) http://hangeul.naver.com
  */
-@font-face {
-  font-family: 'NanumBarunGothic';
-  font-style: normal;
-  font-weight: 200;
-  src: url(./fonts/NanumBarunGothicUltraLight.eot);
-  src: local('Nanum Barun Gothic UltraLight'),
-       local('NanumBarunGothicUltraLight'),
-       url(./fonts/NanumBarunGothicUltraLight.eot?#iefix) format('embedded-opentype'),
-       url(./fonts/NanumBarunGothicUltraLight.woff2) format('woff2'),
-       url(./fonts/NanumBarunGothicUltraLight.woff) format('woff'),
-       url(./fonts/NanumBarunGothicUltraLight.ttf) format('truetype');
-}
 
 @font-face {
-  font-family: 'NanumBarunGothic';
-  font-style: normal;
-  font-weight: 300;
-  src: url(./fonts/NanumBarunGothicLight.eot);
-  src: local('Nanum Barun Gothic Light'),
-       local('NanumBarunGothicLight'),
-       url(./fonts/NanumBarunGothicLight.eot?#iefix) format('embedded-opentype'),
-       url(./fonts/NanumBarunGothicLight.woff2) format('woff2'),
-       url(./fonts/NanumBarunGothicLight.woff) format('woff'),
-       url(./fonts/NanumBarunGothicLight.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'NanumBarunGothic';
-  font-style: normal;
-  font-weight: 400;
-  src: url(./fonts/NanumBarunGothic.eot);
-  src: local('Nanum Barun Gothic'),
-       local('NanumBarunGothic'),
-       url(./fonts/NanumBarunGothic.eot?#iefix) format('embedded-opentype'),
-       url(./fonts/NanumBarunGothic.woff2) format('woff2'),
-       url(./fonts/NanumBarunGothic.woff) format('woff'),
-       url(./fonts/NanumBarunGothic.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'NanumBarunGothic';
-  font-style: normal;
-  font-weight: 700;
-  src: url(./fonts/NanumBarunGothicBold.eot);
-  src: local('Nanum Barun Gothic Bold'),
-       local('NanumBarunGothicBold'),
-       url(./fonts/NanumBarunGothicBold.eot?#iefix) format('embedded-opentype'),
-       url(./fonts/NanumBarunGothicBold.woff2) format('woff2'),
-       url(./fonts/NanumBarunGothicBold.woff) format('woff'),
-       url(./fonts/NanumBarunGothicBold.ttf) format('truetype');
+	font-family: 'NanumBarunGothic';
+	font-style: normal;
+	src: url(./fonts/NanumBarunGothicUltraLight.eot);
+	src: local('Nanum Barun Gothic UltraLight'),
+	local('NanumBarunGothicUltraLight'),
+	url(./fonts/NanumBarunGothicUltraLight.eot?#iefix) format('embedded-opentype'),
+	url(./fonts/NanumBarunGothicUltraLight.woff2) format('woff2'),
+	url(./fonts/NanumBarunGothicUltraLight.woff) format('woff'),
+	url(./fonts/NanumBarunGothicUltraLight.ttf) format('truetype');
 }
 
 
 .nanumbarungothic * {
- font-family: 'NanumBarunGothic', sans-serif;
+	font-family: 'NanumBarunGothic', sans-serif;
 }
 
-.normal {
- font-style: normal;
+.nbg1 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 12px;
 }
 
-.w250 {
- font-weight: 250;
+.nbg2 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 14px;
 }
 
-.w300 {
- font-weight: 300;
+.nbg3 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 16px;
 }
 
-.w350 {
- font-weight: 350;
+.nbg4 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 18px;
 }
 
-.w400 {
- font-weight: 400;
+.nbg5 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 20px;
 }
 
-.w500 {
- font-weight: 500;
+.nbg6 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 22px;
 }
 
-.w700 {
- font-weight: 700;
+.nbg7 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 24px;
 }
 
-.w800 {
- font-weight: 800;
+.nbg8 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 26px;
 }
 
-.w900 {
- font-weight: 900;
+.nbg9 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 28px;
+}
+
+.nbg10 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 30px;
+}
+
+.nbg11 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 32px;
+}
+
+.nbg12 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 34px;
+}
+
+.nbg13 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 36px;
+}
+
+.nbg14 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 38px;
+}
+
+.nbg15 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 40px;
+}
+
+.nbg16 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 42px;
+}
+
+.nbg17 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 44px;
+}
+
+.nbg18 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 46px;
+}
+
+.nbg19 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 48px;
+}
+
+.nbg20 {
+	font-family: "NanumBarunGothic", sans-serif;
+	font-size: 50px;
+}
+
+.b1 {
+	font-weight: 200;
+}
+
+.b2 {
+	font-weight: 300;
+}
+
+.b3 {
+	font-weight: 400;
+}
+
+.b4 {
+	font-weight: 700;
 }
