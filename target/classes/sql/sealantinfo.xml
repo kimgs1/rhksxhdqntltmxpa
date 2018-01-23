@@ -25,7 +25,7 @@
 			RegID,
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM sealantinfo
-		WHERE UseYN='Y' ${cond}
+		WHERE 1=1 ${cond}
 		ORDER BY RegDate desc
 			]]>
 	</select>
