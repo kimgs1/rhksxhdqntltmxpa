@@ -136,7 +136,7 @@
             </section>
             <article><!--어떤기능이지..?-->
                 <h2>건물 관통부 개수</h2>
-                <p>TOTAL<span id="total_count">4,353</span></p>
+                <p class="nbg2 b4">TOTAL<span id="total_count">4,353</span></p>
                 <ul id="EquipNoLocNoData_div">
                     <li>Y3-AAA<span>1,417</span></li>
                     <li>Y4-CCC<span>92</span></li>

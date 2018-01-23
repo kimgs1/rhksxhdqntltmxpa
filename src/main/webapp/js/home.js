@@ -227,7 +227,7 @@ function loadEquipNoLocNoData(){
 			var Data = data.result.DataList;
 			var innerHtml = "";
 			for(var i=0;i<Data.length;i++){ 
-				innerHtml +='<li>'+Data[i].name+'<span>'+Data[i].value+'</span></li>';
+				innerHtml +='<li class="nbg1 b2">'+Data[i].name+'<span>'+Data[i].value+'</span></li>';
 				
 			}
 			document.getElementById("EquipNoLocNoData_div").innerHTML = innerHtml;

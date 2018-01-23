@@ -49,7 +49,12 @@
 }
 
 .ui-jqgrid .ui-jqgrid-htable th div{
-			height:23px;
+	height:16px;
+	text-align : center;
+	vertical-align : middle;
+	font-family: "NanumBarunGothic", sans-serif;
+	font-weight: 700;
+	font-size: 13px;
 }
 .ui-th-column, .ui-jqgrid .ui-jqgrid-htable th.ui-th-column{
 		font-size:16.5;
@@ -67,6 +72,7 @@
 	width: 100%;
 	white-space: nowrap !important;
 
+
 }
 
 .ui-jqgrid tr.jqgrow td {
@@ -74,6 +80,9 @@
 	-o-text-overflow: ellipsis;
 	width: 100%;
 	white-space: nowrap !important;
+	font-family: "NanumBarunGothic", sans-serif;
+	font-weight: 200;
+	font-size: 12px;
 }
 
 .ui-jqgrid .ui-pg-table td {
@@ -81,6 +90,9 @@
     vertical-align: middle;
     padding: 1px;
 	color:black;
+	font-family: "NanumBarunGothic", sans-serif;
+	font-weight: 200;
+	font-size: 12px;
 }
 a:focus {
 	text-decoration: none;

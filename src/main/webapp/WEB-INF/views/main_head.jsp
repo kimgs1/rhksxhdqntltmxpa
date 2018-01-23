@@ -54,6 +54,7 @@
 
 <%@ include file="/views/modal.jsp"%>
 
-
+<!-- 한글폰트 -->
+<link rel="stylesheet" href="css/nanumbarungothic.css" />
 <link rel="stylesheet" href="css/cadis_custom.css">
 <link rel="stylesheet" href="css/import.css"> 
