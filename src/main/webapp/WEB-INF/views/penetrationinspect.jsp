@@ -5,7 +5,6 @@
 <title>관통부정보</title>
 
 <%@ include file="main_head.jsp"%>
-<%@ include file="/views/modal.jsp"%>
 
 <script type="text/javascript" src="js/home_side.js"></script>
 <script type="text/javascript" src="js/penetrationinspect.js"></script>
@@ -54,10 +53,12 @@
                             <label for="manag06">점검차수</label>
                             <input  id="InspectSeq" type="text" value="" />
                         </li>
+                        <!-- 
                         <li>
                             <label for="manag07">밀폐재시공상태</label>
                             <input  id="SealantConditionState" type="text" value="" />
                         </li>
+                         -->
                         <li>
                             <label for="manag08">판단사유</label>
                             <input  id="JudgementReason" type="text" value="" />
@@ -84,6 +85,9 @@
            
         </section>
             <div  class="col-sm-12" id="penetrationinspect_Grid_div"></div>
+             <ol id="paging" class="pager">
+               
+            </ol>
     </div>
 </body>
 </html>

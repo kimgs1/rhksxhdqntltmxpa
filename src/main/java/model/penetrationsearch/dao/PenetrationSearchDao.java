@@ -16,7 +16,9 @@ public interface PenetrationSearchDao {
 	public HashMap<String, Object> getDepartmentChart(HashMap<String, Object> param);
 	public HashMap<String, Object> getEffectChart(HashMap<String, Object> param);
 	public HashMap<String, Object> getsealantMaterialChart(HashMap<String, Object> param);
-	public HashMap<String, Object> updatePenetrationAllData(HashMap<String, Object> param);
 	public HashMap<String, Object> checkSealMeterial(HashMap<String, Object> param);
 	public HashMap<String, Object> updatePenetrationAllInfo(HashMap<String, Object> param);
+	public HashMap<String, Object> checkSealantConditionState(HashMap<String, Object> param);
+	public void insertPenetrationAllInfo(HashMap<String, Object> param);
+	public void deleteAllInfo(HashMap<String, Object> param);
 }

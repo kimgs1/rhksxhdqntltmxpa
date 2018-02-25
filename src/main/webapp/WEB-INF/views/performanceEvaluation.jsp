@@ -5,7 +5,6 @@
 <title>관통부정보</title>
 
 <%@ include file="main_head.jsp"%>
-<%@ include file="/views/modal.jsp"%>
 
 
 <script type="text/javascript" src="js/home_side.js"></script>
@@ -38,7 +37,8 @@
                             <label for="manag02">관통부번호</label>
                             <input id="PenetrationNo" type="text" value=""/>
                         </li> 
-                        <li id="RequirePerformance_tag">
+                        <!-- 
+                        <li id="RequirePerformance_tag" style="width:800px">
                             <label for="manag03">요구성능</label>
                             <input id="manag03_01" type="checkbox" name="perform" /><label for="manag03_01">환기</label>
                             <input id="manag03_02" type="checkbox" name="perform" /><label for="manag03_02">내화</label>
@@ -46,6 +46,7 @@
                             <input id="manag03_04" type="checkbox" name="perform" /><label for="manag03_04">수밀</label>
                             <input id="manag03_05" type="checkbox" name="perform" /><label for="manag03_05">내압</label>
                         </li>
+                         -->
                         <li id="EvaluationResult_tag">
                             <label for="manag04">평가결과</label>
                             <input id="manag04_01" type="checkbox" name="sati" /><label for="manag04_01">만족</label>
@@ -54,19 +55,19 @@
                         </li>
                         <li>
                             <label for="manag05">내화등급</label>
-                            <input  id="FireResistanceRating" type="text" value="" />
+                            <input  id="FIRE_VALUE_RANGE" type="text" value="" />
                         </li>
                         <li>
                             <label for="manag06">내압(PSI)</label>
-                            <input  id="PSI" type="text" value="" />
+                            <input  id="PRESSURE_VALUE_RANGE" type="text" value="" />
                         </li>
                         <li>
                             <label for="manag07">수밀</label>
-                            <input  id="WaterSeal" type="text" value="" />
+                            <input  id="FLOOD_VALUE_RANGE" type="text" value="" />
                         </li>
                         <li>
                             <label for="manag08">방사선차폐</label>
-                            <input  id="RadiationShield" type="text" value="" />
+                            <input  id="RADIATION_VALUE_RANGE" type="text" value="" />
                         </li>
                     </ul>
                     <div>

@@ -30,6 +30,8 @@
 	                        </li>
                          -->
                         
+                        <li id="Equip_tag">
+                        </li>
                         <li>
                             <label>ELEVATION</label>
                             <select id="ELEVATION_cal_flag">
@@ -39,12 +41,64 @@
 	                            <option value="<">&lt;</option>
 	                            <option value="<=">&le;</option>
                             </select>
-                            <input id="ELEVATION_num_pit" style="width:150px" type="text" /> '-
-                            <input id="ELEVATION_num_inc" style="width:150px" type="text" /> "
+                            <input id="ELEVATION_num_pit" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> '-
+                            <input id="ELEVATION_num_inc" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> "
                         </li>
                         
-                        <li id="Equip_tag">
+                         <li>
+                            <label>ELEVATION</label>
+                            <select id="ELEVATION_cal_flag_2">
+	                            <option value="=" selected>=</option>
+	                            <option value=">">&gt;</option>
+	                            <option value=">=">&ge;</option>
+	                            <option value="<">&lt;</option>
+	                            <option value="<=">&le;</option>
+                            </select>
+                            <input id="ELEVATION_num_pit_2" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> '-
+                            <input id="ELEVATION_num_inc_2" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> "
                         </li>
+                        
+                        
+                        <li>
+                            <label>관통부 직경</label>
+                            <select id="Diameter_cal_flag">
+	                            <option value="=" selected>=</option>
+	                            <option value=">">&gt;</option>
+	                            <option value=">=">&ge;</option>
+	                            <option value="<">&lt;</option>
+	                            <option value="<=">&le;</option>
+                            </select>
+                            <input id="Diameter_num_pit" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> '-
+                            <input id="Diameter_num_inc" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> "
+                        </li>
+                        
+                        
+                        <li>
+                            <label>관통부 가로</label>
+                            <select id="Height_cal_flag">
+	                            <option value="=" selected>=</option>
+	                            <option value=">">&gt;</option>
+	                            <option value=">=">&ge;</option>
+	                            <option value="<">&lt;</option>
+	                            <option value="<=">&le;</option>
+                            </select>
+                            <input id="Height_num_pit" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> '-
+                            <input id="Height_num_inc" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> "
+                        </li>
+                        
+                         <li>
+                            <label>관통부 세로</label>
+                            <select id="Length_cal_flag">
+	                            <option value="=" selected>=</option>
+	                            <option value=">">&gt;</option>
+	                            <option value=">=">&ge;</option>
+	                            <option value="<">&lt;</option>
+	                            <option value="<=">&le;</option>
+                            </select>
+                            <input id="Length_num_pit" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> '-
+                            <input id="Length_num_inc" style="width:150px" type="text" onkeyup="clearNoNum_2(this);"/> "
+                        </li>
+                        
                         <li id="Location_tag">
                         </li>
                         <li id = "WallMeterial_tag" style="width:800px">
@@ -71,6 +125,10 @@
         </section>
         <section class="sec02">
         	<div>
+        					<input onclick="CreateDetailView()"
+										style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
+										type="button" value="추가">
+	
                 <p id="page_detail"></p>
             </div>
             <br/>

@@ -24,8 +24,9 @@ function init(){
 
 function getBaseCodeInfo(){
 	getCodeAllInfo();
-	tagBind("radio", "RequirePerformance","요구성능",null,codeAllInfo.A06);
-	tagBind("radio", "EvaluationResult","평가결과",null,codeAllInfo.A05);
+	
+//	tagBind("checkBoxMulti", "RequirePerformance","요구성능",null,codeAllInfo.A06);
+	tagBind("selectBox_All", "EvaluationResult","평가결과",null,codeAllInfo.A05);
 }
 
 
@@ -57,18 +58,13 @@ function getSearchPerformanceEvaluationList(){
 		dataType : 'json',
 		data : {
 			command:'getList',
-			Seq:$("#Seq").val(),
 			ManagementNo:$("#ManagementNo").val(),
 			PenetrationNo:$("#PenetrationNo").val(),
-//			RequirePerformance:$("#RequirePerformance").val(),
-			RequirePerformance:getRadioValueByTagName('RequirePerformance'),
-//			EvaluationResult:$("#EvaluationResult").val(),
-			EvaluationResult:getRadioValueByTagName('EvaluationResult'),
-			FireResistanceRating:$("#FireResistanceRating").val(),
-			PSI:$("#PSI").val(),
-			WaterSeal:$("#WaterSeal").val(),
-			RadiationShield:$("#RadiationShield").val(),
-			RegID:$("#RegID").val(),
+			EvaluationResult:$("#EvaluationResult option:selected").val(),
+			FIRE_VALUE_RANGE:$("#FIRE_VALUE_RANGE").val(),
+			PRESSURE_VALUE_RANGE:$("#PRESSURE_VALUE_RANGE").val(),
+			FLOOD_VALUE_RANGE:$("#FLOOD_VALUE_RANGE").val(),
+			RADIATION_VALUE_RANGE:$("#RADIATION_VALUE_RANGE").val(),
 		},
 		success : function(data) {
 			var result = data.result;
@@ -96,29 +92,34 @@ function getSearchPerformanceEvaluationList(){
 				datatype : 'jsonstring',
 				datastr : dataList,
 				colModel: [
-							{name:'Seq',hidden:true},
-							{name:'ManagementNo',hidden:true},
-							{name:'PenetrationNo',hidden:true},
-							{name:'RequirePerformance',hidden:true},
-							{name:'EvaluationResult',hidden:true},
-							{name:'FireResistanceRating',hidden:true},
-							{name:'PSI',hidden:true},
-							{name:'WaterSeal',hidden:true},
-							{name:'RadiationShield',hidden:true},
-							{name:'RegID',hidden:true},
-							{name:'RegDate',hidden:true},
-							{name:'UpdateID',hidden:true},
-							{name:'UpdateDate',hidden:true},
-				           {name:'ManagementNo', label:'관리번호', align:'center', width:'10%'},
-				           {name:'PenetrationNo',label:'관통부번호', align:'center', width:'10%'},
-				           {name:'FireResistanceRating',label:'내화등급', align:'center', width:'10%'},
-				           {name:'RadiationShield',label:'방사선차폐', align:'center', width:'10%'},
-				           {name:'WaterSeal',label:'수밀', align:'center', width:'10%'},
-				           {name:'PSI',label:'내압', align:'center', width:'10%'},
-				           {name:'EvaluationResult_name',label:'평가결과', align:'center', width:'10%'},
-				           {name:'RegID', label:'작업자ID', align:'center', width:'10%'},
-				           {name:'RegDateTime', label:'생성일', align:'center', width:'10%'},
-				          
+				           {name:'ManagementNo', hidden:true},
+				           {name:'PenetrationNo',label:'관통부번호', align:'center', width:'30%'},
+//				           {name:'ManagementNo', label:'관리번호', align:'center', width:'30%'},
+				           {name:'VENTILATION_VALUE', label:'적용', align:'center', width:'10%'},
+				           {name:'VENTILATION_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
+				           {name:'VENTILATION_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'VENTILATION_JUDGMENT',label:'판정', align:'center', width:'10%'},
+				           {name:'VENTILATION_REASON',label:'사유', align:'center', width:'10%'},
+				           {name:'FIRE_VALUE', label:'적용', align:'center', width:'10%'},
+				           {name:'FIRE_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
+				           {name:'FIRE_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'FIRE_JUDGMENT',label:'판정', align:'center', width:'10%'},
+				           {name:'FIRE_REASON',label:'사유', align:'center', width:'10%'},
+				           {name:'RADIATION_VALUE', label:'적용', align:'center', width:'10%'},
+				           {name:'RADIATION_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
+				           {name:'RADIATION_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'RADIATION_JUDGMENT',label:'판정', align:'center', width:'10%'},
+				           {name:'RADIATION_REASON',label:'사유', align:'center', width:'10%'},
+				           {name:'FLOOD_VALUE', label:'적용', align:'center', width:'10%'},
+				           {name:'FLOOD_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
+				           {name:'FLOOD_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'FLOOD_JUDGMENT',label:'판정', align:'center', width:'10%'},
+				           {name:'FLOOD_REASON',label:'사유', align:'center', width:'10%'},
+				           {name:'PRESSURE_VALUE', label:'적용', align:'center', width:'10%'},
+				           {name:'PRESSURE_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
+				           {name:'PRESSURE_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'PRESSURE_JUDGMENT',label:'판정', align:'center', width:'10%'},
+				           {name:'PRESSURE_REASON',label:'사유', align:'center', width:'30%'},
 				],
 				pager: "#pager_list_1", 
 				page : 1,
@@ -161,7 +162,20 @@ function getSearchPerformanceEvaluationList(){
 					tagBind("radio", "RequirePerformance","요구성능",rowdata.RequirePerformance,codeAllInfo.A06);
 					tagBind("radio", "EvaluationResult","평가결과",rowdata.EvaluationResult,codeAllInfo.A05);
 				},
-			});				
+			});	
+			
+			grid.jqGrid('setGroupHeaders', {
+			    useColSpanStyle: true,
+			    groupHeaders:[
+					{startColumnName:'VENTILATION_VALUE', numberOfColumns:5, titleText: '<div align="center"><p>환기</p></div>'},
+					{startColumnName:'FIRE_VALUE', numberOfColumns:5, titleText: '<div align="center"><p>내화</p></div>'},
+					{startColumnName:'RADIATION_VALUE', numberOfColumns:5, titleText: '<div align="center"><p>방사선 차페</p></div>'},
+					{startColumnName:'FLOOD_VALUE', numberOfColumns:5, titleText: '<div align="center"><p>수밀</p></div>'},
+					{startColumnName:'PRESSURE_VALUE', numberOfColumns:4, titleText: '<div align="center"><p>내압</p></div>'},
+			    ] 
+			})
+
+
 		}
 }
 

@@ -13,7 +13,7 @@
 		AND useYN = 'Y'  
 	</select>
 	<update id="newMemberUpload" parameterType="hashmap">
-		REPLACE INTO 
+		Insert INTO 
 		userinfo (userid       ,
 				  password     ,
 				  username     ,
@@ -46,7 +46,30 @@
 				  ''    ,
 				  'Y'      ,
 				  '${userid}'        ,
-				  SYSDATE()        
+				  getdate()        
 		);
+	</update>
+	
+	
+	<update id="editMemberUpload" parameterType="hashmap">
+		update  
+			userinfo
+		set 
+			userid = '${userid}',       
+			password = '${password}',     
+			username = '${username}',     
+			Authority = '${Authority}',    
+			Phone = '${phone}',        
+			Mobile = '${mobile}',       
+			Email = '${email}',        
+			Address = '${address}',      
+			UseYN = 'Y' ,        
+			IP = '${IP}',           
+			Mac = '${mac}',          
+			LastLogin = '',    
+			LoginYN = 'Y'  ,      
+			RegID = '${userid}' ,        
+			RegDate = getdate()
+		where userid = '${userid}'
 	</update>
 </mapper>

@@ -28,7 +28,37 @@ function getBaseCodeInfo(){
 function getSearchPenetrationsearchList(nowPage){
 	if($("#ELEVATION_num_pit").val() != "" || $("#ELEVATION_num_inc").val() != "" ){
 		if(isNaN(Number($("#ELEVATION_num_pit").val())) || isNaN($("#ELEVATION_num_inc").val()) || $("#ELEVATION_num_pit").val() == "" || $("#ELEVATION_num_inc").val() == ""  ){
-			alert("ELEVATION은 빈값이나 수자를 입력하여야 합니다.");
+			alert("ELEVATION 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			return;
+		}
+	}
+	
+	if($("#ELEVATION_num_pit_2").val() != "" || $("#ELEVATION_num_inc_2").val() != "" ){
+		if(isNaN(Number($("#ELEVATION_num_pit_2").val())) || isNaN($("#ELEVATION_num_inc_2").val()) || $("#ELEVATION_num_pit_2").val() == "" || $("#ELEVATION_num_inc_2").val() == ""  ){
+			alert("ELEVATION 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			return;
+		}
+	}
+	
+	
+	if($("#Diameter_num_pit").val() != "" || $("#Diameter_num_inc").val() != "" ){
+		if(isNaN(Number($("#Diameter_num_pit").val())) || isNaN($("#Diameter_num_inc").val()) || $("#Diameter_num_pit").val() == "" || $("#Diameter_num_inc").val() == ""  ){
+			alert("Diameter 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			return;
+		}
+	}
+	
+	
+	if($("#Height_num_pit").val() != "" || $("#Height_num_inc").val() != "" ){
+		if(isNaN(Number($("#Height_num_pit").val())) || isNaN($("#Height_num_inc").val()) || $("#Height_num_pit").val() == "" || $("#Height_num_inc").val() == ""  ){
+			alert("Height 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			return;
+		}
+	}
+	
+	if($("#Length_num_pit").val() != "" || $("#Length_num_inc").val() != "" ){
+		if(isNaN(Number($("#Length_num_pit").val())) || isNaN($("#Length_num_inc").val()) || $("#Length_num_pit").val() == "" || $("#Length_num_inc").val() == ""  ){
+			alert("Length 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
 			return;
 		}
 	}
@@ -45,6 +75,22 @@ function getSearchPenetrationsearchList(nowPage){
 			ELEVATION_cal_flag :$("#ELEVATION_cal_flag option:selected").val(),
 			ELEVATION_num_pit :$("#ELEVATION_num_pit").val(),
 			ELEVATION_num_inc :$("#ELEVATION_num_inc").val(),
+			ELEVATION_cal_flag_2 :$("#ELEVATION_cal_flag_2 option:selected").val(),
+			ELEVATION_num_pit_2 :$("#ELEVATION_num_pit_2").val(),
+			ELEVATION_num_inc_2 :$("#ELEVATION_num_inc_2").val(),
+
+			Diameter_cal_flag :$("#Diameter_cal_flag option:selected").val(),
+			Diameter_num_pit :$("#Diameter_num_pit").val(),
+			Diameter_num_inc :$("#Diameter_num_inc").val(),
+
+			Height_cal_flag :$("#Height_cal_flag option:selected").val(),
+			Height_num_pit :$("#Height_num_pit").val(),
+			Height_num_inc :$("#Height_num_inc").val(),
+
+			Length_cal_flag :$("#Length_cal_flag option:selected").val(),
+			Length_num_pit :$("#Length_num_pit").val(),
+			Length_num_inc :$("#Length_num_inc").val(),
+			
 			Location :$("#Location option:selected").val(),
 			WallMeterial :getCheckBoxValueByTagname('WallMeterial'),
 			ConstructionState :getCheckBoxValueByTagname('ConstructionState'),
@@ -101,7 +147,7 @@ function drawPenetrationsearchGrid(result,dataList){
 			datastr : dataList,
 			colModel: [
 						{name:'ManagementNo',hidden:true},
-						{name:'PenetrationNo ',hidden:true},
+						{name:'PenetrationNo',hidden:true},
 						{name:'LocationFloorPlanNo',hidden:true},
 						{name:'ReferenceFloorPlanNo',hidden:true},
 						{name:'FrontPicNo',hidden:true},
@@ -111,8 +157,17 @@ function drawPenetrationsearchGrid(result,dataList){
 						{name:'ConstructionState',hidden:true},
 						{name:'EvaluationResult',hidden:true},
 						{name:'InspectSeq',hidden:true},
+						{name:'FileLocation_1',hidden:true},
+						{name:'FileLocation_2',hidden:true},
+						{name:'FileLocation_3',hidden:true},
 //			           {name:'ManagementNo', label:'관리번호', align:'center', width:'10%'},
-			           {name:'PenetrationNo',label:'관통부번호', align:'center', width:'10%'},
+
+			           {name:'PenetrationNo_Icon',label:'관통부번호', align:'center', width:'10%',
+							 formatter:function (cellvalue, options, rowObject) {    
+
+				        			   return '<div align="center" style="cursor:hand" onclick="OpenPdfFiles(\''+rowObject.FileLocation_1+'\')" >'+rowObject.PenetrationNo+'</div>'; 
+				        	   }
+			           },
 			           {name:'Elevation',label:'Elevation', align:'center', width:'10%'},
 			           {name:'LocNo_name',label:'건물', align:'center', width:'10%'},
 			           {name:'WallMeterial_name',label:'벽재질', align:'center', width:'10%'},
@@ -137,16 +192,37 @@ function drawPenetrationsearchGrid(result,dataList){
 			        		   }
 			        	   }
 			           },
+			           
+			           {label : "평면도", name: 'ReferenceFloorPlanNo_Lable', sorttype: 'string', align: 'center', width: '5%',
+			        	   formatter:function (cellvalue, options, rowObject) {    
+			        		   if(rowObject.FrontPicNo == ''){
+			        			   return '<a href="#" class="pdfDown pdfBlank" "> </a>';
+			        		   }
+			        		   else{
+			        			   return '<a href="#" class="pdfDown" onclick="openPicFront('+options.rowId+')" ></a>'; 
+			        		   }
+			        	   }
+			           },			           
+			           {label : "위치도", name: 'LocationFloorPlanNo_Lable', sorttype: 'string', align: 'center', width: '5%',
+			        	   formatter:function (cellvalue, options, rowObject) {    
+			        		   if(rowObject.BackPicNo == ''){
+			        			   return '<a href="#" class="pdfDown pdfBlank" > </a>';
+			        		   }
+			        		   else{
+			        			   return '<a href="#" class="pdfDown" onclick="openPicBack('+options.rowId+')" ></a>'; 
+			        		   }
+			        	   }
+			           },
 			           {name:'FirewallYN_name', label:'종류',align:'center', width:'10%',editable:true},
 			           {name:'PenetrationForm_name', label:'형태', align:'center', width:'10%'},
-			           {name:'ConstructionState_name', label:'밀폐재시공상태', align:'center', width:'10%'},
+			           {name:'SealantConditionState_name', label:'밀폐재시공상태', align:'center', width:'10%'},
 			           {label : "상세보기", name: 'view_detail', sorttype: 'string', align: 'center', width: '20%',
 			        	   formatter:function (cellvalue, options, rowObject) {  
 //			        		   return '<input onclick="getDetailView('+options.rowId+')" type="button" value="보기" style="{width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }">';
 			        		   var returnTagStr = "";
 			        		   returnTagStr +=  '<input class="view" onclick="getDetailView('+options.rowId+')" type="button" value="보기" >';
 			        		   returnTagStr +=  '<input class="edit" onclick="EditDetailView('+options.rowId+')" type="button" value="수정">';
-			        		   returnTagStr +=  '<input class="delete" onclick="deleteDetailView('+options.rowId+')" type="button" value="삭제">';
+			        		   returnTagStr +=  '<input class="delete" onclick="deletePenetrationsearch('+options.rowId+')" type="button" value="삭제">';
 			        		   return returnTagStr
 			        	   }
 			           },
@@ -261,19 +337,33 @@ function PenetrationsearchSave(){
 }
 
 
-function deletePenetrationsearch(Seq){
+function deletePenetrationsearch(rowId){
+	var ManagementNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).ManagementNo;
+	var PenetrationNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).PenetrationNo;
+	var msg = "관통부번호 : " +PenetrationNo+ " 관리번호 :"+ManagementNo+" 인 관통부 정보를 삭제하시겠습니까?"; 
+	 if (confirm(msg)==false){ 
+	  return;
+	 } 
+	
 	$.ajax({
 		url : 'penetrationsearch.do',
 		type : 'post',
 		dataType : 'json',
 		data : {
 			command:'delete',
-			Seq:Seq,
+			ManagementNo:ManagementNo,
+			PenetrationNo:PenetrationNo,
 		},
 		success : function(data) {
 			var result = data.result;
-			alert(result.msg);
-			getPenetrationsearchList();
+			if(result.result == true){
+				alert("관통부정보가 정상적으로 삭제되었습니다.");
+				getSearchPenetrationsearchList();
+			}
+			else{
+
+				alert("관통부정보를 삭제하는데 실패하였습니다. \r\n 관리자에게 문의하시길 바라겠습니다. \r\n " + result.msg);
+			}
 		},
 		error: function(data){
 			
@@ -284,6 +374,7 @@ function deletePenetrationsearch(Seq){
 function openPicFront(rowId){
 	var ManagementNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).ManagementNo;
 	var PenetrationNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).PenetrationNo;
+	var InspectSeq = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).InspectSeq;
 	var photoName = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).FrontPicNo;
 	$.ajax({
 		url : 'penetrationsearch.do',
@@ -293,6 +384,7 @@ function openPicFront(rowId){
 			command:'getFrontImg',
 			ManagementNo:ManagementNo,
 			PenetrationNo:PenetrationNo,
+			InspectSeq:InspectSeq,
 			photoName:photoName,
 		},
 		success : function(data) {
@@ -314,7 +406,8 @@ function openPicFront(rowId){
 function openPicBack(rowId){
 	var ManagementNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).ManagementNo;
 	var PenetrationNo = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).PenetrationNo;
-	var photoName = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).FrontPicNo;
+	var InspectSeq = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).InspectSeq;
+	var photoName = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).BackPicNo;
 	$.ajax({
 		url : 'penetrationsearch.do',
 		type : 'post',
@@ -323,6 +416,7 @@ function openPicBack(rowId){
 			command:'getBackImg',
 			ManagementNo:ManagementNo,
 			PenetrationNo:PenetrationNo,
+			InspectSeq:InspectSeq,
 			photoName:photoName,
 		},
 		success : function(data) {
@@ -332,7 +426,6 @@ function openPicBack(rowId){
 				window.open("./DownLoadImg/" + result.photoName);
 			}else{
 				alert("이미지가 저장이 되어있지 않았습니다.");
-				window.open("./DownLoadImg/1.jpg");
 			}
 		},
 		error: function(data){
@@ -353,5 +446,10 @@ function EditDetailView(rowId){
 //	var InspectSeq = $('#penetrationsearch_Grid_table').jqGrid('getRowData', rowId).InspectSeq;
 //	window.open("./penetrationsearch?command=getSearchEditView&&ManagementNo="+ManagementNo+"&&PenetrationNo="+PenetrationNo+"&&InspectSeq="+InspectSeq);
 	window.open("./penetrationsearch?command=getSearchEditView&&ManagementNo="+ManagementNo+"&&PenetrationNo="+PenetrationNo);
+}
+
+
+function CreateDetailView(){
+	window.open("./penetrationsearch?command=getSearchCreateView");
 }
 

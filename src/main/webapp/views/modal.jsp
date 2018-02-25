@@ -4,7 +4,7 @@
 	
 	<div class="modal fade" id="create_NewMember_modal">
 		<div class="modal-dialog">
-			<div class="modal-content"  align="center">
+			<div class="modal-content"  style="width:600px" align="center">
 
 				<!-- header -->
 				<div class="modal-header">
@@ -70,6 +70,74 @@
 		</div>
 	</div>
 	
+	
+	<div class="modal fade" id="edit_NewMember_modal">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width:600px" align="center">
+
+				<!-- header -->
+				<div class="modal-header">
+					<button type="button" class="close"
+						data-dismiss="modal">×</button>
+				</div>
+				<!-- body -->
+				<div class="modal-body" align="center">
+					<section class="user_pop">
+        <h2>사용자정보</h2>
+            <table>
+                 <tr>
+                    <th>사용자아이디</th>
+                    <td style="border:0"></td>
+                    <td><input type="text"  id="e_userId" name="userId" /></td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td style="border:0"></td>
+                    <td><input type="text" id="e_userName" name="userName"  /></td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td style="border:0"></td>
+                    <td><input type="password" id = "e_password_precheck" /></td>
+                </tr>
+                <tr>
+                    <th>비밀번호 재확인</th>
+                    <td style="border:0"></td>
+                    <td><input type="password" id="e_password" name="password"/></td>
+                </tr>
+                <tr>
+                    <th>e-Mail 주소</th>
+                    <td style="border:0"></td>
+                    <td><input type="email"  id="e_email" name="email"/></td>
+                </tr>
+                <tr>
+                    <th>주소</th>
+                    <td style="border:0"></td>
+                    <td><input type="text" id="e_address" name="address"/></td>
+                </tr>
+                <tr>
+                    <th>전화</th>
+                    <td style="border:0"></td>
+                    <td><input type="tel"  id="e_phone" name="phone"  /></td>
+                </tr>
+                <tr>
+                    <th>핸드폰</th>
+                    <td style="border:0"></td>
+                    <td><input type="tel"  id="e_mobile" name="mobile" /></td>
+                </tr>
+                
+                <tr></tr>
+                <tr>
+                     <td style="border:0"><input type="button" onclick="editMemberSaveOnclick()" value="확인" /></td>
+                    <td style="border:0"></td>
+                    <td style="border:0"><input type="button" onclick="editMemberSaveCancelOnclick()"value="취소" /></td>
+                </tr>
+            </table>
+    </section>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	
 	
@@ -399,42 +467,10 @@
 	</div>
 	
 	
-	<div class="modal fade" id="create_Penetrationinfo_modal">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 750px; margin-left: 100px;">
-
-				<!-- header -->
-				<div class="modal-header">
-					<button type="button" class="close"
-						data-dismiss="modal">×</button>
-				</div>
-				<!-- body -->
-				<div class="modal-body" align="center">
-					<div class="row">
-						<div class="col-sm-12"><div class="col-sm-3">ManagementNo</div><input id="pic_ManagementNo" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">PenetrationNo</div><input id="pic_PenetrationNo" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">matter</div><input id="pic_matter" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">Pipe</div><input id="pic_Pipe" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">Duct</div><input id="pic_Duct" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">SectionTube</div><input id="pic_SectionTube" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">Conduit</div><input id="pic_Conduit" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">Cable</div><input id="pic_Cable" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">Tray</div><input id="pic_Tray" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">CoverTray</div><input id="pic_CoverTray" class="col-sm-9"></div>
-						<div class="col-sm-12"><div class="col-sm-3">Etc</div><input id="pic_Etc" class="col-sm-9"></div>
-						<button type="button" onclick="newPenetrationinfoSave()">저장 </button>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
 	
 	
 	
-	
-	
-	<div class="modal fade" id="create_Penetrationinspect_modal" style="padding-right: 16px;">
+	<div class="modal fade" id="pie_Penetrationinspect_modal" style="padding-right: 16px;">
 		<div class="modal-dialog modal-lg" style="min-width: 90%">
 			<div class="modal-content" style="width:1000px; margin-left:0px">
 
@@ -455,63 +491,101 @@
 					<tr>
 						<th style="width: 13%">점검차수</th>
 						
-						<td style="width: 37%" id="pie_InspectSeq"></td>
+						<td style="width: 37%">
+							<input id="pie_InspectSeq" style="width:100%" disabled="disabled">
+						</td>
 						<th style="width: 13%">점검주기</th>
-						<td style="width: 37%" id="pie_InspectionInterval" contenteditable="true"></td>
+						<td style="width: 37%"  >
+							<input id="pie_InspectionInterval" style="width:100%">
+						</td>
 					</tr>
 					<tr>
 						<th>점검일</th>
-						<td id="pie_InspectDate" contenteditable="true"></td>
+						<td>
+							<input id="pie_InspectDate" style="width:100%">
+						</td>
 						<th>판정</th>
-						<td id="pie_Judgment" contenteditable="true"></td>
+						<td>
+							<input id="pie_Judgment" style="width:100%">
+						</td>
 					</tr>
 					<tr>
 						<th>판단사유</th>
-						<td colspan="3" id="pie_JudgementReason"  contenteditable="true"></td>
+						<td colspan="3" >
+							<input id="pie_JudgementReason" style="width:100%">
+						</td>
 					</tr>
 					<tr>
 						<th>정면사진 번호</th>
 						
-						<td id="pie_FrontPicNo" contenteditable="true"></td>
+						<td>
+							<input id="pie_FrontPicNo" style="width:100%" disabled="disabled">
+						</td>
 						<th>이면사진 번호</th>
-						<td id="pie_BackPicNo" contenteditable="true"></td>
+						<td>
+							<input id="pie_BackPicNo" style="width:100%" disabled="disabled">
+						</td>
 					</tr>
 					<tr>
 						<th>정면사진</th>
 						
 						<td>
-							<img id="frontImg" src="images/default-img.png" style="width:294px;height:210px">
-							<form id="uploadPicFront" action="#" enctype="multipart/form-data">
-								<input id="frontImgName" name="ImgName" hidden="true" value="front">
-								<input type="file" id="uploadFileFront" name="uploadFile" onclick="clickFrontImg()" onchange="ajaxFileUploadFront()" />  
+							<img id="pie_frontImg" src="images/default-img.png" onclick="imgBig(this)"
+									onerror="javascript:this.src='images/default-img.png'" style="width:294px;height:210px">
+							<form id="pie_uploadPicFront" action="#" enctype="multipart/form-data">
+								<input id="pie_frontImgName" name="ImgName" hidden="true" value="front">
+								<input type="file" id="pie_uploadFileFront" name="uploadFile" onchange="pie_ajaxFileUploadFront(this)" />  
 							</form>
 						</td>
 						<th>이면사진</th>
 						<td>
-							<img id="backImg" src="images/default-img.png" style="width:294px;height:210px">
-							<form id="uploadPicBack" action="#" enctype="multipart/form-data">
-								<input id="backImgName" name="ImgName" hidden="true" value="back">
-								<input type="file" id="uploadFileBack" name="uploadFile" onclick="clickBackImg()" onchange="ajaxFileUploadBack()" />  
+							<img id="pie_backImg" src="images/default-img.png" onclick="imgBig(this)"
+									onerror="javascript:this.src='images/default-img.png'"  style="width:294px;height:210px">
+							<form id="pie_uploadPicBack" action="#" enctype="multipart/form-data">
+								<input id="pie_backImgName" name="ImgName" hidden="true" value="back">
+								<input type="file" id="pie_uploadFileBack" name="uploadFile" onchange="pie_ajaxFileUploadBack(this)" />  
 							</form>
 						</td>
 					</tr>
 					<tr>
 						<th>보수일자</th>
 						
-						<td id="pie_ImproveDate" contenteditable="true"></td>
+						<td>
+							<input id="pie_ImproveDate" style="width:100%">
+						</td>
 						<th>설계변경서번호</th>
-						<td id="pie_DesignChangeNo" contenteditable="true"></td>
+						<td>
+							<input id="pie_DesignChangeNo" style="width:100%">
+						</td>
 					</tr>
 					<tr>
 						<th >보수담당자</th>
 						
-						<td id="pie_ImproveMember" contenteditable="true"></td>
+						<td>
+							<input id="pie_ImproveMember" style="width:100%">
+						</td>
 					</tr>
-					
+					<tr>
+		                <th>밀폐재 시공상태</th>
+						<td><input id="pie_SealantConditionState_name" style="width:100%" value=""></td>
+						
+		                <td colspan="2">
+		                	<div class="row">
+			                	<div id="pie_SealantConditionState_tag" class="col-sm-4"></div> 
+			                	<div class="col-sm-1">
+										<input onclick="pie_SealantConditionStateAdd()"
+											style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
+											type="button" value="추가">
+								</div>
+		                	</div>
+		                </td>
+					</tr>
 					<tr>
 						<th >보수내용</th>
 						
-						<td colspan="3" id="pie_ImproveNote" contenteditable="true"></td>
+						<td colspan="3">
+							<input id="pie_ImproveNote" style="width:100%">
+						</td>
 					</tr>
 					
 			</table>
@@ -519,7 +593,138 @@
 				</div>
 				
 				<div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+                <button type="button" class="btn btn-primary" onclick="pie_updateInspectInfoSave()">저장</button>
+              </div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<div class="modal fade" id="pic_Penetrationinspect_modal" style="padding-right: 16px;">
+		<div class="modal-dialog modal-lg" style="min-width: 90%">
+			<div class="modal-content" style="width:1000px; margin-left:0px">
+
+				<!-- header -->
+				<div class="modal-header">
+					<button type="button" class="close"
+						data-dismiss="modal">×</button>
+				</div>
+				<!-- body -->
+				<div class="modal-body" align="center">
+				<input id="pic_ManagementNo" hidden="true">
+				<input id="pic_PenetrationNo" hidden="true">
+				<table class="inspectTable" style="width:950px">
+				<tr>
+					<th colspan="12">● 점검정보 </th>
+					</tr>
+				
+					<tr>
+						<th style="width: 13%">점검차수 *</th>
+						
+						<td style="width: 37%">
+							<input id="pic_InspectSeq" style="width:100%">
+						</td>
+						<th style="width: 13%">점검주기</th>
+						<td style="width: 37%"  >
+							<input id="pic_InspectionInterval" style="width:100%">
+						</td>
+					</tr>
+					<tr>
+						<th>점검일</th>
+						<td>
+							<input id="pic_InspectDate" style="width:100%">
+						</td>
+						<th>판정</th>
+						<td>
+							<input id="pic_Judgment" style="width:100%">
+						</td>
+					</tr>
+					<tr>
+						<th>판단사유</th>
+						<td colspan="3" >
+							<input id="pic_JudgementReason" style="width:100%">
+						</td>
+					</tr>
+					<tr>
+						<th>정면사진 번호</th>
+						
+						<td>
+							<input id="pic_FrontPicNo" style="width:100%" disabled="disabled">
+						</td>
+						<th>이면사진 번호</th>
+						<td>
+							<input id="pic_BackPicNo" style="width:100%" disabled="disabled">
+						</td>
+					</tr>
+					<tr>
+						<th>정면사진</th>
+						
+						<td>
+							<img id="pic_frontImg" src="images/default-img.png" onclick="imgBig(this)"
+									onerror="javascript:this.src='images/default-img.png'" style="width:294px;height:210px">
+							<form id="pic_uploadPicFront" action="#" enctype="multipart/form-data">
+								<input id="pic_frontImgName" name="ImgName" hidden="true" value="front">
+								<input type="file" id="pic_uploadFileFront" name="uploadFile" onchange="pic_ajaxFileUploadFront(this)" />  
+							</form>
+						</td>
+						<th>이면사진</th>
+						<td>
+							<img id="pic_backImg" src="images/default-img.png" onclick="imgBig(this)"
+									onerror="javascript:this.src='images/default-img.png'"  style="width:294px;height:210px">
+							<form id="pic_uploadPicBack" action="#" enctype="multipart/form-data">
+								<input id="pic_backImgName" name="ImgName" hidden="true" value="back">
+								<input type="file" id="pic_uploadFileBack" name="uploadFile" onchange="pic_ajaxFileUploadBack(this)" />  
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<th>보수일자</th>
+						
+						<td>
+							<input id="pic_ImproveDate" style="width:100%">
+						</td>
+						<th>설계변경서번호</th>
+						<td>
+							<input id="pic_DesignChangeNo" style="width:100%">
+						</td>
+					</tr>
+					<tr>
+						<th >보수담당자</th>
+						
+						<td>
+							<input id="pic_ImproveMember" style="width:100%">
+						</td>
+					</tr>
+					<tr>
+		                <th>밀폐재 시공상태</th>
+						<td><input id="pic_SealantConditionState_name" style="width:100%" value=""></td>
+						
+		                <td colspan="2">
+		                	<div class="row">
+			                	<div id="pic_SealantConditionState_tag" class="col-sm-4"></div> 
+			                	<div class="col-sm-1">
+										<input onclick="pic_SealantConditionStateAdd()"
+											style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
+											type="button" value="추가">
+								</div>
+		                	</div>
+		                </td>
+					</tr>
+					<tr>
+						<th >보수내용</th>
+						
+						<td colspan="3">
+							<input id="pic_ImproveNote" style="width:100%">
+						</td>
+					</tr>
+					
+			</table>
+					
+				</div>
+				
+				<div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="pic_updateInspectInfoSave()">저장</button>
               </div>
 			</div>
 		</div>

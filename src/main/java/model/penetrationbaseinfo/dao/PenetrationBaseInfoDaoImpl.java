@@ -19,6 +19,12 @@ public class PenetrationBaseInfoDaoImpl implements PenetrationBaseInfoDao{
 	public HashMap<String, Object> getList(HashMap<String, Object> param) {
 		// TODO Auto-generated method stub
 		String cond = SqlStrProcess.getSearchString(null, param);
+		if(param.containsKey("ELEVATION_num_pit") &&param.get("ELEVATION_num_pit")!= null &&  !param.get("ELEVATION_num_pit").toString().equals("")){
+			if(param.containsKey("ELEVATION_num_inc") &&param.get("ELEVATION_num_inc")!= null &&  !param.get("ELEVATION_num_inc").toString().equals(""))
+			{
+				cond += " and Elevation_num_pit * 12 + Elevation_num_inc "+param.get("ELEVATION_cal_flag")+" "+param.get("ELEVATION_num_pit")+" * 12 + " + param.get("ELEVATION_num_inc");
+			}
+		}
 		param.put("cond", cond);
 		List<HashMap<String,String>> sqlResult =  sqlSession.selectList("penetrationbaseinfo.getList", param);
 		HashMap<String,Object> result = new HashMap<String,Object>();

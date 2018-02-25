@@ -25,24 +25,6 @@ public class PerformanceEvaluationController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/performanceEvaluation.do", params="command=save")
-	public ModelAndView savePerformanceEvaluation(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HashMap<String, Object> param = new HashMap<String, Object>();
-//		param.put("SEQ",request.getParameter("SEQ"));
-		param.put("ManagementNo",request.getParameter("ManagementNo"));
-		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
-		param.put("RequirePerformance",request.getParameter("RequirePerformance"));
-		param.put("EvaluationResult",request.getParameter("EvaluationResult"));
-		param.put("FireResistanceRating",request.getParameter("FireResistanceRating"));
-		param.put("PSI",request.getParameter("PSI"));
-		param.put("WaterSeal",request.getParameter("WaterSeal"));
-		param.put("RadiationShield",request.getParameter("RadiationShield"));
-		param.put("RegID",((HashMap<String, Object>)request.getSession().getAttribute("userInfo")).get("id"));
-		HashMap<String,Object> result = performanceEvaluationDao.save(param);
-		return new ModelAndView("JsonView", "result", result);
-	}
-	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/performanceEvaluation.do", params="command=delete")
 	public ModelAndView deletePerformanceEvaluation(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -52,19 +34,17 @@ public class PerformanceEvaluationController {
 		return new ModelAndView("JsonView", "result", result);
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/performanceEvaluation.do", params="command=getList")
 	public ModelAndView getPerformanceEvaluationList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-//		param.put("SEQ",request.getParameter("SEQ"));
+//		
 		param.put("ManagementNo",request.getParameter("ManagementNo"));
 		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
-		param.put("RequirePerformance",request.getParameter("RequirePerformance"));
 		param.put("EvaluationResult",request.getParameter("EvaluationResult"));
-		param.put("FireResistanceRating",request.getParameter("FireResistanceRating"));
-		param.put("PSI",request.getParameter("PSI"));
-		param.put("WaterSeal",request.getParameter("WaterSeal"));
-		param.put("RadiationShield",request.getParameter("RadiationShield"));
+		param.put("FIRE_VALUE_RANGE",request.getParameter("FIRE_VALUE_RANGE"));
+		param.put("PRESSURE_VALUE_RANGE",request.getParameter("PRESSURE_VALUE_RANGE"));
+		param.put("FLOOD_VALUE_RANGE",request.getParameter("FLOOD_VALUE_RANGE"));
+		param.put("RADIATION_VALUE_RANGE",request.getParameter("RADIATION_VALUE_RANGE"));
 		HashMap<String,Object> result = performanceEvaluationDao.getList(param);
 		return new ModelAndView("JsonView", "result", result);
 	}

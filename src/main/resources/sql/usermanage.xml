@@ -28,8 +28,8 @@
 		where useYN = 'Y'
 	</select>
 	
-	<update id="update" parameterType="hashmap">
-		REPLACE INTO 
+	<update id="insert" parameterType="hashmap">
+		Insert INTO 
 		userinfo (userid       ,
 				  password     ,
 				  username     ,
@@ -62,7 +62,7 @@
 				  ''    ,
 				  'Y'      ,
 				  '${userid}'        ,
-				  SYSDATE()    
+				  getdate()    
 		);
 	</update>
 	

@@ -42,7 +42,10 @@ public class LoginDaoImpl implements LoginDao {
 	public int newMemberUpload(HashMap<String,String> param){
 		return sqlSession.update("Login.newMemberUpload", param);
 	}
-	
+	@Override
+	public int editMemberUpload(HashMap<String,String> param){
+		return sqlSession.update("Login.editMemberUpload", param);
+	}
 	
 	private boolean checkSP(String userpwd) {
 //		String regex = "((.*)[',%,^,&,~,=]|[',%,^,&,~,=](.*))";

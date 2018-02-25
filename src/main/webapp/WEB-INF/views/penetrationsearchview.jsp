@@ -310,10 +310,10 @@
 					<tr>
 						<th style="width: 10%">점검주기</th>
 						<th style="width: 10%">점검차수</th>
-						<th style="width: 10%">점검일</th>
-						<th style="width: 15%">밀폐재시공상태</th>
-						<th style="width: 10%">판정</th>
-						<th>판단사유</th>
+						<th style="width: 8%">점검일</th>
+						<th style="width: 13%">밀폐재시공상태</th>
+						<th style="width: 9%">판정</th>
+						<th style="width: 50%">판단사유</th>
 
 					</tr>
 					<tr>
@@ -340,8 +340,17 @@
 						<td>${list.ImproveMember}</td>
 						<td>${list.ImproveNote}</td>
 					</tr>
-
-
+					
+					<tr>
+						<td colspan="5">
+							<img id="frontImg_${list.InspectSeq}" src="DownLoadImg/${list.FrontPicNo}.png" onclick="imgBig(this)"
+									onerror="javascript:this.src='images/default-img.png'" style="width:350px;height:250px">
+						</td>
+						<td>
+							<img id="backImg_${list.InspectSeq}" src="DownLoadImg/${list.BackPicNo}.png" onclick="imgBig(this)"
+									onerror="javascript:this.src='images/default-img.png'" style="width:350px;height:250px">
+						</td>
+					</tr>
 					<tr>
 						<td colspan="6" style="height: 1px" bgcolor="black"></td>
 					</tr>

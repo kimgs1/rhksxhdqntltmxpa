@@ -27,7 +27,6 @@ public class SealantinfoController {
 	@RequestMapping(value="/sealantinfo.do", params="command=save")
 	public ModelAndView createSealantinfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("Seq",request.getParameter("Seq"));
 		param.put("ManagementNo",request.getParameter("ManagementNo"));
 		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
 		param.put("ConstructionState",request.getParameter("ConstructionState"));
@@ -60,7 +59,7 @@ public class SealantinfoController {
 	@RequestMapping(value="/sealantinfo.do", params="command=getList")
 	public ModelAndView getSealantinfoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-//		param.put("Seq",request.getParameter("Seq"));
+
 		param.put("ManagementNo",request.getParameter("ManagementNo"));
 		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
 		param.put("ConstructionState",request.getParameter("ConstructionState"));

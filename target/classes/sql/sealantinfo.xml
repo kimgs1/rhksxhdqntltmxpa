@@ -12,6 +12,7 @@
 			PenetrationNo,
 			ConstructionState,
 			dbo.GetCodeInfoNameByID(ConstructionState) ConstructionState_name,
+            --dbo.GetSealMaterialByCodePenetration(PenetrationNo,ManagementNo,'A12') SealMeterial_name,
 			SealSealDetailDWG,
 			SealQualityClass,
 			SealThickness,
@@ -26,7 +27,7 @@
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM sealantinfo
 		WHERE 1=1 ${cond}
-		ORDER BY RegDate desc
+		ORDER BY RegDate desc 
 			]]>
 	</select>
 	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
@@ -95,7 +96,7 @@
 		)
 	</update>
 	<update id="insert"  parameterType="hashmap">
-		REPLACE INTO
+		INSERT INTO
 		sealantinfo (
 			ManagementNo,
 			PenetrationNo,
@@ -170,11 +171,10 @@
 	</update>
 	
 	<update id="delete"  parameterType="hashmap">
-		UPDATE sealantinfo
-		SET 
-			UseYN = 'N',
-			updateID = '${RegID}'
-		WHERE Seq = '${Seq}';
+		delete sealantinfo
+		
+		where ManagementNo = '${ManagementNo}'
+			 and PenetrationNo = '${PenetrationNo}'
 	</update>
 	
 	<update id="delete_rollBack"  parameterType="hashmap">

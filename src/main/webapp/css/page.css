@@ -78,6 +78,8 @@
 .sub01 .sec02 table td a{text-decoration:none; display:block; font-size:14px; font-weight:400; color:#282828;}
 .sub01 .sec02 table td .down{display:block; width:100%; height:20px; margin:0 auto; background:url(../images/ico_file_yes.png)no-repeat center; background-size:contain;   margin-top:3px;}
 .sub01 .sec02 table td .blank{background-color:aquamarine; background:url(../images/ico_file_no.png)no-repeat center;  background-size:contain}/*빈파일 회색처리 class="black"*/
+.sub01 .sec02 table td .pdfDown{display:block; width:100%; height:20px; margin:0 auto; background:url(../images/ico_pdfFile_yes.png)no-repeat center; background-size:contain;   margin-top:3px;}
+.sub01 .sec02 table td .pdfBlank{background-color:aquamarine; background:url(../images/ico_pdfFile_no.png)no-repeat center;  background-size:contain}/*빈파일 회색처리 class="black"*/
 .sub01 .sec02 table td .view   {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }
 .sub01 .sec02 table td .edit   {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #0866d8; padding-left:23px; margin-left:2px; border:0; border-radius:5px; }
 .sub01 .sec02 table td .delete {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ce3812; padding-left:23px; margin-left:2px; border:0; border-radius:5px; }
@@ -164,7 +166,7 @@
 /*adm 공통*/
 .adm01 section ul li{width:33.33%;}
 .adm01 section ul li label{width:46%; font-size:14px; font-weight:700; color:#282828; display:block; float:left; max-width:175px}
-.adm01 section ul li input{float:left; width:50%; box-sizing:border-box; height:27px;}
+.adm01 section ul li input{ width:50%; box-sizing:border-box; height:27px;}
 .adm01 section ul li input[type="radio"]{width:10px; margin-top:8px; height:10px;}
 .adm01 section ul li input[type="radio"]+label:before{display:none}
 .adm01 section ul li input[type="radio"]+label{width:53px; font-weight:400}

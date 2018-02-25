@@ -53,7 +53,6 @@
 <script src="plugins/NV/nvd3/nv.d3.min.js"></script>
 
 <%@ include file="/views/modal.jsp"%>
-
 <!-- 한글폰트 -->
 <link rel="stylesheet" href="css/nanumbarungothic.css" />
 <link rel="stylesheet" href="css/cadis_custom.css">

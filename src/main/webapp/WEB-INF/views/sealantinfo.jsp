@@ -34,7 +34,7 @@
                             <label for="manag02">관통부번호</label>
                             <input id="PenetrationNo" type="text" value=""/>
                         </li> 
-                        <li id="ConstructionState_tag" style="width:100%">
+                        <li id="ConstructionState_tag" style="width:100%" hidden="true">
                             <label >시공상태</label>
                             <input id="manag03_01" type="checkbox" name="condition" /><label for="manag03_01">양호</label>
                             <input id="manag03_02" type="checkbox" name="condition" /><label for="manag03_02">비밀폐</label>
@@ -44,10 +44,13 @@
                             <label for="manag04">SEAL QUALITY CLASS</label>
                             <input id="SealQualityClass" type="text" value=""/>
                         </li>
+                        <!--
                         <li>
+                        
                             <label for="manag05">밀폐제재질</label>
                             <input  id="SealMeterial" type="text" value="" />
                         </li>
+                          -->
                         <li>
                             <label for="manag06">밀폐재두꼐</label>
                             <input  id="SealThickness" type="text" value="" />

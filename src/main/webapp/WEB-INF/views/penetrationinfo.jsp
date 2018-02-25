@@ -36,7 +36,7 @@
                             <label for="manag02">관통부번호</label>
                             <input id="PenetrationNo" type="text" value=""/>
                         </li> 
-                        <li id="matter_tag" style="width:100%;">
+                        <li id="matter_tag" style="width:100%;" hidden="true">
                             <label style="width:20%;">관통재종류</label><!--radio-->
                             <input id="manag03_01" type="checkbox" name="kinds" /><label for="manag03_01">배관</label>
                             <input id="manag03_02" type="checkbox" name="kinds" /><label for="manag03_02">덕트</label>

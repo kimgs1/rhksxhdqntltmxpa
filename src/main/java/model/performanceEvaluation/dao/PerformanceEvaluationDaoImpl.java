@@ -20,6 +20,13 @@ public class PerformanceEvaluationDaoImpl implements PerformanceEvaluationDao {
 	public HashMap<String, Object> getList(HashMap<String, Object> param) {
 		// TODO Auto-generated method stub
 		String cond = SqlStrProcess.getSearchString(null, param);
+		if(param.get("EvaluationResult")!=null && param.get("EvaluationResult").equals("A0501")){
+			cond +=  " and PRESSURE_REASON like '○%' ";
+		}
+		if(param.get("EvaluationResult")!=null && param.get("EvaluationResult").equals("A0502")){
+			cond +=  " and PRESSURE_REASON like 'X%' ";
+		}
+
 		param.put("cond", cond);
 		List<HashMap<String,String>> sqlResult =  sqlSession.selectList("performanceEvaluation.getList", param);
 		HashMap<String,Object> result = new HashMap<String,Object>();

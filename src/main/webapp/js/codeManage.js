@@ -202,7 +202,6 @@ function getCodeInfoList(){
 				           {name:'CodeID', label:'코드ID', align:'center', width:'10%'},
 				           {name:'CodeName',label:'코드명', align:'center', width:'10%',editable:true},
 				           {name:'Remark', label:'비고',align:'center', width:'20%',editable:true},
-				           {name:'ExtraRate', label:'비고',align:'center', width:'20%',editable:true},
 				           {name:'RegID', label:'생성자', align:'center', width:'10%'},
 				           {name:'RegDate', label:'생성일자', align:'center', width:'10%'},
 				           {label : "Del", name: 'del', sorttype: 'string', align: 'center', width: '15%',

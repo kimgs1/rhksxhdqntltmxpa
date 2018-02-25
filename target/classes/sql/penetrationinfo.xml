@@ -22,7 +22,7 @@
 			UpdateDate,
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM penetrationinfo
-		WHERE UseYN='Y' ${cond}
+		WHERE 1=1 ${cond}
 		ORDER BY RegDate desc
 	</select>
 	
@@ -160,11 +160,9 @@
 	</update>
 	
 	<update id="delete"  parameterType="hashmap">
-		UPDATE penetrationinfo
-		SET 
-			UseYN = 'N',
-			updateID = '${RegID}'
-		WHERE Seq = '${Seq}';
+		delete penetrationinfo
+		where ManagementNo = '${ManagementNo}'
+			 and PenetrationNo = '${PenetrationNo}'
 	</update>
 	
 	<update id="delete_rollBack"  parameterType="hashmap">

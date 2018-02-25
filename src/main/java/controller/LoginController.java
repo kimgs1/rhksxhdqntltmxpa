@@ -95,5 +95,28 @@ public class LoginController extends MultiActionController{
 		
 	}
 	
+	@RequestMapping(value="/login", params="command=editMemberUpload", method=RequestMethod.POST)
+	public ModelAndView editMemberUpload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		HashMap<String, String> param = new HashMap<String, String>();
+		param.put("userid", request.getParameter("userId"));
+		param.put("username", request.getParameter("userName"));
+		param.put("password", request.getParameter("password"));
+		param.put("email", request.getParameter("email"));
+//		param.put("company", request.getParameter("company"));
+		param.put("phone", request.getParameter("phone"));
+		param.put("mobile", request.getParameter("mobile"));
+		param.put("address", request.getParameter("address"));
+		param.put("IP", "");
+		param.put("mac", "");
+		int result = loginDao.editMemberUpload(param);
+		if(result > 0){
+			return new ModelAndView("JsonView", "result","success" );
+		}else{
+			return new ModelAndView("JsonView", "result","fail" );			
+		}
+		
+	}
+	
 
 }

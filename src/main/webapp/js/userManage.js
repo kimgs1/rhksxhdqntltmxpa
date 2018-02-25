@@ -107,36 +107,55 @@ function editUserinfo(rowId){
 		dataType : 'json',
 		data : 'command=getcontent&&UserID='+userid,
 		success : function(data) {
-			$("#userId").val(data.result.DataList.UserID);
+			$("#e_userId").val(data.result.DataList.UserID);
 //			$("#password").val(data.result.DataList.password);
-			$("#userName").val(data.result.DataList.UserName);
-			$("#phone").val(data.result.DataList.Phone);
-			$("#mobile").val(data.result.DataList.Mobile);
-			$("#email").val(data.result.DataList.Email);
-			$("#address").val(data.result.DataList.Address);
-			newMemberOnClick(true);
+			$("#e_userName").val(data.result.DataList.UserName);
+			$("#e_phone").val(data.result.DataList.Phone);
+			$("#e_mobile").val(data.result.DataList.Mobile);
+			$("#e_email").val(data.result.DataList.Email);
+			$("#e_address").val(data.result.DataList.Address);
+			$('#edit_NewMember_modal').modal({
+				backdrop: 'static',
+				keyboard: false
+			});
 		},
 		error : function() {
 		}
 	});
 	
 }
-
-function newMemberSaveCancelOnclick(){$("#userId").val();
-	$('#create_NewMember_modal').modal('hide');
+function editMemberSaveOnclick(){
+	$.ajax({
+		type :'post',
+		url : "login",
+		data : {
+			command:'editMemberUpload',
+			userId:$("#e_userId").val(),
+			userName:$("#e_userName").val(),
+			password:$("#e_password").val(),
+			email:$("#e_email").val(),
+			phone:$("#e_phone").val(),
+			mobile:$("#e_mobile").val(),
+			address:$("#e_address").val(),
+		},
+		dataType : 'json',
+		success : function(data) {
+			$('#edit_NewMember_modal').modal('hide');
+			getUserList();
+		},
+		error:function(request,status,error){
+			alert("회원정보 수정하는 동안 오류가 생겼습니다.  관리자에게 문의하시길 바라겠습니다.");
+		}
+	});
 }
 
+
+function editMemberSaveCancelOnclick(){$("#userId").val();
+	$('#edit_NewMember_modal').modal('hide');
+}
+
+
 function newMemberOnClick(editflag){
-	if(editflag != true){
-		$("#userId").val("");
-		$("#password").val("");
-		$("#password_precheck").val("");
-		$("#userName").val("");
-		$("#phone").val("");
-		$("#mobile").val("");
-		$("#email").val("");
-		$("#address").val("");
-	}
 	$('#create_NewMember_modal').modal({
 		backdrop: 'static',
 		keyboard: false
@@ -170,4 +189,7 @@ function newMemberSaveOnclick(){
 }
 
 
+function newMemberSaveCancelOnclick(){$("#userId").val();
+	$('#create_NewMember_modal').modal('hide');
+}
 

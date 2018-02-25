@@ -10,7 +10,10 @@ function getCookie(key) {
 }
 
 
-
+function imgBig(obj){
+	var pos = obj.value.lastIndexOf("\\")*1;
+	window.open("./DownLoadImg/" + obj.value.substring(pos+1));
+}
 
 
 

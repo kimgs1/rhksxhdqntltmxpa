@@ -12,9 +12,11 @@
 			LocNo,
 			dbo.GetCodeInfoNameByID(LocNo) LocNo_name,
 			ManagementNo,
-			PenetrationNo ,
+			PenetrationNo,
 			ManagementAreaYN,
-			Elevation,
+			CONCAT(cast(Elevation_num_pit as decimal(10,0)), '''-',Elevation_num_inc, '"') Elevation,
+            Elevation_num_pit,
+            Elevation_num_inc,
 			FirePreventionAreaNo,
 			InspectionRoomNo,
 			BackRoomNo,
@@ -34,6 +36,12 @@
 			Diameter,
 			Height,
 			Length,
+			Diameter_num_pit,
+			Diameter_num_inc,
+			Height_num_pit,
+			Height_num_inc,
+			Length_num_pit,
+			Length_num_inc,
 			PenetrationType,
 			MaximumFreeArea,
 			MaximumFreeDistance,
@@ -45,7 +53,7 @@
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM penetrationbaseinfo
 		WHERE 1=1 ${cond}
-		ORDER BY RegDate desc
+		ORDER BY RegDate desc  
 			
 	</select>
 	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
@@ -77,9 +85,12 @@
 			 LocationFloorPlanNo = '${LocationFloorPlanNo}',
 			 SealDetailDWG = '${SealDetailDWG}',
 			 EL = '${EL}',
-			 Diameter = '${Diameter}',
-			 Height = '${Height}',
-			 Length = '${Length}',
+			 Diameter_num_pit = ${Diameter_num_pit},
+			 Diameter_num_inc = ${Diameter_num_inc},
+			 Height_num_pit = ${Height_num_pit},
+			 Height_num_inc = ${Height_num_inc},
+			 Length_num_pit = ${Length_num_pit},
+			 Length_num_inc = ${Length_num_inc},
 			 PenetrationType = '${PenetrationType}',
 			 MaximumFreeArea = '${MaximumFreeArea}',
 			 MaximumFreeDistance = '${MaximumFreeDistance}',
@@ -160,9 +171,12 @@
 			LocationFloorPlanNo,
 			SealDetailDWG,
 			EL,
-			Diameter,
-			Height,
-			Length,
+			Diameter_num_pit,
+			Diameter_num_inc,
+			Height_num_pit,
+			Height_num_inc,
+			Length_num_pit,
+			Length_num_inc,
 			PenetrationType,
 			MaximumFreeArea,
 			MaximumFreeDistance,
@@ -236,9 +250,12 @@
 			'${LocationFloorPlanNo}',
 			'${SealDetailDWG}',
 			'${EL}',
-			'${Diameter}',
-			'${Height}',
-			'${Length}',
+			${Diameter_num_pit},
+			${Diameter_num_inc},
+			${Height_num_pit},
+			${Height_num_inc},
+			${Length_num_pit},
+			${Length_num_inc},
 			'${PenetrationType}',
 			'${MaximumFreeArea}',
 			'${MaximumFreeDistance}',
@@ -315,9 +332,12 @@
 			LocationFloorPlanNo,
 			SealDetailDWG,
 			EL,
-			Diameter,
-			Height,
-			Length,
+			Diameter_num_pit,
+			Diameter_num_inc,
+			Height_num_pit,
+			Height_num_inc,
+			Length_num_pit,
+			Length_num_inc,
 			PenetrationType,
 			MaximumFreeArea,
 			MaximumFreeDistance,
@@ -366,7 +386,9 @@
 			NewYN,
 			Wall_Fire_time,
 			SpecialNote,
-			RegID
+			RegID,
+			updateID,
+			updateDate
 			)
 		VALUES
 		(
@@ -390,9 +412,12 @@
 			'${LocationFloorPlanNo}',
 			'${SealDetailDWG}',
 			'${EL}',
-			'${Diameter}',
-			'${Height}',
-			'${Length}',
+			${Diameter_num_pit},
+			${Diameter_num_inc},
+			${Height_num_pit},
+			${Height_num_inc},
+			${Length_num_pit},
+			${Length_num_inc},
 			'${PenetrationType}',
 			'${MaximumFreeArea}',
 			'${MaximumFreeDistance}',
@@ -441,14 +466,16 @@
 			'${NewYN}',
 			'${Wall_Fire_time}',
 			'${SpecialNote}',
-			'${RegID}'
+			'${RegID}',
+			'${RegID}',
+			getdate()
 		);
 		
 	</update>
 	
 	<update id="insert_his"  parameterType="hashmap">
 		INSERT INTO
-		penetrationbaseinfo (
+		penetrationbaseinfo_his (
 			status,
 			EquipNo,
 			LocNo,
@@ -470,9 +497,12 @@
 			LocationFloorPlanNo,
 			SealDetailDWG,
 			EL,
-			Diameter,
-			Height,
-			Length,
+			Diameter_num_pit,
+			Diameter_num_inc,
+			Height_num_pit,
+			Height_num_inc,
+			Length_num_pit,
+			Length_num_inc,
 			PenetrationType,
 			MaximumFreeArea,
 			MaximumFreeDistance,
@@ -546,9 +576,12 @@
 			'${LocationFloorPlanNo}',
 			'${SealDetailDWG}',
 			'${EL}',
-			'${Diameter}',
-			'${Height}',
-			'${Length}',
+			${Diameter_num_pit},
+			${Diameter_num_inc},
+			${Height_num_pit},
+			${Height_num_inc},
+			${Length_num_pit},
+			${Length_num_inc},
 			'${PenetrationType}',
 			'${MaximumFreeArea}',
 			'${MaximumFreeDistance}',
@@ -603,11 +636,9 @@
 	
 	
 	<update id="delete"  parameterType="hashmap">
-		UPDATE penetrationbaseinfo
-		SET 
-			UseYN = 'N',
-			updateID = '${RegID}'
-		WHERE Seq = '${Seq}';
+		delete penetrationbaseinfo
+		where ManagementNo = '${ManagementNo}'
+			 and PenetrationNo = '${PenetrationNo}'
 	</update>
 	
 	<update id="delete_rollBack"  parameterType="hashmap">

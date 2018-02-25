@@ -26,7 +26,7 @@ function init(){
 
 function getBaseCodeInfo(){
 	getCodeAllInfo();
-	tagBind("radio", "Judgment","판정",null,codeAllInfo.A05);
+	tagBind("selectBox_All", "Judgment","판정",null,codeAllInfo.A05);
 }
 
 
@@ -36,12 +36,13 @@ function getPenetrationinspectList(){
 		type : 'post',
 		dataType : 'json',
 		data : {
-			command:'getList',
+			command:'getDataList',
 		},
 		success : function(data) {
 			var result = data.result;
 			var dataList = data.result.DataList;
 			drawPenetrationinspectGrid(result,dataList);
+			drawPaging(result.pagingBean);
 		},
 		error: function(data){
 			
@@ -51,14 +52,15 @@ function getPenetrationinspectList(){
 
 
 
-function getSearchPenetrationinspectList(){
+function getSearchPenetrationinspectList(nowPage){
 	$.ajax({
 		url : 'penetrationinspect.do',
 		type : 'post',
 		dataType : 'json',
 		data : {
-			command:'getList',
+			command:'getDataList',
 //			Seq:$("#Seq").val(),
+			nowPage: nowPage,
 			ManagementNo:$("#ManagementNo").val(),
 			PenetrationNo:$("#PenetrationNo").val(),
 			InspectDate:$("#InspectDate").val(),
@@ -68,14 +70,15 @@ function getSearchPenetrationinspectList(){
 			SealantConditionState:$("#SealantConditionState").val(),
 			JudgementReason:$("#JudgementReason").val(),
 //			Judgment:$("#Judgment").val(),
-			Judgment:getRadioValueByTagName('Judgment'),
+			Judgment:$("#Judgment option:selected").val(),
 			ImproveNote:$("#ImproveNote").val(),
 			RegID:$("#RegID").val(),
 		},
 		success : function(data) {
 			var result = data.result;
 			var dataList = data.result.DataList;
-			drawPenetrationinspectGrid(result,dataList)
+			drawPenetrationinspectGrid(result,dataList);
+			drawPaging(result.pagingBean);
 		},
 		
 		
@@ -84,7 +87,27 @@ function getSearchPenetrationinspectList(){
 		}
 	});
 }
-
+function drawPaging(pagingBean){
+	//paging
+	innerHtml = "";
+	
+	if(pagingBean.previousPageGroup){
+		innerHtml += '<li onclick="getSearchPenetrationinspectList('+(pagingBean.startPageOfPageGroup - 1)+')"><a><img src="images/pager_01.png" /></a></li>';
+//		innerHtml += "<a href='javascript:;' onclick='getBulletineList("+(pagingBean.startPageOfPageGroup - 1)+")'><<</a>";
+	}
+	for(var i=pagingBean.startPageOfPageGroup;i<=pagingBean.endPageOfPageGroup;i++){
+		if(pagingBean.nowPage!=i)
+			innerHtml += '<li onclick="getSearchPenetrationinspectList('+i+')"><a>'+i+'</a></li>'
+		else
+			innerHtml += '<li onclick="getSearchPenetrationinspectList('+i+')"><a class="active">'+i+'</a></li>'
+	}
+	if(pagingBean.nextPageGroup){
+		innerHtml += '<li onclick="getSearchPenetrationinspectList('+(pagingBean.endPageOfPageGroup + 1)+')"><a style="transform: rotate(180deg)"><img src="images/pager_01.png" /></a></li>';
+	}
+	
+	document.getElementById("paging").innerHTML = innerHtml;
+//	document.getElementById("page_detail").innerHTML = 'Total:<span>'+pagingBean.totalContent+'</span>'+'(' + pagingBean.nowPage + '/' + pagingBean.totalPage + ')Page' ;
+}
  function drawPenetrationinspectGrid(result,dataList){
 	 if(dataList!= null){
 			
@@ -122,13 +145,8 @@ function getSearchPenetrationinspectList(){
 				           {name:'RegDateTime', label:'생성일', align:'center', width:'10%'},
 				           
 				],			
-				pager: "#pager_list_1", 
-				page : 1,
-				rowNum: 100,                            //在grid上显示记录条数，这个参数是要被传递到后台
-			    rowList: [100, 200, 300],              //一个下拉选择框，用来改变显示记录数，当选择时会覆盖rowNum参数传递到后台
 				rownumbers: true,  
 				cellEdit : false,  
-				loadonce:true,
 				autowidth : true,
 				shrinkToFit : true,
 				scrollrows : true,
@@ -144,22 +162,23 @@ function getSearchPenetrationinspectList(){
 				},
 
 				onSelectRow : function(id) {
-					var rowdata = grid.jqGrid('getRowData', id);
-					$('#Seq').val(rowdata.Seq);
-					$('#ManagementNo').val(rowdata.ManagementNo);
-					$('#PenetrationNo').val(rowdata.PenetrationNo);
-					$('#InspectDate').val(rowdata.InspectDate);
-					$('#InspectSeq').val(rowdata.InspectSeq);
-					$('#ImproveDate').val(rowdata.ImproveDate);
-					$('#InspectionInterval').val(rowdata.InspectionInterval);
-					$('#SealantConditionState').val(rowdata.SealantConditionState);
-					$('#JudgementReason').val(rowdata.JudgementReason);
-					$('#Judgment').val(rowdata.Judgment);
-					$('#ImproveNote').val(rowdata.ImproveNote);
-					$('#RegID').val(rowdata.RegID);
-//					document.getElementById("RegDateTime").innerHTML = rowdata.RegDateTime;
-
-					tagBind("radio", "Judgment","판정",rowdata.Judgment,codeAllInfo.A05);				},
+//					var rowdata = grid.jqGrid('getRowData', id);
+//					$('#Seq').val(rowdata.Seq);
+//					$('#ManagementNo').val(rowdata.ManagementNo);
+//					$('#PenetrationNo').val(rowdata.PenetrationNo);
+//					$('#InspectDate').val(rowdata.InspectDate);
+//					$('#InspectSeq').val(rowdata.InspectSeq);
+//					$('#ImproveDate').val(rowdata.ImproveDate);
+//					$('#InspectionInterval').val(rowdata.InspectionInterval);
+//					$('#SealantConditionState').val(rowdata.SealantConditionState);
+//					$('#JudgementReason').val(rowdata.JudgementReason);
+//					$('#Judgment').val(rowdata.Judgment);
+//					$('#ImproveNote').val(rowdata.ImproveNote);
+//					$('#RegID').val(rowdata.RegID);
+////					document.getElementById("RegDateTime").innerHTML = rowdata.RegDateTime;
+//
+//					tagBind("radio", "Judgment","판정",rowdata.Judgment,codeAllInfo.A05);				
+				},
 			});				
 		}
 }

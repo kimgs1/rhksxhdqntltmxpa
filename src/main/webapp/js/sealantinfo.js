@@ -26,7 +26,7 @@ function init(){
 
 function getBaseCodeInfo(){
 	getCodeAllInfo();
-	tagBind("radio", "ConstructionState","시공상태",null,codeAllInfo.A03);
+	tagBind("selectBox_All", "ConstructionState","시공상태",null,codeAllInfo.A03);
 }
 function getSealantinfoList(){
 	$.ajax({
@@ -56,16 +56,15 @@ function getSearchSealantinfoList(){
 		data : {
 			command:'getList',
 
-			Seq:$("Seq").val(),
-			ManagementNo:$("ManagementNo").val(),
-			PenetrationNo:$("PenetrationNo").val(),
+			ManagementNo:$("#ManagementNo").val(),
+			PenetrationNo:$("#PenetrationNo").val(),
 //			ConstructionState:$("ConstructionState").val(),
-			ConstructionState:getRadioValueByTagName('ConstructionState'),
-			SealQualityClass:$("SealQualityClass").val(),
-			SealMeterial:$("SealMeterial").val(),
-			SealThickness:$("SealThickness").val(),
-			PressingBoardMeterial:$("PressingBoardMeterial").val(),
-			PressingBoardThickness:$("PressingBoardThickness").val(),
+//			ConstructionState:$("#ConstructionState option:selected").val(),
+			SealQualityClass:$("#SealQualityClass").val(),
+			SealMeterial:$("#SealMeterial").val(),
+			SealThickness:$("#SealThickness").val(),
+			PressingBoardMeterial:$("#PressingBoardMeterial").val(),
+			PressingBoardThickness:$("#PressingBoardThickness").val(),
 //			RepairQuantity:$("RepairQuantity").val(),
 //			Register:$("Register").val(),
 //			Reviewer:$("Reviewer").val(),
@@ -116,8 +115,8 @@ function drawSealantinfoGrid(result,dataList){
 						{name:'RegID',hidden:true},
 			           {name:'ManagementNo', label:'관리번호', align:'center', width:'10%'},
 			           {name:'PenetrationNo',label:'관통부번호', align:'center', width:'10%'},
-			           {name:'ConstructionState_name', label:'시공상태',align:'center', width:'10%',editable:true},
-			           {name:'SealMeterial', label:'밀폐재재질', align:'center', width:'10%'},
+//			           {name:'ConstructionState_name', label:'시공상태',align:'center', width:'10%',editable:true},
+//			           {name:'SealMeterial_name', label:'밀폐재재질', align:'center', width:'10%'},
 			           {name:'SealThickness', label:'밀폐재두께', align:'center', width:'10%'},
 			           {name:'SealQualityClass', label:'SEAL QUALITY CLASS', align:'center', width:'10%'},
 			           {name:'PressingBoardMeterial', label:'댐판재질', align:'center', width:'10%'},
@@ -148,28 +147,28 @@ function drawSealantinfoGrid(result,dataList){
 			},
 
 			onSelectRow : function(id) {
-				var rowdata = grid.jqGrid('getRowData', id);
-				
-				
-				
-				$('#Seq').val(rowdata.Seq);
-				$('#ManagementNo').val(rowdata.ManagementNo);
-				$('#PenetrationNo').val(rowdata.PenetrationNo);
-//				$('#ConstructionState').val(rowdata.ConstructionState);
-				$('#SealQualityClass').val(rowdata.SealQualityClass);
-				$('#SealMeterial').val(rowdata.SealMeterial);
-				$('#SealThickness').val(rowdata.SealThickness);
-				$('#PressingBoardMeterial').val(rowdata.PressingBoardMeterial);
-				$('#PressingBoardThickness').val(rowdata.PressingBoardThickness);
-				$('#RepairQuantity').val(rowdata.RepairQuantity);
-				$('#Register').val(rowdata.Register);
-				$('#Reviewer').val(rowdata.Reviewer);
-				$('#Checker').val(rowdata.Checker);
-				$('#SpecialNote').val(rowdata.SpecialNote);
-				$('#RegID').val(rowdata.RegID);
-
-//				document.getElementById("RegDateTime").innerHTML = rowdata.RegDateTime;
-				tagBind("radio", "ConstructionState","시공상태",rowdata.ConstructionState,codeAllInfo.A03);
+//				var rowdata = grid.jqGrid('getRowData', id);
+//				
+//				
+//				
+//				$('#Seq').val(rowdata.Seq);
+//				$('#ManagementNo').val(rowdata.ManagementNo);
+//				$('#PenetrationNo').val(rowdata.PenetrationNo);
+////				$('#ConstructionState').val(rowdata.ConstructionState);
+//				$('#SealQualityClass').val(rowdata.SealQualityClass);
+//				$('#SealMeterial').val(rowdata.SealMeterial);
+//				$('#SealThickness').val(rowdata.SealThickness);
+//				$('#PressingBoardMeterial').val(rowdata.PressingBoardMeterial);
+//				$('#PressingBoardThickness').val(rowdata.PressingBoardThickness);
+//				$('#RepairQuantity').val(rowdata.RepairQuantity);
+//				$('#Register').val(rowdata.Register);
+//				$('#Reviewer').val(rowdata.Reviewer);
+//				$('#Checker').val(rowdata.Checker);
+//				$('#SpecialNote').val(rowdata.SpecialNote);
+//				$('#RegID').val(rowdata.RegID);
+//
+////				document.getElementById("RegDateTime").innerHTML = rowdata.RegDateTime;
+//				tagBind("selectBox_All", "ConstructionState","시공상태",rowdata.ConstructionState,codeAllInfo.A03);
 			},
 		});				
 	}

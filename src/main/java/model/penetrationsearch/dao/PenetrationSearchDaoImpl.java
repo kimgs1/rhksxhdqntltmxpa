@@ -44,6 +44,36 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 				cond += " and pb.Elevation_num_pit * 12 + pb.Elevation_num_inc "+param.get("ELEVATION_cal_flag")+" "+param.get("ELEVATION_num_pit")+" * 12 + " + param.get("ELEVATION_num_inc");
 			}
 		}
+
+		if(param.containsKey("ELEVATION_num_pit_2") &&param.get("ELEVATION_num_pit_2")!= null &&  !param.get("ELEVATION_num_pit_2").toString().equals("")){
+			if(param.containsKey("ELEVATION_num_inc_2") &&param.get("ELEVATION_num_inc_2")!= null &&  !param.get("ELEVATION_num_inc_2").toString().equals(""))
+			{
+				cond += " and pb.Elevation_num_pit * 12 + pb.Elevation_num_inc "+param.get("ELEVATION_cal_flag_2")+" "+param.get("ELEVATION_num_pit_2")+" * 12 + " + param.get("ELEVATION_num_inc_2");
+			}
+		}
+		
+		if(param.containsKey("Diameter_num_pit") &&param.get("Diameter_num_pit")!= null &&  !param.get("Diameter_num_pit").toString().equals("")){
+			if(param.containsKey("Diameter_num_inc") &&param.get("Diameter_num_inc")!= null &&  !param.get("Diameter_num_inc").toString().equals(""))
+			{
+				cond += " and pb.Diameter_num_pit * 12 + pb.Diameter_num_inc "+param.get("Diameter_cal_flag")+" "+param.get("Diameter_num_pit")+" * 12 + " + param.get("Diameter_num_inc");
+			}
+		}
+
+		if(param.containsKey("Height_num_pit") &&param.get("Height_num_pit")!= null &&  !param.get("Height_num_pit").toString().equals("")){
+			if(param.containsKey("Height_num_inc") &&param.get("Height_num_inc")!= null &&  !param.get("Height_num_inc").toString().equals(""))
+			{
+				cond += " and pb.Height_num_pit * 12 + pb.Height_num_inc "+param.get("Height_cal_flag")+" "+param.get("Height_num_pit")+" * 12 + " + param.get("Height_num_inc");
+			}
+		}
+
+		if(param.containsKey("Length_num_pit") &&param.get("Length_num_pit")!= null &&  !param.get("Length_num_pit").toString().equals("")){
+			if(param.containsKey("Length_num_inc") &&param.get("Length_num_inc")!= null &&  !param.get("Length_num_inc").toString().equals(""))
+			{
+				cond += " and pb.Length_num_pit * 12 + pb.Length_num_inc "+param.get("Length_cal_flag")+" "+param.get("Length_num_pit")+" * 12 + " + param.get("Length_num_inc");
+			}
+		}
+		
+		
 		if(param.containsKey("Equip") &&param.get("Equip")!= null &&  !param.get("Equip").toString().equals("")){
 			cond += " and pb.EquipNo = '"+param.get("Equip")+"' ";
 		}
@@ -257,23 +287,28 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 		HashMap<String,Object> result = new HashMap<String,Object>();
 
 		byte[] sqlResult =  sqlSession.selectOne("penetrationsearch.getFrontPicImg", param);
-		try{
-			OutputStream out = new FileOutputStream(new File(param.get("RealPath") + "/DownLoadImg/" + param.get("photoName") + ".png"));
+		if(sqlResult != null && sqlResult.length > 0){
+			try{
+				OutputStream out = new FileOutputStream(new File(param.get("RealPath") + "DownLoadImg\\" + param.get("photoName") + ".png"));
 
-			out.write(sqlResult);
-			out.flush();
-			System.out.println("download success");
-			out.close();
+				out.write(sqlResult);
+				out.flush();
+				System.out.println("download success");
+				System.out.println(param.get("RealPath") + "DownLoadImg\\" + param.get("photoName") + ".png");
+				
+				out.close();
 
-			result.put("result", "success");
-			result.put("photoName", param.get("photoName")+ ".png");
+				result.put("result", "success");
+				result.put("photoName", param.get("photoName")+ ".png");
 
-		}catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			result.put("result", "error");
-			result.put("photoName", "");
+			}catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				result.put("result", "error");
+				result.put("photoName", "");
+			}
 		}
+		
 
 		result.put("DataList",sqlResult);
 		return result;
@@ -285,36 +320,32 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 		HashMap<String,Object> result = new HashMap<String,Object>();
 
 		byte[] sqlResult =  sqlSession.selectOne("penetrationsearch.getBackPicImg", param);
-		try{
-			OutputStream out = new FileOutputStream(new File(param.get("RealPath") + "/DownLoadImg/" + param.get("photoName") + ".png"));
+		if(sqlResult != null && sqlResult.length > 0){
+			try{
+				OutputStream out = new FileOutputStream(new File(param.get("RealPath") + "DownLoadImg\\" + param.get("photoName") + ".png"));
 
-			out.write(sqlResult);
-			out.flush();
-			System.out.println("download success");
-			out.close();
+				out.write(sqlResult);
+				out.flush();
+				System.out.println("download success");
+				System.out.println(param.get("RealPath") + "DownLoadImg\\" + param.get("photoName") + ".png");
+				out.close();
 
-			result.put("result", "success");
-			result.put("photoName", param.get("photoName")+ ".png");
+				result.put("result", "success");
+				result.put("photoName", param.get("photoName")+ ".png");
 
-		}catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			result.put("result", "error");
-			result.put("photoName", "");
+			}catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				result.put("result", "error");
+				result.put("photoName", "");
+			}
 		}
+		
 
 		result.put("DataList",sqlResult);
 		return result;
 	}
-	
-	@Override
-	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)  
-	public HashMap<String, Object> updatePenetrationAllData(HashMap<String, Object> param) {
-		// TODO Auto-generated method stub
-		
-		sqlSession.update("penetrationsearch.testTran");
-		return null;
-	}
+
 	@Override
 	public HashMap<String, Object> checkSealMeterial(HashMap<String, Object> param) {
 		// TODO Auto-generated method stub
@@ -325,6 +356,26 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 				cond = "and  Remark = '" + SealMeterialName +"'";
 				param.put("cond", cond);
 				int sqlResult =  sqlSession.selectOne("penetrationsearch.checkSealMeterial", param);
+				if(sqlResult == 0){
+					resultFlag = "false";
+				}
+			}
+		}
+		HashMap<String,Object> result = new HashMap<String,Object>();
+		result.put("resultFlag",resultFlag);
+		return result;
+	}
+	
+	@Override
+	public HashMap<String, Object> checkSealantConditionState(HashMap<String, Object> param) {
+		// TODO Auto-generated method stub
+		String resultFlag = "true";
+		String cond = "";
+		if(param.containsKey("SealantConditionState_name") && param.get("SealantConditionStatel_name")!= null &&  !param.get("SealMeterial_name").toString().equals("")){
+			for(String SealMeterialName : param.get("SealantConditionState_name").toString().split(",")){
+				cond = "and  GroupName = '" + SealMeterialName +"'";
+				param.put("cond", cond);
+				int sqlResult =  sqlSession.selectOne("penetrationsearch.checkSealantConditionStatel", param);
 				if(sqlResult == 0){
 					resultFlag = "false";
 				}
@@ -357,7 +408,43 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 		
 		sqlSession.update("sealantinfo.update", param);
 		sqlSession.update("sealantinfo.update_his", param);
-		
 		return null;
 	}
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)  
+	public void insertPenetrationAllInfo(HashMap<String, Object> param) {
+		// TODO Auto-generated method stub
+		sqlSession.update("penetrationsearch.deleteSealMeterial", param);
+		if(param.containsKey("SealMeterial_name") && param.get("SealMeterial_name")!= null &&  !param.get("SealMeterial_name").toString().equals("")){
+			for(String SealMeterialName : param.get("SealMeterial_name").toString().split(",")){
+
+				param.put("SealMeterial", "'" + SealMeterialName.replace(" ", "") +"'");
+				sqlSession.update("penetrationsearch.insertSealMeterial", param);
+				sqlSession.update("penetrationsearch.insertSealMeterial_his", param);
+			}
+		}
+		sqlSession.update("penetrationbaseinfo.insert", param);
+		sqlSession.update("penetrationbaseinfo.insert_his", param);
+		
+
+		sqlSession.update("penetrationinfo.insert", param);
+		sqlSession.update("penetrationinfo.insert_his", param);
+		
+		
+		sqlSession.update("sealantinfo.insert", param);
+		sqlSession.update("sealantinfo.insert_his", param);
+	}
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)  
+	public void deleteAllInfo(HashMap<String, Object> param) {
+		// TODO Auto-generated method stub
+		sqlSession.update("penetrationsearch.deleteSealMeterial", param);
+		sqlSession.update("penetrationinspect.deleteSealantConditionState", param);
+		sqlSession.update("penetrationbaseinfo.delete", param);
+		sqlSession.update("penetrationinfo.delete", param);
+		sqlSession.update("sealantinfo.delete", param);
+		sqlSession.update("penetrationinspect.delete", param);
+		
+	}
+	
 }

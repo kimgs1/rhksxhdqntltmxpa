@@ -37,15 +37,15 @@
 			</tr>
 				<tr>
 	            <th>관리번호</th>
-            	<td><div id="ManagementNo" style="width:100%">&nbsp;${ManagementNo}</div></td>
+            	<td><input id="ManagementNo" style="width:100%" value="${ManagementNo}" disabled="disabled"></td>
             </tr>
             <tr>
                 <th>관통부번호</th>
-                <td><div id="PenetrationNo" style="width:100%">&nbsp;${PenetrationNo}</div></td>
+                <td><input id="PenetrationNo" style="width:100%" value="${PenetrationNo}" disabled="disabled"></td>
             </tr>
             <tr>
                 <th>관리구역여부</th>
-                <td><div id="ManagementAreaYN" style="width:100%" contenteditable="true">&nbsp;${ManagementAreaYN}</div></td>
+                <td><input id="ManagementAreaYN" style="width:100%" value="${ManagementAreaYN}"></td>
             </tr>
             <tr>
                 <th>ELEVATION</th>
@@ -60,15 +60,15 @@
             </tr>
             <tr>
                 <th>방화지역번호</th>
-                <td><div id="FirePreventionAreaNo" style="width:100%" contenteditable="true">&nbsp;${FirePreventionAreaNo}</div></td>
+                <td><input id="FirePreventionAreaNo" style="width:100%" value="${FirePreventionAreaNo}"></td>
             </tr>
             <tr>
                 <th>점검방 번호</th>
-                <td><div id="InspectionRoomNo" style="width:100%" contenteditable="true">&nbsp;${InspectionRoomNo}</div></td>
+                <td><input id="InspectionRoomNo" style="width:100%" value="${InspectionRoomNo}"></td>
             </tr>
             <tr>
                 <th>이면방 번호</th>
-                <td><div id="BackRoomNo" style="width:100%" contenteditable="true">&nbsp;${BackRoomNo}</div></td>
+                <td><input id="BackRoomNo" style="width:100%" value="${BackRoomNo}"></td>
             </tr>
             <tr>
                 <th>관통부형태</th>
@@ -77,84 +77,105 @@
             <tr>
                 <th>벽, 바닥번호 | 방화벽 여부 </th>
                 <td><div class="row">
-                <div id="Wall_FloorNo" class="col-sm-5" contenteditable="true">&nbsp;${Wall_FloorNo}</div>
+                <input id="Wall_FloorNo" class="col-sm-5" value="${Wall_FloorNo}">
                 <div class="col-sm-1">|</div>
                 <div id="FirewallYN_tag" class="col-sm-5"></div></div></td>
             </tr>
             <tr>
                 <th>벽재질</th>
-                <td><div id="WallMeterial_tag" style="width:100%" contenteditable="true">&nbsp;${WallMeterial_name}</div></td>
+                <td><div id="WallMeterial_tag" style="width:100%"></div></td>
             </tr>
             <tr>
                 <th>벽두께</th>
-                <td><div id="WallThickness" style="width:100%" contenteditable="true">&nbsp;${WallThickness}</div></td>
+                <td><input id="WallThickness" style="width:100%" value=${WallThickness}></td>
             </tr>
             <tr>
                 <th>정면사진 번호</th>
-                <td><div id="FrontPicNo" style="width:100%">&nbsp;${FrontPicNo}</div></td>
+                <td><input id="FrontPicNo" style="width:100%" value="${FrontPicNo}" disabled="disabled"></td>
             </tr>
             <tr>
                 <th>이면사진번호</th>
-                <td><div id="BackPicNo" style="width:100%">&nbsp;${BackPicNo}</div></td>
+                <td><input id="BackPicNo" style="width:100%" value="${BackPicNo}" disabled="disabled"></td>
             </tr>
             <tr>
                 <th>관통부 참조도면 번호</th>
-                <td><div id="ReferenceFloorPlanNo" style="width:100%" contenteditable="true">&nbsp;${ReferenceFloorPlanNo}</div></td>
+                <td><input id="ReferenceFloorPlanNo" style="width:100%" value="${ReferenceFloorPlanNo}"></td>
             </tr>
             <tr>
                 <th>관통부 위치도면 번호</th>
-                <td><div id="LocationFloorPlanNo" style="width:100%" contenteditable="true">&nbsp;${LocationFloorPlanNo}</div></td>
+                <td><input id="LocationFloorPlanNo" style="width:100%" value="${LocationFloorPlanNo}"></td>
             </tr>
             <tr>
                 <th>관통부 SEAL DETAIL DWG</th>
-                <td><div id="SealDetailDWG" style="width:100%" contenteditable="true">&nbsp;${SealDetailDWG}</div></td>
+                <td><input id="SealDetailDWG" style="width:100%" value="${SealDetailDWG}"></td>
             </tr>
             <tr>
                 <th>관통부 EL.</th>
-                <td><div id="EL" style="width:100%" contenteditable="true">&nbsp;${EL}</div></td>
+                <td><input id="EL" style="width:100%" value=${EL}></td>
             </tr>
             <tr>
                 <th>관통부 직경</th>
-                <td><div id="Diameter" style="width:100%" contenteditable="true">&nbsp;${Diameter}</div></td>
+                <td>
+                    <div class="row">
+						<input id="Diameter_num_pit" class="col-sm-5" onkeyup='clearNoNum_2(this);' value="${Diameter_num_pit}">
+						<div class="col-sm-1">'-</div>
+						<input id="Diameter_num_inc" class="col-sm-5" onkeyup='clearNoNum_2(this);' value="${Diameter_num_inc}">
+						<div class="col-sm-1">"</div>
+					</div>
+                </td>
             </tr>
             <tr>
                 <th>관통부 가로</th>
-                <td><div id="Height" style="width:100%" contenteditable="true">&nbsp;${Height}</div></td>
+                <td>
+                    <div class="row">
+						<input id="Height_num_pit" class="col-sm-5" onkeyup='clearNoNum_2(this);' value="${Height_num_pit}">
+						<div class="col-sm-1">'-</div>
+						<input id="Height_num_inc" class="col-sm-5" onkeyup='clearNoNum_2(this);' value="${Height_num_inc}">
+						<div class="col-sm-1">"</div>
+					</div>
+                </td>
             </tr>
             <tr>
                 <th>관통부 세로</th>
-                <td><div id="Length" style="width:100%" contenteditable="true">&nbsp;${Length}</div></td>
+                <td>
+                    <div class="row">
+						<input id="Length_num_pit" class="col-sm-5" onkeyup='clearNoNum_2(this);' value="${Length_num_pit}">
+						<div class="col-sm-1">'-</div>
+						<input id="Length_num_inc" class="col-sm-5" onkeyup='clearNoNum_2(this);' value="${Length_num_inc}">
+						<div class="col-sm-1">"</div>
+					</div>
+                </td>
             </tr>
             <tr>
                 <th>관통부 TYPE | PROJECTION</th>
-                <td><div id="PenetrationType" style="width:100%" contenteditable="true">&nbsp;${PenetrationType}</div></td>
+                <td><input id="PenetrationType" style="width:100%" value="${PenetrationType}"></td>
             </tr>
             <tr>
                 <th>최대자유면적</th>
-                <td><div id="MaximumFreeArea" style="width:100%" contenteditable="true">&nbsp;${MaximumFreeArea}</div></td>
+                <td><input id="MaximumFreeArea" style="width:100%" value=${MaximumFreeArea}></td>
             </tr>
             <tr>
                 <th>최대환형거리</th>
-                <td><div id="MaximumFreeDistance" style="width:100%" contenteditable="true">&nbsp;${MaximumFreeDistance}</div></td>
+                <td><input id="MaximumFreeDistance" style="width:100%" value=${MaximumFreeDistance}></td>
             </tr>
             <tr>
                 <th>작성자  |  검토자</th>
                 <td>
                 	<div class="row">
-                		<div id="Register" class="col-sm-5" style="width:47%" contenteditable="true">&nbsp;${Register}</div>  
+                		<input id="Register" class="col-sm-5" style="width:47%" value="${Register}"> 
                 		<div class="col-sm-1">|</div> 
-                		<div id="Reviewer" class="col-sm-5" style="width:47%" contenteditable="true">&nbsp;${Reviewer}</div>
+                		<input id="Reviewer" class="col-sm-5" style="width:47%" value="${Reviewer}">
                 
                 	</div>
                 </td>
             </tr>
             <tr>
                 <th>확인자</th>
-                <td><div id="Checker" style="width:100%" contenteditable="true">&nbsp;${Checker}</div></td>
+                <td><input id="Checker" style="width:100%" value="${Checker}">
             </tr>
             <tr>
                 <th>특이사항</th>
-                <td><div id="SpecialNote" style="width:100%" contenteditable="true">&nbsp;${SpecialNote}</div></td>
+                <td><input id="SpecialNote" style="width:100%" value="${SpecialNote}">
             </tr>
         </table>
         <table class="w_50">
@@ -175,31 +196,31 @@
                 </td>
             </tr>
             <tr>
-            	 <td><div id="SealMeterial_name" style="width:100%" contenteditable="true">&nbsp;${SealMeterial_name}</div></td>
+            	 <td><input id="SealMeterial_name" style="width:100%" value="${SealMeterial_name}"></td>
             </tr>
             <tr>
                 <th>밀폐재 두께 (mm)</th>
-                <td><div id="SealThickness" style="width:100%" contenteditable="true">&nbsp;${SealThickness}</div></td>
+                <td><input id="SealThickness" style="width:100%" value=${SealThickness}></td>
             </tr>
             <tr>
                 <th>밀폐재 DETAIL DWG</th>
-                <td><div id="SealSealDetailDWG" style="width:100%" contenteditable="true">&nbsp;${SealSealDetailDWG}</div></td>
+                <td><input id="SealSealDetailDWG" style="width:100%" value=${SealSealDetailDWG}></td>
             </tr>
             <tr>
                 <th>SEAL QUALTY CLASS</th>
-                <td><div id="SealQualityClass" style="width:100%" contenteditable="true">&nbsp;${SealQualityClass}</div></td>
+                <td><input id="SealQualityClass" style="width:100%" value="${SealQualityClass}"></td>
             </tr>
             <tr>
                 <th>댐판 재질</th>
-                <td><div id="PressingBoardMeterial" style="width:100%" contenteditable="true">&nbsp;${PressingBoardMeterial}</div></td>
+                <td><input id="PressingBoardMeterial" style="width:100%" value="${PressingBoardMeterial}"></td>
             </tr>
             <tr>
                 <th>댐판 두께</th>
-                <td><div id="PressingBoardThickness" style="width:100%" contenteditable="true">&nbsp;${PressingBoardThickness}</div></td>
+                <td><input id="PressingBoardThickness" style="width:100%" value=${PressingBoardThickness}></td>
             </tr>
             <tr>
                 <th>시공상태</th>
-                <td><div id="ConstructionState_name" style="width:100%">&nbsp;${ConstructionState_name}</div></td>
+                <td><input id="ConstructionState_name" style="width:100%" value="${ConstructionState_name}" disabled="disabled"></td>
                 <!--네모네모 -->
             </tr>
             <!-- 
@@ -226,35 +247,35 @@
             </tr>
             <tr>
                 <th>배관</th>
-                <td><div id="Pipe" style="width:100%" contenteditable="true">&nbsp;${Pipe}</div></td>
+                <td><input id="Pipe" style="width:100%" value=${Pipe}></td>
             </tr>
             <tr>
                 <th>덕트</th>
-                <td><div id="Duct" style="width:100%" contenteditable="true">&nbsp;${Duct}</div></td>
+                <td><input id="Duct" style="width:100%" value=${Duct}></td>
             </tr>
             <tr>
                 <th>계장튜브</th>
-                <td><div id="SectionTube" style="width:100%" contenteditable="true">&nbsp;${SectionTube}</div></td>
+                <td><input id="SectionTube" style="width:100%" value=${SectionTube}></td>
             </tr>
             <tr>
                 <th>전선관</th>
-                <td><div id="Conduit" style="width:100%" contenteditable="true">&nbsp;${Conduit}</div></td>
+                <td><input id="Conduit" style="width:100%" value=${Conduit}></td>
             </tr>
             <tr>
                 <th>케이블</th>
-                <td><div id="Cable" style="width:100%" contenteditable="true">&nbsp;${Cable}</div></td>
+                <td><input id="Cable" style="width:100%" value=${Cable}></td>
             </tr>
             <tr>
                 <th>트레이</th>
-                <td><div id="Tray" style="width:100%" contenteditable="true">&nbsp;${Tray}</div></td>
+                <td><input id="Tray" style="width:100%" value=${Tray}></td>
             </tr>
             <tr>
                 <th>커버트레이</th>
-                <td><div id="CoverTray" style="width:100%" contenteditable="true">&nbsp;${CoverTray}</div></td>
+                <td><input id="CoverTray" style="width:100%" value=${CoverTray}></td>
             </tr>
             <tr>
                 <th>기타</th>
-                <td><div id="Etc" style="width:100%" contenteditable="true">&nbsp;${Etc}</div></td>
+                <td><input id="Etc" style="width:100%" value=${Etc}></td>
             </tr>
         </table>
         <table class="w_50">
@@ -263,19 +284,19 @@
             </tr>
             <tr>
                 <th>SAFE CATEGORY</th>
-                <td><div id="SAFETY_CATEGORY" style="width:100%" contenteditable="true">&nbsp;${SAFETY_CATEGORY}</div></td>
+                <td><input id="SAFETY_CATEGORY" style="width:100%" value=${SAFETY_CATEGORY}></td>
             </tr>
             <tr>
                 <th>ANCHOR TYPE</th>
-                <td><div id="ANCHORTYPE" style="width:100%" contenteditable="true">&nbsp;${ANCHORTYPE}</div></td>
+                <td><input id="ANCHORTYPE" style="width:100%" value=${ANCHORTYPE}></td>
             </tr>
             <tr>
                 <th>LATERAL MOVEMENT</th>
-                <td><div id="LATERALMOVEMENT" style="width:100%" contenteditable="true">&nbsp;${LATERALMOVEMENT}</div></td>
+                <td><input id="LATERALMOVEMENT" style="width:100%" value=${LATERALMOVEMENT}></td>
             </tr>
             <tr>
                 <th>LINE TEMPERATURE</th>
-                <td><div id="LINETEMPERATURE" style="width:100%" contenteditable="true">&nbsp;${LINETEMPERATURE}</div></td>
+                <td><input id="LINETEMPERATURE" style="width:100%" value=${LINETEMPERATURE}></td>
             </tr>
             <tr>
                 <th></th>
@@ -296,44 +317,44 @@
             </tr>
             <tr>
                 <th>VENTILATION</th>
-                <td><div id="VENTILATION_VALUE" style="width:100%" contenteditable="true">&nbsp;${VENTILATION_VALUE}</div></td>
-                <td><div id="VENTILATION_VALUE_RANGE" style="width:100%" contenteditable="true">&nbsp;${VENTILATION_VALUE_RANGE}</div></td>
-                <td><div id="VENTILATION_VAL_NO" style="width:100%" contenteditable="true">&nbsp;${VENTILATION_VAL_NO}</div></td>
-                <td><div id="VENTILATION_JUDGMENT" style="width:100%" contenteditable="true">&nbsp;${VENTILATION_JUDGMENT}</div></td>
-                <td><div id="VENTILATION_REASON" style="width:100%" contenteditable="true">&nbsp;${VENTILATION_REASON}</div></td>
+                <td><input id="VENTILATION_VALUE" style="width:100%" value=${VENTILATION_VALUE}></td>
+                <td><input id="VENTILATION_VALUE_RANGE" style="width:100%" value=${VENTILATION_VALUE_RANGE}></td>
+                <td><input id="VENTILATION_VAL_NO" style="width:100%" value=${VENTILATION_VAL_NO}></td>
+                <td><input id="VENTILATION_JUDGMENT" style="width:100%" value=${VENTILATION_JUDGMENT}></td>
+                <td><input id="VENTILATION_REASON" style="width:100%" value=${VENTILATION_REASON}></td>
             </tr>
             <tr>
                 <th>FIRE</th>
-                <td><div id="FIRE_VALUE" style="width:100%" contenteditable="true">&nbsp;${FIRE_VALUE}</div></td>
-                <td><div id="FIRE_VALUE_RANGE" style="width:100%" contenteditable="true">&nbsp;${FIRE_VALUE_RANGE}</div></td>
-                <td><div id="FIRE_VAL_NO" style="width:100%" contenteditable="true">&nbsp;${FIRE_VAL_NO}</div></td>
-                <td><div id="FIRE_JUDGMENT" style="width:100%" contenteditable="true">&nbsp;${FIRE_JUDGMENT}</div></td>
-                <td><div id="FIRE_REASON" style="width:100%" contenteditable="true">&nbsp;${FIRE_REASON}</div></td>
+                <td><input id="FIRE_VALUE" style="width:100%" value=${FIRE_VALUE}></td>
+                <td><input id="FIRE_VALUE_RANGE" style="width:100%" value=${FIRE_VALUE_RANGE}></td>
+                <td><input id="FIRE_VAL_NO" style="width:100%" value=${FIRE_VAL_NO}></td>
+                <td><input id="FIRE_JUDGMENT" style="width:100%" value=${FIRE_JUDGMENT}></td>
+                <td><input id="FIRE_REASON" style="width:100%" value=${FIRE_REASON}></td>
             </tr>
             <tr>
                 <th>RADIATION</th>
-                <td><div id="RADIATION_VALUE" style="width:100%" contenteditable="true">&nbsp;${RADIATION_VALUE}</div></td>
-                <td><div id="RADIATION_VALUE_RANGE" style="width:100%" contenteditable="true">&nbsp;${RADIATION_VALUE_RANGE}</div></td>
-                <td><div id="RADIATION_VAL_NO" style="width:100%" contenteditable="true">&nbsp;${RADIATION_VAL_NO}</div></td>
-                <td><div id="RADIATION_JUDGMENT" style="width:100%" contenteditable="true">&nbsp;${RADIATION_JUDGMENT}</div></td>
-                <td><div id="RADIATION_REASON" style="width:100%" contenteditable="true">&nbsp;${RADIATION_REASON}</div></td>
+                <td><input id="RADIATION_VALUE" style="width:100%" value=${RADIATION_VALUE}></td>
+                <td><input id="RADIATION_VALUE_RANGE" style="width:100%" value=${RADIATION_VALUE_RANGE}></td>
+                <td><input id="RADIATION_VAL_NO" style="width:100%" value=${RADIATION_VAL_NO}></td>
+                <td><input id="RADIATION_JUDGMENT" style="width:100%" value=${RADIATION_JUDGMENT}></td>
+                <td><input id="RADIATION_REASON" style="width:100%" value=${RADIATION_REASON}></td>
                 
             </tr>
             <tr>
                 <th>FLOOD</th>
-                <td><div id="FLOOD_VALUE" style="width:100%" contenteditable="true">&nbsp;${FLOOD_VALUE}</div></td>
-                <td><div id="FLOOD_VALUE_RANGE" style="width:100%" contenteditable="true">&nbsp;${FLOOD_VALUE_RANGE}</div></td>
-                <td><div id="FLOOD_VAL_NO" style="width:100%" contenteditable="true">&nbsp;${FLOOD_VAL_NO}</div></td>
-                <td><div id="FLOOD_JUDGMENT" style="width:100%" contenteditable="true">&nbsp;${FLOOD_JUDGMENT}</div></td>
-                <td><div id="FLOOD_REASON" style="width:100%" contenteditable="true">&nbsp;${FLOOD_REASON}</div></td>
+                <td><input id="FLOOD_VALUE" style="width:100%" value=${FLOOD_VALUE}></td>
+                <td><input id="FLOOD_VALUE_RANGE" style="width:100%" value=${FLOOD_VALUE_RANGE}></td>
+                <td><input id="FLOOD_VAL_NO" style="width:100%" value=${FLOOD_VAL_NO}></td>
+                <td><input id="FLOOD_JUDGMENT" style="width:100%" value=${FLOOD_JUDGMENT}></td>
+                <td><input id="FLOOD_REASON" style="width:100%" value=${FLOOD_REASON}></td>
             </tr>
             <tr>
                 <th>PRESSURE</th>
-                <td><div id="PRESSURE_VALUE" style="width:100%" contenteditable="true">&nbsp;${PRESSURE_VALUE}</div></td>
-                <td><div id="PRESSURE_VALUE_RANGE" style="width:100%" contenteditable="true">&nbsp;${PRESSURE_VALUE_RANGE}</div></td>
-                <td><div id="PRESSURE_VAL_NO" style="width:100%" contenteditable="true">&nbsp;${PRESSURE_VAL_NO}</div></td>
-                <td><div id="PRESSURE_JUDGMENT" style="width:100%" contenteditable="true">&nbsp;${PRESSURE_JUDGMENT}</div></td>
-                <td><div id="PRESSURE_REASON" style="width:100%" contenteditable="true">&nbsp;${PRESSURE_REASON}</div></td>
+                <td><input id="PRESSURE_VALUE" style="width:100%" value=${PRESSURE_VALUE}></td>
+                <td><input id="PRESSURE_VALUE_RANGE" style="width:100%" value=${PRESSURE_VALUE_RANGE}></td>
+                <td><input id="PRESSURE_VAL_NO" style="width:100%" value=${PRESSURE_VAL_NO}></td>
+                <td><input id="PRESSURE_JUDGMENT" style="width:100%" value=${PRESSURE_JUDGMENT}></td>
+                <td><input id="PRESSURE_REASON" style="width:100%" value=${PRESSURE_REASON}></td>
             </tr>
         </table>
         
@@ -350,7 +371,7 @@
 			<table class="w_100">
 				<tr>
 					<th colspan="12">● 점검정보 
-						<input onclick="deleteDetailView('+options.rowId+')"
+						<input onclick="insertInspectInfo()"
 										style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="추가">
 					</th>
@@ -359,10 +380,10 @@
 					<tr>
 						<th style="width: 10%">점검주기</th>
 						<th style="width: 10%">점검차수</th>
-						<th style="width: 10%">점검일</th>
-						<th style="width: 15%">밀폐재시공상태</th>
-						<th style="width: 10%">판정</th>
-						<th>
+						<th style="width: 8%">점검일</th>
+						<th style="width: 13%">밀폐재시공상태</th>
+						<th style="width: 9%">판정</th>
+						<th style="width: 50%">
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-6">판단사유</div>
@@ -401,15 +422,24 @@
 						</th>
 					</tr>
 					<tr>
-						<td>&nbsp;${list.FrontPicNo}</td>
-						<td>&nbsp;${list.BackPicNo}</td>
+						<td>${list.FrontPicNo}</td>
+						<td>${list.BackPicNo}</td>
 						<td>&nbsp;${list.ImproveDate}</td>
 						<td>&nbsp;${list.DesignChangeNo}</td>
 						<td>&nbsp;${list.ImproveMember}</td>
 						<td>&nbsp;${list.ImproveNote}</td>
 					</tr>
 
-
+					<tr>
+						<td colspan="5">
+							<img id="frontImg_${list.InspectSeq}" src="DownLoadImg/${list.FrontPicNo}.png" onclick="imgBig(this)"
+									onerror="javascript:this.src='images/default-img.png'" style="width:350px;height:250px">
+						</td>
+						<td>
+							<img id="backImg_${list.InspectSeq}" src="DownLoadImg/${list.BackPicNo}.png" onclick="imgBig(this)"
+									onerror="javascript:this.src='images/default-img.png'" style="width:350px;height:250px">
+						</td>
+					</tr>
 					<tr>
 						<td colspan="6" style="height: 1px" bgcolor="black"></td>
 					</tr>
@@ -426,6 +456,7 @@
 		tagBind("selectBox", "FirewallYN","","${FirewallYN}",codeAllInfo.A09);
 		tagBind("selectBox", "WallMeterial","","${WallMeterial}",codeAllInfo.A04);
 		tagBind("selectBox", "SealMeterial","","${SealMeterial}",codeAllInfo.A12);
+		tagBind("selectBox", "pie_SealantConditionState","","",codeAllInfo.A03);
 		tagBind("selectBox", "EquipNo","","${EquipNo}",codeAllInfo.A01);
 		tagBind("selectBox", "LocNo","","${LocNo}",codeAllInfo.A11);
 	</script>

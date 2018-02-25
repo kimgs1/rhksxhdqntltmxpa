@@ -23,7 +23,7 @@ function init(){
 
 function getBaseCodeInfo(){
 	getCodeAllInfo();
-	tagBind("radio", "matter","관통재정보",null,codeAllInfo.A08);
+	tagBind("selectBox_All", "matter","관통재정보",null,codeAllInfo.A08);
 }
 
 
@@ -59,7 +59,7 @@ function getSearchPenetrationinfoList(){
 			ManagementNo:$("#ManagementNo").val(),
 			PenetrationNo:$("#PenetrationNo").val(),
 //			matter:$("#matter").val(),
-			matter:getRadioValueByTagName('matter'),
+//			matter:$("#matter option:selected").val(),
 			Pipe:$("#Pipe").val(),
 			Duct:$("#Duct").val(),
 			SectionTube:$("#SectionTube").val(),
@@ -112,7 +112,7 @@ function getSearchPenetrationinfoList(){
 							{name:'UpdateDate',hidden:true},
 							{name:'ManagementNo', label:'관리번호', align:'center', width:'10%'},
 							{name:'PenetrationNo',label:'관통부번호', align:'center', width:'10%'},
-							{name:'matter_name',label:'관통재정보', align:'center', width:'10%'},
+//							{name:'matter_name',label:'관통재정보', align:'center', width:'10%'},
 							{name:'Pipe',label:'배관', align:'center', width:'10%'},
 							{name:'Duct',label:'덕트', align:'center', width:'10%'},
 							{name:'SectionTube',label:'계장튜브', align:'center', width:'10%'},
@@ -155,7 +155,7 @@ function getSearchPenetrationinfoList(){
 					$('#RegID').val(rowdata.RegID);
 //					document.getElementById("RegDateTime").innerHTML = rowdata.RegDateTime;
 
-					tagBind("radio", "matter","관통재정보",rowdata.matter,codeAllInfo.A08);
+					tagBind("selectBox_All", "matter","관통재정보",rowdata.matter,codeAllInfo.A08);
 				},
 			});				
 		}

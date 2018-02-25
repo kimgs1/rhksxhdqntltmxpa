@@ -3,23 +3,45 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="performanceEvaluation">
 	<select id="getList" resultType="hashmap" parameterType="hashmap">
-		select 
+	
+	select 
+			EquipNo,
+			dbo.GetCodeInfoNameByID(EquipNo) EquipNo_name,
+			LocNo,
+			dbo.GetCodeInfoNameByID(LocNo) LocNo_name,
 			ManagementNo,
 			PenetrationNo,
-			RequirePerformance,
-			dbo.GetCodeInfoNameByID(RequirePerformance) RequirePerformance_name,
-			EvaluationResult,
-			dbo.GetCodeInfoNameByID(EvaluationResult) EvaluationResult_name,
-			FireResistanceRating,
-			PSI,
-			WaterSeal,
-			RadiationShield,
+			VENTILATION_VALUE,
+			VENTILATION_VALUE_RANGE,
+			VENTILATION_VAL_NO,
+			VENTILATION_JUDGMENT,
+			VENTILATION_REASON,
+			FIRE_VALUE,
+			FIRE_VALUE_RANGE,
+			FIRE_VAL_NO,
+			FIRE_JUDGMENT,
+			FIRE_REASON,
+			RADIATION_VALUE,
+			RADIATION_VALUE_RANGE,
+			RADIATION_VAL_NO,
+			RADIATION_JUDGMENT,
+			RADIATION_REASON,
+			FLOOD_VALUE,
+			FLOOD_VALUE_RANGE,
+			FLOOD_VAL_NO,
+			FLOOD_JUDGMENT,
+			FLOOD_REASON,
+			PRESSURE_VALUE,
+			PRESSURE_VALUE_RANGE,
+			PRESSURE_VAL_NO,
+			PRESSURE_JUDGMENT,
+			PRESSURE_REASON,
 			RegID,
-			RegDate,
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
-		FROM performanceEvaluation
+		FROM penetrationbaseinfo
 		WHERE 1=1 ${cond}
-		ORDER BY RegDate desc
+		ORDER BY RegDate desc 
+		
 	</select>
 	
 	<select id="getCountBySeq" resultType="int" parameterType="hashmap">

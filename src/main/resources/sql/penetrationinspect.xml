@@ -20,19 +20,59 @@
 			FrontPicNo,
 			BackPicNo,
 			DesignChangeNo,
-			FileLocation_1,
-			FileLocation_2,
-			FileLocation_3,
 			RegID,
 			RegDate,
 			CONCAT(InspectionInterval,'/',InspectSeq) InspectionInterval_InspectSeq,
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
 		FROM penetrationinspect
 		WHERE 1=1 ${cond}
-		ORDER BY RegDate desc 
+		ORDER BY InspectSeq desc 
+		
+	</select>
+	
+	
+	<select id="getDataList" resultType="hashmap" parameterType="hashmap">
+<![CDATA[
+		select * 
+	from (
+			select 
+			Row_Number() OVER (ORDER BY updatedate desc ,regdate desc) as rowNum,
+            ManagementNo,
+			PenetrationNo,
+			InspectDate,
+			InspectSeq,
+			ImproveDate,
+			InspectionInterval,
+			SealantConditionState,
+			dbo.GetConstractionStateByCodePenetrationInspect(PenetrationNo,ManagementNo,'A03',InspectSeq) SealantConditionState_name,
+			JudgementReason,
+			Judgment,
+			dbo.GetCodeInfoNameByID(Judgment) Judgment_name,
+			ImproveNote,
+			ImproveMember,
+			FrontPicNo,
+			BackPicNo,
+			DesignChangeNo,
+			RegID,
+			RegDate,
+			CONCAT(InspectionInterval,'/',InspectSeq) InspectionInterval_InspectSeq,
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime,
+			updatedate
+		FROM penetrationinspect
+		WHERE 1=1 ${cond}	
+	) as foo where foo.rowNum > ${low} and foo.rowNum <= ${high}
+	ORDER BY foo.updatedate desc ,foo.regdate desc
+	]]>
+	</select>
+	
+	
+	<select id="getListCount" resultType="Integer" parameterType="hashmap">
+			select count(*)
+		    FROM penetrationinspect 
+		    where 1=1 ${cond}
 	</select>
 	<update id="insert">
-		Replace INTO
+		INSERT INTO
 		penetrationinspect (
 			ManagementNo,
 			PenetrationNo,
@@ -40,12 +80,16 @@
 			InspectSeq,
 			ImproveDate,
 			InspectionInterval,
-			SealantConditionState,
 			JudgementReason,
 			Judgment,
 			ImproveNote,
 			RegID,
-			UseYN
+			ImproveMember ,
+			FrontPicNo,
+			FrontPicImg,
+			BackPicNo,
+			BackPicImg,
+			DesignChangeNo
 			)
 		VALUES
 		(
@@ -55,48 +99,181 @@
 			'${InspectSeq}',
 			'${ImproveDate}',
 			'${InspectionInterval}',
-			'${SealantConditionState}',
 			'${JudgementReason}',
 			'${Judgment}',
 			'${ImproveNote}',
 			'${RegID}',
-			'Y'
+			'${ImproveMember}',
+			'${FrontPicNo}',
+			#{FrontPicImg},
+			'${BackPicNo}',
+			#{BackPicImg},
+			'${DesignChangeNo}'
 		)
 
 	</update>
 	<update id="insert_his">
 		INSERT INTO
 		penetrationinspect_his (
+			status,
 			ManagementNo,
 			PenetrationNo,
 			InspectDate,
 			InspectSeq,
 			ImproveDate,
 			InspectionInterval,
-			SealantConditionState,
 			JudgementReason,
 			Judgment,
 			ImproveNote,
 			RegID,
-			UseYN
+			ImproveMember ,
+			FrontPicNo,
+			FrontPicImg,
+			BackPicNo,
+			BackPicImg,
+			DesignChangeNo
 			)
 		VALUES
 		(
+			'insert',
 			'${ManagementNo}',
 			'${PenetrationNo}',
 			'${InspectDate}',
 			'${InspectSeq}',
 			'${ImproveDate}',
 			'${InspectionInterval}',
-			'${SealantConditionState}',
 			'${JudgementReason}',
 			'${Judgment}',
 			'${ImproveNote}',
 			'${RegID}',
-			'Y'
+			'${ImproveMember}',
+			'${FrontPicNo}',
+			#{FrontPicImg},
+			'${BackPicNo}',
+			#{BackPicImg},
+			'${DesignChangeNo}'
 		)
-
 	</update>
+	
+	
+	
+	<update id="update">
+		
+		update penetrationinspect
+		set
+			ManagementNo = '${ManagementNo}',
+			PenetrationNo = '${PenetrationNo}',
+			InspectDate = '${InspectDate}',
+			InspectSeq = '${InspectSeq}',
+			ImproveDate = '${ImproveDate}',
+			InspectionInterval = '${InspectionInterval}',
+			JudgementReason = '${JudgementReason}',
+			Judgment = '${Judgment}',
+			ImproveNote = '${ImproveNote}',
+			UpdateId = '${RegID}',
+			UpdateDate = getdate(),
+			ImproveMember = '${ImproveMember}',
+			FrontPicNo = '${FrontPicNo}',
+			FrontPicImg = #{FrontPicImg},
+			BackPicNo = '${BackPicNo}',
+			BackPicImg = #{BackPicImg},
+			DesignChangeNo = '${DesignChangeNo}'
+			
+		where 1=1
+			and ManagementNo = '${ManagementNo}'
+			and PenetrationNo = '${PenetrationNo}'
+			and InspectSeq = '${InspectSeq}'  
+	</update>
+	<update id="update_his">
+		
+		INSERT INTO
+		penetrationinspect_his (
+			status,
+			ManagementNo,
+			PenetrationNo,
+			InspectDate,
+			InspectSeq,
+			ImproveDate,
+			InspectionInterval,
+			JudgementReason,
+			Judgment,
+			ImproveNote,
+			RegID,
+			ImproveMember ,
+			FrontPicNo,
+			FrontPicImg,
+			BackPicNo,
+			BackPicImg,
+			DesignChangeNo
+			)
+		VALUES
+		(
+			'update',
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			'${InspectDate}',
+			'${InspectSeq}',
+			'${ImproveDate}',
+			'${InspectionInterval}',
+			'${JudgementReason}',
+			'${Judgment}',
+			'${ImproveNote}',
+			'${RegID}',
+			'${ImproveMember}',
+			'${FrontPicNo}',
+			#{FrontPicImg},
+			'${BackPicNo}',
+			#{BackPicImg},
+			'${DesignChangeNo}'
+		)
+	</update>
+	<update id="deleteSealantConditionState" parameterType="hashmap" >
+		delete  penetrationmaterialcodeinfo
+		where ManagementNo = '${ManagementNo}'
+			 and PenetrationNo = '${PenetrationNo}'
+			 and InspectSeq like '%${InspectSeq}%'
+			 and CodeGroupID = 'A03'
+	</update>
+	
+	<insert id="insertSealantConditionState" parameterType="hashmap" >
+		insert into 
+		penetrationmaterialcodeinfo
+		(
+			ManagementNo,
+			PenetrationNo,
+			CodeID,
+			CodeGroupID,
+			InspectSeq
+		)
+		VALUES(
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			dbo.GetCodeInfoIDByName(${SealantConditionState}),
+			'A03',
+			'${InspectSeq}'
+		)
+	</insert>
+	<insert id="insertSealantConditionState_his" parameterType="hashmap" >
+		insert into 
+		penetrationmaterialcodeinfo_his
+		(
+			status,
+			ManagementNo,
+			PenetrationNo,
+			CodeID,
+			CodeGroupID,
+			InspectSeq
+		)
+		VALUES(
+			'insert',
+			'${ManagementNo}',
+			'${PenetrationNo}',
+			dbo.GetCodeInfoIDByName(${SealantConditionState}),
+			'A03',
+			'${InspectSeq}'
+		)
+	</insert>
+	
 	<select id="getCountBySeq" resultType="int" parameterType="hashmap">
 		SELECT
 			count(*)
@@ -105,11 +282,11 @@
 	</select>
 	
 	<update id="delete"  parameterType="hashmap">
-		UPDATE penetrationinspect
-		SET 
-			UseYN = 'N',
-			updateID = '${RegID}'
-		WHERE Seq = '${Seq}';
+		delete penetrationinspect
+		
+		where ManagementNo = '${ManagementNo}'
+			 and PenetrationNo = '${PenetrationNo}'
+			 and InspectSeq like '%${InspectSeq}%'
 	</update>
 	
 	<update id="delete_rollBack"  parameterType="hashmap">

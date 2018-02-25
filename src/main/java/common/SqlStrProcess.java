@@ -9,6 +9,27 @@ public class SqlStrProcess {
 			tableHead = new HashMap<String , Object>();
 		}
 		for(String key : param.keySet()){
+			
+			if(key.equals("RealPath")){
+				continue;
+			}
+			if(key.equals("ELEVATION_cal_flag")){
+				continue;
+			}
+			if(key.equals("ELEVATION_num_pit")){
+				continue;
+			}
+			if(key.equals("ELEVATION_num_inc")){
+				continue;
+			}
+			if(key.equals("EvaluationResult")){
+				continue;
+			}
+			if(key.equals("nowPage")){
+				continue;
+			}
+			
+			
 			if(param.get(key) != null && !param.get(key).equals("")){
 				if(tableHead.get(key) != null && !tableHead.get(key).equals("") ){
 					searchCond += " AND "+ tableHead.get(key) + key + " like '%" + param.get(key) + "%'";

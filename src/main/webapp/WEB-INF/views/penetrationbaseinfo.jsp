@@ -34,8 +34,22 @@
                             <input id="PenetrationNo" type="text" value=""/>
                         </li> 
                         <li>
+                        <!-- 
                             <label for="manag04">ELEVATION</label>
                             <input id="Elevation" type="text" value=""/>
+                         -->
+                            
+                            <label>ELEVATION</label>
+	                            <select id="ELEVATION_cal_flag">
+		                            <option value="=" selected>=</option>
+		                            <option value=">">&gt;</option>
+		                            <option value=">=">&ge;</option>
+		                            <option value="<">&lt;</option>
+		                            <option value="<=">&le;</option>
+	                            </select>
+	                            <input id="ELEVATION_num_pit" style="width:60px" type="text" onkeyup="clearNoNum_2(this);"/> '-
+	                            <input id="ELEVATION_num_inc" style="width:60px" type="text" onkeyup="clearNoNum_2(this);"/> "
+                            
                         </li>
                         <li id="EquipNo_tag">
                             <label for="manag03">호기</label>
@@ -159,8 +173,8 @@
                     </ul>
                     <div>
                         <input class="searchBtn" type="button" onclick="getSearchPenetrationbaseinfoList()"value="검색" />
-                        <input type="reset" onclick="init();" value="초기화" />
-                        <input class="saveBtn"type="button" onclick="PenetrationbaseinfoSave();"value="저장" /><!--검색도 저장도 submit?-->
+                        <input style="margin-left: 15px" type="reset" onclick="init();" value="초기화" />
+                        <!--<input class="saveBtn"type="button" onclick="PenetrationbaseinfoSave();"value="저장" />검색도 저장도 submit?-->
                     </div>
                 </form>
             </section>

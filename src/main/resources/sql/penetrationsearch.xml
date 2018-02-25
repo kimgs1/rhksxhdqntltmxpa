@@ -10,13 +10,13 @@
 	select * 
 	from (
 			select 
-						Row_Number() OVER (ORDER BY pb.regdate desc) as rowNum,
+						Row_Number() OVER (ORDER BY pb.updatedate desc ,pb.regdate desc) as rowNum,
                         pb.EquipNo,
                         dbo.GetCodeInfoNameByID(pb.EquipNo) EquipNo_name,
                         pb.LocNo,
                         dbo.GetCodeInfoNameByID(pb.LocNo) LocNo_name,
                         pb.ManagementNo,
-                        pb.PenetrationNo ,
+                        pb.PenetrationNo,
                         pb.ManagementAreaYN,
                         CONCAT(cast(pb.Elevation_num_pit as decimal(10,0)), '''-',pb.Elevation_num_inc, '"') Elevation,
                         pb.Elevation_num_pit,
@@ -36,9 +36,15 @@
                         pb.LocationFloorPlanNo,
                         pb.SealDetailDWG,
                         pb.EL,
-                        pb.Diameter,
-                        pb.Height,
-                        pb.Length,
+                        CONCAT(cast(pb.Diameter_num_pit as decimal(10,0)), '''-',pb.Diameter_num_inc, '"') Diameter,
+                        CONCAT(cast(pb.Height_num_pit as decimal(10,0)), '''-',pb.Height_num_inc, '"') Height,
+                        CONCAT(cast(pb.Length_num_pit as decimal(10,0)), '''-',pb.Length_num_inc, '"') Length,
+			            pb.Diameter_num_pit,
+			            pb.Diameter_num_inc,
+			            pb.Height_num_pit,
+			            pb.Height_num_inc,
+			            pb.Length_num_pit,
+			            pb.Length_num_inc,
                         pb.PenetrationType,
                         pb.MaximumFreeArea,
                         pb.MaximumFreeDistance,
@@ -87,6 +93,9 @@
                         pb.NewYN,
                         pb.Wall_Fire_time,
                         pb.SpecialNote,
+                        pb.FileLocation_1,
+                        pb.FileLocation_2,
+                        pb.FileLocation_3,
 
                         p.matter,
 			            dbo.GetCodeInfoNameByID(p.matter) matter_name,
@@ -105,6 +114,7 @@
                         pi.ImproveDate,
                         pi.InspectionInterval,
                         pi.SealantConditionState,
+			            dbo.GetConstractionStateByCodePenetrationInspect(pi.PenetrationNo,pi.ManagementNo,'A03',pi.InspectSeq) SealantConditionState_name,
                         pi.JudgementReason,
                         pi.Judgment,
 			            dbo.GetCodeInfoNameByID(pi.Judgment) Judgment_name,
@@ -113,13 +123,10 @@
 						pi.FrontPicNo,
 						pi.BackPicNo,
 						pi.DesignChangeNo,
-						pi.FileLocation_1,
-						pi.FileLocation_2,
-						pi.FileLocation_3,
     
                         
                         s.ConstructionState,
-			            dbo.GetConstractionStateByCodePenetration(pb.PenetrationNo,pb.ManagementNo,'A03') ConstructionState_name,
+			            dbo.GetConstractionStateByCodePenetrationInspect(pb.PenetrationNo,pb.ManagementNo,'A03',pi.InspectSeq) ConstructionState_name,
                         s.SealSealDetailDWG,
                         s.SealQualityClass,
                         dbo.GetSealMaterialByCodePenetration(pb.PenetrationNo,pb.ManagementNo,'A12') SealMeterial_name,
@@ -133,7 +140,8 @@
                         s.SealantSpecialNote,
                        
                         
-                        pb.regdate
+                        pb.regdate,
+                        pb.updatedate
 		            FROM penetrationbaseinfo pb
 		            JOIN penetrationinfo p on p.ManagementNo = pb.ManagementNo and p.PenetrationNo = pb.PenetrationNo
 		            JOIN sealantinfo s on s.ManagementNo = pb.ManagementNo and s.PenetrationNo = pb.PenetrationNo 
@@ -142,7 +150,7 @@
 		            where 1=1 ${cond}	
 	
 	) as foo where foo.rowNum > ${low} and foo.rowNum <= ${high}
-	ORDER BY foo.RegDate desc
+	ORDER BY foo.updatedate desc ,foo.regdate desc
 	]]>
 	</select>
 	
@@ -379,17 +387,22 @@
 	
 	<select id="getFrontPicImg" resultType="[B" parameterType="hashmap" >
 		 select FrontPicImg as photo
-		 from penetrationInspect
+		 from penetrationInspect pi
 		 where ManagementNo = '${ManagementNo}'
 			 and PenetrationNo = '${PenetrationNo}'
-			 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
+			 and InspectSeq = '${InspectSeq}'
+			 
+			-- and pi.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pi.PenetrationNo  and pifoo.ManagementNo = pi.ManagementNo)
 	</select>
 	<select id="getBackPicImg"  resultType="[B" parameterType="hashmap">
 		 select BackPicImg as photo
-		 from penetrationInspect pm
+		 from penetrationInspect pi
 		 where ManagementNo = '${ManagementNo}'
 			 and PenetrationNo = '${PenetrationNo}'
-			 and pm.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pm.PenetrationNo  and pifoo.ManagementNo = pm.ManagementNo)
+			 and InspectSeq = '${InspectSeq}'
+			 
+			 
+		--	 and pi.InspectSeq = (select max(pifoo.inspectSeq) from penetrationinspect pifoo where pifoo.PenetrationNo = pi.PenetrationNo  and pifoo.ManagementNo = pi.ManagementNo)
 			 
 	</select>
 	
@@ -407,6 +420,11 @@
 		where GroupID = 'A12'  ${cond}
 	</select>
 	
+	<select id="checkSealantConditionStatel" parameterType="hashmap" resultType="int">
+		select count(*)
+		from codeinfo
+		where GroupID = 'A03'  ${cond}
+	</select>
 	
 	<update id="deleteSealMeterial" parameterType="hashmap" >
 		delete  penetrationmaterialcodeinfo

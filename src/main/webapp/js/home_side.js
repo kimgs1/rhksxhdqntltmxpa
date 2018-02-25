@@ -10,6 +10,10 @@ function logout(){
 	location.href = "home.do?command=logout";
 }
 
+function imgBig(obj){
+	var pos = obj.src.lastIndexOf("/")*1;
+	window.open("./DownLoadImg/" + obj.src.substring(pos+1));
+}
 function menuClick(tagName){
 	/*tagNum
 	 *FBUL 공지사항 
@@ -125,7 +129,7 @@ function tagBind(tagType,colName,tagName,value,valueList){
 		innerHtml +='<option value="" selected>'+'전체'+'</option>';
 		for(var i=0;i<valueList.length;i++){ 
 			if(value == valueList[i].CodeID){
-				innerHtml +='<option value="'+valueList[i].CodeID+'" >'+valueList[i].CodeName+'</option>';
+				innerHtml +='<option value="'+valueList[i].CodeID+'" selected>'+valueList[i].CodeName+'</option>';
 			}else{
 				innerHtml +='<option value="'+valueList[i].CodeID+'">'+valueList[i].CodeName+'</option>';
 			}
@@ -279,3 +283,18 @@ function HashMap() {
       return o.toString();  
   }  
 }  
+
+function clearNoNum_2(obj) {     
+	obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符  
+	obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字而不是  
+	obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的  
+	obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");  
+	obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数 
+}  
+
+
+function OpenPdfFiles(fileName){
+
+	window.open("./PDFFiles/" + fileName);
+}
+

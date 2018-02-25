@@ -41,11 +41,11 @@ function init(){
 
 function getBaseCodeInfo(){
 	getCodeAllInfo();
-	tagBind("radio", "FirewallYN","방화벽여부",null,codeAllInfo.A09);
-	tagBind("radio", "PenetrationForm","관통부형태",null,codeAllInfo.A02);
-	tagBind("selectBox", "WallMeterial","벽재질",null,codeAllInfo.A04);
-	tagBind("selectBox", "EquipNo","호기",null,codeAllInfo.A01);
-	tagBind("selectBox", "LocNo","건물",null,codeAllInfo.A11);
+	tagBind("selectBox_All", "FirewallYN","방화벽여부",null,codeAllInfo.A09);
+	tagBind("selectBox_All", "PenetrationForm","관통부형태",null,codeAllInfo.A02);
+	tagBind("selectBox_All", "WallMeterial","벽재질",null,codeAllInfo.A04);
+	tagBind("selectBox_All", "EquipNo","호기",null,codeAllInfo.A01);
+	tagBind("selectBox_All", "LocNo","건물",null,codeAllInfo.A11);
 }
 function getPenetrationbaseinfoList(){
 	$.ajax({
@@ -71,6 +71,12 @@ function getPenetrationbaseinfoList(){
 
 
 function getSearchPenetrationbaseinfoList(){
+	if($("#ELEVATION_num_pit").val() != "" || $("#ELEVATION_num_inc").val() != "" ){
+		if(isNaN(Number($("#ELEVATION_num_pit").val())) || isNaN($("#ELEVATION_num_inc").val()) || $("#ELEVATION_num_pit").val() == "" || $("#ELEVATION_num_inc").val() == ""  ){
+			alert("ELEVATION은 빈값이나 두개자리에 모두 수자를 입력하여야 합니다.");
+			return;
+		}
+	}
 	$.ajax({
 		url : 'penetrationbaseinfo.do',
 		type : 'post',
@@ -82,15 +88,18 @@ function getSearchPenetrationbaseinfoList(){
 			ManagementNo:$("#ManagementNo").val(),
 			PenetrationNo :$("#PenetrationNo").val(),
 			ManagementAreaYN:$("#ManagementAreaYN").val(),
-			Elevation:$("#Elevation").val(),
+//			Elevation:$("#Elevation").val(),
+			ELEVATION_cal_flag :$("#ELEVATION_cal_flag option:selected").val(),
+			ELEVATION_num_pit :$("#ELEVATION_num_pit").val(),
+			ELEVATION_num_inc :$("#ELEVATION_num_inc").val(),
 			FirePreventionAreaNo:$("#FirePreventionAreaNo").val(),
 			InspectionRoomNo:$("#InspectionRoomNo").val(),
 			BackRoomNo:$("#BackRoomNo").val(),
 //			PenetrationForm:$("#PenetrationForm").val(),
-			PenetrationForm:getRadioValueByTagName('PenetrationForm'),
+			PenetrationForm:$("#PenetrationForm option:selected").val(),
 			Wall_FloorNo:$("#Wall_FloorNo").val(),
 //			FirewallYN:$("#FirewallYN").val(),
-			FirewallYN:getRadioValueByTagName('FirewallYN'),
+			FirewallYN:$("#FirewallYN option:selected").val(),
 //			WallMeterial:$("#WallMeterial").val(),
 			WallMeterial:$("#WallMeterial option:selected").val(),
 			WallThickness:$("#WallThickness").val(),
@@ -205,42 +214,43 @@ function drawPenetrationbaseinfoGrid(result,dataList){
 			},
 
 			onSelectRow : function(id) {
-				var rowdata = grid.jqGrid('getRowData', id);
-				$('#ManagementNo').val(rowdata.ManagementNo);
-				$('#PenetrationNo ').val(rowdata.PenetrationNo );
-				$('#ManagementAreaYN').val(rowdata.ManagementAreaYN);
-				$('#Elevation').val(rowdata.Elevation);
-				$('#FirePreventionAreaNo').val(rowdata.FirePreventionAreaNo);
-				$('#InspectionRoomNo').val(rowdata.InspectionRoomNo);
-				$('#BackRoomNo').val(rowdata.BackRoomNo);
-//				$('#PenetrationForm').val(rowdata.PenetrationForm);
-				$('#Wall_FloorNo').val(rowdata.Wall_FloorNo);
-				$('#FirewallYN').val(rowdata.FirewallYN);
-//				$('#WallMeterial').val(rowdata.WallMeterial);
-				$('#WallThickness').val(rowdata.WallThickness);
-				$('#FrontPicNo').val(rowdata.FrontPicNo);
-				$('#BackPicNo').val(rowdata.BackPicNo);
-				$('#ReferenceFloorPlanNo').val(rowdata.ReferenceFloorPlanNo);
-				$('#LocationFloorPlanNo').val(rowdata.LocationFloorPlanNo);
-				$('#SealDetailDWG').val(rowdata.SealDetailDWG);
-				$('#EL').val(rowdata.EL);
-				$('#Diameter').val(rowdata.Diameter);
-				$('#Height').val(rowdata.Height);
-				$('#Length').val(rowdata.Length);
-				$('#PenetrationType').val(rowdata.PenetrationType);
-				$('#MaximumFreeArea').val(rowdata.MaximumFreeArea);
-				$('#MaximumFreeDistance').val(rowdata.MaximumFreeDistance);
-				$('#Register').val(rowdata.Register);
-				$('#Reviewer').val(rowdata.Reviewer);
-				$('#Checker').val(rowdata.Checker);
-				$('#SpecialNote').val(rowdata.SpecialNote);
-				$('#RegID').val(rowdata.RegID);
-				document.getElementById("RegDateTime").innerHTML = rowdata.RegDateTime;
-				tagBind("radio", "FirewallYN","방화벽여부",rowdata.FirewallYN,codeAllInfo.A09);
-				tagBind("radio", "PenetrationForm","관통부형태",rowdata.PenetrationForm,codeAllInfo.A02);
-				tagBind("selectBox", "WallMeterial","벽재질",rowdata.WallMeterial,codeAllInfo.A04);
-				tagBind("selectBox", "EquipNo","호기",rowdata.EquipNo,codeAllInfo.A01);
-				tagBind("selectBox", "LocNo","건물",rowdata.LocNo,codeAllInfo.A11);
+//				var rowdata = grid.jqGrid('getRowData', id);
+//				$('#ManagementNo').val(rowdata.ManagementNo);
+//				$('#PenetrationNo ').val(rowdata.PenetrationNo );
+//				$('#ManagementAreaYN').val(rowdata.ManagementAreaYN);
+//				$('#ELEVATION_num_pit').val(rowdata.ELEVATION_num_pit);
+//				$('#ELEVATION_num_inc').val(rowdata.ELEVATION_num_inc);
+//				$('#FirePreventionAreaNo').val(rowdata.FirePreventionAreaNo);
+//				$('#InspectionRoomNo').val(rowdata.InspectionRoomNo);
+//				$('#BackRoomNo').val(rowdata.BackRoomNo);
+////				$('#PenetrationForm').val(rowdata.PenetrationForm);
+//				$('#Wall_FloorNo').val(rowdata.Wall_FloorNo);
+//				$('#FirewallYN').val(rowdata.FirewallYN);
+////				$('#WallMeterial').val(rowdata.WallMeterial);
+//				$('#WallThickness').val(rowdata.WallThickness);
+//				$('#FrontPicNo').val(rowdata.FrontPicNo);
+//				$('#BackPicNo').val(rowdata.BackPicNo);
+//				$('#ReferenceFloorPlanNo').val(rowdata.ReferenceFloorPlanNo);
+//				$('#LocationFloorPlanNo').val(rowdata.LocationFloorPlanNo);
+//				$('#SealDetailDWG').val(rowdata.SealDetailDWG);
+//				$('#EL').val(rowdata.EL);
+//				$('#Diameter').val(rowdata.Diameter);
+//				$('#Height').val(rowdata.Height);
+//				$('#Length').val(rowdata.Length);
+//				$('#PenetrationType').val(rowdata.PenetrationType);
+//				$('#MaximumFreeArea').val(rowdata.MaximumFreeArea);
+//				$('#MaximumFreeDistance').val(rowdata.MaximumFreeDistance);
+//				$('#Register').val(rowdata.Register);
+//				$('#Reviewer').val(rowdata.Reviewer);
+//				$('#Checker').val(rowdata.Checker);
+//				$('#SpecialNote').val(rowdata.SpecialNote);
+//				$('#RegID').val(rowdata.RegID);
+//				document.getElementById("RegDateTime").innerHTML = rowdata.RegDateTime;
+//				tagBind("selectBox_All", "FirewallYN","방화벽여부",rowdata.FirewallYN,codeAllInfo.A09);
+//				tagBind("selectBox_All", "PenetrationForm","관통부형태",rowdata.PenetrationForm,codeAllInfo.A02);
+//				tagBind("selectBox_All", "WallMeterial","벽재질",rowdata.WallMeterial,codeAllInfo.A04);
+//				tagBind("selectBox_All", "EquipNo","호기",rowdata.EquipNo,codeAllInfo.A01);
+//				tagBind("selectBox_All", "LocNo","건물",rowdata.LocNo,codeAllInfo.A11);
 			},
 		});
 		grid.navGrid('#pager1',{edit:false,add:false,del:false});				
