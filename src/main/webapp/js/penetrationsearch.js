@@ -199,7 +199,10 @@ function drawPenetrationsearchGrid(result,dataList){
 			        			   return '<a href="#" class="pdfDown pdfBlank" "> </a>';
 			        		   }
 			        		   else{
-			        			   return '<a href="#" class="pdfDown" onclick="openPicFront('+options.rowId+')" ></a>'; 
+			        			   
+			        			   return '<a href="#" class="pdfDown" onclick="OpenPdfFiles(\''+rowObject.FileLocation_2+'\')" ></a>'; 
+			        			   
+			        			   
 			        		   }
 			        	   }
 			           },			           
@@ -209,7 +212,7 @@ function drawPenetrationsearchGrid(result,dataList){
 			        			   return '<a href="#" class="pdfDown pdfBlank" > </a>';
 			        		   }
 			        		   else{
-			        			   return '<a href="#" class="pdfDown" onclick="openPicBack('+options.rowId+')" ></a>'; 
+			        			   return '<a href="#" class="pdfDown" onclick="OpenPdfFiles(\''+rowObject.FileLocation_3+'\')" ></a>'; 
 			        		   }
 			        	   }
 			           },

@@ -97,7 +97,15 @@ function getSearchPerformanceEvaluationList(){
 //				           {name:'ManagementNo', label:'관리번호', align:'center', width:'30%'},
 				           {name:'VENTILATION_VALUE', label:'적용', align:'center', width:'10%'},
 				           {name:'VENTILATION_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
-				           {name:'VENTILATION_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'VENTILATION_VAL_NO',label:'성능인증번호', align:'center', width:'30%',
+				        	   formatter:function(cellvalue, options, rowObject){
+				        		   if(rowObject.BackPicNo = ''){
+				        			   return '<div align="center" style="cursor:hand" onclick="OpenPdfFiles(\'' + rowObject.VENTILATION_NO + '.pdf\')">' + rowObject.VENTILATION_NO + '</div>';
+				        		   }else{
+				        			   return "";
+				        		   }
+				        	   }
+				           },
 				           {name:'VENTILATION_JUDGMENT',label:'판정', align:'center', width:'10%'},
 				           {name:'VENTILATION_REASON',label:'사유', align:'center', width:'10%'},
 				           {name:'FIRE_VALUE', label:'적용', align:'center', width:'10%'},
