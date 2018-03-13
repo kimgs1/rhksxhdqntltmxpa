@@ -128,10 +128,7 @@
                 <th>확인자</th>
                 <td>${Checker}</td>
             </tr>
-            <tr>
-                <th>특이사항</th>
-                <td>${SpecialNote}</td>
-            </tr>
+            
         </table>
         <table class="w_50">
             <tr>
@@ -182,9 +179,6 @@
         <table class="w_50">
             <tr>
                 <th colspan="2">● 관통재 정보
-            </tr>
-            <tr>
-                <td colspan="2" style="height:23px"></td>
             </tr>
             <tr>
                 <th>관통물질명</th>
@@ -243,9 +237,10 @@
                 <th>LINE TEMPERATURE</th>
                 <td>${LINETEMPERATURE}</td>
             </tr>
-            <tr>
-                <th></th>
-                <td></td>
+            
+            <tr style="height:108px">
+                <th >특이사항</th>
+                <td>${SpecialNote}</td>
             </tr>
         </table>
         <table class="w_100">

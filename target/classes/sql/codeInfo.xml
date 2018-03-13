@@ -13,7 +13,7 @@
 			SortKey,
 			UseYN,
 			RegID,
-			RegDate,
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDate,
 			UpdateID,
 			UpdateDate
 		FROM 

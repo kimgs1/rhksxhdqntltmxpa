@@ -19,7 +19,7 @@ public class LoginController extends MultiActionController{
 	@Autowired
 	public LoginDao loginDao;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView moveLogin() throws Exception {
 		return new ModelAndView("login");
 	}

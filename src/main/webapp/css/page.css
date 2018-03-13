@@ -1,4 +1,5 @@
 ﻿.con{width:80%; float:left; margin-top:36px; font-family: "NanumBarunGothic", sans-serif;	font-weight: 200;}
+.con1 {width:100%; float:left; margin-top:36px; font-family: "NanumBarunGothic", sans-serif;	font-weight: 200;}
 /*전체 공통*/
 /*MAIN*/
 .con .section01, .con .section02, .con .section03{width:98%; margin:0 auto 10px}
@@ -33,6 +34,52 @@
 .con .section03 ul{margin-bottom:10px}
 .con .section03 ul:after{content:''; visibility:hidden; display:block; clear:both}
 .con .section03 ul li{float:left; padding:5px 19px; border-radius:10px; border:1px solid #dab776; margin-right:3px; font-size:12px; font-weight:200; line-height:20px; cursor:pointer; background: linear-gradient( to bottom, white, #e2c48f )}
+
+
+
+
+
+
+.con1 .section01, .con1 .section02, .con1 .section03{width:98%; margin:0 auto 10px}
+.con1 .section01:after, .con1 .section02:after, .con1 .section03:after{content:''; visibility:hidden; display:block; clear:both;}
+.con1 .section01 article h2:before,.con1 .section02 section h2:before, .con1 .section02 article h2:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
+.con1 .section01 article h2,.con1 .section02 section h2, .con1 .section02 article h2{cursor:hand;font-size:15px; font-weight:700; color:#282828; margin-bottom:20px; margin-top:10px;}
+/*메인 공통속성*/
+.con1 .section01 article{width:49%; margin-right:1%; float:left; border:1px solid #808080; box-sizing:border-box; padding:10px 20px }
+.con1 .section01 article:nth-child(2){margin-left:1%; margin-right:0}
+.con1 .section01 article ul{margin-bottom:10px;}
+.con1 .section01 article ul li:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
+.con1 .section01 article ul li{margin-bottom:5px;}
+.con1 .section01 article ul li a{cursor:hand;text-decoration:none; display:block; font-size:12px; font-weight:200; color:#282828}
+/*section01 FIN*/
+.con1 .section02 section{width:70%; float:left; margin-right:2%; border:1px solid #808080; box-sizing:border-box; padding:10px 20px }
+.con1 .section02 section ul{margin-bottom:10px;}
+.con1 .section02 section ul:after{content:''; visibility:hidden; display:block; clear:both}
+.con1 .section02 section ul li{float:left; padding:5px 19px; border-radius:10px; border:1px solid #c5c9d4; margin-right:3px; font-size:12px; font-weight:200; line-height:20px; cursor:pointer; background: linear-gradient( to bottom, white, #c1d4f1 );}
+.con1 .section02 section ul li:last-child{margin-right:0}
+.con1 .section02 section .tab_content{height:151px}
+.con1 .section02 section .tab_content img{width:100%; height:100%}
+.con1 .section02 article{width:28%; float:left; border:1px solid #808080; box-sizing:border-box; padding:10px 20px; height:260px;  }
+.con1 .section02 article:after{content:''; visibility:hidden; display:block; clear:both}
+.con1 .section02 article p{border-bottom:1px dashed #808080; width:100%; height:30px; padding:0 10px; box-sizing:border-box; margin-bottom:2px}
+.con1 .section02 article p span{float:right}
+.con1 .section02 article ul{border-top:1px dashed #808080;width:100%;padding:20px 0 0; box-sizing:border-box;}
+.con1 .section02 article ul li:before{content:''; display:block; width:6px; height:6px; background:#282828; border-radius:3px; margin:5px 25px 0 0; float:left}
+.con1 .section02 article ul li{margin-bottom:5px}
+.con1 .section02 article ul li span{float:right; width:55px; text-align:center; display:inline-block}
+/*section02 FIN*/
+.con1 .section03{border:1px solid #808080; box-sizing:border-box;padding:15px 10px }
+.con1 .section03 ul{margin-bottom:10px}
+.con1 .section03 ul:after{content:''; visibility:hidden; display:block; clear:both}
+.con1 .section03 ul li{float:left; padding:5px 19px; border-radius:10px; border:1px solid #dab776; margin-right:3px; font-size:12px; font-weight:200; line-height:20px; cursor:pointer; background: linear-gradient( to bottom, white, #e2c48f )}
+
+
+
+
+
+
+
+
 
                                                                      /*user pop*/
 .user_pop{width:500px; margin:20px auto;}

@@ -1,4 +1,4 @@
-
+var lastColWidth='20%';
 $(function(){
 	init();
 })
@@ -7,6 +7,9 @@ $(function(){
 function init(){
 	getSearchPenetrationsearchList(1);
 	getBaseCodeInfo();
+	if(loginflag == false){
+		lastColWidth = '8%';
+	}
 }
 
 function getBaseCodeInfo(){
@@ -219,13 +222,15 @@ function drawPenetrationsearchGrid(result,dataList){
 			           {name:'FirewallYN_name', label:'종류',align:'center', width:'10%',editable:true},
 			           {name:'PenetrationForm_name', label:'형태', align:'center', width:'10%'},
 			           {name:'SealantConditionState_name', label:'밀폐재시공상태', align:'center', width:'10%'},
-			           {label : "상세보기", name: 'view_detail', sorttype: 'string', align: 'center', width: '20%',
+			           {label : "상세보기", name: 'view_detail', sorttype: 'string', align: 'center', width: lastColWidth,
 			        	   formatter:function (cellvalue, options, rowObject) {  
 //			        		   return '<input onclick="getDetailView('+options.rowId+')" type="button" value="보기" style="{width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }">';
 			        		   var returnTagStr = "";
 			        		   returnTagStr +=  '<input class="view" onclick="getDetailView('+options.rowId+')" type="button" value="보기" >';
-			        		   returnTagStr +=  '<input class="edit" onclick="EditDetailView('+options.rowId+')" type="button" value="수정">';
-			        		   returnTagStr +=  '<input class="delete" onclick="deletePenetrationsearch('+options.rowId+')" type="button" value="삭제">';
+			        		   if(loginflag == true){
+				        		   returnTagStr +=  '<input class="edit" onclick="EditDetailView('+options.rowId+')" type="button" value="수정">';
+				        		   returnTagStr +=  '<input class="delete" onclick="deletePenetrationsearch('+options.rowId+')" type="button" value="삭제">';
+			        		   }
 			        		   return returnTagStr
 			        	   }
 			           },

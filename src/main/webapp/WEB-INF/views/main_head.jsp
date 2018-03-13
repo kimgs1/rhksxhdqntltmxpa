@@ -16,7 +16,7 @@
 <title>관통부 관리 시스템</title>
 
 <!-- icon -->
-<link rel="shortcut icon" type="image/x-icon" href="img/home.ico"/>
+<link rel="shortcut icon" type="image/x-icon" href="img/cadis_icon.ico"/>
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery-2.2.0.min.js"></script>
@@ -57,3 +57,4 @@
 <link rel="stylesheet" href="css/nanumbarungothic.css" />
 <link rel="stylesheet" href="css/cadis_custom.css">
 <link rel="stylesheet" href="css/import.css"> 
+<link rel="stylesheet" href="css/menubutton.css"> 

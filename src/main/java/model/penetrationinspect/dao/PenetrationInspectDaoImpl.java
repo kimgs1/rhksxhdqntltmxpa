@@ -63,7 +63,7 @@ public class PenetrationInspectDaoImpl implements PenetrationInspectDao {
 			cond +=  " and Judgment like 'X%' ";
 		}
 		int nowPage = Integer.parseInt(param.get("nowPage").toString());
-		int totalCount =  sqlSession.selectOne("penetrationsearch.getListCount", param);
+		int totalCount =  sqlSession.selectOne("penetrationinspect.getListCount", param);
 		
 		PenetrationSearchPagingBean pagingBean = new PenetrationSearchPagingBean(totalCount,nowPage);
 		

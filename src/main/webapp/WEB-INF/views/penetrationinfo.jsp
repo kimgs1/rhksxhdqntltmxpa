@@ -83,7 +83,9 @@
                     <div>
                         <input class="searchBtn" type="button" onclick="getSearchPenetrationinfoList()"value="검색" />
                         <input type="reset" onclick="init();" value="초기화" />
-                        <input class="saveBtn"type="button" onclick="PenetrationinfoSave();"value="저장" /><!--검색도 저장도 submit?-->
+                        <!-- 
+                        <input class="saveBtn"type="button" onclick="PenetrationinfoSave();"value="저장" />
+                         -->
                     </div>
                 </form>
             </section>

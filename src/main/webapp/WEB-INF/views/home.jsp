@@ -40,7 +40,7 @@
 <script type="text/javascript" src="js/home.js"></script>
     
     
- <div class="con">
+ <div class="con1">
         <div class="section01">
             <article id="bulletine_div">
                 <h2>공지사항</h2>

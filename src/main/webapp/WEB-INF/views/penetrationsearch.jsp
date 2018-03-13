@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>관통부정보</title>
@@ -16,7 +17,7 @@
     <!--글로벌속성 FIN-->    
     <div class="con sub01">
         <section class="sec01">
-            <h2>관통부 기본검색</h2>
+            <p class="nbg5 b4">관통부 기본검색</p><br>
                 <form action="#">
                     <ul>
                         <li>
@@ -125,10 +126,12 @@
         </section>
         <section class="sec02">
         	<div>
+        	
+                <c:if test="${sessionScope.userInfo.login == true}">
         					<input onclick="CreateDetailView()"
 										style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="추가">
-	
+				</c:if>
                 <p id="page_detail"></p>
             </div>
             <br/>

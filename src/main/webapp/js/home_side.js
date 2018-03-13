@@ -1,9 +1,11 @@
 
 var userId;
 var codeAllInfo;
-
+var sessionVar;
+var loginflag;
 $(function(){
 
+	
 })
 
 function logout(){

@@ -23,7 +23,7 @@ public class HomeController extends MultiActionController{
 	public CodeInfoDao codeInfoDao;
 	
 
-	@RequestMapping(value="/home", method=RequestMethod.GET)
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView baseView() throws Exception {
 		return new ModelAndView("home");
 	}
@@ -40,21 +40,5 @@ public class HomeController extends MultiActionController{
 		return new ModelAndView("JsonView","result",result);
 	}
 	
-	@RequestMapping(value="/home.do", params="command=getPDFFiles", method=RequestMethod.POST)
-	public ModelAndView getPDFFiles(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-	        response.setContentType("application/pdf");
-	        FileInputStream in = new FileInputStream(new File("d:/1.pdf"));
-	        OutputStream out = response.getOutputStream();
-	        byte[] b = new byte[512];
-	        while ((in.read(b)) != -1) {
-	            out.write(b);
-	        }
-	        out.flush();
-	        in.close();
-	        out.close();
-	        return new ModelAndView();
-//		return new ModelAndView("JsonView","result",result);
-	}
 	
 }	

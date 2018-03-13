@@ -298,10 +298,6 @@
                 <th>LINE TEMPERATURE</th>
                 <td><input id="LINETEMPERATURE" style="width:100%" value=${LINETEMPERATURE}></td>
             </tr>
-            <tr>
-                <th></th>
-                <td></td>
-            </tr>
         </table>
         <table class="w_100">
             <tr>
@@ -457,6 +453,7 @@
 		tagBind("selectBox", "WallMeterial","","${WallMeterial}",codeAllInfo.A04);
 		tagBind("selectBox", "SealMeterial","","${SealMeterial}",codeAllInfo.A12);
 		tagBind("selectBox", "pie_SealantConditionState","","",codeAllInfo.A03);
+		tagBind("selectBox", "pic_SealantConditionState","","",codeAllInfo.A03);
 		tagBind("selectBox", "EquipNo","","${EquipNo}",codeAllInfo.A01);
 		tagBind("selectBox", "LocNo","","${LocNo}",codeAllInfo.A11);
 	</script>

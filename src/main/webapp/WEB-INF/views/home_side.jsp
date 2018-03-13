@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<head>
 	<script type="text/javascript" src="js/home_side.js"></script>
 	<script type="text/javascript">
@@ -18,28 +19,45 @@
 	                $("#hours").html((hours < 10 ? "0" : "") + hours);
 	            }, 1000);
 	        });
+	        sessionVar = '<%=session.getAttribute("userInfo")%>';
+	        if(sessionVar.split('true').length > 1){
+	        	loginflag = true;
+	        }else{
+	        	loginflag = false;
+	        }
+	    	
 	    </script><!--시계 스크립트-->
 	</head>
 	
     
 	
 	<header>
-	<ul class="top_nav">
-		<!--<li>
-		<li><a href="user_pop.html"
-			onclick="window.open(this.href, '', 'width=630, height=555, top=200'); return false;">정보수정</a>
-		</li>
-		<li><a href="login.html">로그인</a></li>
-                <a href="">로그아웃</a>
-            </li>-->
-	</ul>
+	
+	
 	<section>
+	
+	<ul class="top_nav">
+            <li>
+                <a id="user_name" onclick="window.open(this.href, '', 'width=630, height=555, top=200'); return false;"> &nbsp;</a>
+            </li>
+            
+			<c:if test="${sessionScope.userInfo.login != true}">
+            <li>
+                <a href="/NPower/login">로그인</a>
+            </li>
+            </c:if>
+            <c:if test="${sessionScope.userInfo.login == true}">
+            <li>
+                <a href="/NPower/home.do?command=logout">로그아웃</a>
+            </li>
+            </c:if>
+        </ul>
 	<h1>
-		<a href="index.html">logo</a>
+		<a >logo</a>
 	</h1>
 	<nav>
 	<ul>
-		<li><a href="/NPower/home">HOME</a></li>
+		<li><a href="/NPower">HOME</a></li>
 		<li><a onclick="menuClick('PTISC')">관통부관리</a>
 			<ol>
 				<li><a onclick="menuClick('PTBI')">기본정보</a></li>
@@ -49,35 +67,31 @@
 				<li><a onclick="menuClick('PTISP')">관통부점검</a></li>
 			</ol></li>
 			
-			
+			<!-- 
 		<li><a href="#">자료실</a>
 			<ol>
 				<li><a href="#">관련문서</a></li>
 				<li><a href="#">업데이트 공유프로그램</a></li>
 			</ol></li>
+			 -->
+			
 		<li><a href="#">커뮤니티</a>
 			<ol>
 				<li><a onclick="menuClick('FBUL')">공지사항</a></li>
 				<li><a onclick="menuClick('QNA')">Q&amp;A</a></li>
 			</ol></li>
+			
+			<c:if test="${sessionScope.userInfo.id == 'admin'}">
 		<li><a href="#">시스템관리</a>
 			<ol>
 				<li><a onclick="menuClick('USMNG')">사용자관리</a></li>
 				<li><a onclick="menuClick('CDMNG')">코드관리</a></li>
 			</ol></li>
+			</c:if>
 	</ul>
 	</nav> </section> </header>
 	<aside>
-	<section>
-	<h2>자료실</h2>
-	<ul>
-		<li><a href="#">[2017-05-11] 공유프로그램</a></li>
-		<li><a href="#">[2017-05-11] 공유프로그램</a></li>
-		<li><a href="#">[2017-05-11] 공유프로그램</a></li>
-		<li><a href="#">[2017-05-11] 공유프로그램</a></li>
-		<li><a href="#">[2017-05-11] 공유프로그램</a></li>
-	</ul>
-	</section>
+	<br>
 	<div id="date" class="wrap">
 		<!--달력 임시로 끼워놨어욥! 스크립트도 안에 있어욥 global.css 36~44번라인 -->
 		<div class='btn-holder'>

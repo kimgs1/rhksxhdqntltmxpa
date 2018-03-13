@@ -99,8 +99,9 @@ function getSearchPerformanceEvaluationList(){
 				           {name:'VENTILATION_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
 				           {name:'VENTILATION_VAL_NO',label:'성능인증번호', align:'center', width:'30%',
 				        	   formatter:function(cellvalue, options, rowObject){
-				        		   if(rowObject.BackPicNo = ''){
-				        			   return '<div align="center" style="cursor:hand" onclick="OpenPdfFiles(\'' + rowObject.VENTILATION_NO + '.pdf\')">' + rowObject.VENTILATION_NO + '</div>';
+				        		   var value = rowObject.VENTILATION_VAL_NO;
+				        		   if(value != ''){
+				        			   return '<div align="center" style="cursor:hand" onclick="OpenPdfFiles(\'밀폐재 성적서/' + value.split(" ")[0]  + '.pdf\')">' + value + '</div>';
 				        		   }else{
 				        			   return "";
 				        		   }
@@ -110,22 +111,58 @@ function getSearchPerformanceEvaluationList(){
 				           {name:'VENTILATION_REASON',label:'사유', align:'center', width:'10%'},
 				           {name:'FIRE_VALUE', label:'적용', align:'center', width:'10%'},
 				           {name:'FIRE_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
-				           {name:'FIRE_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'FIRE_VAL_NO',label:'성능인증번호', align:'center', width:'30%',
+				        	   formatter:function(cellvalue, options, rowObject){
+				        		   var value = rowObject.FIRE_VAL_NO;
+				        		   if(value != ''){
+				        			   return '<div align="center" style="cursor:hand" onclick="OpenPdfFiles(\'밀폐재 성적서/' + value.split(" ")[0]  + '.pdf\')">' + value + '</div>';
+				        		   }else{
+				        			   return "";
+				        		   }
+				        	   }
+				           },
 				           {name:'FIRE_JUDGMENT',label:'판정', align:'center', width:'10%'},
 				           {name:'FIRE_REASON',label:'사유', align:'center', width:'10%'},
 				           {name:'RADIATION_VALUE', label:'적용', align:'center', width:'10%'},
 				           {name:'RADIATION_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
-				           {name:'RADIATION_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'RADIATION_VAL_NO',label:'성능인증번호', align:'center', width:'30%',
+				        	   formatter:function(cellvalue, options, rowObject){
+				        		   var value = rowObject.RADIATION_VAL_NO;
+				        		   if(value != ''){
+				        			   return '<div align="center" style="cursor:hand" onclick="OpenPdfFiles(\'밀폐재 성적서/' + value.split(" ")[0]  + '.pdf\')">' + value + '</div>';
+				        		   }else{
+				        			   return "";
+				        		   }
+				        	   }
+				           },
 				           {name:'RADIATION_JUDGMENT',label:'판정', align:'center', width:'10%'},
 				           {name:'RADIATION_REASON',label:'사유', align:'center', width:'10%'},
 				           {name:'FLOOD_VALUE', label:'적용', align:'center', width:'10%'},
 				           {name:'FLOOD_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
-				           {name:'FLOOD_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'FLOOD_VAL_NO',label:'성능인증번호', align:'center', width:'30%',
+				        	   formatter:function(cellvalue, options, rowObject){
+				        		   var value = rowObject.FLOOD_VAL_NO;
+				        		   if(value != ''){
+				        			   return '<div align="center" style="cursor:hand" onclick="OpenPdfFiles(\'밀폐재 성적서/' + value.split(" ")[0]  + '.pdf\')">' + value + '</div>';
+				        		   }else{
+				        			   return "";
+				        		   }
+				        	   }
+				           },
 				           {name:'FLOOD_JUDGMENT',label:'판정', align:'center', width:'10%'},
 				           {name:'FLOOD_REASON',label:'사유', align:'center', width:'10%'},
 				           {name:'PRESSURE_VALUE', label:'적용', align:'center', width:'10%'},
 				           {name:'PRESSURE_VALUE_RANGE',label:'허용치', align:'center', width:'10%'},
-				           {name:'PRESSURE_VAL_NO',label:'성능인증번호', align:'center', width:'30%'},
+				           {name:'PRESSURE_VAL_NO',label:'성능인증번호', align:'center', width:'30%',
+				        	   formatter:function(cellvalue, options, rowObject){
+				        		   var value = rowObject.PRESSURE_VAL_NO;
+				        		   if(value != ''){
+				        			   return '<div align="center" style="cursor:hand" onclick="OpenPdfFiles(\'밀폐재 성적서/' + value.split(" ")[0] + '.pdf\')">' + value + '</div>';
+				        		   }else{
+				        			   return "";
+				        		   }
+				        	   }
+				           },
 				           {name:'PRESSURE_JUDGMENT',label:'판정', align:'center', width:'10%'},
 				           {name:'PRESSURE_REASON',label:'사유', align:'center', width:'30%'},
 				],

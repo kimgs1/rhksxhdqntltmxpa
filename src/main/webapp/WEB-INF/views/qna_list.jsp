@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 
@@ -52,7 +54,9 @@
                     <li><a href="#" style="transform: rotate(180deg)"><img src="images/pager_01.png" /></a></li>
                  -->
                 </ol>
+                <c:if test="${sessionScope.userInfo.login == true}">
                 <span><input type="button" onclick="newQNA()"value="글쓰기" /></span>
+                </c:if>
             </div>
             <!-- 
             <div class="bo_search">
