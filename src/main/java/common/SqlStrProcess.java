@@ -41,7 +41,7 @@ public class SqlStrProcess {
 		return searchCond;
 	}
 	
-	
+
 	public static HashMap<String, Object> strSplit(HashMap<String, Object> param){
 		for(String key : param.keySet()){
 			if(!key.equals("cond")){
