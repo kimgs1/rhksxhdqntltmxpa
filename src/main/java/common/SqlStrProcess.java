@@ -30,6 +30,10 @@ public class SqlStrProcess {
 			}
 			
 			
+			
+			
+			
+			
 			if(param.get(key) != null && !param.get(key).equals("")){
 				if(tableHead.get(key) != null && !tableHead.get(key).equals("") ){
 					searchCond += " AND "+ tableHead.get(key) + key + " like '%" + param.get(key) + "%'";
