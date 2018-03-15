@@ -12,6 +12,10 @@ public class Practice {
 			sSharp += charList[i] + "#";
 		}
 		
+		
+		
+		
+		
 		char[] charSharpList = sSharp.toCharArray();
 		int sharpLength = charSharpList.length;
 		

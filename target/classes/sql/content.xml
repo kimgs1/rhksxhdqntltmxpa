@@ -1,1 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Content">
+
+	<select id="getList" resultType="hashmap" parameterType="hashmap">
+		SELECT 
+			GroupID,
+			CodeID,
+			CodeName,
+			Remark,
+			SortKey,
+			UseYN,
+			RegID,
+			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDate,
+			UpdateID,
+			UpdateDate
+		FROM 
+			codeinfo
+		where GroupID = '${GroupID}'
+		ORDER BY 
+			SortKey
+	</select>
+
+</mapper>
