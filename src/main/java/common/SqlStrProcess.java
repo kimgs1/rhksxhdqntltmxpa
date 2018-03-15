@@ -29,11 +29,6 @@ public class SqlStrProcess {
 				continue;
 			}
 			
-			
-			
-			
-			
-			
 			if(param.get(key) != null && !param.get(key).equals("")){
 				if(tableHead.get(key) != null && !tableHead.get(key).equals("") ){
 					searchCond += " AND "+ tableHead.get(key) + key + " like '%" + param.get(key) + "%'";
@@ -45,7 +40,6 @@ public class SqlStrProcess {
 		}
 		return searchCond;
 	}
-	
 	
 	public static HashMap<String, Object> strSplit(HashMap<String, Object> param){
 		for(String key : param.keySet()){
