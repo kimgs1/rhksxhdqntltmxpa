@@ -36,16 +36,16 @@
     <div class="dropdown_2columns align_right">
             <div class="col_1">
     
-                <ul class="greybox">
-                    <li><a href="#">공지사항</a></li>
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
+                    <li><a onclick="menuClick('FBUL')">공지사항</a></li>
                 </ul>   
     
             </div>
             
             <div class="col_1">
     
-                <ul class="greybox">
-                    <li><a href="#">Q/A</a></li>
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
+                    <li><a onclick="menuClick('QNA')">Q/A</a></li>
                 </ul>
     
             </div>
@@ -61,7 +61,7 @@
 
             <div class="col_1">
     
-                <ul class="greybox">
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTISC')">통합관리</a></li>
                 </ul>   
     
@@ -69,14 +69,14 @@
             
             <div class="col_1">
     
-                <ul class="greybox">
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTBI')">기본정보</a></li>
                 </ul>
     
             </div>
             <div class="col_1">
     
-                <ul class="greybox">
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('SEAL')">밀폐재정보</a></li>
                 </ul>   
     
@@ -84,14 +84,14 @@
             
             <div class="col_1">
     
-                <ul class="greybox">
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTI')">관통재정보</a></li>
                 </ul>
     
             </div>
             <div class="col_1">
     
-                <ul class="greybox">
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PFEV')">성능평가</a></li>
                 </ul>   
     
@@ -99,7 +99,7 @@
             
             <div class="col_1">
     
-                <ul class="greybox">
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTISP')">관통부점검</a></li>
                 </ul>
     
