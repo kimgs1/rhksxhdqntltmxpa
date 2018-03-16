@@ -1,3 +1,4 @@
+
 body, ul, li {
 	font-size:14px; 
 	font-family:Arial, Helvetica, sans-serif;
@@ -5,12 +6,12 @@ body, ul, li {
 	text-align:left;
 }
 
-#menu {
+#tmenu {
 	list-style:none;
-	width:97%;
+	width:98%;
 	margin:0px auto 0px auto;
 	height:10px;
-	padding:0px 20px 0px 20px;
+	padding:0px 20px 0px 40px;
 
 	/* Rounded Corners */
 	border-radius: 10px;
@@ -28,7 +29,7 @@ body, ul, li {
 	box-shadow:inset 0px 0px 1px #edf9ff;
 }
 
-#menu li {
+#tmenu li {
 	float:left;
 	display:block;
 	text-align:center;
@@ -39,7 +40,7 @@ body, ul, li {
 	border:none;
 }
 
-#menu li:hover {
+#tmenu li:hover {
 	border: 1px solid #777777;
 	padding: 4px 9px 4px 9px;
 	
@@ -50,10 +51,10 @@ body, ul, li {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
 	
 	/* Rounded corners */
-	border-radius: 5px 5px 0px 0px;
+	border-radius: 3px 3px 0px 0px;
 }
 
-#menu li a {
+#tmenu li a {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px; 
 	color: #EEEEEE;
@@ -63,15 +64,15 @@ body, ul, li {
 	text-shadow: 1px 1px 1px #000;
 }
 
-#menu li:hover a {
+#tmenu li:hover a {
 	color:#161616;
 	text-shadow: 1px 1px 1px #ffffff;
 }
-#menu li .drop {
+#tmenu li .drop {
 	padding-right:21px;
 	background:url("../images/drop.png") no-repeat right 8px;
 }
-#menu li:hover .drop {
+#tmenu li:hover .drop {
 	background:url("../images/drop.png") no-repeat right 7px;
 }
 
@@ -84,8 +85,8 @@ body, ul, li {
 	float:left;
 	position:absolute;
 	left:-999em; /* Hides the drop down */
-	text-align:left;
-	padding:10px 5px 0px 5px;
+	text-align:center;
+	padding:10px 0px 0px 5px;
 	border:1px solid #777777;
 	border-top:none;
 	
@@ -95,64 +96,64 @@ body, ul, li {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#BBBBBB));
 
 	/* Rounded Corners */
-	border-radius: 0px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
 }
 
-.dropdown_1column {width: 140px;}
-.dropdown_2columns {width: 280px;}
-.dropdown_3columns {width: 420px;}
+.dropdown_1column {width: auto;} /* 140 */
+.dropdown_2columns {width: 228px;} /* 280 */
+.dropdown_3columns {width: auto;} /* 420 */
 .dropdown_4columns {width: 560px;}
 .dropdown_5columns {width: 700px;}
 
-#menu li:hover .dropdown_1column, 
-#menu li:hover .dropdown_2columns, 
-#menu li:hover .dropdown_3columns,
-#menu li:hover .dropdown_4columns,
-#menu li:hover .dropdown_5columns {
+#tmenu li:hover .dropdown_1column, 
+#tmenu li:hover .dropdown_2columns, 
+#tmenu li:hover .dropdown_3columns,
+#tmenu li:hover .dropdown_4columns,
+#tmenu li:hover .dropdown_5columns {
 	left:-1px;
 	top:auto;
 }
 
-.col_1,
-.col_2,
-.col_3,
-.col_4,
-.col_5 {
+.cols_1,
+.cols_2,
+.cols_3,
+.cols_4,
+.cols_5 {
 	display:inline;
 	float: left;
 	position: relative;
 	margin-left: 5px;
 	margin-right: 5px;
 }
-.col_1 {width:130px;}
-.col_2 {width:270px;}
-.col_3 {width:410px;}
-.col_4 {width:550px;}
-.col_5 {width:690px;}
+.cols_1 {width:auto;} /* 140 ??? 130??? */
+.cols_2 {width:270px;}
+.cols_3 {width:410px;}
+.cols_4 {width:550px;}
+.cols_5 {width:690px;}
 
-#menu .menu_right {
+#tmenu .tmenu_right {
 	float:right;
 	margin-right:0px;
 }
-#menu li .align_right {
+#tmenu li .align_right {
 	/* Rounded Corners */
  border-radius: 5px 0px 5px 5px;
 }
 
-#menu li:hover .align_right {
+#tmenu li:hover .align_right {
 	left:auto;
 	right:-1px;
 	top:auto;
 }
 
-#menu p, #menu h2, #menu h3, #menu ul li {
+#tmenu p, #tmenu h2, #tmenu h3, #tmenu ul li {
 	font-family:Arial, Helvetica, sans-serif;
 	line-height:21px;
 	font-size:12px;
-	text-align:left;
+	text-align:center;
 	text-shadow: 1px 1px 1px #FFFFFF;
 }
-#menu h2 {
+#tmenu h2 {
 	font-size:21px;
 	font-weight:400;
 	letter-spacing:-1px;
@@ -160,22 +161,22 @@ body, ul, li {
 	padding-bottom:14px;
 	border-bottom:1px solid #666666;
 }
-#menu h3 {
+#tmenu h3 {
 	font-size:14px;
 	margin:7px 0 14px 0;
 	padding-bottom:7px;
 	border-bottom:1px solid #888888;
 }
-#menu p {
+#tmenu p {
 	line-height:18px;
 	margin:0 0 10px 0;
 }
 
-#menu li:hover div a {
+#tmenu li:hover div a {
 	font-size:12px;
 	color:#015b86;
 }
-#menu li:hover div a:hover {
+#tmenu li:hover div a:hover {
 	color:#029feb;
 }
 
@@ -201,7 +202,7 @@ body, ul, li {
 	margin:5px 15px 5px 5px;
 }
 
-#menu li .black_box {
+#tmenu li .black_box {
 	background-color:#333333;
 	color: #eeeeee;
 	text-shadow: 1px 1px 1px #000;
@@ -215,12 +216,12 @@ body, ul, li {
 	box-shadow:inset 0 0 3px #000000;
 }
 
-#menu li ul {
+#tmenu li ul {
 	list-style:none;
 	padding:0;
 	margin:0 0 12px 0;
 }
-#menu li ul li {
+#tmenu li ul li {
 	font-size:12px;
 	line-height:24px;
 	position:relative;
@@ -231,24 +232,24 @@ body, ul, li {
 	text-align:left;
 	width:130px;
 }
-#menu li ul li:hover {
+#tmenu li ul li:hover {
 	background:none;
 	border:none;
 	padding:0;
 	margin:0;
 }
 
-#menu li .greybox li {
+#tmenu li .greybox li {
 	background:#F4F4F4;
 	border:1px solid #bbbbbb;
 	margin:0px 0px 4px 0px;
 	padding:4px 6px 4px 6px;
-	width:116px;
+	width:98px; /* 116px */
 
 	/* Rounded Corners */
  border-radius: 5px;
 }
-#menu li .greybox li:hover {
+#tmenu li .greybox li:hover {
 	background:#ffffff;
 	border:1px solid #aaaaaa;
 	padding:4px 6px 4px 6px;

@@ -20,55 +20,51 @@ h6 {
  -->
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src=./images/logo.jpg border=0 aria-disabled="true" >
-<ul id="menu">
+<ul id="tmenu">
 
 
 			<c:if test="${sessionScope.userInfo.login != true}">
-            <li class="menu_right">
+            <li class="tmenu_right">
                 <a href="/NPower/login">로그인</a>
             </li>
             </c:if>
             <c:if test="${sessionScope.userInfo.login == true}">
-            <li class="menu_right">
+            <li class="tmenu_right">
                 <a href="/NPower/home.do?command=logout">로그아웃</a>
             </li>
             </c:if>
 
 
-    <li class="menu_right"><a href="#" class="">자료실</a><!-- Begin 3 columns Item -->
+    <li class="tmenu_right"><a href="#" class="">자료실</a><!-- Begin 3 columns Item -->
         
     </li> <!-- End 자료실 -->
     
-    <li class="menu_right"><a href="#" class="drop">커뮤니티</a><!-- Begin 4 columns Item -->
+    <li class="tmenu_right"><a href="#" class="drop">커뮤니티</a><!-- Begin 4 columns Item -->
     
     
     <div class="dropdown_2columns align_right">
-            <div class="col_1">
-    
+            <div class="cols_1">
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('FBUL')">공지사항</a></li>
-                </ul>   
-    
+                </ul>
             </div>
             
-            <div class="col_1">
-    
+            <div class="cols_1">
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('QNA')">Q/A</a></li>
                 </ul>
-    
             </div>
     </div>
     
     </li> <!-- End 커뮤니티 -->  
 
 
-    <li class="menu_right"><a href="#" class="drop">관통부 관리</a>
+    <li class="tmenu_right"><a href="#" class="drop">관통부 관리</a>
     
     
-        <div class="dropdown_3columns align_right">
+        <div class="dropdown_2columns align_right">
 
-            <div class="col_1">
+            <div class="cols_1">
     
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTISC')">통합관리</a></li>
@@ -76,14 +72,14 @@ h6 {
     
             </div>
             
-            <div class="col_1">
+            <div class="cols_1">
     
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTBI')">기본정보</a></li>
                 </ul>
     
             </div>
-            <div class="col_1">
+            <div class="cols_1">
     
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('SEAL')">밀폐재정보</a></li>
@@ -91,14 +87,14 @@ h6 {
     
             </div>
             
-            <div class="col_1">
+            <div class="cols_1">
     
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTI')">관통재정보</a></li>
                 </ul>
     
             </div>
-            <div class="col_1">
+            <div class="cols_1">
     
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PFEV')">성능평가</a></li>
@@ -106,7 +102,7 @@ h6 {
     
             </div>
             
-            <div class="col_1">
+            <div class="cols_1">
     
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTISP')">관통부점검</a></li>
@@ -117,7 +113,7 @@ h6 {
     
     </li> <!-- End 관통부 관리 -->
 
-    <li class="menu_right"><a href="/NPower" class="">Home</a>
+    <li class="tmenu_right"><a href="/NPower" class="">Home</a>
               
     </li> <!-- End Home -->
 
