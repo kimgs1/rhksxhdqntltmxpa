@@ -42,7 +42,7 @@ h6 {
     <li class="tmenu_right"><a href="#" class="drop">커뮤니티</a><!-- Begin 4 columns Item -->
     
     
-    <div class="dropdown_2columns align_right">
+    <div class="dropdown_2columns align_left">
             <div class="cols_1">
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('FBUL')">공지사항</a></li>
@@ -62,7 +62,7 @@ h6 {
     <li class="tmenu_right"><a href="#" class="drop">관통부 관리</a>
     
     
-        <div class="dropdown_2columns align_right">
+        <div class="dropdown_2columns align_left">
 
             <div class="cols_1">
     
