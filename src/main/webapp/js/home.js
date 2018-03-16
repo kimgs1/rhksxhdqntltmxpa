@@ -35,7 +35,7 @@ function getBulletineList(){
 				innerHtml += "<h2 onclick='menuClick(" + "\"FBUL\""+")'>공지사항</h2>";
 				innerHtml += "<ul>";
 				for(var i=0; i<fbList.length;i++){
-					innerHtml += "<li>";
+					innerHtml += "<li onmouseover=this.style.color='#9f4faf'>";
 					innerHtml +=  '<a onclick="getBulletineContent('+fbList[i].id+')" >';
 					innerHtml += '['+fbList[i].RegDateTime+']';
 					innerHtml += '   '+fbList[i].title+'   ';
@@ -73,7 +73,7 @@ function getQNAList(){
 				innerHtml += "<h2 onclick='menuClick(" + "\"QNA\""+")'>Q&A</h2>";
 				innerHtml += "<ul>";
 				for(var i=0; i<dataList.length;i++){
-					innerHtml += "<li>";
+					innerHtml += "<li onmouseover=this.style.color='#9f4faf'>";
 					innerHtml +=  '<a onclick="getQNAContent('+dataList[i].ID+')" >';
 					innerHtml += '['+dataList[i].RegDateTime+']';
 					innerHtml += '   '+dataList[i].subject+'   ';
@@ -279,7 +279,7 @@ function getMergeData(){
 					],
 					pager: "#pager_list_1", 
 					page : 1,
-					rowNum: 25,                            //在grid上显示记录条数，这个参数是要被传递到后台
+					rowNum: 25,                         //在grid上显示记录条数，这个参数是要被传递到后台
 				    rowList: [10, 25, 35],              //一个下拉选择框，用来改变显示记录数，当选择时会覆盖rowNum参数传递到后台
 					rownumbers: true,  
 					cellEdit : false,  

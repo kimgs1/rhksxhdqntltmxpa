@@ -8,8 +8,17 @@
 	<link rel="stylesheet" href="css/menu.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="js/home_side.js"></script>
 	</head>
-	
 
+<!-- 
+h6 {
+    position: relative;
+    left: -141px;
+    margin-bottom: -63px;
+    width: 140px;
+    opacity: 0.99;
+}
+ -->
+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src=./images/logo.jpg border=0 aria-disabled="true" >
 <ul id="menu">
 

@@ -38,47 +38,66 @@
         });
     </script><!--탭스크립트-->
 <script type="text/javascript" src="js/home.js"></script>
-    
-    
+
  <div class="con1">
         <div class="section01">
             <article id="bulletine_div">
                 <h2>공지사항</h2>
                 <ul>
-                    <li>
-                        <a href="#">[2017-05-11] 공지사항 첨부파일</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">공지사항 데이타 로딩중...</a>
                     </li>
-                    <li>
-                        <a href="#">[2017-05-11] 공지사항 첨부파일</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">공지사항 데이타 로딩중...</a>
                     </li>
-                    <li>
-                        <a href="#">[2017-05-11] 공지사항 첨부파일</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">공지사항 데이타 로딩중...</a>
                     </li>
-                    <li>
-                        <a href="#">[2017-05-11] 공지사항 첨부파일</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">공지사항 데이타 로딩중...</a>
                     </li>
-                    <li>
-                        <a href="#">[2017-05-11] 공지사항 첨부파일</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">공지사항 데이타 로딩중...</a>
                     </li>                    
                 </ul>
             </article>
             <article id="qna_div">
                 <h2>Q&amp;A</h2>
                 <ul>
-                    <li>
-                        <a href="#">[2017-05-11] Q & A  질의사항</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">Q & A 데이타 로딩중...</a>
                     </li>
-                    <li>
-                        <a href="#">[2017-05-11] Q & A  질의사항</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">Q & A 데이타 로딩중...</a>
                     </li>
-                    <li>
-                        <a href="#">[2017-05-11] Q & A  질의사항</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">Q & A 데이타 로딩중...</a>
                     </li>
-                    <li>
-                        <a href="#">[2017-05-11] Q & A  질의사항</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">Q & A 데이타 로딩중...</a>
                     </li>
-                    <li>
-                        <a href="#">[2017-05-11] Q & A  질의사항</a>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">Q & A 데이타 로딩중...</a>
+                    </li>
+                </ul>
+            </article>
+            <article id="download_div">
+                <h2>자료실</h2>
+                <ul>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">자료실 데이타 로딩중...</a>
+                    </li>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">자료실 데이타 로딩중...</a>
+                    </li>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">자료실 데이타 로딩중...</a>
+                    </li>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">자료실 데이타 로딩중...</a>
+                    </li>
+                    <li onmouseover="this.style.color='#efefef'">
+                        <a href="#">자료실 데이타 로딩중...</a>
                     </li>
                 </ul>
             </article>
@@ -100,35 +119,35 @@
                     
                         <div id="tab1" class="tab_content">
                         	<div id="DepartmentChart_div">
-                            	<svg style="height: 180px; width:100%"></svg>
+                            	<svg style="height: 200px; width:100%"></svg>
                             </div>
                         </div>
                         
                         <div id="tab2" class="tab_content">
                         	 <div id="sealantMaterialChart_div">
-	                            	<svg style="height: 180px; width:100%"></svg>
+	                            	<svg style="height: 200px; width:100%"></svg>
 	                        </div>
                         </div>
                         
                         <div id="tab3" class="tab_content">
                             <div id="ConstructionStateChart_div">
-                            	<svg style="height: 180px; width:100%"></svg>
+                            	<svg style="height: 200px; width:100%"></svg>
                             </div>
                         </div>
                         <div id="tab4" class="tab_content">
                             <div id="LocChart_div">
-                            	<svg style="height: 180px; width:100%"></svg>
+                            	<svg style="height: 200px; width:100%"></svg>
                             </div>
                         </div>
                         
                         <div id="tab5" class="tab_content">
 	                        <div id="EffectChart_div">
-	                            	<svg style="height: 180px; width:100%"></svg>
+	                            	<svg style="height: 200px; width:100%"></svg>
 	                        </div>
                         </div>
                         <div id="tab6" class="tab_content">
                             <div id="WallMeterialChart_div">
-                            	<svg style="height: 180px; width:100%"></svg>
+                            	<svg style="height: 200px; width:100%"></svg>
                             </div>
                         </div>
                     </div>
@@ -136,12 +155,15 @@
             </section>
             <article><!--어떤기능이지..?-->
                 <h2>건물 관통부 개수</h2>
-                <p class="nbg2 b4">TOTAL<span id="total_count">4,353</span></p>
+                <p class="nbg2 b4">합계 : <span id="total_count">로딩중...</span></p>
                 <ul id="EquipNoLocNoData_div">
-                    <li>Y3-AAA<span>1,417</span></li>
-                    <li>Y4-CCC<span>92</span></li>
-                    <li>Y3-BBB<span>121</span></li>
-                    <li>Y3-TTT<span>1,015</span></li>
+                    <li>6호기-PAB<span>로딩중...</span></li>
+                    <li>5호기-PAB<span>로딩중...</span></li>
+                    <li>공통-RWB<span>로딩중...</span></li>
+                    <li>6호기-SAB<span>로딩중...</span></li>
+                    <li>5호기-SAB<span>로딩중...</span></li>
+                    <li>5호기-TGB<span>로딩중...</span></li>
+                    <li>6호기-TGB<span>로딩중...</span></li>
                 </ul>
             </article>
         </div>
@@ -149,6 +171,7 @@
             <div id="MergeGrid_div" style="margin-left:16px;margin-right:16px;margin-top:18px;">
             </div>
         </div>
+        <br><br><br>
     </div>
 
 
@@ -185,8 +208,8 @@
 						class="dropdown-toggle" data-toggle="dropdown"><span
 							class="hidden-xs" id="username_label"></span></a></li>
 
-					<li class="dropdown user user-menu" style="margin: 10px;"><c:if
-							test="${sessionScope.userInfo != null}">
+					<li class="dropdown user user-menu" style="margin: 10px;">
+						<c:if test="${sessionScope.userInfo != null}">
 							<button type="button" class="btn btn-sm btn-default"
 								id="user_name_tag" style="margin-right: 10px" hidden="true">${sessionScope.userInfo.username}</button>
 						</c:if>
