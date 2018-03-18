@@ -17,7 +17,7 @@
     <!--글로벌속성 FIN-->    
     <div class="con1 sub01">
         <section class="sec01">
-            <p class="nbg5 b4">관통부 기본검색</p><br>
+            <p class="nbg5 b4">관통부 통합관리</p><br>
                 <form action="#">
                     <ul>
                         <li>
@@ -119,8 +119,8 @@
                       
                     </ul>
                     <div>
-                        <input class="searchBtn" type="button" onclick="getSearchPenetrationsearchList()" value="검색" />
-                        <input type="reset" value="초기화" />
+                        <input class="searchBtn" type="button" onmouseover="this.style.cursor='hand'" onclick="getSearchPenetrationsearchList()" value="검색" />
+                        <input type="reset" onmouseover="this.style.cursor='hand'" value="초기화" />
                     </div>
                 </form>
         </section>
@@ -128,7 +128,7 @@
         	<div>
         	
                 <c:if test="${sessionScope.userInfo.login == true}">
-        					<input onclick="CreateDetailView()"
+        					<input onclick="CreateDetailView()" onmouseover="this.style.cursor='hand'"
 										style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="추가">
 				</c:if>

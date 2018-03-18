@@ -75,10 +75,10 @@
                         </li>
                     </ul>
                     <div>
-                        <input class="searchBtn" type="button" onclick="getSearchPenetrationinspectList()"value="검색" />
-                        <input type="reset" onclick="init();" value="초기화" />
+                        <input class="searchBtn" type="button" onmouseover="this.style.cursor='hand'" onclick="getSearchPenetrationinspectList()"value="검색" />
+                        <input type="reset" onclick="init();" onmouseover="this.style.cursor='hand'" value="초기화" />
                         <!-- 
-                        <input class="saveBtn"type="button" onclick="PenetrationinspectSave();"value="저장" />
+                        <input class="saveBtn"type="button" onmouseover="this.style.cursor='hand'" onclick="PenetrationinspectSave();"value="저장" />
                          -->
                     
                     </div>

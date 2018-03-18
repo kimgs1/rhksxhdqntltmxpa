@@ -70,7 +70,7 @@ function getQNAList(){
 			var dataList = data.result.DataList;
 			if(dataList!= null){
 				var innerHtml = "";
-				innerHtml += "<h2 onclick='menuClick(" + "\"QNA\""+")'>Q&A</h2>";
+				innerHtml += "<h2 onclick='menuClick(" + "\"QNA\""+")'>자주하는 질문</h2>";
 				innerHtml += "<ul>";
 				for(var i=0; i<dataList.length;i++){
 					innerHtml += "<li onmouseover=this.style.color='#9f4faf'>";

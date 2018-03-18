@@ -14,9 +14,9 @@
 </head>
 <body>
 	<%@ include file="home_side.jsp"%>
-	<div class="con">
+	<div class="con1">
         <section class="board board_list">
-            <h2>공지사항</h2><!--자료실 공지사항-->
+            <h2><img src="images/cs_notice.gif"></h2><!--자료실 공지사항-->
             <div>
                 <table id="bulletine_div">
                     <tr>
@@ -30,7 +30,7 @@
                         <td>1</td>
                         <td><a href="#">Q&amp;A테스트</a></td>
                         <td>관리자</td>
-                        <td>20112-05-21</td>
+                        <td>2012-05-21</td>
                         <td>6</td>
                     </tr>
                 </table>
@@ -56,7 +56,7 @@
                 </ol>
                 
 			<c:if test="${sessionScope.userInfo.login == true}">
-                <span><input type="button" onclick="newBulletine()" value="글쓰기" /></span>
+                <span><input type="button" style="cursor:hand" onclick="newBulletine()" value="글쓰기" /></span>
                 </c:if>
             </div>
             

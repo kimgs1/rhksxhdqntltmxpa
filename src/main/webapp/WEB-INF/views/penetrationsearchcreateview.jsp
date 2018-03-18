@@ -189,7 +189,7 @@
 	                	<div id="SealMeterial_tag" class="col-sm-8"></div> 
 	                	<div class="col-sm-4">
 								<input onclick="SealMeterialAdd()"
-									style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
+									style="width: 60px; height: 20px; cursor:pointer; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 									type="button" value="추가">
 						</div>
                 	</div>
@@ -207,7 +207,7 @@
                 <td><input id="SealSealDetailDWG" style="width:100%" value=${SealSealDetailDWG}></td>
             </tr>
             <tr>
-                <th>SEAL QUALTY CLASS</th>
+                <th>SEAL 품질 등급</th>
                 <td><input id="SealQualityClass" style="width:100%" value="${SealQualityClass}"></td>
             </tr>
             <tr>
@@ -359,7 +359,7 @@
         	<div class="col-sm-10"></div>
 				<div class="col-sm-2">
 					<input onclick="savePenetrationAllInfo()"
-						style="width: 130px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #0866d8; padding-left: 23px; border: 0; border-radius: 5px;"
+						style="width: 130px; height: 20px; cursor:pointer; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #0866d8; padding-left: 23px; border: 0; border-radius: 5px;"
 						type="button" value="관통부정보 저장">
 				</div>
 			</div>
@@ -368,7 +368,7 @@
 				<tr>
 					<th colspan="12">● 점검정보 
 						<input onclick="insertInspectInfo()"
-										style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
+										style="width: 60px; height: 20px; cursor:pointer; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="추가">
 					</th>
 					</tr>
@@ -384,7 +384,7 @@
 								<div class="col-sm-3"></div>
 								<div class="col-sm-6">판단사유</div>
 								<div class="col-sm-3">
-									<input onclick="updateInspectInfo('${ManagementNo}','${PenetrationNo}','${list.InspectSeq}')"
+									<input onclick="updateInspectInfo('${ManagementNo}','${PenetrationNo}','${list.InspectSeq}')" onmouseover="this.style.cursor='hand'"
 										style="width: 70px; height: 20px; margin-right:1px;line-height: 20px; font-size: 13px; font-weight: 400; color: black; background: url(images/ico_write.png) no-repeat 5px center #fcf805; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="수정">
 								</div>

@@ -65,10 +65,10 @@
                         </li>
                     </ul>
                     <div>
-                        <input class="searchBtn" type="button" onclick="getSearchSealantinfoList()"value="검색" />
-                        <input type="reset" onclick="init();" value="초기화" />
+                        <input class="searchBtn" type="button" onmouseover="this.style.cursor='hand'" onclick="getSearchSealantinfoList()"value="검색" />
+                        <input type="reset" onmouseover="this.style.cursor='hand'" onclick="init();" value="초기화" />
                         <!-- 
-                        <input class="saveBtn"type="button" onclick="SealantinfoSave();"value="저장" />
+                        <input class="saveBtn"type="button" onmouseover="this.style.cursor='hand'" onclick="SealantinfoSave();"value="저장" />
                          -->
                     </div>
                 </form>

@@ -14,9 +14,9 @@
 </head>
 <body>
 	<%@ include file="home_side.jsp"%>
-	<div class="con">
+	<div class="con1">
         <section class="board board_list">
-            <h2>Q &amp; A</h2><!--자료실 공지사항-->
+            <h2><img src="images/cs_qa.gif"></h2><!--자료실 공지사항-->
             <div>
                 <table id="qna_div">
                     <tr hidden="true">
@@ -55,7 +55,7 @@
                  -->
                 </ol>
                 <c:if test="${sessionScope.userInfo.login == true}">
-                <span><input type="button" onclick="newQNA()"value="글쓰기" /></span>
+                <span><input type="button" style="cursor:hand" onclick="newQNA()"value="글쓰기" /></span>
                 </c:if>
             </div>
             <!-- 

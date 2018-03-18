@@ -73,7 +73,7 @@ function getPenetrationbaseinfoList(){
 function getSearchPenetrationbaseinfoList(){
 	if($("#ELEVATION_num_pit").val() != "" || $("#ELEVATION_num_inc").val() != "" ){
 		if(isNaN(Number($("#ELEVATION_num_pit").val())) || isNaN($("#ELEVATION_num_inc").val()) || $("#ELEVATION_num_pit").val() == "" || $("#ELEVATION_num_inc").val() == ""  ){
-			alert("ELEVATION은 빈값이나 두개자리에 모두 수자를 입력하여야 합니다.");
+			alert("ELEVATION은 빈값이나 두 자리에 모두 숫자를 입력하여야 합니다.");
 			return;
 		}
 	}

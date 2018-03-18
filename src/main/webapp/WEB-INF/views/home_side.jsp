@@ -23,6 +23,27 @@ h6 {
 <ul id="tmenu">
 
 
+		<c:if test="${sessionScope.userInfo.id == 'admin'}">
+		
+
+		<li class="tmenu_right"><a href="#" class="drop">시스템관리</a>
+		
+		<div class="dropdown_2columns align_right">
+            <div class="cols_1">
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
+                    <li><a onclick="menuClick('USMNG')">사용자관리</a></li>
+                </ul>   
+            </div>
+            <div class="cols_1">
+                <ul class="greybox" onmouseover="this.style.cursor='hand'">
+                    <li><a onclick="menuClick('CDMNG')">코드관리</a></li>
+                </ul>   
+            </div>				
+				
+			</div>
+			</c:if>
+
+
 			<c:if test="${sessionScope.userInfo.login != true}">
             <li class="tmenu_right">
                 <a href="/NPower/login">로그인</a>
@@ -51,7 +72,7 @@ h6 {
             
             <div class="cols_1">
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
-                    <li><a onclick="menuClick('QNA')">Q/A</a></li>
+                    <li><a onclick="menuClick('QNA')">자주하는질문</a></li>
                 </ul>
             </div>
     </div>
@@ -65,49 +86,39 @@ h6 {
         <div class="dropdown_2columns align_left">
 
             <div class="cols_1">
-    
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTISC')">통합관리</a></li>
                 </ul>   
-    
             </div>
             
             <div class="cols_1">
-    
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTBI')">기본정보</a></li>
                 </ul>
-    
             </div>
+
             <div class="cols_1">
-    
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('SEAL')">밀폐재정보</a></li>
                 </ul>   
-    
             </div>
             
             <div class="cols_1">
-    
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTI')">관통재정보</a></li>
                 </ul>
-    
             </div>
+
             <div class="cols_1">
-    
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PFEV')">성능평가</a></li>
                 </ul>   
-    
             </div>
             
             <div class="cols_1">
-    
                 <ul class="greybox" onmouseover="this.style.cursor='hand'">
                     <li><a onclick="menuClick('PTISP')">관통부점검</a></li>
                 </ul>
-    
             </div>
 		</div>
     
@@ -120,64 +131,5 @@ h6 {
 
 </ul>
 
-<!-- 
-	
-	<header><section>
-	
-	<ul class="top_nav">
-            <li>
-                <a id="user_name" onclick="window.open(this.href, '', 'width=630, height=555, top=200'); return false;"> &nbsp;</a>
-            </li>
-            
-			<c:if test="${sessionScope.userInfo.login != true}">
-            <li>
-                <a href="/NPower/login">로그인</a>
-            </li>
-            </c:if>
-            <c:if test="${sessionScope.userInfo.login == true}">
-            <li>
-                <a href="/NPower/home.do?command=logout">로그아웃</a>
-            </li>
-            </c:if>
-        </ul>
-	<h1>
-		<a >logo</a>
-	</h1>
-	<nav>
-	<ul>
-		<li><a href="/NPower">HOME</a></li>
-		<li><a onclick="menuClick('PTISC')">관통부관리</a>
-			<ol>
-				<li><a onclick="menuClick('PTBI')">기본정보</a></li>
-				<li><a onclick="menuClick('SEAL')" >밀폐재정보</a></li>
-				<li><a onclick="menuClick('PTI')">관통재정보</a></li>
-				<li><a onclick="menuClick('PFEV')">성능평가</a></li>
-				<li><a onclick="menuClick('PTISP')">관통부점검</a></li>
-			</ol></li>
-			
 
-		<li><a href="#">자료실</a>
-			<ol>
-				<li><a href="#">관련문서</a></li>
-				<li><a href="#">업데이트 공유프로그램</a></li>
-			</ol></li>
-
-			
-		<li><a href="#">커뮤니티</a>
-			<ol>
-				<li><a onclick="menuClick('FBUL')">공지사항</a></li>
-				<li><a onclick="menuClick('QNA')">Q&amp;A</a></li>
-			</ol></li>
-			
-			<c:if test="${sessionScope.userInfo.id == 'admin'}">
-		<li><a href="#">시스템관리</a>
-			<ol>
-				<li><a onclick="menuClick('USMNG')">사용자관리</a></li>
-				<li><a onclick="menuClick('CDMNG')">코드관리</a></li>
-			</ol></li>
-			</c:if>
-	</ul>
-	</nav> 
-</section> </header>
--->
 	

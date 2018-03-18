@@ -17,12 +17,12 @@
             <ul class="tab">
             	<li><a onclick="menuClick('PTBI')">기본정보</a></li>
 				<li><a onclick="menuClick('SEAL')">밀폐재정보</a></li>
-				<li class="active"><a  onclick="menuClick('PTI')">관통제정보</a></li>
+				<li class="active"><a  onclick="menuClick('PTI')">관통재정보</a></li>
 				<li><a  onclick="menuClick('PFEV')">성능평가</a></li>
 				<li><a  onclick="menuClick('PTISP')">관통부점검</a></li>
             </ul>
             <section>
-                <!-- <h2>관통제정보</h2> -->
+                <!-- <h2>관통재정보</h2> -->
                 <form action="#">
                     <ul>
                     	<li hidden="true">
@@ -81,10 +81,10 @@
                         </li>
                     </ul>
                     <div>
-                        <input class="searchBtn" type="button" onclick="getSearchPenetrationinfoList()"value="검색" />
-                        <input type="reset" onclick="init();" value="초기화" />
+                        <input class="searchBtn" type="button" onmouseover="this.style.cursor='hand'" onclick="getSearchPenetrationinfoList()"value="검색" />
+                        <input type="reset" onclick="init();" onmouseover="this.style.cursor='hand'" value="초기화" />
                         <!-- 
-                        <input class="saveBtn"type="button" onclick="PenetrationinfoSave();"value="저장" />
+                        <input class="saveBtn"type="button" onmouseover="this.style.cursor='hand'" onclick="PenetrationinfoSave();"value="저장" />
                          -->
                     </div>
                 </form>

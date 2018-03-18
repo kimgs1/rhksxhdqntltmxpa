@@ -12,9 +12,9 @@
 </head>
 <body>
 	<%@ include file="home_side.jsp"%>
-     <div class="con">
+     <div class="con1">
         <section class="board board_view">
-            <h2>Q &amp; A</h2><!--자료실 공지사항-->
+            <h2><img src="images/cs_qa.gif"></h2><!--자료실 공지사항-->
             <div>
                 <table>
                     <tr>

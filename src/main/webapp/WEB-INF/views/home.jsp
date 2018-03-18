@@ -62,7 +62,7 @@
                 </ul>
             </article>
             <article id="qna_div">
-                <h2>Q&amp;A</h2>
+                <h2>자주하는 질문</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
                         <a href="#">Q & A 데이타 로딩중...</a>
@@ -232,7 +232,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
-			<div class="col-sm-2" onclick="newQNA();">Q&A 글쓰기</div>
+			<div class="col-sm-2" onclick="newQNA();">자주하는 질문 글쓰기</div>
 			<div id="bulletine_div" class="col-sm-12">
 				<div style="color: blue" onclick="getQNAContent(4)" hidden="true"></div>
 			</div>

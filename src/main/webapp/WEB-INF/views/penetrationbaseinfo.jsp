@@ -172,8 +172,8 @@
                         
                     </ul>
                     <div>
-                        <input class="searchBtn" type="button" onclick="getSearchPenetrationbaseinfoList()"value="검색" />
-                        <input style="margin-left: 15px" type="reset" onclick="init();" value="초기화" />
+                        <input class="searchBtn" type="button" onmouseover="this.style.cursor='hand'" onclick="getSearchPenetrationbaseinfoList()"value="검색" />
+                        <input style="margin-left: 15px" type="reset" onmouseover="this.style.cursor='hand'" onclick="init();" value="초기화" />
                         <!--<input class="saveBtn"type="button" onclick="PenetrationbaseinfoSave();"value="저장" />검색도 저장도 submit?-->
                     </div>
                 </form>

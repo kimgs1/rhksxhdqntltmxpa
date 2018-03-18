@@ -31,14 +31,14 @@ function getBaseCodeInfo(){
 function getSearchPenetrationsearchList(nowPage){
 	if($("#ELEVATION_num_pit").val() != "" || $("#ELEVATION_num_inc").val() != "" ){
 		if(isNaN(Number($("#ELEVATION_num_pit").val())) || isNaN($("#ELEVATION_num_inc").val()) || $("#ELEVATION_num_pit").val() == "" || $("#ELEVATION_num_inc").val() == ""  ){
-			alert("ELEVATION 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			alert("ELEVATION 은 빈값이나  두 자리에 모두 숫자를 입력하여야 합니다.");
 			return;
 		}
 	}
 	
 	if($("#ELEVATION_num_pit_2").val() != "" || $("#ELEVATION_num_inc_2").val() != "" ){
 		if(isNaN(Number($("#ELEVATION_num_pit_2").val())) || isNaN($("#ELEVATION_num_inc_2").val()) || $("#ELEVATION_num_pit_2").val() == "" || $("#ELEVATION_num_inc_2").val() == ""  ){
-			alert("ELEVATION 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			alert("ELEVATION 은 빈값이나  두 자리에 모두 숫자를 입력하여야 합니다.");
 			return;
 		}
 	}
@@ -46,7 +46,7 @@ function getSearchPenetrationsearchList(nowPage){
 	
 	if($("#Diameter_num_pit").val() != "" || $("#Diameter_num_inc").val() != "" ){
 		if(isNaN(Number($("#Diameter_num_pit").val())) || isNaN($("#Diameter_num_inc").val()) || $("#Diameter_num_pit").val() == "" || $("#Diameter_num_inc").val() == ""  ){
-			alert("Diameter 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			alert("Diameter 은 빈값이나  두 자리에 모두 숫자를 입력하여야 합니다.");
 			return;
 		}
 	}
@@ -54,14 +54,14 @@ function getSearchPenetrationsearchList(nowPage){
 	
 	if($("#Height_num_pit").val() != "" || $("#Height_num_inc").val() != "" ){
 		if(isNaN(Number($("#Height_num_pit").val())) || isNaN($("#Height_num_inc").val()) || $("#Height_num_pit").val() == "" || $("#Height_num_inc").val() == ""  ){
-			alert("Height 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			alert("Height 은 빈값이나  두 자리에 모두 숫자를 입력하여야 합니다.");
 			return;
 		}
 	}
 	
 	if($("#Length_num_pit").val() != "" || $("#Length_num_inc").val() != "" ){
 		if(isNaN(Number($("#Length_num_pit").val())) || isNaN($("#Length_num_inc").val()) || $("#Length_num_pit").val() == "" || $("#Length_num_inc").val() == ""  ){
-			alert("Length 은 빈값이나  두개자리에 모두 수자를 입력하여야 합니다.");
+			alert("Length 은 빈값이나  두 자리에 모두 숫자를 입력하여야 합니다.");
 			return;
 		}
 	}
@@ -226,10 +226,10 @@ function drawPenetrationsearchGrid(result,dataList){
 			        	   formatter:function (cellvalue, options, rowObject) {  
 //			        		   return '<input onclick="getDetailView('+options.rowId+')" type="button" value="보기" style="{width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }">';
 			        		   var returnTagStr = "";
-			        		   returnTagStr +=  '<input class="view" onclick="getDetailView('+options.rowId+')" type="button" value="보기" >';
+			        		   returnTagStr +=  '<input class="view" onclick="getDetailView('+options.rowId+')" type="button" style="cursor:pointer;" value="보기" >';
 			        		   if(loginflag == true){
-				        		   returnTagStr +=  '<input class="edit" onclick="EditDetailView('+options.rowId+')" type="button" value="수정">';
-				        		   returnTagStr +=  '<input class="delete" onclick="deletePenetrationsearch('+options.rowId+')" type="button" value="삭제">';
+				        		   returnTagStr +=  '<input class="edit" onclick="EditDetailView('+options.rowId+')" style="cursor:pointer;" type="button" value="수정">';
+				        		   returnTagStr +=  '<input class="delete" onclick="deletePenetrationsearch('+options.rowId+')" style="cursor:pointer;" type="button" value="삭제">';
 			        		   }
 			        		   return returnTagStr
 			        	   }
@@ -370,7 +370,7 @@ function deletePenetrationsearch(rowId){
 			}
 			else{
 
-				alert("관통부정보를 삭제하는데 실패하였습니다. \r\n 관리자에게 문의하시길 바라겠습니다. \r\n " + result.msg);
+				alert("관통부정보를 삭제하는데 실패하였습니다. \r\n 관리자에게 문의하시길 바랍니다. \r\n " + result.msg);
 			}
 		},
 		error: function(data){
@@ -400,7 +400,7 @@ function openPicFront(rowId){
 			if(result.result == "success"){
 				window.open("./DownLoadImg/" + result.photoName);
 			}else{
-				alert("이미지가 저장이 되어있지 않았습니다.");
+				alert("이미지가 저장 되어있지 않습니다.");
 			}
 		},
 		error: function(data){
@@ -433,7 +433,7 @@ function openPicBack(rowId){
 				
 				window.open("./DownLoadImg/" + result.photoName);
 			}else{
-				alert("이미지가 저장이 되어있지 않았습니다.");
+				alert("이미지가 저장 되어있지 않습니다.");
 			}
 		},
 		error: function(data){
