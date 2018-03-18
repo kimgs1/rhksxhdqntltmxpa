@@ -18,12 +18,12 @@
             <div>
                 <table>
                     <tr>
-                        <th>제목</th>
+                        <th class="nbg3 b2">제목</th>
                         <td><input type="text" id="subject"/></td>
                     </tr>
-                    <tr style="height:145px;">
-                        <th>내용</th>
-                        <td><textarea id="Content"></textarea></td>
+                    <tr>
+                        <th class="nbg3 b2">내용</th>
+                        <td><textarea style="min-height:386px; max-height:386px;" id="Content"></textarea><br><img src=images/blink.gif height=10></td>
                     </tr>
                 </table>
                 <div class="bo_write_save">

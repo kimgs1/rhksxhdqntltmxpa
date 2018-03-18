@@ -39,9 +39,9 @@
                      -->        
                     <tr style="height:145px;">
                         <th>내용</th>
-                        <td colspan="2" class="board_text">
+                        <td colspan="2" class="board_text" style="min-height:386px; max-height:386px;">
                             ${qna.QNAObject.Content}
-                        </td>
+                        <br><img src=images/blink.gif height=10></td>
                     </tr>
                 </table>
                 <div class="bo_view_save">
@@ -49,6 +49,7 @@
                 </div>
             </div>
         </section>
+        <br><br><br>
     </div>
 </body>
 </html>
