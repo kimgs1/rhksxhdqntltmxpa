@@ -19,7 +19,7 @@
 				<li><a onclick="menuClick('PTISP')">관통부점검</a></li>
             </ul>
             <section>
-                <h2>기본정보</h2>
+                <!-- <h2>기본정보</h2>  -->
                 <form action="#">
                     <ul>
                     	<li hidden="true">
@@ -180,6 +180,7 @@
             </section>
         </section>
 			<div class="col-sm-12" id="penetrationbaseinfo_Grid_div"></div>
+			<br><br><br>
 </div>
 </body>
 </html>

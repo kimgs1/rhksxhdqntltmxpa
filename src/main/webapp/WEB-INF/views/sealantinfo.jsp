@@ -20,7 +20,7 @@
 				<li><a  onclick="menuClick('PTISP')">관통부점검</a></li>
             </ul>
             <section>
-                <h2>밀페재정보</h2>
+                <!-- <h2>밀페재정보</h2> -->
                 <form action="#">
                     <ul>
                     	<li hidden="true">
@@ -41,7 +41,7 @@
                             <input id="manag03_03" type="checkbox" name="condition" /><label for="manag03_03">파손</label>
                         </li>
                         <li>
-                            <label for="manag04">SEAL QUALITY CLASS</label>
+                            <label for="manag04">SEAL 품질 등급</label>
                             <input id="SealQualityClass" type="text" value=""/>
                         </li>
                         <!--
@@ -75,7 +75,7 @@
             </section>
         </section>
 			<div class="col-sm-12" id="sealantinfo_Grid_div"></div>
-
+			<br><br><br>
 </div>
 </body>
 </html>

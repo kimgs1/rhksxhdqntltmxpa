@@ -21,7 +21,7 @@
 				<li class="active"><a  onclick="menuClick('PTISP')">관통부점검</a></li>
             </ul>
             <section>
-                <h2>점검정보</h2>
+                <!-- <h2>점검정보</h2> -->
                 <form action="#">
                     <ul>
                     	<li hidden="true">
@@ -87,9 +87,9 @@
            
         </section>
             <div  class="col-sm-12" id="penetrationinspect_Grid_div"></div>
-             <ol id="paging" class="pager">
-               
-            </ol>
-    </div>
+            <br>
+             <ol id="paging" class="pager"></ol>
+			<br><br><br>
+</div>
 </body>
 </html>

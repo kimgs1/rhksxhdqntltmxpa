@@ -118,7 +118,7 @@ function drawSealantinfoGrid(result,dataList){
 //			           {name:'ConstructionState_name', label:'시공상태',align:'center', width:'10%',editable:true},
 //			           {name:'SealMeterial_name', label:'밀폐재재질', align:'center', width:'10%'},
 			           {name:'SealThickness', label:'밀폐재두께', align:'center', width:'10%'},
-			           {name:'SealQualityClass', label:'SEAL QUALITY CLASS', align:'center', width:'10%'},
+			           {name:'SealQualityClass', label:'SEAL 품질 등급', align:'center', width:'10%'},
 			           {name:'PressingBoardMeterial', label:'댐판재질', align:'center', width:'10%'},
 			           {name:'PressingBoardThickness', label:'댐판두께', align:'center', width:'10%'},
 			           {name:'RegID', label:'작업자ID', align:'center', width:'10%'},

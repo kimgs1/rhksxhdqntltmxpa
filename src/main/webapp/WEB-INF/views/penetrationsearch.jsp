@@ -15,7 +15,7 @@
 
 <%@ include file="home_side.jsp"%>
     <!--글로벌속성 FIN-->    
-    <div class="con sub01">
+    <div class="con1 sub01">
         <section class="sec01">
             <p class="nbg5 b4">관통부 기본검색</p><br>
                 <form action="#">
@@ -138,9 +138,8 @@
            <div id="penetrationsearch_Grid_div">
            </div>
            <br/>
-           <ol id="paging" class="pager">
-               
-            </ol>
+           <ol id="paging" class="pager"></ol>
         </section>
-    </div>
+</div>
+</body>
 </html>

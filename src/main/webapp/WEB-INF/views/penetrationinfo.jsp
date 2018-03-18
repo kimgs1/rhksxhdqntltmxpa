@@ -22,7 +22,7 @@
 				<li><a  onclick="menuClick('PTISP')">관통부점검</a></li>
             </ul>
             <section>
-                <h2>밀폐재정보</h2>
+                <!-- <h2>관통제정보</h2> -->
                 <form action="#">
                     <ul>
                     	<li hidden="true">
@@ -91,7 +91,7 @@
             </section>
         </section>
          	<div  class="col-sm-12" id="penetrationinfo_Grid_div"></div>
-         	</div>
-
-
+			<br><br><br>
+</div>
+</body>
 </html>
