@@ -45,11 +45,18 @@ h6 {
 
 
 			<c:if test="${sessionScope.userInfo.login != true}">
+			<script>
+			loginflag = false;
+			</script>
             <li class="tmenu_right">
                 <a href="/NPower/login">로그인</a>
             </li>
             </c:if>
             <c:if test="${sessionScope.userInfo.login == true}">
+           <script>
+			loginflag = true;
+			</script>
+
             <li class="tmenu_right">
                 <a href="/NPower/home.do?command=logout">로그아웃</a>
             </li>

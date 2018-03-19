@@ -135,8 +135,7 @@
                 <p id="page_detail"></p>
             </div>
             <br/>
-           <div id="penetrationsearch_Grid_div">
-           </div>
+           <div id="penetrationsearch_Grid_div"></div>
            <br/>
            <ol id="paging" class="pager"></ol>
         </section>

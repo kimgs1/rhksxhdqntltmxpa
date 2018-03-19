@@ -92,7 +92,7 @@ function newMemberSaveOnclick(){
 			alert("회원가입이 완료되었습니다.");
 		},
 		error:function(request,status,error){
-			alert("회원가입하는동안 오류가 생겼습니다.  관리자에게 문의하시길 바라겠습니다.");
+			alert("회원가입하는동안 오류가 생겼습니다.  관리자에게 문의 바랍니다.");
 		}
 	});
 }
