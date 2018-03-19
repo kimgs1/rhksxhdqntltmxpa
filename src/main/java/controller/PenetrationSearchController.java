@@ -459,7 +459,7 @@ public class PenetrationSearchController {
 	       
 	        file.transferTo(new File(path));
 	        long  endTime=System.currentTimeMillis();
-	        System.out.println("运行时间："+String.valueOf(endTime-startTime)+"ms");
+	        System.out.println("근무시간："+String.valueOf(endTime-startTime)+"ms");
 	        resMsg = "DownLoadImg/"+FileName;
 	    } catch (IllegalStateException e) {
 	        // TODO Auto-generated catch block

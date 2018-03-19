@@ -574,7 +574,7 @@
 			                	<div id="pie_SealantConditionState_tag" class="col-sm-4"></div> 
 			                	<div class="col-sm-1">
 										<input onclick="pie_SealantConditionStateAdd()"
-											style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
+											style="width: 60px; cursor:pointer; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 											type="button" value="추가">
 								</div>
 		                	</div>
@@ -593,7 +593,7 @@
 				</div>
 				
 				<div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="pie_updateInspectInfoSave()">저장</button>
+                <button type="button" class="btn btn-primary" style="cursor:pointer;"  onclick="pie_updateInspectInfoSave()">저장</button>
               </div>
 			</div>
 		</div>
@@ -705,7 +705,7 @@
 			                	<div id="pic_SealantConditionState_tag" class="col-sm-4"></div> 
 			                	<div class="col-sm-1">
 										<input onclick="pic_SealantConditionStateAdd()"
-											style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
+											style="width: 60px; cursor:pointer; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 											type="button" value="추가">
 								</div>
 		                	</div>
@@ -724,7 +724,7 @@
 				</div>
 				
 				<div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="pic_updateInspectInfoSave()">저장</button>
+                <button type="button" class="btn btn-primary" style="cursor:pointer;" onclick="pic_updateInspectInfoSave()">저장</button>
               </div>
 			</div>
 		</div>
