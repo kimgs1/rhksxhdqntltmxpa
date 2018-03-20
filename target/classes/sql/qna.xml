@@ -30,6 +30,13 @@
 	</select>
 	
 	<select id="getContent" resultType="hashmap" parameterType="hashmap">
+	
+		
+		UPDATE qna
+		SET viewcount = viewcount + 1
+		WHERE id = '${id}';
+	
+	
 		SELECT
 			ID,
 			subject,

@@ -245,7 +245,7 @@ function drawPenetrationsearchGrid(result,dataList){
 			shrinkToFit : true,
 			scrollrows : true,
 			gridview : true,
-			height : 400,
+			height : 350,
 			viewrecords: true,
 			onSelectRow : function(id) {
 //				var rowdata = grid.jqGrid('getRowData', id);

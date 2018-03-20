@@ -30,6 +30,12 @@
 	</select>
 	
 	<select id="getContent" resultType="hashmap" parameterType="hashmap">
+	
+		UPDATE fbulletine
+		SET cnt = cnt + 1
+		WHERE id = '${id}';
+		
+		
 		SELECT
 			id,
 			title,
@@ -42,7 +48,9 @@
 			updatedate,
 			FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') regdate_time
 		FROM fbulletine
-		WHERE id = '${id}'
+		WHERE id = '${id}';
+		
+		
 	</select>
 	
 	<update id="create" parameterType="hashmap">

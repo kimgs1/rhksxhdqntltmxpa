@@ -1,7 +1,7 @@
 body{font-family:'NanumGothic', sans-serif; min-width:1180px; }
 body:after{content:''; visibility:hidden; display:block; clear:both}
-/*ÆùÆ® Å¬·¡½º*/ 
-.pager{min-width:350px; width:20%; margin:0 auto 50px}
+/*ï¿½ï¿½Æ® Å¬ï¿½ï¿½ï¿½ï¿½*/ 
+.pager{min-width:400px; width:20%; margin:0 auto 50px}
 .pager:after{content:''; visibility:hidden; display:block; clear:both;}
 .pager li{float:left; cursor: hand;}
 .pager li a{display:block; text-decoration:none; font-size:13px; font-weight:700; color:#282828; padding:0 5px; line-height:15px; }

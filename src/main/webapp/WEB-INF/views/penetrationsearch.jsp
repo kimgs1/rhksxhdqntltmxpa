@@ -102,9 +102,9 @@
                         
                         <li id="Location_tag">
                         </li>
-                        <li id = "WallMeterial_tag" style="width:800px">
+                        <li id = "WallMeterial_tag" style="width:1500px">
                         </li>
-                        <li id= "ConstructionState_tag" style="width:800px">
+                        <li id= "ConstructionState_tag" style="width:1500px">
                         </li>
                         <li id= "Area_tag">
                         </li>
