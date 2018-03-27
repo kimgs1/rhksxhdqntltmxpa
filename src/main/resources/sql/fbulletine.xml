@@ -70,7 +70,7 @@
 			0 ,
 			'N',
 			'${userid}' ,
-			SYSDATE()
+			getdate()
 		)
 	</update>
 

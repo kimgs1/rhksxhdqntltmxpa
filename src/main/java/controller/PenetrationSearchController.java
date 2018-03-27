@@ -439,7 +439,7 @@ public class PenetrationSearchController {
 		return new ModelAndView("JsonView", "result", result);
 	}
 	
-	@RequestMapping(value="/uploadPic")  
+	@RequestMapping(value="/uploadPic",produces="application/text;charset=utf8")  
 	@ResponseBody  
 	public String uploadPic(@RequestParam("uploadFile") CommonsMultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {  
 	    String path = request.getSession().getServletContext().getRealPath("DownLoadImg");

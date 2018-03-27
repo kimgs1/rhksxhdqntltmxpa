@@ -6,7 +6,6 @@
 <head>
 
 <%@ include file="main_head.jsp"%>
-<%@ include file="/views/modal.jsp"%>
 
 <script type="text/javascript" src="js/home_side.js"></script>
 <script type="text/javascript" src="js/qna_list.js"></script>

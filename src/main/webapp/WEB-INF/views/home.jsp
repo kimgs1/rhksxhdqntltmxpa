@@ -81,7 +81,7 @@
                     </li>
                 </ul>
             </article>
-            <article id="download_div">
+            <article id="content_div">
                 <h2>자료실</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
