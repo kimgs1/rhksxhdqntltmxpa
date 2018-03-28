@@ -63,7 +63,9 @@ h6 {
             </c:if>
 
 
-    <li class="tmenu_right"><a href="#" class="">자료실</a><!-- Begin 3 columns Item -->
+    <li class="tmenu_right" onmouseover="this.style.cursor='hand'">
+    	<a href="#" onclick="menuClick('CNT')" class="">자료실
+    	</a><!-- Begin 3 columns Item -->
         
     </li> <!-- End 자료실 -->
     

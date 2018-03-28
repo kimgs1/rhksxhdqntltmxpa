@@ -33,6 +33,14 @@ public class QNAController {
 		HashMap<String,Object> result = qnaDao.getContent(param);
 		return new ModelAndView("qna_view", "qna", result);
 	}
+	
+	@RequestMapping(value="/qna_edit", method=RequestMethod.GET)
+	public ModelAndView getQNAEditByURL(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", request.getParameter("id"));
+		HashMap<String,Object> result = qnaDao.getContent(param);
+		return new ModelAndView("qna_edit", "qna", result);
+	}
 	@RequestMapping(value="/qna_create", method=RequestMethod.GET)
 	public ModelAndView QNACreateView() throws Exception {
 		return new ModelAndView("qna_create");
@@ -47,6 +55,29 @@ public class QNAController {
 		String userid = (String)((HashMap<String, Object>)request.getSession().getAttribute("userInfo")).get("id");
 		param.put("userid", userid);
 		HashMap<String,Object> result = qnaDao.createQNA(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/qna.do", params="command=edit")
+	public ModelAndView editQNA(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", request.getParameter("id"));
+		param.put("subject", request.getParameter("subject"));
+		param.put("Content", request.getParameter("Content"));
+		String userid = (String)((HashMap<String, Object>)request.getSession().getAttribute("userInfo")).get("id");
+		param.put("userid", userid);
+		HashMap<String,Object> result = qnaDao.editQNA(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/qna.do", params="command=delete")
+	public ModelAndView deleteQNA(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", request.getParameter("id"));
+		String userid = (String)((HashMap<String, Object>)request.getSession().getAttribute("userInfo")).get("id");
+		param.put("userid", userid);
+		HashMap<String,Object> result = qnaDao.deleteQNA(param);
 		return new ModelAndView("JsonView", "result", result);
 	}
 

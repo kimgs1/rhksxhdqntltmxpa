@@ -2,7 +2,7 @@
 
 
 $(function(){
-	getBulletineList(1);
+//	getBulletineList(1);
 })
 
 function getBulletineList(nowPage){
@@ -66,79 +66,25 @@ function getBulletineList(nowPage){
 	});
 }
 
-function getBulletineContent(id){
-	alert(id);
+function ContentInfoEditView(id){
+	window.location.href = '/NPower/contentinfo_edit?id=' + id;
+}
+function ContentInfoDelete(id){
 	$.ajax({
-		url : 'fbulletine.do',
+		url : 'contentinfo.do',
 		type : 'post',
 		dataType : 'json',
 		data : {
-			command:'getContent',
-			id:id
+			command:'delete',
+			id:id,
 		},
 		success : function(data) {
 			var result = data.result;
-			var fb = result.FB;
-			document.getElementById("vb_title").innerHTML = fb.title;
-			document.getElementById("vb_content").innerHTML = fb.contents;
-			$('#view_bulletine_modal').css('z-index', 3000);
-			$('#view_bulletine_modal').modal();
+			alert(result.msg);
+			window.location.href = '/NPower/contentinfo';
 		},
 		error: function(data){
-			
+			alert(result.msg);
 		}
 	});
-}
-function getBulletineContent(id){
-	alert(id);
-	$.ajax({
-		url : 'fbulletine.do',
-		type : 'post',
-		dataType : 'json',
-		data : {
-			command:'getContent',
-			id:id
-		},
-		success : function(data) {
-			var result = data.result;
-			var fb = result.FB;
-			document.getElementById("vb_title").innerHTML = fb.title;
-			document.getElementById("vb_content").innerHTML = fb.contents;
-			$('#view_bulletine_modal').css('z-index', 3000);
-			$('#view_bulletine_modal').modal();
-		},
-		error: function(data){
-			
-		}
-	});
-}
-
-function newBulletine(){
-	$('#create_bulletine_modal').css('z-index', 3000);
-	$('#create_bulletine_modal').modal();
-}
-
-function newBulletineSave(){
-	$.ajax({
-		url : 'fbulletine.do',
-		type : 'post',
-		dataType : 'json',
-		data : {
-			command:'create',
-			title:$("#cb_title").val(),
-			contents:$("#cb_contents").val()
-		},
-		success : function(data) {
-			var result = data.result;
-			if(result.success == true){
-				alert(result.msg);
-				$('#create_bulletine_modal').modal('hide');
-				getBulletineList(1);
-			}
-		},
-		error: function(data){
-			
-		}
-	});
-
 }

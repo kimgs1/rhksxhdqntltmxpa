@@ -31,7 +31,7 @@ function getBulletineList(nowPage){
 
 				for(var i=0; i<fbList.length;i++){
 					innerHtml +=  '<tr onclick="getBulletineContent('+fbList[i].id+')" >';
-					innerHtml += '<td>'+(i+1)+'</td>';
+					innerHtml += '<td>'+fbList[i].id+'</td>';
 					innerHtml += '<td>'+fbList[i].title+'</td>';
 					innerHtml += '<td>'+fbList[i].regid+'</td>';
 					innerHtml += '<td>'+fbList[i].RegDateTime+'</td>';

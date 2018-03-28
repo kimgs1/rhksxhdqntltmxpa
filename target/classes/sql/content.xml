@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="ContentInfo">
+	<select id="getList" resultType="hashmap" parameterType="hashmap">
+	<![CDATA[
+		select * from (
+			SELECT 
+					Row_Number() OVER (ORDER BY regdate desc) as rowNum,
+					id,
+					subject,
+					Contents,
+					Filename,
+					WrittenDate,
+					ViewCount,
+					RegID,
+					FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime,
+					UpdateID,
+					UpdateDate	
+				FROM ContentsInfo
+		) foo where foo.rowNum > ${low} and foo.rowNum <= ${high}
+		ORDER BY foo.RegDateTime desc
+		]]>
+	</select>
+	
+	<select id="getCount" resultType="string">
+		SELECT COUNT(*) from ContentsInfo
+	</select>
+	
+	<select id="getContent" resultType="hashmap" parameterType="hashmap">
+	
+		UPDATE ContentsInfo
+		SET ViewCount = ViewCount + 1
+		WHERE id = '${id}';
+		
+		
+		SELECT
+				id,
+				subject,
+				Contents,
+				Filename,
+				WrittenDate,
+				ViewCount,
+				RegID,
+				FORMAT(RegDate, 'yyyy-MM-dd hh:mm:ss') RegDateTime
+		FROM ContentsInfo
+		WHERE id = '${id}';
+		
+		
+	</select>
+	
+	<update id="create" parameterType="hashmap">
+		INSERT INTO
+		ContentsInfo (
+					subject,
+					Contents,
+					Filename,
+					ViewCount,
+					RegID,
+					RegDate
+			)
+		VALUES
+		(				
+					'${subject}',
+					'${Contents}',
+					'${FileName}',
+					0,
+					'${userid}',
+					getdate()
+		)
+	</update>
+
+	
+	<update id="edit" parameterType="hashmap">
+		update
+		ContentsInfo 
+		set 
+			subject = '${subject}',
+			Contents = '${Contents}',
+			Filename = '${FileName}',
+			updateId = '${userid}',
+			updateDate = getdate()
+		where id='${id}'
+		
+		
+	</update>
+	
+	<update id="delete" parameterType="hashmap">
+		delete
+		ContentsInfo 
+		where id='${id}'
+	</update>
+</mapper>

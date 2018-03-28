@@ -64,6 +64,9 @@ function menuClick(tagName){
 		case "USMNG":
 			window.location.href = '/NPower/usermanage';
 			break;	
+		case "CNT":
+			window.location.href = '/NPower/contentinfo';
+			break;	
 		default:
 			break;
 	

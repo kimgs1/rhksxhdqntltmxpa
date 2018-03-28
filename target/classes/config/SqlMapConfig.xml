@@ -29,5 +29,6 @@
 	    <mapper resource="sql/sealantinfo.xml"/>
 	    <mapper resource="sql/penetrationsearch.xml"/>
 	    <mapper resource="sql/usermanage.xml"/>
+	    <mapper resource="sql/content.xml"/>
 	</mappers>
 </configuration>

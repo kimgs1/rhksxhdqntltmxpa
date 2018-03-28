@@ -95,22 +95,24 @@ function newBulletine(){
 	$('#create_bulletine_modal').modal();
 }
 
-function newBulletineSave(){
+function FbulletineEditSave(id){
 	$.ajax({
 		url : 'fbulletine.do',
 		type : 'post',
 		dataType : 'json',
 		data : {
-			command:'create',
-			title:$("#cb_title").val(),
-			contents:$("#cb_contents").val()
+			command:'edit',
+			id:id,
+			title:$("#title").val(),
+			contents:$("#contents").val()
 		},
 		success : function(data) {
 			var result = data.result;
 			if(result.success == true){
 				alert(result.msg);
-				$('#create_bulletine_modal').modal('hide');
-				getBulletineList(1);
+				window.location.href = '/NPower/fbulletine';
+//				$('#create_bulletine_modal').modal('hide');
+//				getBulletineList(1);
 			}
 		},
 		error: function(data){
@@ -118,29 +120,4 @@ function newBulletineSave(){
 		}
 	});
 
-}
-
-
-function FbulletineEditView(id){
-	window.location.href = '/NPower/fbulletine_edit?id=' + id;
-}
-
-function FbulletineDelete(id){
-	$.ajax({
-		url : 'fbulletine.do',
-		type : 'post',
-		dataType : 'json',
-		data : {
-			command:'delete',
-			id:id,
-		},
-		success : function(data) {
-			var result = data.result;
-			alert(result.msg);
-			window.location.href = '/NPower/fbulletine';
-		},
-		error: function(data){
-			alert(result.msg);
-		}
-	});
 }

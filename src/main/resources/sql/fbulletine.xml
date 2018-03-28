@@ -70,8 +70,26 @@
 			0 ,
 			'N',
 			'${userid}' ,
-			SYSDATE()
+			getdate()
 		)
+	</update>	
+	<update id="edit" parameterType="hashmap">
+		update 
+		fbulletine 
+			set 
+			title = '${title}' ,
+			contents = '${contents}',
+			updateid ='${userid}' ,
+			updatedate = getdate()
+			
+		WHERE id = '${id}';
+
+	</update>
+	
+	<update id="delete" parameterType="hashmap">
+		delete
+		fbulletine 
+		WHERE id = '${id}';
 	</update>
 
 </mapper>

@@ -8,4 +8,6 @@ public interface QNADao {
 	public HashMap<String,Object> getQNAReviewList(HashMap<String,Object> param);
 	public HashMap<String,Object> createQNAReview(HashMap<String,Object> param);
 	public HashMap<String,Object> deleteQNAReview(HashMap<String,Object> param);
+	public HashMap<String, Object> deleteQNA(HashMap<String, Object> param);
+	public HashMap<String, Object> editQNA(HashMap<String, Object> param);
 }

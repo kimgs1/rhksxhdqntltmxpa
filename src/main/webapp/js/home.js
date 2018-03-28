@@ -5,6 +5,7 @@ $(function(){
 	chartList = new HashMap();
 	getQNAList();
 	getBulletineList();
+	getContentInfoList();
 	getChart();
 	loadEquipNoLocNoData();
 	getMergeData();
@@ -94,8 +95,43 @@ function getQNAList(){
 function getQNAContent(id){
 	window.location.href = '/NPower/qna_content?id='+id;
 }
+function getContentInfoList(){
+	$.ajax({
+		url : 'contentinfo.do',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			command:'getList'
+		},
+		success : function(data) {
+			var result = data.result;
+			var dataList = data.result.dataList;
+			if(dataList!= null){
+				var innerHtml = "";
+				innerHtml += "<h2 onclick='menuClick(" + "\"CNT\""+")'>자료실</h2>";
+				innerHtml += "<ul>";
+				for(var i=0; i<dataList.length;i++){
+					innerHtml += "<li onmouseover=this.style.color='#9f4faf'>";
+					innerHtml +=  '<a onclick="getContentInfoContent('+dataList[i].id+')" >';
+					innerHtml += '['+dataList[i].RegDateTime+']';
+					innerHtml += '   '+dataList[i].subject+'   ';
+					innerHtml +=  '</a>';
+					innerHtml += "</li>";
 
+				}
+				innerHtml += "</ul>";
+				document.getElementById("content_div").innerHTML = innerHtml;
+			}
+		},
+		error: function(data){
+			
+		}
+	});
+}
 
+function getContentInfoContent(id){
+	window.location.href = '/NPower/contentinfo_content?id='+id;
+}
 function getChart(){
 	$.ajax({
 		url : 'penetrationsearch.do',

@@ -1,6 +1,6 @@
 package pasing;
 
-public class QNAPagingBean extends PagingBean {
+public class ContentInfoPagingBean extends PagingBean {
 	
 	/**
 	 * 한 페이지에서 보여줄 게시물 수 
@@ -16,14 +16,16 @@ public class QNAPagingBean extends PagingBean {
 	 * @param totalContent
 	 * @param nowPage
 	 */
-	public QNAPagingBean() {
+	public ContentInfoPagingBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public QNAPagingBean(int totalContent, int nowPage) {
+	public ContentInfoPagingBean(int totalContent, int nowPage) {
 		super(totalContent,nowPage,numberOfContentPerPage , numberOfPageGroup);
+//		super();
 //		this.totalContent = totalContent;
 //		this.nowPage = nowPage;
 	}
+	
 }

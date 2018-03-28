@@ -31,6 +31,22 @@ public class FBulletineDaoImpl implements FBulletineDao{
 		return result;
 	}
 	
+
+	@Override
+	public HashMap<String,Object>  editBulletine(HashMap<String,Object> param){
+		int sqlResult = sqlSession.update("Fbulletine.edit", param);
+		HashMap<String,Object> result = new HashMap<String,Object>();
+		if(sqlResult >0 ){
+			result.put("success", true);
+			result.put("msg", "공지사항이 정상적으로 저장되었습다.");
+		}
+		else{
+			result.put("success", false);
+			result.put("msg", "공지사항이 정상적으로 저장되지 않았습니다.");
+		}
+		return result;
+	}
+	
 	@Override
 	public HashMap<String,Object> getList(HashMap<String,Object> param){
 		List<HashMap<String,String>> sqlResult = sqlSession.selectList("Fbulletine.getList", param);
@@ -48,6 +64,22 @@ public class FBulletineDaoImpl implements FBulletineDao{
 		HashMap<String,String> sqlResult = sqlSession.selectOne("Fbulletine.getContent", param);
 		HashMap<String,Object> result = new HashMap<String,Object>();
 		result.put("FB", sqlResult);
+		return result;
+	}
+
+	@Override
+	public HashMap<String, Object> deleteBulletine(HashMap<String, Object> param) {
+		// TODO Auto-generated method stub
+		int sqlResult = sqlSession.update("Fbulletine.delete", param);
+		HashMap<String,Object> result = new HashMap<String,Object>();
+		if(sqlResult >0 ){
+			result.put("success", true);
+			result.put("msg", "공지사항이 정상적으로 삭제되었습다.");
+		}
+		else{
+			result.put("success", false);
+			result.put("msg", "공지사항이 정상적으로 삭제되지 않았습니다.");
+		}
 		return result;
 	}
 }

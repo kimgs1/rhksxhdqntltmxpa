@@ -45,60 +45,26 @@
                 <h2>공지사항</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">공지사항 데이타 로딩중...</a>
+                        <a href="#">등록된 데이터가 없습니다.</a>
                     </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">공지사항 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">공지사항 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">공지사항 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">공지사항 데이타 로딩중...</a>
-                    </li>                    
                 </ul>
             </article>
             <article id="qna_div">
                 <h2>자주하는 질문</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">Q & A 데이타 로딩중...</a>
+                        <a href="#">등록된 데이터가 없습니다.</a>
                     </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">Q & A 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">Q & A 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">Q & A 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">Q & A 데이타 로딩중...</a>
-                    </li>
+                    
                 </ul>
             </article>
-            <article id="download_div">
+            <article id="content_div">
                 <h2>자료실</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">자료실 데이타 로딩중...</a>
+                        <a href="#"> 등록된 데이터가 없습니다.</a>
                     </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">자료실 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">자료실 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">자료실 데이타 로딩중...</a>
-                    </li>
-                    <li onmouseover="this.style.color='#efefef'">
-                        <a href="#">자료실 데이타 로딩중...</a>
-                    </li>
+                    
                 </ul>
             </article>
         </div>
