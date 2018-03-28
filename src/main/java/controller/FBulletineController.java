@@ -35,6 +35,14 @@ public class FBulletineController {
 	public ModelAndView FBullentineCreateView() throws Exception {
 		return new ModelAndView("fbulletine_create");
 	}
+	@RequestMapping(value="/fbulletine_edit", method=RequestMethod.GET)
+	public ModelAndView getFBulletineEditViewByUrl(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", request.getParameter("id"));
+		HashMap<String,Object> result = fbulletineDao.getContent(param);
+		return new ModelAndView("fbulletine_edit", "result", result);
+	}
+	
 
 //	@RequestMapping(value="/fbulletine", method=RequestMethod.GET)
 //	public ModelAndView moveLogin() throws Exception {
@@ -49,6 +57,28 @@ public class FBulletineController {
 		String userid = (String)((HashMap<String, Object>)request.getSession().getAttribute("userInfo")).get("id");
 		param.put("userid", userid);
 		HashMap<String,Object> result = fbulletineDao.createBulletine(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/fbulletine.do", params="command=edit")
+	public ModelAndView editFBulletine(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", request.getParameter("id"));
+		param.put("title", request.getParameter("title"));
+		param.put("contents", request.getParameter("contents"));
+		String userid = (String)((HashMap<String, Object>)request.getSession().getAttribute("userInfo")).get("id");
+		param.put("userid", userid);
+		HashMap<String,Object> result = fbulletineDao.editBulletine(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
+	
+	
+	@RequestMapping(value="/fbulletine.do", params="command=delete")
+	public ModelAndView deleteFBulletine(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", request.getParameter("id"));
+		HashMap<String,Object> result = fbulletineDao.deleteBulletine(param);
 		return new ModelAndView("JsonView", "result", result);
 	}
 

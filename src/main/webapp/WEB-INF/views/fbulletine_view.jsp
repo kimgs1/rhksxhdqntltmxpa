@@ -4,7 +4,6 @@
 <head>
 
 <%@ include file="main_head.jsp"%>
-<%@ include file="/views/modal.jsp"%>
 
 <script type="text/javascript" src="js/home_side.js"></script>
 <script type="text/javascript" src="js/fbulletine_view.js"></script>
@@ -29,7 +28,7 @@
                             </table>
                         </td>
                     </tr>          
-                   <!-- 
+                   <!-- ${result.FB.id}
                    <tr>
                         <th>첨부파일</th>
                         <td>
@@ -44,9 +43,17 @@
                         <br><img src=images/blink.gif height=10></td>
                     </tr>
                 </table>
-                <div class="bo_view_save">
+                
+                
+                <div class="bo_write_save">
+                     
+			<c:if test="${sessionScope.userInfo.id == 'admin'}">
+	                <input class="savebtn" type="button" style="cursor:hand"  onclick="FbulletineEditView('${result.FB.id}')"value="수정" />
+                    <input type="reset" style="cursor:hand" onclick="FbulletineDelete('${result.FB.id}')" value="삭제" />
+                </c:if>
                     <a href="/NPower/fbulletine">목록</a>
                 </div>
+                
                 
             </div>
         </section>

@@ -184,3 +184,28 @@ function removeQNAReview(id){
 		}
 	});
 }
+function QNAEditView(id){
+	window.location.href = '/NPower/qna_edit?id=' + id;
+}
+ 
+
+4
+function QNADelete(id){
+	$.ajax({
+		url : 'qna.do',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			command:'delete',
+			id:id,
+		},
+		success : function(data) {
+			var result = data.result;
+			alert(result.msg);
+			window.location.href = '/NPower/qna';
+		},
+		error: function(data){
+			alert(result.msg);
+		}
+	});
+}

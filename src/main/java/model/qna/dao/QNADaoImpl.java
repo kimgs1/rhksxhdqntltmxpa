@@ -23,11 +23,11 @@ public class QNADaoImpl implements QNADao{
 		HashMap<String,Object> result = new HashMap<String,Object>();
 		if(sqlResult >0 ){
 			result.put("success", true);
-			result.put("msg", "Q&A가 정상적으로 저장되었습다.");
+			result.put("msg", "자주하는 질문이정상적으로 저장되었습다.");
 		}
 		else{
 			result.put("success", false);
-			result.put("msg", "Q&A가  정상적으로 저장되지 않았습니다.");
+			result.put("msg", "자주하는 질문이 정상적으로 저장되지 않았습니다.");
 		}
 		return result;
 	}
@@ -90,6 +90,36 @@ public class QNADaoImpl implements QNADao{
 		else{
 			result.put("success", false);
 			result.put("msg", "댓글이 정상적으로 삭제되지 않았습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public HashMap<String, Object> deleteQNA(HashMap<String, Object> param) {
+		int sqlResult = sqlSession.update("QNA.delete", param);
+		HashMap<String,Object> result = new HashMap<String,Object>();
+		if(sqlResult >0 ){
+			result.put("success", true);
+			result.put("msg", "자주하는 질문이 정상적으로 삭제되었습다.");
+		}
+		else{
+			result.put("success", false);
+			result.put("msg", "자주하는 질문이 정상적으로 삭제되지 않았습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public HashMap<String, Object> editQNA(HashMap<String, Object> param) {
+		int sqlResult = sqlSession.update("QNA.edit", param);
+		HashMap<String,Object> result = new HashMap<String,Object>();
+		if(sqlResult >0 ){
+			result.put("success", true);
+			result.put("msg", "자주하는 질문이 정상적으로 저장되었습다.");
+		}
+		else{
+			result.put("success", false);
+			result.put("msg", "자주하는 질문이 정상적으로 저장되지 않았습니다.");
 		}
 		return result;
 	}

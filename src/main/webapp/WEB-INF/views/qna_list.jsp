@@ -26,11 +26,7 @@
                         <th style="width:10%;">조회</th>
                     </tr>
                     <tr hidden="true">
-                        <td>1</td>
-                        <td><a href="#">Q&amp;A테스트</a></td>
-                        <td>관리자</td>
-                        <td>20112-05-21</td>
-                        <td>6</td>
+                        <td colspan="5">등록된 데이터가 없습니다.</td>
                     </tr>
                 </table>
                 <ol class="pager" id="QNA_Paging_div">
@@ -53,7 +49,9 @@
                     <li><a href="#" style="transform: rotate(180deg)"><img src="images/pager_01.png" /></a></li>
                  -->
                 </ol>
-                <c:if test="${sessionScope.userInfo.login == true}">
+                
+                <!--c:if test="${sessionScope.userInfo.login == true}"  -->
+			<c:if test="${sessionScope.userInfo.id == 'admin'}">
                 <span><input type="button" style="cursor:hand" onclick="newQNA()"value="글쓰기" /></span>
                 </c:if>
             </div>

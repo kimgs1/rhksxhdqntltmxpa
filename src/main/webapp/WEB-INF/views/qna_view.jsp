@@ -44,7 +44,12 @@
                         <br><img src=images/blink.gif height=10></td>
                     </tr>
                 </table>
-                <div class="bo_view_save">
+                <div class="bo_write_save">
+                     
+			<c:if test="${sessionScope.userInfo.id == 'admin'}">
+	                <input class="savebtn" type="button" style="cursor:hand"  onclick="QNAEditView('${qna.QNAObject.ID}')"value="수정" />
+                    <input type="reset" style="cursor:hand" onclick="QNADelete('${qna.QNAObject.ID}')" value="삭제" />
+                </c:if>
                     <a href="/NPower/qna">목록</a>
                 </div>
             </div>

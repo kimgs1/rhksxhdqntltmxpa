@@ -71,7 +71,23 @@
 			'${userid}'
 		)
 	</update>
-	
+		
+	<update id="edit" parameterType="hashmap">
+		update
+		qna set 
+			subject = '${subject}',
+			Content = '${Content}',
+			updateId = '${userid}',
+			updatedate = getdate()
+			
+		WHERE id = '${id}'
+			
+	</update>
+		
+	<delete id="delete">
+		DELETE qna
+		WHERE id = '${id}'
+	</delete>
 	
 	<select id="getReviewList" resultType="hashmap" parameterType="hashmap">
 		SELECT

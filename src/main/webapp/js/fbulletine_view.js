@@ -119,3 +119,28 @@ function newBulletineSave(){
 	});
 
 }
+
+
+function FbulletineEditView(id){
+	window.location.href = '/NPower/fbulletine_edit?id=' + id;
+}
+
+function FbulletineDelete(id){
+	$.ajax({
+		url : 'fbulletine.do',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			command:'delete',
+			id:id,
+		},
+		success : function(data) {
+			var result = data.result;
+			alert(result.msg);
+			window.location.href = '/NPower/fbulletine';
+		},
+		error: function(data){
+			alert(result.msg);
+		}
+	});
+}

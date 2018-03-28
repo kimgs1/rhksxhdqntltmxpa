@@ -28,7 +28,7 @@
                 </table>
                 <div class="bo_write_save">
                     <input class="savebtn" type="button" style="cursor:hand" onclick="newBulletineSave()" value="저장" />
-                    <input type="reset" style="cursor:hand" value="초기화" />
+
                     <a href="/NPower/fbulletine">목록</a>
                 </div>
                 <br><br><br>
