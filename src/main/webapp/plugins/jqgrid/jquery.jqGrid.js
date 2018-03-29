@@ -782,7 +782,7 @@ $.fn.jqGrid = function( pin ) {
 			url: "",
 			height: 150,
 			page: 1,
-			rowNum: 20,
+			rowNum: 100, // 관통부 점검 100개로 수정
 			rowTotal : null,
 			records: 0,
 			pager: "",

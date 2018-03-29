@@ -118,22 +118,22 @@ function getSearchPenetrationsearchList(nowPage){
 
 function drawPaging(pagingBean){
 	//paging
-	innerHtml = "";
+	innerHtml = "<table border=0 width=0 cellspacing=0 cellpadding=5 align=center><td width=48%><img src=./images/blink.gif width=1 height=1></td>";
 	
 	if(pagingBean.previousPageGroup){
-		innerHtml += '<li onclick="getSearchPenetrationsearchList('+(pagingBean.startPageOfPageGroup - 1)+')"><a><img src="images/pager_01.png" /></a></li>';
+		innerHtml += '<td align=right style="cursor:pointer"><li onclick="getSearchPenetrationsearchList('+(pagingBean.startPageOfPageGroup - 1)+')"><a><img src="images/bnBtn_prev.gif" /></a></li></td>';
 //		innerHtml += "<a href='javascript:;' onclick='getBulletineList("+(pagingBean.startPageOfPageGroup - 1)+")'><<</a>";
 	}
 	for(var i=pagingBean.startPageOfPageGroup;i<=pagingBean.endPageOfPageGroup;i++){
 		if(pagingBean.nowPage!=i)
-			innerHtml += '<li onclick="getSearchPenetrationsearchList('+i+')"><a>'+i+'</a></li>'
+			innerHtml += '<td style="cursor:pointer"><li onclick="getSearchPenetrationsearchList('+i+')"><a><font class="nbg4 b4">'+i+'</font></a></li></td>'
 		else
-			innerHtml += '<li onclick="getSearchPenetrationsearchList('+i+')"><a class="active">'+i+'</a></li>'
+			innerHtml += '<td style="cursor:pointer"><li onclick="getSearchPenetrationsearchList('+i+')"><a class="active"><font class="nbg4 b4" color=orange>'+i+'</font></a></li></td>'
 	}
 	if(pagingBean.nextPageGroup){
-		innerHtml += '<li onclick="getSearchPenetrationsearchList('+(pagingBean.endPageOfPageGroup + 1)+')"><a style="transform: rotate(180deg)"><img src="images/pager_01.png" /></a></li>';
+		innerHtml += '<td align=left style="cursor:pointer"><li onclick="getSearchPenetrationsearchList('+(pagingBean.endPageOfPageGroup + 1)+')"><a style="transform: rotate(180deg)"><img src="images/bnBtn_prev.gif"></a></li></td>';
 	}
-	
+	innerHtml += '<td width=48%><img src=./images/blink.gif width=1 height=1></td></table>';
 	document.getElementById("paging").innerHTML = innerHtml;
 	document.getElementById("page_detail").innerHTML = 'Total:<span>'+pagingBean.totalContent+'</span>'+'(' + pagingBean.nowPage + '/' + pagingBean.totalPage + ')Page' ;
 }

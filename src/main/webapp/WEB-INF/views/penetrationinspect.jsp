@@ -14,6 +14,7 @@
 	<div class="con">
         <section class="adm adm05">
             <ul class="tab">
+            	<li><a onclick="menuClick('PTISC')">통합관리</a></li>
             	<li><a  onclick="menuClick('PTBI')">기본정보</a></li>
 				<li><a onclick="menuClick('SEAL')">밀폐재정보</a></li>
 				<li><a  onclick="menuClick('PTI')">관통재정보</a></li>
@@ -37,13 +38,15 @@
                         </li> 
                         <li >
                             <label for="manag03">점검일</label>
-                            <input type="date" id="InspectDate" value="2011/12/02" />
-                            <label for="manag03" class="date_ico"></label>
+                            <input type="text" id="InspectDate" value="2011.12.02" />
+                            <!-- <input type="date" id="InspectDate" value="2011.12.02" /> -->
+                            <!-- <label for="manag03" class="date_ico"></label>  -->
                         </li>
                         <li>
                             <label for="manag04">개선일</label>
-                            <input type="date" id="ImproveDate" />
-                            <label for="manag04" class="date_ico"></label>
+                            <input type="text" id="ImproveDate" />
+                            <!-- <input type="date" id="ImproveDate" /> -->
+                            <!-- <label for="manag04" class="date_ico"></label>  -->
                         </li>
                         <li>
                             <label for="manag05">점검주기</label>
@@ -88,8 +91,8 @@
         </section>
             <div  class="col-sm-12" id="penetrationinspect_Grid_div"></div>
             <br>
-             <ol id="paging" class="pager"></ol>
-			<br><br><br>
+             <ol id="paging" class="pager1"></ol>
+			
 </div>
 </body>
 </html>

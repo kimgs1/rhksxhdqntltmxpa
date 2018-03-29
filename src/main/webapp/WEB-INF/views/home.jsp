@@ -42,14 +42,17 @@
  <div class="con1">
         <div class="section01">
             <article id="bulletine_div">
+             <div  class="conX">
                 <h2>공지사항</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
                         <a href="#">등록된 데이터가 없습니다.</a>
                     </li>
                 </ul>
+                </div>
             </article>
             <article id="qna_div">
+             <div  class="conX">
                 <h2>자주하는 질문</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
@@ -57,8 +60,10 @@
                     </li>
                     
                 </ul>
+                </div>
             </article>
             <article id="content_div">
+            <div  class="conX">
                 <h2>자료실</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
@@ -66,6 +71,7 @@
                     </li>
                     
                 </ul>
+                </div>
             </article>
         </div>
         <div class="section02">

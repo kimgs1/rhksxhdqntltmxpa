@@ -16,8 +16,20 @@
 <%@ include file="home_side.jsp"%>
     <!--글로벌속성 FIN-->    
     <div class="con1 sub01">
+    	<section class="adm">
+    			<table border=0 width=800 height=0 cellspacing=0 cellpadding=0>
+    			<th><img src=./images/blink.gif width=12 height=1></th>
+    			<th><ul class="tab">
+            	<li class="active"><a onclick="menuClick('PTISC')">통합관리</a></li>
+            	<li><a  onclick="menuClick('PTBI')">기본정보</a></li>
+				<li><a onclick="menuClick('SEAL')">밀폐재정보</a></li>
+				<li><a  onclick="menuClick('PTI')">관통재정보</a></li>
+				<li><a  onclick="menuClick('PFEV')">성능평가정보</a></li>
+				<li><a  onclick="menuClick('PTISP')">관통부점검</a></li>
+            </ul></th></table>
+</section>
         <section class="sec01">
-            <p class="nbg5 b4">관통부 통합관리</p><br>
+            
                 <form action="#">
                     <ul>
                         <li>
@@ -124,6 +136,7 @@
                     </div>
                 </form>
         </section>
+        
         <section class="sec02">
         	<div>
         	
@@ -137,8 +150,9 @@
             <br/>
            <div id="penetrationsearch_Grid_div"></div>
            <br/>
-           <ol id="paging" class="pager"></ol>
+           <ol id="paging" class="pager1"></ol>
         </section>
+        
 </div>
 </body>
 </html>
