@@ -40,7 +40,7 @@ public class PerformanceEvaluationDaoImpl implements PerformanceEvaluationDao {
 		param = SqlStrProcess.strSplit(param);
 		HashMap<String,Object> result = new HashMap<String,Object>();
 		result.put("success", false);
-		result.put("msg", "성능평가정보가 정상적으로 저장되지 않았습니다.관리자에게 문의하시길바랍니다.");
+		result.put("msg", "성능평가정보가 정상적으로 저장되지 않았습니다.관리자에게 문의 바랍니다.");
 
 		int count = sqlSession.update("performanceEvaluation.insert", param);
 		if(count>0){
@@ -55,7 +55,7 @@ public class PerformanceEvaluationDaoImpl implements PerformanceEvaluationDao {
 	public HashMap<String, Object> delete(HashMap<String, Object> param) {
 		HashMap<String,Object> result = new HashMap<String,Object>();
 		result.put("success", false);
-		result.put("msg", "성능평가정보가 정상적으로 삭제되지 않았습니다.관리자에게 문의하시길바랍니다.");
+		result.put("msg", "성능평가정보가 정상적으로 삭제되지 않았습니다.관리자에게 문의 바랍니다.");
 
 		int count = sqlSession.selectOne("performanceEvaluation.getCountBySeq", param);
 		if(count>0){

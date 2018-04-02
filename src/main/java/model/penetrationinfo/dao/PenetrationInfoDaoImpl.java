@@ -32,7 +32,7 @@ public class PenetrationInfoDaoImpl implements PenetrationInfoDao {
 		param = SqlStrProcess.strSplit(param);
 		HashMap<String,Object> result = new HashMap<String,Object>();
 		result.put("success", false);
-		result.put("msg", "관통부정보가 정상적으로 저장되지 않았습니다.관리자에게 문의하시길바랍니다.");
+		result.put("msg", "관통부정보가 정상적으로 저장되지 않았습니다.관리자에게 문의 바랍니다.");
 
 		int count = sqlSession.update("penetrationinfo.insert", param);
 		if(count>0){
@@ -47,7 +47,7 @@ public class PenetrationInfoDaoImpl implements PenetrationInfoDao {
 	public HashMap<String, Object> delete(HashMap<String, Object> param) {
 		HashMap<String,Object> result = new HashMap<String,Object>();
 		result.put("success", false);
-		result.put("msg", "관통부정보가 정상적으로 삭제되지 않았습니다.관리자에게 문의하시길바랍니다.");
+		result.put("msg", "관통부정보가 정상적으로 삭제되지 않았습니다.관리자에게 문의 바랍니다.");
 
 		int count = sqlSession.selectOne("penetrationinfo.getCountBySeq", param);
 		if(count>0){

@@ -370,7 +370,7 @@ function deletePenetrationsearch(rowId){
 			}
 			else{
 
-				alert("관통부정보를 삭제하는데 실패하였습니다. \r\n 관리자에게 문의하시길 바랍니다. \r\n " + result.msg);
+				alert("관통부정보를 삭제하는데 실패하였습니다. \r\n 관리자에게 문의 바랍니다. \r\n " + result.msg);
 			}
 		},
 		error: function(data){
