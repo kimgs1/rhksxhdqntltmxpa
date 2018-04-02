@@ -53,7 +53,7 @@ public class PenetrationInfoDaoImpl implements PenetrationInfoDao {
 		if(count>0){
 			if(sqlSession.update("penetrationinfo.delete", param) > 0){
 				result.put("success", true);
-				result.put("msg", "관통부정보가 정상적으로 삭제되었습다.");
+				result.put("msg", "관통부정보가 정상적으로 삭제되었습니다.");
 			}
 		}
 		return result;

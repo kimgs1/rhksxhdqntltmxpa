@@ -69,7 +69,7 @@ public class CodeGroupDaoImpl implements CodeGroupDao{
 		HashMap<String,Object> result = new HashMap<String,Object>();
 		if(sqlResult >0 ){
 			result.put("success", true);
-			result.put("msg", "코드그룹정보가 정상적으로 삭제되었습다.");
+			result.put("msg", "코드그룹정보가 정상적으로 삭제되었습니다.");
 		}
 		else{
 			result.put("success", false);

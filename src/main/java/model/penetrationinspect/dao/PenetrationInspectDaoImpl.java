@@ -142,7 +142,7 @@ public class PenetrationInspectDaoImpl implements PenetrationInspectDao {
 		if(count>0){
 			if(sqlSession.update("penetrationinspect.delete", param) > 0){
 				result.put("success", true);
-				result.put("msg", "점검정보가 정상적으로 삭제되었습다.");
+				result.put("msg", "점검정보가 정상적으로 삭제되었습니다.");
 			}
 		}
 		return result;

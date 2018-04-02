@@ -54,7 +54,7 @@ public class SealantinfoDaoImpl implements SealantinfoDao{
 		if(count>0){
 			if(sqlSession.update("sealantinfo.delete", param) > 0){
 				result.put("success", true);
-				result.put("msg", "밀페재정보가 정상적으로 삭제되었습다.");
+				result.put("msg", "밀페재정보가 정상적으로 삭제되었습니다.");
 			}
 		}
 		return result;

@@ -74,7 +74,7 @@ public class FBulletineDaoImpl implements FBulletineDao{
 		HashMap<String,Object> result = new HashMap<String,Object>();
 		if(sqlResult >0 ){
 			result.put("success", true);
-			result.put("msg", "공지사항이 정상적으로 삭제되었습다.");
+			result.put("msg", "공지사항이 정상적으로 삭제되었습니다.");
 		}
 		else{
 			result.put("success", false);
