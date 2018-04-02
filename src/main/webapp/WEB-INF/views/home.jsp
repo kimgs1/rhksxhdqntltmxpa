@@ -42,36 +42,29 @@
  <div class="con1">
         <div class="section01">
             <article id="bulletine_div">
-             <div  class="conX">
+
                 <h2>공지사항</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
                         <a href="#">등록된 데이터가 없습니다.</a>
                     </li>
                 </ul>
-                </div>
             </article>
             <article id="qna_div">
-             <div  class="conX">
                 <h2>자주하는 질문</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
                         <a href="#">등록된 데이터가 없습니다.</a>
                     </li>
-                    
                 </ul>
-                </div>
             </article>
             <article id="content_div">
-            <div  class="conX">
                 <h2>자료실</h2>
                 <ul>
                     <li onmouseover="this.style.color='#efefef'">
                         <a href="#"> 등록된 데이터가 없습니다.</a>
                     </li>
-                    
                 </ul>
-                </div>
             </article>
         </div>
         <div class="section02">
@@ -157,13 +150,13 @@
 							공지사항</button>
 						<button type="button" class="btn btn-sm btn-default" id=""
 							style="margin-right: 10px" onclick="menuClick('QNA')">
-							Q&A</button>
+							자주하는질문</button>
 						<button type="button" class="btn btn-sm btn-default" id=""
 							style="margin-right: 10px" onclick="menuClick('PTBI')">
-							교통부기본정보</button>
+							관통부기본정보</button>
 						<button type="button" class="btn btn-sm btn-default" id=""
 							style="margin-right: 10px" onclick="menuClick('PTI')">
-							교통부정보</button>
+							관통부정보</button>
 						<button type="button" class="btn btn-sm btn-default" id=""
 							style="margin-right: 10px" onclick="menuClick('PTISP')">
 							관통부점검정보</button>

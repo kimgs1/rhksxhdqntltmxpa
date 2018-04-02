@@ -36,9 +36,6 @@
 .con .section03 ul li{float:left; padding:5px 19px; border-radius:10px; border:1px solid #dab776; margin-right:3px; font-size:12px; font-weight:200; line-height:20px; cursor:pointer; background: linear-gradient( to bottom, white, #e2c48f )}
 
 
-.conX {width:100%; float:left; margin-top:0px; margin-left: 0%; margin-right: 0%; height:185px;}
-
-
 
 .con1 .section01 {width:100%; margin:20px} 
 .con1 .section02, .con1 .section03{width:98%; margin:0 auto 20px}
@@ -46,7 +43,7 @@
 .con1 .section01 article h2:before,.con1 .section02 section h2:before, .con1 .section02 article h2:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
 .con1 .section01 article h2,.con1 .section02 section h2, .con1 .section02 article h2{cursor:hand;font-size:15px; font-weight:700; color:#282828; margin-bottom:20px; margin-top:10px;}
 /*占쏙옙占쏙옙 占쏙옙占쏙옙憺占�*/
-.con1 .section01 article{width:32%; margin-right:1%; float:left; border:1px solid #808080; box-sizing:border-box; padding:20px; }
+.con1 .section01 article{width:32%; margin-right:1%; float:left; border:1px solid #808080; box-sizing:border-box; padding:20px; height: 210px;}
 /*.con1 .section01 article:nth-child(2){margin-left:19px;}*/
 .con1 .section01 article ul{margin-bottom:10px;}
 .con1 .section01 article ul li:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
