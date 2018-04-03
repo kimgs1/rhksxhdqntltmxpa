@@ -76,7 +76,7 @@ function getQNAList(nowPage){
 				innerHtml = "";
 				
 				if(pagingBean.previousPageGroup){
-					innerHtml += '<li onclick="getQNAList('+(pagingBean.startPageOfPageGroup - 1)+')"><a><img src="images/pager_01.png" /></a></li>';
+					innerHtml += '<li onclick="getQNAList('+(pagingBean.startPageOfPageGroup - 1)+')"><a><img src="images/bnBtn_prev.gif" /></a></li>';
 //					innerHtml += "<a href='javascript:;' onclick='getBulletineList("+(pagingBean.startPageOfPageGroup - 1)+")'><<</a>";
 				}
 				for(var i=pagingBean.startPageOfPageGroup;i<=pagingBean.endPageOfPageGroup;i++){
@@ -86,7 +86,7 @@ function getQNAList(nowPage){
 						innerHtml += '<li onclick="getQNAList('+i+')"><a class="active">'+i+'</a></li>'
 				}
 				if(pagingBean.nextPageGroup){
-					innerHtml += '<li onclick="getQNAList('+(pagingBean.endPageOfPageGroup + 1)+')"><a style="transform: rotate(180deg)"><img src="images/pager_01.png" /></a></li>';
+					innerHtml += '<li onclick="getQNAList('+(pagingBean.endPageOfPageGroup + 1)+')"><a style="transform: rotate(180deg)"><img src="images/bnBtn_prev.gif" /></a></li>';
 				}
 				
 				document.getElementById("QNA_Paging_div").innerHTML = innerHtml;

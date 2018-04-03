@@ -2,6 +2,7 @@ body{font-family:'NanumGothic', sans-serif; min-width:1180px; }
 body:after{content:''; visibility:hidden; display:block; clear:both}
 /*��Ʈ Ŭ����*/ 
 .pager{min-width:400px; width:20%; margin:0 auto 50px}
+.pager1{min-width:100%; width:100%; margin:0 auto 0px}
 .pager:after{content:''; visibility:hidden; display:block; clear:both;}
 .pager li{float:left; cursor: hand;}
 .pager li a{display:block; text-decoration:none; font-size:13px; font-weight:700; color:#282828; padding:0 5px; line-height:15px; }

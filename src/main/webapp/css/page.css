@@ -1,12 +1,12 @@
 .con{width:97%; margin-left: 1.5%;float:left; margin-top:36px; font-family: "NanumBarunGothic", sans-serif;	font-weight: 200;}
 .con1 {width:100%; float:left; margin-top:36px; font-family: "NanumBarunGothic", sans-serif;	font-weight: 200;}
-/*��ü ����*/
+/*占쏙옙체 占쏙옙占쏙옙*/
 /*MAIN*/
 .con .section01, .con .section02, .con .section03{width:98%; margin:0 auto 10px}
 .con .section01:after, .con .section02:after, .con .section03:after{content:''; visibility:hidden; display:block; clear:both;}
 .con .section01 article h2:before,.con .section02 section h2:before, .con .section02 article h2:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
 .con .section01 article h2,.con .section02 section h2, .con .section02 article h2{cursor:hand;font-size:15px; font-weight:700; color:#282828; margin-bottom:20px; margin-top:10px;}
-/*���� ����Ӽ�*/
+/*占쏙옙占쏙옙 占쏙옙占쏙옙憺占�*/
 .con .section01 article{width:49%; margin-right:1%; float:left; border:1px solid #808080; box-sizing:border-box; padding:10px 20px }
 .con .section01 article:nth-child(2){margin-left:1%; margin-right:0}
 .con .section01 article ul{margin-bottom:10px;}
@@ -37,16 +37,13 @@
 
 
 
-
-
-
 .con1 .section01 {width:100%; margin:20px} 
 .con1 .section02, .con1 .section03{width:98%; margin:0 auto 20px}
 .con1 .section01:after, .con1 .section02:after, .con1 .section03:after{content:''; visibility:hidden; display:block; clear:both;}
 .con1 .section01 article h2:before,.con1 .section02 section h2:before, .con1 .section02 article h2:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
 .con1 .section01 article h2,.con1 .section02 section h2, .con1 .section02 article h2{cursor:hand;font-size:15px; font-weight:700; color:#282828; margin-bottom:20px; margin-top:10px;}
-/*���� ����Ӽ�*/
-.con1 .section01 article{width:32%; margin-right:1%; float:left; border:1px solid #808080; box-sizing:border-box; padding:20px; }
+/*占쏙옙占쏙옙 占쏙옙占쏙옙憺占�*/
+.con1 .section01 article{width:32%; margin-right:1%; float:left; border:1px solid #808080; box-sizing:border-box; padding:20px; height: 210px;}
 /*.con1 .section01 article:nth-child(2){margin-left:19px;}*/
 .con1 .section01 article ul{margin-bottom:10px;}
 .con1 .section01 article ul li:before{content:''; display:block; width:7px; height:7px; background:url(../images/bul_01.jpg)no-repeat center; margin:5px 18px 3px 0; float:left}
@@ -125,9 +122,9 @@
 .sub01 .sec02 table td{position:relative}*/
 .sub01 .sec02 table td a{text-decoration:none; display:block; font-size:14px; font-weight:400; color:#282828;}
 .sub01 .sec02 table td .down{display:block; width:100%; height:20px; margin:0 auto; background:url(../images/ico_file_yes.png)no-repeat center; background-size:contain;   margin-top:3px;}
-.sub01 .sec02 table td .blank{background-color:aquamarine; background:url(../images/ico_file_no.png)no-repeat center;  background-size:contain}/*������ ȸ��ó�� class="black"*/
+.sub01 .sec02 table td .blank{background-color:aquamarine; background:url(../images/ico_file_no.png)no-repeat center;  background-size:contain}/*占쏙옙占쏙옙占쏙옙 회占쏙옙처占쏙옙 class="black"*/
 .sub01 .sec02 table td .pdfDown{display:block; width:100%; height:20px; margin:0 auto; background:url(../images/ico_pdfFile_yes.png)no-repeat center; background-size:contain;   margin-top:3px;}
-.sub01 .sec02 table td .pdfBlank{background-color:aquamarine; background:url(../images/ico_pdfFile_no.png)no-repeat center;  background-size:contain}/*������ ȸ��ó�� class="black"*/
+.sub01 .sec02 table td .pdfBlank{background-color:aquamarine; background:url(../images/ico_pdfFile_no.png)no-repeat center;  background-size:contain}/*占쏙옙占쏙옙占쏙옙 회占쏙옙처占쏙옙 class="black"*/
 .sub01 .sec02 table td .view   {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ff8511; padding-left:23px; border:0; border-radius:5px; }
 .sub01 .sec02 table td .edit   {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #0866d8; padding-left:23px; margin-left:2px; border:0; border-radius:5px; }
 .sub01 .sec02 table td .delete {width:60px; height:20px; line-height:20px; font-size:13px; font-weight:400; color:#fff; background:url(../images/ico_show.png)no-repeat 7px center #ce3812; padding-left:23px; margin-left:2px; border:0; border-radius:5px; }
@@ -145,7 +142,7 @@
 
 
 
-/*a������ư�ڸ�*/
+/*a占쏙옙占쏙옙占쏙옙튼占쌘몌옙*/
 .sec01_pop table td ul:after{content:''; visibility:hidden; display:block; clear:both}
 .sec01_pop table td ul li{float:left;}
 .sec01_pop table td ul li:after{content:''; visibility:hidden; display:block; clear:both}
@@ -184,7 +181,7 @@
 
 
       /*sec01_pop Fin*/
-                                                                        /*adm01~06(����������)*/
+                                                                        /*adm01~06(占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙)*/
 .adm{width:99%; margin:0 auto; border-radius:10px; min-width:976px }
 .adm .tab{margin-bottom:10px}
 .adm .tab:after{content:''; visibility:hidden; display:block; clear:both}
@@ -209,9 +206,10 @@
 .adm section div input:last-child{margin-right:0}
 .adm>p{font-size:14px; font-weight:400; color:#282828; margin-bottom:10px}
 .adm>p span{font-weight:700;}
-.adm table{width:100%; margin:0 auto 50px; min-width:976px; text-align:center}
+.adm table{width:100%; margin:0 auto 0px; min-width:976px; text-align:center}
 .adm table tr td a{display:block; text-decoration:none; font-size:14px; font-weight:400; color:#282828}
-/*adm ����*/
+
+/*adm 占쏙옙占쏙옙*/
 .adm01 section ul li{width:33.33%;}
 .adm01 section ul li label{width:46%; font-size:14px; font-weight:700; color:#282828; display:block; float:left; max-width:175px}
 .adm01 section ul li input{ width:50%; box-sizing:border-box; height:27px;}

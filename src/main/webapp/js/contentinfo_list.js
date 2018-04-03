@@ -46,7 +46,7 @@ function getContentInfoList(nowPage){
 				innerHtml = "";
 				
 				if(pagingBean.previousPageGroup){
-					innerHtml += '<li onclick="getContentInfoList('+(pagingBean.startPageOfPageGroup - 1)+')"><a><img src="images/pager_01.png" /></a></li>';
+					innerHtml += '<li onclick="getContentInfoList('+(pagingBean.startPageOfPageGroup - 1)+')"><a><img src="images/bnBtn_prev.gif" /></a></li>';
 //					innerHtml += "<a href='javascript:;' onclick='getBulletineList("+(pagingBean.startPageOfPageGroup - 1)+")'><<</a>";
 				}
 				for(var i=pagingBean.startPageOfPageGroup;i<=pagingBean.endPageOfPageGroup;i++){
@@ -56,7 +56,7 @@ function getContentInfoList(nowPage){
 						innerHtml += '<li onclick="getContentInfoList('+i+')"><a class="active">'+i+'</a></li>'
 				}
 				if(pagingBean.nextPageGroup){
-					innerHtml += '<li onclick="getContentInfoList('+(pagingBean.endPageOfPageGroup + 1)+')"><a style="transform: rotate(180deg)"><img src="images/pager_01.png" /></a></li>';
+					innerHtml += '<li onclick="getContentInfoList('+(pagingBean.endPageOfPageGroup + 1)+')"><a style="transform: rotate(180deg)"><img src="images/bnBtn_prev.gif" /></a></li>';
 				}
 				
 				document.getElementById("board_list_page_div").innerHTML = innerHtml;

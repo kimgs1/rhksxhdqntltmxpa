@@ -178,7 +178,7 @@ function savePenetrationAllInfo(){
 			}
 			else{
 
-				alert("관통부정보가를 저장하는데 실패하였습니다. \r\n 관리자에게 문의하시길 바라겠습니다. \r\n " + result.msg);
+				alert("관통부정보를 저장하는데 실패하였습니다. \r\n 관리자에게 문의 바랍니다. \r\n " + result.msg);
 			}
 		},
 		error: function(data){
@@ -313,7 +313,7 @@ function pic_updateInspectInfoSave(){
 			}
 			else{
 
-				alert("점검정보가를 저장하는데 실패하였습니다. \r\n 관리자에게 문의하시길 바라겠습니다. \r\n " + result.msg);
+				alert("점검정보를 저장하는데 실패하였습니다. \r\n 관리자에게 문의 바랍니다. \r\n " + result.msg);
 			}
 			
 		},
@@ -529,7 +529,7 @@ function pie_updateInspectInfoSave(){
 			}
 			else{
 
-				alert("점검정보가를 저장하는데 실패하였습니다. \r\n 관리자에게 문의하시길 바라겠습니다. \r\n " + result.msg);
+				alert("점검정보를 저장하는데 실패하였습니다. \r\n 관리자에게 문의 바랍니다. \r\n " + result.msg);
 			}
 			
 		},

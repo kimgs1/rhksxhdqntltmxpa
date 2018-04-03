@@ -15,6 +15,7 @@
 <div class="con">
         <section class="adm adm02">
             <ul class="tab">
+            	<li><a onclick="menuClick('PTISC')">통합관리</a></li>
             	<li><a onclick="menuClick('PTBI')">기본정보</a></li>
 				<li><a onclick="menuClick('SEAL')">밀폐재정보</a></li>
 				<li class="active"><a  onclick="menuClick('PTI')">관통재정보</a></li>
