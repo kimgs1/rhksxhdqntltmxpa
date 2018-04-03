@@ -56,7 +56,7 @@
                             <label for="manag06">점검차수</label>
                             <input  id="InspectSeq" type="text" value="" />
                         </li>
-						<!-- 
+						<!--
                         <li>
                             <label for="manag07">밀폐재시공상태</label>
                             <input  id="SealantConditionState_name" type="text" value="" />
