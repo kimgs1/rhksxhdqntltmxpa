@@ -384,7 +384,7 @@
 								<div class="col-sm-3"></div>
 								<div class="col-sm-6">판단사유</div>
 								<div class="col-sm-3">
-									<input onclick="updateInspectInfo('${ManagementNo}','${PenetrationNo}','${list.InspectSeq}')" onmouseover="this.style.cursor='hand'"
+									<input onclick="updateInspectInfo('${ManagementNo}','${PenetrationNo}','${list.InspectSeq}')" onmouseover="this.style.cursor='pointer'"
 										style="width: 70px; height: 20px; margin-right:1px;line-height: 20px; font-size: 13px; font-weight: 400; color: black; background: url(images/ico_write.png) no-repeat 5px center #fcf805; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="수정">
 								</div>

@@ -56,12 +56,12 @@
                             <label for="manag06">점검차수</label>
                             <input  id="InspectSeq" type="text" value="" />
                         </li>
-                        <!-- 
+						<!-- 
                         <li>
                             <label for="manag07">밀폐재시공상태</label>
-                            <input  id="SealantConditionState" type="text" value="" />
+                            <input  id="SealantConditionState_name" type="text" value="" />
                         </li>
-                         -->
+
                         <li>
                             <label for="manag08">판단사유</label>
                             <input  id="JudgementReason" type="text" value="" />
@@ -76,6 +76,7 @@
                             <label for="manag10">개선내용</label>
                             <input id="ImproveNote" type="text" value="" />
                         </li>
+                        -->
                     </ul>
                     <div>
                         <input class="searchBtn" type="button" onmouseover="this.style.cursor='hand'" onclick="getSearchPenetrationinspectList()"value="검색" />
