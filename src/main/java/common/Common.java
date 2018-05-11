@@ -2,6 +2,10 @@ package common;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
+
 
 public class Common {
 	public enum MenuLvNmEnum {
@@ -70,6 +74,23 @@ public class Common {
 			return false;
 		}
 	}
-  
-	
+
+	public static String getIpAddr(HttpServletRequest request) throws Exception{
+		String ip = request.getHeader("X-Real-IP");
+		if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+			return ip;
+		}
+		ip = request.getHeader("X-Forwarded-For");
+		if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+			// 여러개의 IP주소가 생기게 되는데 그중 첫번째것이 실제 IP주소가 된다
+			int index = ip.indexOf(',');
+			if (index != -1) {
+				return ip.substring(0, index);
+			} else {
+				return ip;
+			}
+		} else {
+			return request.getRemoteAddr();
+		}
+	}
 }

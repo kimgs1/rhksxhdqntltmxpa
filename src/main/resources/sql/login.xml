@@ -10,7 +10,11 @@
 		SELECT userid,username FROM userinfo 
 		WHERE userid = '${userid}'
 		AND password = '${userpw}'
-		AND useYN = 'Y'  
+	</select>
+	<select id="checkIP" resultType="hashmap" parameterType="hashmap" >
+		SELECT count(*) count FROM userinfo 
+		WHERE userid = '${userid}'
+		AND ip = '${ip}' 
 	</select>
 	<update id="newMemberUpload" parameterType="hashmap">
 		Insert INTO 
@@ -41,7 +45,7 @@
 				  '${email}'        ,
 				  '${address}'      ,
 				  'Y'        ,
-				  '${IP}'           ,
+				  '${ip}'           ,
 				  '${mac}'          ,
 				  ''    ,
 				  'Y'      ,
@@ -62,14 +66,14 @@
 			Phone = '${phone}',        
 			Mobile = '${mobile}',       
 			Email = '${email}',        
-			Address = '${address}',      
-			UseYN = 'Y' ,        
-			IP = '${IP}',           
+			Address = '${address}',       
+			ip = '${ip}',           
 			Mac = '${mac}',          
 			LastLogin = '',    
 			LoginYN = 'Y'  ,      
 			RegID = '${userid}' ,        
 			RegDate = getdate()
 		where userid = '${userid}'
+		
 	</update>
 </mapper>

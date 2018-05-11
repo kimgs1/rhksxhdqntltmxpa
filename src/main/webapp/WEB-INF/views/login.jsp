@@ -99,6 +99,11 @@
 							<input type="hidden" id="remCheck" name="remCheck" value="false">
 							<h1>Log in</h1>
 							<p>
+								<c:if test="${check.msg != null}">
+									<script>
+										alert("${check.msg}");
+									</script>
+								</c:if>
 								<c:if test="${check!=null}">
 									<!-- <label for="user_id">아이디</label>  -->
 									<label for="user_id" class="nbg2 b1" data-icon="u"> 사용자 아이디 </label>
@@ -110,7 +115,7 @@
 									<label for="user_id" class="uname nbg1 b1" data-icon="u"> 사용자 아이디 </label>
 									<input id="txtUserId" name="txtUserId" required="required" type="text" placeholder="아이디" />
 								</c:if>
-
+								
 							</p>
 							<p>
 

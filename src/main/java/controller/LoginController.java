@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+
+import common.Common;
 import model.login.dao.LoginDao;
 
 @Controller
@@ -41,10 +43,12 @@ public class LoginController extends MultiActionController{
 	
 	@RequestMapping(value="/login", params="command=login", method=RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String ip = Common.getIpAddr(request);
 		HashMap<String, String> usermap = new HashMap<String, String>();
 		usermap.put("userid", request.getParameter("txtUserId"));
 		usermap.put("userpw", request.getParameter("txtUserPwd"));
 		usermap.put("remCheck", request.getParameter("remCheck"));
+		usermap.put("ip", ip);
 		HashMap<String, Object> check = loginDao.checkLogin(usermap);
 		if ((Boolean) check.get("login")) {
 			request.getSession().setAttribute("userInfo", check);
@@ -84,7 +88,7 @@ public class LoginController extends MultiActionController{
 		param.put("phone", request.getParameter("phone"));
 		param.put("mobile", request.getParameter("mobile"));
 		param.put("address", request.getParameter("address"));
-		param.put("IP", "");
+		param.put("ip", request.getParameter("ip"));
 		param.put("mac", "");
 		int result = loginDao.newMemberUpload(param);
 		if(result > 0){
@@ -107,7 +111,7 @@ public class LoginController extends MultiActionController{
 		param.put("phone", request.getParameter("phone"));
 		param.put("mobile", request.getParameter("mobile"));
 		param.put("address", request.getParameter("address"));
-		param.put("IP", "");
+		param.put("ip", request.getParameter("ip"));
 		param.put("mac", "");
 		int result = loginDao.editMemberUpload(param);
 		if(result > 0){

@@ -42,9 +42,9 @@
                     <td><input type="email"  id="email" name="email"/></td>
                 </tr>
                 <tr>
-                    <th>주소</th>
+                    <th>접속허용IP주소</th>
                     <td style="border:0"></td>
-                    <td><input type="text" id="address" name="address"/></td>
+                    <td><input type="text" id="ip" name="ip"/></td>
                 </tr>
                 <tr>
                     <th>전화</th>
@@ -111,9 +111,9 @@
                     <td><input type="email"  id="e_email" name="email"/></td>
                 </tr>
                 <tr>
-                    <th>주소</th>
+                    <th>접속허용IP주소</th>
                     <td style="border:0"></td>
-                    <td><input type="text" id="e_address" name="address"/></td>
+                    <td><input type="text" id="e_ip" name="ip"/></td>
                 </tr>
                 <tr>
                     <th>전화</th>

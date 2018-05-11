@@ -25,7 +25,6 @@
 				UpdateDate
 		FROM 
 			userinfo
-		where useYN = 'Y'
 	</select>
 	
 	<update id="insert" parameterType="hashmap">
@@ -67,10 +66,7 @@
 	</update>
 	
 	<delete id="delete" parameterType="hashmap">
-		update userinfo
-		set 
-			UseYN = 'N',
-			updateID = '${regid}'
+		delete userinfo
 		WHERE userid='${UserID}'
 	</delete>
 	
