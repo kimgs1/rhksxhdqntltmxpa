@@ -394,8 +394,8 @@
 
 					</tr>
 					<tr>
-						<td>&nbsp;${list.InspectionInterval}</td>
-						<td id="InspectSeq">&nbsp;${list.InspectSeq}</td>
+						<td>&nbsp;${list.InspectSeq}</td>
+						<td id="InspectSeq">&nbsp;${list.InspectionInterval}</td>
 						<td>&nbsp;${list.InspectDate}</td>
 						<td>&nbsp;${list.SealantConditionState_name}</td>
 						<td>&nbsp;${list.Judgment_name}</td>
@@ -452,8 +452,8 @@
 		tagBind("selectBox", "FirewallYN","","${FirewallYN}",codeAllInfo.A09);
 		tagBind("selectBox", "WallMeterial","","${WallMeterial}",codeAllInfo.A04);
 		tagBind("selectBox", "SealMeterial","","${SealMeterial}",codeAllInfo.A12);
+		tagBind("selectBox", "pic_SealantConditionState","","",codeAllInfo.A03);
 		tagBind("selectBox", "pie_SealantConditionState","","",codeAllInfo.A03);
-		//tagBind("selectBox", "pic_SealantConditionState","","",codeAllInfo.A03);
 		tagBind("selectBox", "EquipNo","","${EquipNo}",codeAllInfo.A01);
 		tagBind("selectBox", "LocNo","","${LocNo}",codeAllInfo.A11);
 	</script>

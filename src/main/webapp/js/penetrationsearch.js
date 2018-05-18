@@ -101,6 +101,7 @@ function getSearchPenetrationsearchList(nowPage){
 			Wall_YN:getCheckBoxValueByTagname('Wall_YN'),
 			Efficient:getCheckBoxValueByTagname('Efficient'),
 			Result:getCheckBoxValueByTagname('Result'),
+			InspectionInterval : $("#InspectionInterval option:selected").val(),
 		},
 		success : function(data) {
 			var result = data.result;
@@ -461,3 +462,75 @@ function CreateDetailView(){
 	window.open("./penetrationsearch?command=getSearchCreateView");
 }
 
+function saveCharExcel (){
+	
+	$('#excel_modal').modal({
+		backdrop: 'static',
+		keyboard: false
+	});
+	
+	$.ajax({
+		url : 'penetrationsearch.do',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			command:'getExcelData',
+			ManagementNo:$("#ManagementNo").val(),
+			PenetrationNo :$("#PenetrationNo").val(),
+			Equip :$("#Equip option:selected").val(),
+			ELEVATION_cal_flag :$("#ELEVATION_cal_flag option:selected").val(),
+			ELEVATION_num_pit :$("#ELEVATION_num_pit").val(),
+			ELEVATION_num_inc :$("#ELEVATION_num_inc").val(),
+			ELEVATION_cal_flag_2 :$("#ELEVATION_cal_flag_2 option:selected").val(),
+			ELEVATION_num_pit_2 :$("#ELEVATION_num_pit_2").val(),
+			ELEVATION_num_inc_2 :$("#ELEVATION_num_inc_2").val(),
+
+			Diameter_cal_flag :$("#Diameter_cal_flag option:selected").val(),
+			Diameter_num_pit :$("#Diameter_num_pit").val(),
+			Diameter_num_inc :$("#Diameter_num_inc").val(),
+
+			Height_cal_flag :$("#Height_cal_flag option:selected").val(),
+			Height_num_pit :$("#Height_num_pit").val(),
+			Height_num_inc :$("#Height_num_inc").val(),
+
+			Length_cal_flag :$("#Length_cal_flag option:selected").val(),
+			Length_num_pit :$("#Length_num_pit").val(),
+			Length_num_inc :$("#Length_num_inc").val(),
+			
+			Location :$("#Location option:selected").val(),
+			WallMeterial :getCheckBoxValueByTagname('WallMeterial'),
+			ConstructionState :getCheckBoxValueByTagname('ConstructionState'),
+			Area:getCheckBoxValueByTagname('Area'),
+			Wall_YN:getCheckBoxValueByTagname('Wall_YN'),
+			Efficient:getCheckBoxValueByTagname('Efficient'),
+			Result:getCheckBoxValueByTagname('Result'),
+
+			InspectionInterval : $("#InspectionInterval option:selected").val(),
+		},
+		timeout : 0,
+		success : function(data) {
+			$('#excel_modal').modal('hide');
+			var url='ExcelData/' + data.result.FileName;
+			var a = document.createElement('a'),
+			ev = document.createEvent("MouseEvents");
+			a.href = url;
+			a.download = url.slice(url.lastIndexOf('/')+1);
+			ev.initMouseEvent("click", true, false, self, 0, 0, 0, 0, 0,false, false, false, false, 0, null);
+			a.dispatchEvent(ev);
+
+//			$.ajax({
+//				url : 'realTime.do',
+//				type : 'post',
+//				dataType : 'json',
+//				data : 'command=excel_remove&&fileName=' + data.fileName,
+//				success : function(data) {},
+//				error : function() {}
+//			});
+		},
+		error : function() {
+			alert("엑셀 저장 실패");
+			$('#excel_modal').modal('hide');
+		}
+	});
+
+}

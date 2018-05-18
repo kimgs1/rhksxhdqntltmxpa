@@ -1,10 +1,12 @@
 package model.penetrationsearch.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 public interface PenetrationSearchDao {
 
 	public HashMap<String,Object> getList(HashMap<String,Object> param);
+	public List<HashMap<String, String>> getExcelData(HashMap<String, Object> param);
 	public HashMap<String, Object> getLocChart(HashMap<String, Object> param);
 	public HashMap<String, Object> getWallMeterialChart(HashMap<String, Object> param);
 	public HashMap<String, Object> getConstructionStateChart(HashMap<String, Object> param);
