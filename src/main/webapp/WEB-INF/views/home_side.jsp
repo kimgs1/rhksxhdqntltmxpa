@@ -19,13 +19,16 @@ h6 {
 }
  -->
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src=./images/logo.jpg border=0 aria-disabled="true" >
+<img src=./images/blink.gif width=30 height=0></img><img src=./images/logo.jpg border=0 aria-disabled="true" ><br><img src=./images/blink.gif widht=0 height=5>
 <ul id="tmenu">
 
 
 		<c:if test="${sessionScope.userInfo.id == 'admin'}">
 		
-
+		<li class="tmenu_right"><a onclick="menuClick('USMNG')">사용자관리</a></li>
+		
+		<li class="tmenu_right"><a onclick="menuClick('CDMNG')">코드관리</a></li>
+<!-- 
 		<li class="tmenu_right"><a href="#" class="drop">시스템관리</a>
 		
 		<div class="dropdown_2columns align_right">
@@ -41,6 +44,7 @@ h6 {
             </div>				
 				
 			</div>
+-->
 			</c:if>
 
 
@@ -62,14 +66,14 @@ h6 {
             </li>
             </c:if>
 
-
+<!-- 
     <li class="tmenu_right" onmouseover="this.style.cursor='hand'">
     	<a href="#" onclick="menuClick('CNT')" class="">자료실
-    	</a><!-- Begin 3 columns Item -->
+    	</a>
         
-    </li> <!-- End 자료실 -->
-    
-    <li class="tmenu_right"><a href="#" class="drop">커뮤니티</a><!-- Begin 4 columns Item -->
+    </li> --> <!-- End 자료실 -->
+<!--     
+    <li class="tmenu_right"><a href="#" class="drop">커뮤니티</a>
     
     
     <div class="dropdown_2columns align_left">
@@ -86,9 +90,9 @@ h6 {
             </div>
     </div>
     
-    </li> <!-- End 커뮤니티 -->  
+    </li>  --> <!-- End 커뮤니티 -->  
 
-
+<!-- 
     <li class="tmenu_right"><a href="#" class="drop">관통부 관리</a>
     
     
@@ -131,11 +135,11 @@ h6 {
             </div>
 		</div>
     
-    </li> <!-- End 관통부 관리 -->
-
+    </li>  --><!-- End 관통부 관리 -->
+<!-- 
     <li class="tmenu_right"><a href="/NPower" class="">Home</a>
               
-    </li> <!-- End Home -->
+    </li> --> <!-- End Home -->
 
 
 </ul>

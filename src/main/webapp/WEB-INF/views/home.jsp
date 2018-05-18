@@ -3,12 +3,14 @@
 <head>
 	<%@ include file="main_head.jsp"%>
 </head>
-<body>
+
 	
 	
 <html>
-
+<body>
 <%@ include file="home_side.jsp"%>
+
+<%@ include file="menu.jsp"%>
 
 	<div class="main">
 		<script>

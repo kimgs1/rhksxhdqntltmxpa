@@ -261,7 +261,8 @@
                 <td>${VENTILATION_VALUE_RANGE}</td>
                 <td>${VENTILATION_VAL_NO}</td>
                 <td>${VENTILATION_JUDGMENT}</td>
-                <td>${VENTILATION_REASON}</td>
+                <td rowspan=5 style="height:100%; vertical-align: middle;">${PRESSURE_REASON}</td>
+                <!-- td>${VENTILATION_REASON}</td -->
             </tr>
             <tr>
                 <th>FIRE</th>
@@ -269,7 +270,7 @@
                 <td>${FIRE_VALUE_RANGE}</td>
                 <td>${FIRE_VAL_NO}</td>
                 <td>${FIRE_JUDGMENT}</td>
-                <td>${FIRE_REASON}</td>
+                <!-- td>${FIRE_REASON}</td -->
             </tr>
             <tr>
                 <th>RADIATION</th>
@@ -277,7 +278,7 @@
                 <td>${RADIATION_VALUE_RANGE}</td>
                 <td>${RADIATION_VAL_NO}</td>
                 <td>${RADIATION_JUDGMENT}</td>
-                <td>${RADIATION_REASON}</td>
+                <!-- td>${RADIATION_REASON}</td -->
                 
             </tr>
             <tr>
@@ -286,7 +287,7 @@
                 <td>${FLOOD_VALUE_RANGE}</td>
                 <td>${FLOOD_VAL_NO}</td>
                 <td>${FLOOD_JUDGMENT}</td>
-                <td>${FLOOD_REASON}</td>
+                <!-- td>${FLOOD_REASON}</td -->
             </tr>
             <tr>
                 <th>PRESSURE</th>
@@ -294,7 +295,7 @@
                 <td>${PRESSURE_VALUE_RANGE}</td>
                 <td>${PRESSURE_VAL_NO}</td>
                 <td>${PRESSURE_JUDGMENT}</td>
-                <td>${PRESSURE_REASON}</td>
+               
             </tr>
         </table>
 			<table class="w_100">
