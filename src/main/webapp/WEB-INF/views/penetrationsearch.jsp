@@ -127,7 +127,19 @@
                         </li>
                         <li id= "Result_tag" >
                         </li>
-                      
+                        
+                      	<li id="InspectionInterval_tag">
+	                      	<label>회차</label>
+	                      	<select id="InspectionInterval">
+	                      		<option value="" selected>전체</option>
+	                      		<option value="1회차">1회차</option>
+	                      		<option value="2회차">2회차</option>
+	                      		<option value="3회차">3회차</option>
+	                      		<option value="4회차">4회차</option>
+	                      		<option value="5회차">5회차</option>
+	                      		<option value="6회차">6회차</option>
+	                      	</select>
+                      	</li>
                       
                     </ul>
                     <div>
@@ -139,13 +151,29 @@
         
         <section class="sec02">
         	<div>
-        	
-                <c:if test="${sessionScope.userInfo.login == true}">
+        	<div class="row">
+        		<div class="col-sm-2">
+        			<c:if test="${sessionScope.userInfo.login == true}">
         					<input onclick="CreateDetailView()" onmouseover="this.style.cursor='hand'"
 										style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="추가">
-				</c:if>
-                <p id="page_detail"></p>
+	                		<img onclick="saveCharExcel()" id="saveChartExcel" src="img/excel.png" title="데이터를 엑셀로 내보냅니다." style="width: 15px;margin-left:10px">
+	                	</c:if>
+        		</div>
+        		<div class="col-sm-8"></div>
+        		<div class="col-sm-2">
+        			<div class="col-sm-3">
+
+        			</div>
+        			<div class="col-sm-6">
+	                	<p id="page_detail"></p>
+        			</div>
+        		</div>
+        	</div>
+                
+                
+
+            
             </div>
             <br/>
            <div id="penetrationsearch_Grid_div"></div>

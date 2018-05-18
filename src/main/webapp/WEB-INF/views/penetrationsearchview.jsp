@@ -312,8 +312,8 @@
 
 					</tr>
 					<tr>
-						<td>${list.InspectionInterval}</td>
 						<td>${list.InspectSeq}</td>
+						<td>${list.InspectionInterval}</td>
 						<td>${list.InspectDate}</td>
 						<td>${list.SealantConditionState_name}</td>
 						<td>${list.Judgment_name}</td>

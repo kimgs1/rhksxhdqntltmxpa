@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.penetrationinspect.dao.PenetrationInspectDao;
 import model.penetrationsearch.dao.PenetrationSearchDao;
+import util.XlsxWrite;
 
 @Controller
 public class PenetrationSearchController {
@@ -120,9 +121,61 @@ public class PenetrationSearchController {
 		param.put("Wall_YN",request.getParameter("Wall_YN"));
 		param.put("Efficient",request.getParameter("Efficient"));
 		param.put("Result",request.getParameter("Result"));
+		param.put("InspectionInterval",request.getParameter("InspectionInterval"));
 		param.put("nowPage",nowPage);
 	
 		HashMap<String,Object> result = penetrationSearchDao.getList(param);
+		return new ModelAndView("JsonView", "result", result);
+	}
+	
+	
+	@RequestMapping(value="/penetrationsearch.do", params="command=getExcelData")
+	public ModelAndView getExcelData(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		int nowPage=1;  
+		if(request.getParameter("nowPage")!=null && !request.getParameter("nowPage").toString().equals("")){
+			nowPage=Integer.parseInt(request.getParameter("nowPage"));   
+		}
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("ManagementNo",request.getParameter("ManagementNo"));
+		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
+		param.put("Equip",request.getParameter("Equip"));
+		param.put("ELEVATION_cal_flag",request.getParameter("ELEVATION_cal_flag"));
+		param.put("ELEVATION_num_pit",request.getParameter("ELEVATION_num_pit"));
+		param.put("ELEVATION_num_inc",request.getParameter("ELEVATION_num_inc"));
+		param.put("ELEVATION_cal_flag_2",request.getParameter("ELEVATION_cal_flag_2"));
+		param.put("ELEVATION_num_pit_2",request.getParameter("ELEVATION_num_pit_2"));
+		param.put("ELEVATION_num_inc_2",request.getParameter("ELEVATION_num_inc_2"));
+
+		param.put("Diameter_cal_flag",request.getParameter("Diameter_cal_flag"));
+		param.put("Diameter_num_pit",request.getParameter("Diameter_num_pit"));
+		param.put("Diameter_num_inc",request.getParameter("Diameter_num_inc"));
+
+		param.put("Height_cal_flag",request.getParameter("Height_cal_flag"));
+		param.put("Height_num_pit",request.getParameter("Height_num_pit"));
+		param.put("Height_num_inc",request.getParameter("Height_num_inc"));
+
+		param.put("Length_cal_flag",request.getParameter("Length_cal_flag"));
+		param.put("Length_num_pit",request.getParameter("Length_num_pit"));
+		param.put("Length_num_inc",request.getParameter("Length_num_inc"));
+		
+		param.put("Location",request.getParameter("Location"));
+		param.put("WallMeterial",request.getParameter("WallMeterial"));
+		param.put("ConstructionState",request.getParameter("ConstructionState"));
+		param.put("Area",request.getParameter("Area"));
+		param.put("Wall_YN",request.getParameter("Wall_YN"));
+		param.put("Efficient",request.getParameter("Efficient"));
+		param.put("Result",request.getParameter("Result"));
+		param.put("InspectionInterval",request.getParameter("InspectionInterval"));
+		param.put("nowPage",nowPage);
+	
+		List<HashMap<String,String>> list = penetrationSearchDao.getExcelData(param);
+		XlsxWrite xlsw = new XlsxWrite();
+		String path = request.getSession().getServletContext().getRealPath("") + "ExcelData\\";
+		String fileName = xlsw.chartExcel(list, path);
+		
+		HashMap<String,String> result = new HashMap<String,String>();
+		result.put("FileName", fileName);
 		return new ModelAndView("JsonView", "result", result);
 	}
 	

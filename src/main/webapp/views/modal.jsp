@@ -489,14 +489,14 @@
 					</tr>
 				
 					<tr>
+						<th style="width: 13%">점검주기</th>
+						<td style="width: 37%"  >
+							<input id="pie_InspectSeq" style="width:100%">
+						</td>
 						<th style="width: 13%">점검차수</th>
 						
 						<td style="width: 37%">
-							<input id="pie_InspectSeq" style="width:100%" disabled="disabled">
-						</td>
-						<th style="width: 13%">점검주기</th>
-						<td style="width: 37%"  >
-							<input id="pie_InspectionInterval" style="width:100%">
+							<input id="pie_InspectionInterval" style="width:100%" disabled="disabled">
 						</td>
 					</tr>
 					<tr>
@@ -620,13 +620,13 @@
 					</tr>
 				
 					<tr>
+						<th style="width: 13%">점검주기</th>
+						<td style="width: 37%"  >
+							<input id="pic_InspectSeq" style="width:100%">
+						</td>
 						<th style="width: 13%">점검차수 *</th>
 						
 						<td style="width: 37%">
-							<input id="pic_InspectSeq" style="width:100%">
-						</td>
-						<th style="width: 13%">점검주기</th>
-						<td style="width: 37%"  >
 							<input id="pic_InspectionInterval" style="width:100%">
 						</td>
 					</tr>
@@ -726,6 +726,24 @@
 				<div class="modal-footer">
                 <button type="button" class="btn btn-primary" style="cursor:pointer;" onclick="pic_updateInspectInfoSave()">저장</button>
               </div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	<div class="modal fade" id="excel_modal">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: 360px; margin-left: 100px;">
+				<div class="modal-header">
+					<h4 class="modal-title">엑셀 데이터 저장</h4>
+				</div>
+				<div class="modal-body" align="center">
+					<label class="control-label" style="text-align: left">엑셀
+						데이터를 생성하는 중입니다. <br> 검색조건에 따라 시간이 많이 걸릴 수도 있습니다.</label><br> <br> <img
+						src="./img/loading_ani.gif" style="width: 100%">
+				</div>
 			</div>
 		</div>
 	</div>

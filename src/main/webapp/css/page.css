@@ -116,7 +116,7 @@
 .sub01 .sec02 div ul{float:left;}
 .sub01 .sec02 div ul:after{content:''; visibility:hidden; display:block; clear:both}
 .sub01 .sec02 div ul li{float:left;}
-.sub01 .sec02 div p{float:right}
+/*.sub01 .sec02 div p{float:right}*/
 .sub01 .sec02 div p span{font-weight:700}
 /*.sub01 .sec02 table{width:96%; margin:0 auto 20px; text-align:center; border:1px solid #7496af}
 .sub01 .sec02 table td{position:relative}*/

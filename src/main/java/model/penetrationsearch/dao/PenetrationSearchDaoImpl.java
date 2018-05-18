@@ -163,6 +163,12 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 		if(param.containsKey("InspectSeq") && param.get("InspectSeq")!= null &&  !param.get("InspectSeq").toString().equals("")){
 			cond += " and pi.InspectSeq in ("+param.get("InspectSeq")+") ";
 		}
+		
+
+		if(param.containsKey("InspectionInterval") && param.get("InspectionInterval")!= null &&  !param.get("InspectionInterval").toString().equals("")){
+			cond += " and pi.InspectionInterval = '"+param.get("InspectionInterval")+"' ";
+		}
+		
 		param.put("cond", cond);
 
 		int nowPage = Integer.parseInt(param.get("nowPage").toString());
@@ -178,6 +184,170 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 		result.put("pagingBean", pagingBean);
 		return result;
 	}
+	
+	
+	@Override
+	public List<HashMap<String, String>> getExcelData(HashMap<String, Object> param) {
+		// TODO Auto-generated method stub
+		//		String cond = SqlStrProcess.getSearchString(null, param);
+		//		param.put("cond", cond);
+
+
+		String cond = "";
+		if(param.containsKey("ManagementNo") &&param.get("ManagementNo")!= null &&  !param.get("ManagementNo").toString().equals("")){
+			cond += " and pb.ManagementNo like '%"+param.get("ManagementNo")+"%' ";
+		}
+		if(param.containsKey("PenetrationNo") &&param.get("PenetrationNo")!= null &&  !param.get("PenetrationNo").toString().equals("")){
+			cond += " and pb.PenetrationNo like '%"+param.get("PenetrationNo")+"%' ";
+		}
+
+
+		if(param.containsKey("ELEVATION_num_pit") &&param.get("ELEVATION_num_pit")!= null &&  !param.get("ELEVATION_num_pit").toString().equals("")){
+			if(param.containsKey("ELEVATION_num_inc") &&param.get("ELEVATION_num_inc")!= null &&  !param.get("ELEVATION_num_inc").toString().equals(""))
+			{
+				cond += " and pb.Elevation_num_pit * 12 + pb.Elevation_num_inc "+param.get("ELEVATION_cal_flag")+" "+param.get("ELEVATION_num_pit")+" * 12 + " + param.get("ELEVATION_num_inc");
+			}
+		}
+
+		if(param.containsKey("ELEVATION_num_pit_2") &&param.get("ELEVATION_num_pit_2")!= null &&  !param.get("ELEVATION_num_pit_2").toString().equals("")){
+			if(param.containsKey("ELEVATION_num_inc_2") &&param.get("ELEVATION_num_inc_2")!= null &&  !param.get("ELEVATION_num_inc_2").toString().equals(""))
+			{
+				cond += " and pb.Elevation_num_pit * 12 + pb.Elevation_num_inc "+param.get("ELEVATION_cal_flag_2")+" "+param.get("ELEVATION_num_pit_2")+" * 12 + " + param.get("ELEVATION_num_inc_2");
+			}
+		}
+		
+		if(param.containsKey("Diameter_num_pit") &&param.get("Diameter_num_pit")!= null &&  !param.get("Diameter_num_pit").toString().equals("")){
+			if(param.containsKey("Diameter_num_inc") &&param.get("Diameter_num_inc")!= null &&  !param.get("Diameter_num_inc").toString().equals(""))
+			{
+				cond += " and pb.Diameter_num_pit * 12 + pb.Diameter_num_inc "+param.get("Diameter_cal_flag")+" "+param.get("Diameter_num_pit")+" * 12 + " + param.get("Diameter_num_inc");
+			}
+		}
+
+		if(param.containsKey("Height_num_pit") &&param.get("Height_num_pit")!= null &&  !param.get("Height_num_pit").toString().equals("")){
+			if(param.containsKey("Height_num_inc") &&param.get("Height_num_inc")!= null &&  !param.get("Height_num_inc").toString().equals(""))
+			{
+				cond += " and pb.Height_num_pit * 12 + pb.Height_num_inc "+param.get("Height_cal_flag")+" "+param.get("Height_num_pit")+" * 12 + " + param.get("Height_num_inc");
+			}
+		}
+
+		if(param.containsKey("Length_num_pit") &&param.get("Length_num_pit")!= null &&  !param.get("Length_num_pit").toString().equals("")){
+			if(param.containsKey("Length_num_inc") &&param.get("Length_num_inc")!= null &&  !param.get("Length_num_inc").toString().equals(""))
+			{
+				cond += " and pb.Length_num_pit * 12 + pb.Length_num_inc "+param.get("Length_cal_flag")+" "+param.get("Length_num_pit")+" * 12 + " + param.get("Length_num_inc");
+			}
+		}
+		
+		
+		if(param.containsKey("Equip") &&param.get("Equip")!= null &&  !param.get("Equip").toString().equals("")){
+			cond += " and pb.EquipNo = '"+param.get("Equip")+"' ";
+		}
+		if(param.containsKey("Location") &&param.get("Location")!= null &&  !param.get("Location").toString().equals("")){
+			cond += " and pb.LocNo like '%"+param.get("Location")+"%' ";
+		}
+
+		if(param.containsKey("WallMeterial") && param.get("WallMeterial")!= null &&  !param.get("WallMeterial").toString().equals("")){
+			cond += " and pb.WallMeterial in ("+param.get("WallMeterial")+")";
+		}
+
+		if(param.containsKey("ConstructionState") && param.get("ConstructionState")!= null &&  !param.get("ConstructionState").toString().equals("")){
+			String condSub = " and (";
+			for(String constractionStateValue : param.get("ConstructionState").toString().split(",")){
+
+				condSub += " or (select count(*) from penetrationmaterialcodeinfo pm "
+						+ "where pm.ManagementNo = p.ManagementNo and pm.PenetrationNo = p.PenetrationNo and pm.InspectSeq = pi.InspectSeq "
+						+ "and pm.codeID = "+constractionStateValue+" ) >= 1 " ;
+			}
+			condSub += " ) ";
+			
+			condSub = condSub.replace("( or", "(");
+			cond += condSub;
+		}
+		if(param.containsKey("Area") && param.get("Area")!= null &&  !param.get("Area").toString().equals("")){
+			cond += " and pb.PenetrationDept in ("+param.get("Area")+")";
+		}
+		if(param.containsKey("Wall_YN") && param.get("Wall_YN")!= null &&  !param.get("Wall_YN").toString().equals("")){
+			cond += " and dbo.GetCodeInfoRemarkByID(pb.WallMeterial) in ("+param.get("Wall_YN")+")";
+		}
+		if(param.containsKey("Efficient") && param.get("Efficient")!= null &&  !param.get("Efficient").toString().equals("")){
+			String condSub = " and (";
+			for(String EfficientValue : param.get("Efficient").toString().split(",")){
+				String colName = "";
+				if(EfficientValue.equals("'A0601'")){
+					colName = "VENTILATION_VALUE";
+				}
+				else if(EfficientValue.equals("'A0602'")){
+					colName = "FIRE_VALUE";
+				}
+				else if(EfficientValue.equals("'A0603'")){
+					colName = "RADIATION_VALUE";
+				}
+				else if(EfficientValue.equals("'A0604'")){
+					colName = "FLOOD_VALUE";
+				}
+				else if(EfficientValue.equals("'A0605'")){
+					colName = "PRESSURE_VALUE";
+				}
+				else{
+					continue;
+				}
+				condSub += " or pb."+colName+" = '○' ";
+			}
+			condSub += " ) ";
+			
+			condSub = condSub.replace("( or", "(");
+			
+			if(!condSub.equals(" and ( ) ")){
+				cond += condSub;
+			}
+		}
+		if(param.containsKey("Result") && param.get("Result")!= null &&  !param.get("Result").toString().equals("")){
+			String condSub = " and (";
+			for(String EfficientValue : param.get("Result").toString().split(",")){
+				if(EfficientValue.equals("'A0501'")){		
+					condSub += " or SUBSTRING(pb.PRESSURE_REASON, 1, 1) = '○' ";
+				}
+				else if(EfficientValue.equals("'A0502'")){
+					condSub += " or SUBSTRING(pb.PRESSURE_REASON, 1, 1) != '○' ";
+				}
+				else{
+					continue;
+				}
+			}
+			condSub += " ) ";
+			
+			condSub = condSub.replace("( or", "(");
+			
+			if(!condSub.equals(" and ( ) ")){
+				cond += condSub;
+			}
+		}
+		if(param.containsKey("InspectSeq") && param.get("InspectSeq")!= null &&  !param.get("InspectSeq").toString().equals("")){
+			cond += " and pi.InspectSeq in ("+param.get("InspectSeq")+") ";
+		}
+		if(param.containsKey("InspectSeq") && param.get("InspectSeq")!= null &&  !param.get("InspectSeq").toString().equals("")){
+			cond += " and pi.InspectSeq in ("+param.get("InspectSeq")+") ";
+		}
+		
+
+		if(param.containsKey("InspectionInterval") && param.get("InspectionInterval")!= null &&  !param.get("InspectionInterval").toString().equals("")){
+			cond += " and pi.InspectionInterval = '"+param.get("InspectionInterval")+"' ";
+		}
+		
+		param.put("cond", cond);
+
+		int nowPage = Integer.parseInt(param.get("nowPage").toString());
+		int totalCount =  sqlSession.selectOne("penetrationsearch.getListCount", param);
+		
+		PenetrationSearchPagingBean pagingBean = new PenetrationSearchPagingBean(totalCount,nowPage);
+		
+		param.put("low", PenetrationSearchPagingBean.numberOfContentPerPage * (nowPage - 1));
+		param.put("high", PenetrationSearchPagingBean.numberOfContentPerPage * nowPage);
+		List<HashMap<String,String>> sqlResult =  sqlSession.selectList("penetrationsearch.getExcelData", param);
+		
+		return sqlResult;
+	}
+	
+	
 	@Override
 	public HashMap<String, Object> getLocChart(HashMap<String, Object> param) {
 		// TODO Auto-generated method stub

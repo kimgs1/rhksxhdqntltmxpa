@@ -20,6 +20,7 @@
 	<resources mapping="/help_img/**" location="/help_img/" />
 	<resources mapping="/upload/**" location="/upload/" />
 	<resources mapping="/DownLoadImg/**" location="/DownLoadImg/" />
+	<resources mapping="/ExcelData/**" location="/ExcelData/" />
 	<resources mapping="/PDFFiles/**" location="file:C:/PDFFiles/" />
 	<resources mapping="/UploadFiles/**" location="file:C:/UploadFiles/" />
 
