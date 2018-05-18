@@ -2,8 +2,6 @@
   <link rel='stylesheet prefetch' href='./css/foundation.css'>
   <link rel="stylesheet" href="./css/menu-scroll.css">
   
-  
-  
   <div class="contain-to-grid">
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
