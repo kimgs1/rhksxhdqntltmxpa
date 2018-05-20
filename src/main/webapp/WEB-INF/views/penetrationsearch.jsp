@@ -14,6 +14,7 @@
 <body>
 
 <%@ include file="home_side.jsp"%>
+<br>
     <!--글로벌속성 FIN-->    
     <div class="con1 sub01">
     	<section class="adm">

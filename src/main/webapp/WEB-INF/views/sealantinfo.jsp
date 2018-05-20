@@ -10,6 +10,7 @@
 
 <body>
 <%@ include file="home_side.jsp"%>
+<br>
 	<div id="homeContentDiv" class="con">
         <section class="adm adm02">
             <ul class="tab">
