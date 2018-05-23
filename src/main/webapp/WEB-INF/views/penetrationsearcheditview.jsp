@@ -370,6 +370,7 @@
 						<input onclick="insertInspectInfo()"
 										style="width: 60px; cursor:pointer; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="추가">
+
 					</th>
 					</tr>
 				<c:forEach var="list" items="${InspectList}">
@@ -381,12 +382,18 @@
 						<th style="width: 9%">판정</th>
 						<th style="width: 50%">
 							<div class="row">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-6">판단사유</div>
-								<div class="col-sm-3">
-									<input onclick="updateInspectInfo('${ManagementNo}','${PenetrationNo}','${list.InspectSeq}')"
-										style="width: 70px; cursor:pointer; height: 20px; margin-right:1px;line-height: 20px; font-size: 13px; font-weight: 400; color: black; background: url(images/ico_write.png) no-repeat 5px center #fcf805; padding-left: 23px; border: 0; border-radius: 5px;"
-										type="button" value="수정">
+								<div class="col-sm-5"></div>
+								<div class="col-sm-2">판단사유</div>
+								<div class="col-sm-5">
+										<input onclick="updateInspectInfo('${ManagementNo}','${PenetrationNo}','${list.InspectSeq}')"
+											style="width: 70px; cursor:pointer; height: 20px;line-height: 20px; font-size: 13px; font-weight: 400; color: black; background: url(images/ico_write.png) no-repeat 5px center #fcf805; padding-left: 23px; border: 0; border-radius: 5px;"
+											type="button" value="수정">
+						
+									
+										<input onclick="deleteInspectInfo('${ManagementNo}','${PenetrationNo}','${list.InspectSeq}')"
+											style="width: 60px; cursor:pointer; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center red; padding-left: 23px; border: 0; border-radius: 5px;"
+											type="button" value="삭제">
+
 								</div>
 							</div>
 

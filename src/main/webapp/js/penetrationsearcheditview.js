@@ -615,3 +615,38 @@ function clearNoNum_2(obj) {
 	obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");  
 	obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数 
 }  
+
+
+function deleteInspectInfo(managementNo, penatrationNo, inspectSeq){
+
+$('#delete_inspectInfo_modal').css('z-index', 4000);
+$('#delete_inspectInfo_modal').modal();
+$('#delete_inspectInfo_Btn').attr("onclick",
+		"deleteInspectInfoSave('" + managementNo + "','"+penatrationNo+"','"+inspectSeq+"')");
+}
+
+function deleteInspectInfoSave(managementNo, penatrationNo, inspectSeq){
+	$.ajax({
+		url : 'penetrationinspect.do',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			command:'delete',
+			ManagementNo:managementNo,
+			PenetrationNo :penatrationNo,
+			InspectSeq :inspectSeq,
+		},
+		async: false,
+		success : function(data) {
+			if (data.result.success) {
+				$('#delete_inspectInfo_modal').modal('hide');
+			}
+			alert(data.result.msg);
+			location.reload();
+		},
+		error: function(data){
+			alert("삭제실패");
+		}
+	});
+}
+

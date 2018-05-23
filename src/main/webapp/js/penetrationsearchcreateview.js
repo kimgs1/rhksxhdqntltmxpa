@@ -618,3 +618,38 @@ function pie_ajaxFileUploadBack(obj){
     return false;
 }
 
+
+
+function deleteInspectInfo(managementNo, penatrationNo, inspectSeq){
+
+$('#delete_inspectInfo_modal').css('z-index', 4000);
+$('#delete_inspectInfo_modal').modal();
+$('#delete_inspectInfo_Btn').attr("onclick",
+		"deleteInspectInfoSave('" + managementNo + "','"+penatrationNo+"','"+inspectSeq+"')");
+}
+
+function deleteInspectInfoSave(managementNo, penatrationNo, inspectSeq){
+	$.ajax({
+		url : 'penetrationinspect.do',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			command:'delete',
+			ManagementNo:managementNo,
+			PenetrationNo :penatrationNo,
+			InspectSeq :inspectSeq,
+		},
+		async: false,
+		success : function(data) {
+			if (data.result.success) {
+				$('#delete_inspectInfo_modal').modal('hide');
+			}
+			alert(data.result.msg);
+			location.reload();
+		},
+		error: function(data){
+			alert("삭제실패");
+		}
+	});
+}
+

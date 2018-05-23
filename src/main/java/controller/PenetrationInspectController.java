@@ -108,7 +108,9 @@ public class PenetrationInspectController {
 	@RequestMapping(value="/penetrationinspect.do", params="command=delete")
 	public ModelAndView deletePenetrationInspect(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("Seq",request.getParameter("Seq"));
+		param.put("ManagementNo",request.getParameter("ManagementNo"));
+		param.put("PenetrationNo",request.getParameter("PenetrationNo"));
+		param.put("InspectSeq",request.getParameter("InspectSeq"));
 		param.put("RegID",((HashMap<String, Object>)request.getSession().getAttribute("userInfo")).get("id"));
 		HashMap<String,Object> result = penetrationInspectDao.delete(param);
 		return new ModelAndView("JsonView", "result", result);

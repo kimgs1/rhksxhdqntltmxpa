@@ -418,6 +418,27 @@
 		</div>
 	</div>
 	
+	<div class="modal fade" id="delete_inspectInfo_modal">
+		<div class="modal-dialog">
+			<div class="modal-content" style="margin-top: 100px;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h4>해당점검정보를 삭제 하시겠습니까?</h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left"
+						data-dismiss="modal" aria-label="Close">아니요</button>
+					<button id="delete_inspectInfo_Btn" type="button" class="btn btn-primary">삭 제</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	
 	<div class="modal fade" id="create_Penetrationbaseinfo_modal">
 		<div class="modal-dialog">

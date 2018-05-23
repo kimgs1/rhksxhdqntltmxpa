@@ -278,22 +278,15 @@
 		SELECT
 			count(*)
 		FROM penetrationinspect
-		WHERE Seq = '${Seq}'
+	    where ManagementNo = '${ManagementNo}'
+			 and PenetrationNo = '${PenetrationNo}'
+			 and InspectSeq like '%${InspectSeq}%'
 	</select>
 	
 	<update id="delete"  parameterType="hashmap">
 		delete penetrationinspect
-		
 		where ManagementNo = '${ManagementNo}'
 			 and PenetrationNo = '${PenetrationNo}'
 			 and InspectSeq like '%${InspectSeq}%'
-	</update>
-	
-	<update id="delete_rollBack"  parameterType="hashmap">
-		UPDATE penetrationinspect
-		SET 
-			UseYN = 'Y',
-			updateID = '${RegID}'
-		WHERE Seq = '${Seq}';
 	</update>
 </mapper>
