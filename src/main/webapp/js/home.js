@@ -369,10 +369,11 @@ function drawChart(chart_tag, data,chart_name){
 		    .y(function(d) { return d.value })
 			.staggerLabels(true)    //Too many bars and not enough room? Try staggering labels.
 		    .showValues(true)       //...instead, show the bar value right on top of each bar.
-			.valueFormat(d3.format(".0f"))
+			.valueFormat(d3.format(",.0f"))
 		    ;
  
 		chart.tooltip.enabled(); 
+		chart.tooltip.valueFormatter(d3.format(",.0f"));
         d3.select("#"+chart_tag + ' svg')
 		.datum(exampleData(data))
 		.call(chart);
