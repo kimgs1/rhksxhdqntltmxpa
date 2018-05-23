@@ -168,6 +168,11 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 		if(param.containsKey("InspectionInterval") && param.get("InspectionInterval")!= null &&  !param.get("InspectionInterval").toString().equals("")){
 			cond += " and pi.InspectionInterval = '"+param.get("InspectionInterval")+"' ";
 		}
+
+		if(param.containsKey("ManagementAreaYN") && param.get("ManagementAreaYN")!= null &&  !param.get("ManagementAreaYN").toString().equals("")){
+			cond += " and pb.ManagementAreaYN = '"+param.get("ManagementAreaYN")+"' ";
+		}
+		
 		
 		param.put("cond", cond);
 
@@ -332,7 +337,10 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 		if(param.containsKey("InspectionInterval") && param.get("InspectionInterval")!= null &&  !param.get("InspectionInterval").toString().equals("")){
 			cond += " and pi.InspectionInterval = '"+param.get("InspectionInterval")+"' ";
 		}
-		
+
+		if(param.containsKey("ManagementAreaYN") && param.get("ManagementAreaYN")!= null &&  !param.get("ManagementAreaYN").toString().equals("")){
+			cond += " and pb.ManagementAreaYN = '"+param.get("ManagementAreaYN")+"' ";
+		}
 		param.put("cond", cond);
 
 		int nowPage = Integer.parseInt(param.get("nowPage").toString());

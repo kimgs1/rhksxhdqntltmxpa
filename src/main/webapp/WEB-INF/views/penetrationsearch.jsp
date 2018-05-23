@@ -140,7 +140,14 @@
 	                      		<option value="6회차">6회차</option>
 	                      	</select>
                       	</li>
-                      
+                        <li id="ManagementAreaYN_tag">
+	                      	<label>관리구역</label>
+	                      	<select id="ManagementAreaYN">
+	                      		<option value="" selected>전체</option>
+	                      		<option value="관리구역">관리구역</option>
+	                      		<option value="비관리구역">비관리구역</option>
+	                      	</select>
+                      	</li>
                     </ul>
                     <div>
                         <input class="searchBtn" type="button" onmouseover="this.style.cursor='hand'" onclick="getSearchPenetrationsearchList()" value="검색" />
