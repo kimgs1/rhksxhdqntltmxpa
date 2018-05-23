@@ -203,7 +203,7 @@ function drawPenetrationbaseinfoGrid(result,dataList){
 			shrinkToFit : true,
 			scrollrows : true,
 			gridview : true,
-			height : 400,
+			height : 240,
 			viewrecords: true,
 			jsonReader : {
 				repeatitems : false,

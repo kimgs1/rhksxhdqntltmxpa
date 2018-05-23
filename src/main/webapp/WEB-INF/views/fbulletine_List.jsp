@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
     
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -30,6 +30,7 @@
                     </tr>
                 </table>
                 <ol class="pager" id="board_list_page_div">
+                <br>
                 <!-- 
                     <li><a href="#"><img src="images/pager_01.png" /></a></li>
                     <li><a href="#"><img src="images/pager_02.png" /></a></li>

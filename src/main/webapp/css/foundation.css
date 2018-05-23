@@ -52,7 +52,7 @@ html, body {
 html,
 body {
   font-size: 100%; }
-
+/*
 body {
   background: #fff;
   color: #222;
@@ -64,7 +64,7 @@ body {
   line-height: 1.5;
   position: relative;
   cursor: auto; }
-
+*/
 a:hover {
   cursor: pointer; }
 /*
@@ -123,7 +123,7 @@ select {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 62.5rem; }
+  max-width: 31.25rem;} /*62.5rem; }*/
   .row:before, .row:after {
     content: " ";
     display: table; }

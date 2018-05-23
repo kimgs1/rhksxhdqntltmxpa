@@ -14,7 +14,7 @@
 	<%@ include file="home_side.jsp"%>
 	<div class="con">
 	<h2><img src="images/cs_user.gif"><br><br></h2><!--사용자 관리-->
-		<div class="row" id="user_div">
+		<div class="" id="user_div">
 			<div class="col-sm-12">
 				<button onclick="newMemberOnClick(false)" style="cursor:hand; margin-bottom:10px;width:130px; height:25px; margin-right:20px; font-size:14px; font-weight:700; border-radius:5px; background: linear-gradient( to bottom, white, #c1d4f1 ); border:1px solid #b3caeb; color:#2e4481;">
 				추가</button>

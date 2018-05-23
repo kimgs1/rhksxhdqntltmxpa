@@ -18,10 +18,10 @@
       
         <li class="divider"></li>
         <li class="has-dropdown">
-          <a href="#">관통부관리</a>
+          <p style=cursor:hand;><img src=./images/blink.gif width=1 height=12><br><img src=./images/blink.gif width=12 height=1><font color=white>관통부관리</font><img src=./images/blink.gif width=12 height=12></p><img src=./images/blink.gif width=12 height=12>
           <ul class="dropdown m-menu">
             <li>
-              <div class="row">
+              <div class="">
                 <div class="medium-6 column">
                   <!--<h3>Undergraduate</h3>-->
                   <ul>
@@ -56,10 +56,10 @@
         
         <li class="divider"></li>
         <li class="has-dropdown">
-          <a href="#">커뮤니티</a>
+           <p style=cursor:hand;><img src=./images/blink.gif width=1 height=12><br><img src=./images/blink.gif width=12 height=1><font color=white>커뮤니티</font><img src=./images/blink.gif width=12 height=12></p><img src=./images/blink.gif width=12 height=12>
           <ul class="dropdown m-menu">
             <li>
-              <div class="row">
+              <div class="">
                 <div class="medium-6 column">
                   <!--<h3>Undergraduate</h3>-->
                   <ul>
