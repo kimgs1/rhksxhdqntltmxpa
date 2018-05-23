@@ -13,6 +13,7 @@
 <body>
 
 <%@ include file="home_side.jsp"%>
+<br>
  <div class="con">
         <section class="adm adm04">
             <ul class="tab">

@@ -14,7 +14,7 @@
 	<%@ include file="home_side.jsp"%>
 	<div class="con">
 	<h2><img src="images/cs_code.gif"><br><br></h2><!--코드 관리-->
-		<div class="row" id="code_group_div">
+		<div class="" id="code_group_div">
 			<div class="col-sm-12">
 				<button onclick="newCodeGroup()" style="cursor:hand; margin-bottom:10px;width:130px; height:25px; margin-right:20px; font-size:14px; font-weight:700; border-radius:5px; background: linear-gradient( to bottom, white, #c1d4f1 ); border:1px solid #b3caeb; color:#2e4481;">
 				추가</button>
@@ -25,7 +25,7 @@
 				<div class="col-sm-12" id="codeGroup_Grid_div"></div>
 			</div>
 		</div>
-		<div class="row" id="code_info_div" hidden="true">
+		<div class="" id="code_info_div" hidden="true">
 			<div class="col-sm-12">
 				<button onclick="newCodeInfo()" style="cursor:hand;margin-top:10px;margin-bottom:10px;width:130px; height:25px; margin-right:20px; font-size:14px; font-weight:700; border-radius:5px; background: linear-gradient( to bottom, white, #c1d4f1 ); border:1px solid #b3caeb; color:#2e4481;">
 				추가</button>

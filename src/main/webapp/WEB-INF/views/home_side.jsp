@@ -23,11 +23,7 @@ h6 {
 <ul id="tmenu">
 
 
-		<c:if test="${sessionScope.userInfo.id == 'admin'}">
-		
-		<li class="tmenu_right"><a onclick="menuClick('USMNG')">사용자관리</a></li>
-		
-		<li class="tmenu_right"><a onclick="menuClick('CDMNG')">코드관리</a></li>
+
 <!-- 
 		<li class="tmenu_right"><a href="#" class="drop">시스템관리</a>
 		
@@ -45,7 +41,7 @@ h6 {
 				
 			</div>
 -->
-			</c:if>
+
 
 
 			<c:if test="${sessionScope.userInfo.login != true}">
@@ -53,7 +49,7 @@ h6 {
 			loginflag = false;
 			</script>
             <li class="tmenu_right">
-                <a href="/NPower/login">로그인</a>
+                <a href="/NPower/login">로그인</a>&nbsp;
             </li>
             </c:if>
             <c:if test="${sessionScope.userInfo.login == true}">
@@ -62,8 +58,14 @@ h6 {
 			</script>
 
             <li class="tmenu_right">
-                <a href="/NPower/home.do?command=logout">로그아웃</a>
+                <a href="/NPower/home.do?command=logout">로그아웃</a>&nbsp;
             </li>
+            
+			<c:if test="${sessionScope.userInfo.id == 'admin'}">
+			<li class="tmenu_right"><a onclick="menuClick('USMNG')">사용자관리</a>&nbsp;</li>
+			<li class="tmenu_right"><a onclick="menuClick('CDMNG')">코드관리</a>&nbsp;</li>
+			</c:if>
+            
             </c:if>
 
 <!-- 
@@ -144,5 +146,5 @@ h6 {
 
 </ul>
 
-
+<%@ include file="menu.jsp"%>
 	

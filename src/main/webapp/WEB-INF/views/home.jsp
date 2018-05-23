@@ -10,8 +10,6 @@
 <body>
 <%@ include file="home_side.jsp"%>
 
-<%@ include file="menu.jsp"%>
-
 	<div class="main">
 		<script>
         $(document).ready(function () {

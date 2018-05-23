@@ -14,6 +14,7 @@
 <body>
 
 <%@ include file="home_side.jsp"%>
+<br>
     <!--글로벌속성 FIN-->    
     <div class="con1 sub01">
     	<section class="adm">
@@ -158,29 +159,26 @@
         
         <section class="sec02">
         	<div>
-        	<div class="row">
-        		<div class="col-sm-2">
+        	<div class="col-sm12">
+        		<div class="">
+        		
+        		<table width=100%>
         			<c:if test="${sessionScope.userInfo.login == true}">
+        					
+        				<td>
         					<input onclick="CreateDetailView()" onmouseover="this.style.cursor='hand'"
-										style="width: 60px; height: 20px; line-height: 20px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
+										style="width: 60px; height: 22px; line-height: 22px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/ico_show.png) no-repeat 7px center #ff8511; padding-left: 23px; border: 0; border-radius: 5px;"
 										type="button" value="추가">
-	                		<img onclick="saveCharExcel()" id="saveChartExcel" src="img/excel.png" title="데이터를 엑셀로 내보냅니다." style="width: 15px;margin-left:10px">
+	                		<input onclick="saveCharExcel()" id="saveChartExcel" value="엑셀 다운로드"  title="데이터를 엑셀로 내보냅니다." style="width: 115px; height: 22px; line-height: 22px; font-size: 13px; font-weight: 400; color: #fff; background: url(images/excel_sm.png) no-repeat 7px center #84AF97; padding-left: 23px; border: 0; border-radius: 5px;cursor:hand;">
+	                		</td>
 	                	</c:if>
+	                	<td align=right><p id="page_detail"></p>
+	                	</td>
+	                	</table>
         		</div>
-        		<div class="col-sm-8"></div>
-        		<div class="col-sm-2">
-        			<div class="col-sm-3">
 
-        			</div>
-        			<div class="col-sm-6">
-	                	<p id="page_detail"></p>
-        			</div>
-        		</div>
         	</div>
-                
-                
-
-            
+           
             </div>
             <br/>
            <div id="penetrationsearch_Grid_div"></div>

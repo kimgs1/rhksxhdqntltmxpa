@@ -1,25 +1,27 @@
 ﻿  <link rel="stylesheet" href="./css/normalize.min.css">
   <link rel='stylesheet prefetch' href='./css/foundation.css'>
   <link rel="stylesheet" href="./css/menu-scroll.css">
+  <script src='./css/foundation.min.js'></script>
+
   
   <div class="contain-to-grid">
   <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/NPower/">HOME</a></h1>
-      </li>
-      <li class="toggle-topbar menu-icon">
-        <a href="#"><span>Menu</span></a>
-      </li>
-    </ul>
+
     <section class="top-bar-section">
       <ul class="left">
+      
+        <li class="divider"></li>
+        <li>
+          <a href="/NPower/">HOME</a>
+        </li>
+      
+      
         <li class="divider"></li>
         <li class="has-dropdown">
-          <a href="#">관통부관리</a>
+          <p style=cursor:hand;><img src=./images/blink.gif width=1 height=12><br><img src=./images/blink.gif width=12 height=1><font color=white>관통부관리</font><img src=./images/blink.gif width=12 height=12></p><img src=./images/blink.gif width=12 height=12>
           <ul class="dropdown m-menu">
             <li>
-              <div class="row">
+              <div class="">
                 <div class="medium-6 column">
                   <!--<h3>Undergraduate</h3>-->
                   <ul>
@@ -54,10 +56,10 @@
         
         <li class="divider"></li>
         <li class="has-dropdown">
-          <a href="#">커뮤니티</a>
+           <p style=cursor:hand;><img src=./images/blink.gif width=1 height=12><br><img src=./images/blink.gif width=12 height=1><font color=white>커뮤니티</font><img src=./images/blink.gif width=12 height=12></p><img src=./images/blink.gif width=12 height=12>
           <ul class="dropdown m-menu">
             <li>
-              <div class="row">
+              <div class="">
                 <div class="medium-6 column">
                   <!--<h3>Undergraduate</h3>-->
                   <ul>
@@ -88,6 +90,4 @@
   </nav>
 </div><!--end .contain-to-grid-->
 
-
-  <script src='./css/foundation.min.js'></script>
   <script src="./css/menu-scroll.js"></script>
