@@ -102,7 +102,7 @@ function getSearchPenetrationsearchList(nowPage){
 			Efficient:getCheckBoxValueByTagname('Efficient'),
 			Result:getCheckBoxValueByTagname('Result'),
 			InspectionInterval : $("#InspectionInterval option:selected").val(),
-			ManagementAreaYN : $("#ManagementAreaYN option:selected").val(),
+			ManagementObjYN : $("#ManagementObjYN option:selected").val(),
 		},
 		success : function(data) {
 			var result = data.result;
@@ -506,7 +506,7 @@ function saveCharExcel (){
 			Efficient:getCheckBoxValueByTagname('Efficient'),
 			Result:getCheckBoxValueByTagname('Result'),
 			InspectionInterval : $("#InspectionInterval option:selected").val(),
-			ManagementAreaYN : $("#ManagementAreaYN option:selected").val(),
+			ManagementObjYN : $("#ManagementObjYN option:selected").val(),
 		},
 		timeout : 0,
 		success : function(data) {

@@ -122,7 +122,7 @@ public class PenetrationSearchController {
 		param.put("Efficient",request.getParameter("Efficient"));
 		param.put("Result",request.getParameter("Result"));
 		param.put("InspectionInterval",request.getParameter("InspectionInterval"));
-		param.put("ManagementAreaYN",request.getParameter("ManagementAreaYN"));
+		param.put("ManagementObjYN",request.getParameter("ManagementObjYN"));
 		param.put("nowPage",nowPage);
 	
 		HashMap<String,Object> result = penetrationSearchDao.getList(param);
@@ -168,7 +168,7 @@ public class PenetrationSearchController {
 		param.put("Efficient",request.getParameter("Efficient"));
 		param.put("Result",request.getParameter("Result"));
 		param.put("InspectionInterval",request.getParameter("InspectionInterval"));
-		param.put("ManagementAreaYN",request.getParameter("ManagementAreaYN"));
+		param.put("ManagementObjYN",request.getParameter("ManagementObjYN"));
 		param.put("nowPage",nowPage);
 	
 		List<HashMap<String,String>> list = penetrationSearchDao.getExcelData(param);

@@ -141,12 +141,12 @@
 	                      		<option value="6회차">6회차</option>
 	                      	</select>
                       	</li>
-                        <li id="ManagementAreaYN_tag">
-	                      	<label>관리구역</label>
-	                      	<select id="ManagementAreaYN">
+                        <li id="ManagementObjYN_tag">
+	                      	<label>관리대상</label>
+	                      	<select id="ManagementObjYN">
 	                      		<option value="" selected>전체</option>
-	                      		<option value="관리구역">관리구역</option>
-	                      		<option value="비관리구역">비관리구역</option>
+	                      		<option value="○">○</option>
+	                      		<option value="X">X</option>
 	                      	</select>
                       	</li>
                     </ul>

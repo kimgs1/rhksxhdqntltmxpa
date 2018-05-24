@@ -169,8 +169,8 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 			cond += " and pi.InspectionInterval = '"+param.get("InspectionInterval")+"' ";
 		}
 
-		if(param.containsKey("ManagementAreaYN") && param.get("ManagementAreaYN")!= null &&  !param.get("ManagementAreaYN").toString().equals("")){
-			cond += " and pb.ManagementAreaYN = '"+param.get("ManagementAreaYN")+"' ";
+		if(param.containsKey("ManagementObjYN") && param.get("ManagementObjYN")!= null &&  !param.get("ManagementObjYN").toString().equals("")){
+			cond += " and pb.ManagementObjYN = '"+param.get("ManagementObjYN")+"' ";
 		}
 		
 		
@@ -338,8 +338,8 @@ public class PenetrationSearchDaoImpl implements PenetrationSearchDao{
 			cond += " and pi.InspectionInterval = '"+param.get("InspectionInterval")+"' ";
 		}
 
-		if(param.containsKey("ManagementAreaYN") && param.get("ManagementAreaYN")!= null &&  !param.get("ManagementAreaYN").toString().equals("")){
-			cond += " and pb.ManagementAreaYN = '"+param.get("ManagementAreaYN")+"' ";
+		if(param.containsKey("ManagementObjYN") && param.get("ManagementObjYN")!= null &&  !param.get("ManagementObjYN").toString().equals("")){
+			cond += " and pb.ManagementObjYN = '"+param.get("ManagementObjYN")+"' ";
 		}
 		param.put("cond", cond);
 
