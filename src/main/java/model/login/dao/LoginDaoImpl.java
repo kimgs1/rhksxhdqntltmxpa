@@ -51,7 +51,12 @@ public class LoginDaoImpl implements LoginDao {
 	}
 	@Override
 	public int editMemberUpload(HashMap<String,String> param){
-		return sqlSession.update("Login.editMemberUpload", param);
+		if(param.get("password") == null){
+			return sqlSession.update("Login.editMemberUpload_XPW", param);
+			
+		}else{
+			return sqlSession.update("Login.editMemberUpload", param);
+		}
 	}
 	
 	private boolean checkSP(String userpwd) {

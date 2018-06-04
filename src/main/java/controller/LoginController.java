@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import common.Common;
 import model.login.dao.LoginDao;
+import util.KISA_SHA256;
 
 @Controller
 public class LoginController extends MultiActionController{
@@ -46,7 +47,8 @@ public class LoginController extends MultiActionController{
 		String ip = Common.getIpAddr(request);
 		HashMap<String, String> usermap = new HashMap<String, String>();
 		usermap.put("userid", request.getParameter("txtUserId"));
-		usermap.put("userpw", request.getParameter("txtUserPwd"));
+		usermap.put("userpw",  KISA_SHA256.getSHA256StrJava(request.getParameter("txtUserPwd")));
+
 		usermap.put("remCheck", request.getParameter("remCheck"));
 		usermap.put("ip", ip);
 		HashMap<String, Object> check = loginDao.checkLogin(usermap);
@@ -82,7 +84,7 @@ public class LoginController extends MultiActionController{
 		HashMap<String, String> param = new HashMap<String, String>();
 		param.put("userid", request.getParameter("userId"));
 		param.put("username", request.getParameter("userName"));
-		param.put("password", request.getParameter("password"));
+		param.put("password", KISA_SHA256.getSHA256StrJava(request.getParameter("password")));
 		param.put("email", request.getParameter("email"));
 //		param.put("company", request.getParameter("company"));
 		param.put("phone", request.getParameter("phone"));
@@ -105,7 +107,11 @@ public class LoginController extends MultiActionController{
 		HashMap<String, String> param = new HashMap<String, String>();
 		param.put("userid", request.getParameter("userId"));
 		param.put("username", request.getParameter("userName"));
-		param.put("password", request.getParameter("password"));
+		if(request.getParameter("password").isEmpty()){
+			param.put("password", null);
+		}else{
+			param.put("password", KISA_SHA256.getSHA256StrJava(request.getParameter("password")));
+		}
 		param.put("email", request.getParameter("email"));
 //		param.put("company", request.getParameter("company"));
 		param.put("phone", request.getParameter("phone"));

@@ -76,4 +76,25 @@
 		where userid = '${userid}'
 		
 	</update>
+	
+	<update id="editMemberUpload_XPW" parameterType="hashmap">
+		update  
+			userinfo
+		set 
+			userid = '${userid}',        
+			username = '${username}',     
+			Authority = '${Authority}',    
+			Phone = '${phone}',        
+			Mobile = '${mobile}',       
+			Email = '${email}',        
+			Address = '${address}',      
+			UseYN = 'Y' ,        
+			IP = '${ip}',           
+			Mac = '${mac}',          
+			LastLogin = '',    
+			LoginYN = 'Y'  ,      
+			RegID = '${userid}' ,        
+			RegDate = getdate()
+		where userid = '${userid}'
+	</update>
 </mapper>

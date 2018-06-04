@@ -163,8 +163,8 @@ function editUserinfo(rowId) {
 		data : 'command=getcontent&&UserID=' + userid,
 		success : function(data) {
 			$("#e_userId").val(data.result.DataList.UserID);
-			$("#e_password_precheck").val(data.result.DataList.Password);
-			$("#e_password").val(data.result.DataList.Password);
+//			$("#e_password_precheck").val(data.result.DataList.Password);
+//			$("#e_password").val(data.result.DataList.Password);
 			$("#e_userName").val(data.result.DataList.UserName);
 			$("#e_phone").val(data.result.DataList.Phone);
 			$("#e_mobile").val(data.result.DataList.Mobile);
